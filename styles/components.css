@@ -111,3 +111,18 @@
     line-height: 22px;
     color: rgba(255, 255, 255, 0.8);
 }
+.LivePreviewBox {
+    width: 99%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--ui-kit-border-radius);
+}
+.EditpageMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--ui-kit-space-3);
+}

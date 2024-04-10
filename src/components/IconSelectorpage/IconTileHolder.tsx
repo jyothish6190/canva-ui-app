@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from 'styles/components.css';
 import IconTile from './IconTile';
-import { Text } from '@canva/app-ui-kit';
 import { useSearchInputStore } from 'src/Store/SearchInputstore';
 
 export default function IconTileHolder({ IconData }) {

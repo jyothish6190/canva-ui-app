@@ -1,5 +1,5 @@
-import { ArrowLeftIcon, Button, Rows } from '@canva/app-ui-kit';
 import React from 'react';
+import { ArrowLeftIcon, Button, Rows } from '@canva/app-ui-kit';
 import { IconData } from '../../ConstData/IconConstData.js';
 import SearchBox from '../CommonComponents/searchBox';
 import IconTileHolder from './IconTileHolder';

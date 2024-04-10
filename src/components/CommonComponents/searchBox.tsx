@@ -1,5 +1,5 @@
-import { Button, ClearIcon, SearchIcon, TextInput } from '@canva/app-ui-kit';
 import React from 'react';
+import { Button, ClearIcon, SearchIcon, TextInput } from '@canva/app-ui-kit';
 import { useSearchInputStore } from 'src/Store/SearchInputstore';
 
 export default function SearchBox() {
