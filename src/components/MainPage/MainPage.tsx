@@ -7,7 +7,12 @@ import {
     Button,
     Badge,
     FormField,
-    Select,
+    TextInput,
+    Checkbox,
+    RadioGroup,
+    CheckboxGroup,
+    MultilineInput,
+    SegmentedControl,
 } from '@canva/app-ui-kit';
 import SearchBox from './MainageComponents/searchBox';
 import PillBox from './MainageComponents/pillBox';
@@ -41,8 +46,39 @@ export default function MainPage() {
             title2: 'Alert',
             box1: { type: 'badge', text: 'Badge' },
             box2: {
-                type: 'FormField',
+                type: 'formField',
                 text: 'This is an alert. Say something here',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'Checkbox',
+            title2: 'CheckboxGroup',
+            box1: { type: 'checkbox', text: 'Radiogroup' },
+            box2: {
+                type: 'checkboxGroup',
+                text: 'CheckboxGroup',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'Radiogroup',
+            title2: 'TextInput',
+            box1: { type: 'radiogroup', text: 'Radiogroup' },
+            box2: {
+                type: 'textInput',
+                text: 'Placeholder',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'MultilineInput',
+            title2: 'Segmented Control',
+            box1: { type: 'multiLineInput', text: 'Placeholder' },
+            box2: {
+                type: 'segmentedControl',
+                text1: 'S',
+                text2: 'M',
             },
         },
     ];
@@ -63,6 +99,7 @@ export default function MainPage() {
                             box2={renderBox(item.box2)}
                         />
                     );
+
                 default:
                     return null;
             }
@@ -100,36 +137,83 @@ export default function MainPage() {
                 );
             case 'badge':
                 return <Badge text={boxConfig.text} tone="assist" />;
-
-            case 'FormField':
+            case 'formField':
                 return (
                     <div
                         key={boxConfig.text}
                         className={styles.formFieldContainer}
                     >
                         <FormField
-                            label="Form field label"
+                            label={boxConfig.text}
                             description="Form field description"
-                            control={(props) => (
-                                <Select
-                                    {...props}
-                                    options={[
-                                        {
-                                            value: 'blueberry',
-                                            label: 'Blueberry',
-                                        },
-                                        { value: 'apple', label: 'Apple' },
-                                        {
-                                            value: 'strawberry',
-                                            label: 'Strawberry',
-                                        },
-                                    ]}
-                                />
-                            )}
+                            control={(props) => <TextInput {...props} />}
                             style={{ marginLeft: '30px' }}
                         />
                     </div>
                 );
+            case 'checkbox':
+                return <Checkbox label={boxConfig.text} checked />;
+            case 'radiogroup':
+                return (
+                    <RadioGroup
+                        defaultValue={'blueberry'}
+                        options={[
+                            {
+                                label: 'Blueberry',
+                                value: 'blueberry',
+                            },
+                            {
+                                label: 'Apple',
+                                value: 'apple',
+                            },
+                            {
+                                label: 'Strawberry',
+                                value: 'strawberry',
+                            },
+                        ]}
+                    />
+                );
+            case 'checkboxGroup':
+                return (
+                    <CheckboxGroup
+                        defaultValue={'blueberry'}
+                        options={[
+                            {
+                                label: 'Blueberry',
+                                value: 'blueberry',
+                            },
+                            {
+                                label: 'Apple',
+                                value: 'apple',
+                            },
+                            {
+                                label: 'Strawberry',
+                                value: 'strawberry',
+                            },
+                        ]}
+                    />
+                );
+            case 'textInput':
+                return <TextInput placeholder={boxConfig.text} />;
+            case 'multiLineInput':
+                return <MultilineInput placeholder={boxConfig.text} autoGrow />;
+            case 'segmentedControl':
+                return (
+                    <SegmentedControl
+                        options={[
+                            {
+                                label: 'S',
+                                value: 's',
+                            },
+                            {
+                                label: 'M',
+                                value: 'm',
+                            },
+                        ]}
+                        defaultValue="s"
+                    />
+                );
+
             default:
                 return null;
         }
@@ -137,3 +221,4 @@ export default function MainPage() {
 
     return <Rows spacing="2u">{renderComponents()}</Rows>;
 }
+``;
