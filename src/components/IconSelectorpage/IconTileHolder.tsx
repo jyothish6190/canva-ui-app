@@ -7,10 +7,12 @@ export default function IconTileHolder({ IconData }) {
     const Searchtext = useSearchInputStore((state) => state.searchValue);
     return (
         <div className={styles.IconListHolder}>
-            {IconData.length > 1 ? (
+            {IconData.length > 0 ? (
                 IconData.map((item) => {
-                    const { id, icon, text } = item;
-                    return <IconTile key={id} IconImg={icon} IconText={text} />;
+                    const { id, icon, Icontext } = item;
+                    return (
+                        <IconTile key={id} IconImg={icon} IconText={Icontext} />
+                    );
                 })
             ) : (
                 <p className={styles.IconSearchErrorText}>

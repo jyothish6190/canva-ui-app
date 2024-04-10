@@ -11,7 +11,7 @@ export default function IconSelectionpage() {
         Searchtext.trim() === ''
             ? IconData
             : IconData.filter((item) =>
-                  item.text.toLowerCase().includes(Searchtext.toLowerCase())
+                  item.Icontext.toLowerCase().includes(Searchtext.toLowerCase())
               );
     return (
         <Rows spacing="2u">
