@@ -112,6 +112,7 @@
     color: rgba(255, 255, 255, 0.8);
 }
 .LivePreviewBox {
+    position: relative;
     width: 99%;
     height: 200px;
     display: flex;
@@ -125,4 +126,20 @@
     justify-content: center;
     align-items: center;
     gap: var(--ui-kit-space-3);
+}
+.ThemeButton {
+    display: flex;
+    position: absolute;
+    cursor: pointer;
+    top: 2%;
+    right: 2%;
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+    background-color: rgba(17, 23, 29, 0.6);
+    border-radius: var(--ui-kit-border-radius);
+}
+.ThemeButton img {
+    width: 100%;
+    display: block;
 }
