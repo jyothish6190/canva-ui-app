@@ -14,7 +14,7 @@ export default function IconSelectionpage() {
                   item.text.toLowerCase().includes(Searchtext.toLowerCase())
               );
     return (
-        <Rows spacing="1.5u">
+        <Rows spacing="2u">
             <Button variant="tertiary" icon={ArrowLeftIcon} alignment="start">
                 Icons
             </Button>
