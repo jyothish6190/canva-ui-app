@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@canva/app-ui-kit';
+import { Button, Switch } from '@canva/app-ui-kit';
 import styles from 'styles/components.css';
 import LivePreview from './EditpageComponents/Livepreview';
 import SegmentedControls from './EditpageComponents/SegmentedControls';
@@ -14,6 +14,7 @@ export default function EditPage() {
             <SegmentedControls />
             <CommonTextInput />
             <CommonSelectInput />
+            <Switch label="Hug content" />
             <DimensionSelector />
             <Button
                 stretch={true}

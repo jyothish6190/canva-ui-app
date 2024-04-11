@@ -18,7 +18,7 @@ export default function SegmentedControls() {
     ];
     return (
         <Rows spacing="1u">
-            <Text>values</Text>
+            <Text>Variant</Text>
             <SegmentedControl options={SampleValue} defaultValue="Primary" />
         </Rows>
     );
