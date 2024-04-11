@@ -6,21 +6,30 @@ import SegmentedControls from './EditpageComponents/SegmentedControls';
 import CommonTextInput from './EditpageComponents/CommontextInput';
 import CommonSelectInput from './EditpageComponents/CommonSelectinput';
 import DimensionSelector from './EditpageComponents/DimensionSelector';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function EditPage() {
+    const { state } = useLocation();
+    const navigate = useNavigate();
+
+    const headerName = state?.name || 'Button';
+    const onClickBack = () => navigate(-1);
     return (
-        <div className={styles.EditpageMainContainer}>
-            <LivePreview />
-            <SegmentedControls />
-            <CommonTextInput />
-            <CommonSelectInput />
-            <Switch label="Hug content" />
-            <DimensionSelector />
-            <Button
-                stretch={true}
-                variant="primary"
-                children="Update Componet"
-            />
-        </div>
+        <>
+            <div className={styles.EditpageMainContainer}>
+                <LivePreview />
+                <SegmentedControls />
+                <CommonTextInput />
+                <CommonSelectInput />
+                <Switch label="Hug content" />
+                <DimensionSelector />
+                <Button
+                    stretch={true}
+                    variant="primary"
+                    children="Update Component"
+                    onClick={onClickBack}
+                />
+            </div>
+        </>
     );
 }
