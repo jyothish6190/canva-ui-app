@@ -5,9 +5,13 @@ import {
     MusicIcon,
     PauseIcon,
     CodeIcon,
+    PlayFilledIcon,
 } from '@canva/app-ui-kit';
+import { useNavigate } from 'react-router-dom';
 
 export default function IconDiv() {
+    const navigate = useNavigate();
+
     return (
         <div
             style={{
@@ -18,12 +22,22 @@ export default function IconDiv() {
                 paddingLeft: 20,
                 paddingRight: 20,
             }}
+            onClick={() => {
+                navigate(`/icons`, {
+                    state: {
+                        id: '',
+                        type: '',
+                    },
+                });
+            }}
         >
             <CheckIcon />
             <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
             <XIcon />
             <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
             <MusicIcon />
+            <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
+            <PlayFilledIcon />
             <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
             <PauseIcon />
             <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
