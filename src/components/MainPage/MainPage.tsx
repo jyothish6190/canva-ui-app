@@ -13,14 +13,17 @@ import {
     CheckboxGroup,
     MultilineInput,
     SegmentedControl,
+    Select,
 } from '@canva/app-ui-kit';
 import SearchBox from '../CommonComponents/searchBox';
 import PillBox from '../CommonComponents/pillBox';
 import TwoCardComponent from '../CommonComponents/TwoCardComponent';
 import styles from 'styles/components.css';
 import Icons from '../../components/Icons/Icons';
+import { useNavigate } from 'react-router-dom';
 
 export default function MainPage() {
+    const navigate = useNavigate();
     const jsonData = [
         { type: 'searchBox' },
         { type: 'pillBox' },
@@ -36,22 +39,22 @@ export default function MainPage() {
             type: 'twoCardComponent',
             title1: 'Pill',
             title2: 'Alert',
-            box1: { type: 'pill', text: 'pill' },
+            box1: { type: 'pill', text: 'Pill' },
             box2: {
                 type: 'alert',
                 text: 'This is an alert. Say something here',
             },
         },
-        {
-            type: 'twoCardComponent',
-            title1: 'Badge',
-            title2: 'Alert',
-            box1: { type: 'badge', text: 'Badge' },
-            box2: {
-                type: 'formField',
-                text: 'This is an alert. Say something here',
-            },
-        },
+        // {
+        //     type: 'twoCardComponent',
+        //     title1: 'Badge',
+        //     title2: 'Alert',
+        //     box1: { type: 'badge', text: 'Badge' },
+        //     box2: {
+        //         type: 'formField',
+        //         text: 'This is an alert. Say something here',
+        //     },
+        // },
         {
             type: 'twoCardComponent',
             title1: 'Checkbox',
@@ -72,17 +75,17 @@ export default function MainPage() {
                 text: 'Placeholder',
             },
         },
-        {
-            type: 'twoCardComponent',
-            title1: 'MultilineInput',
-            title2: 'Segmented Control',
-            box1: { type: 'multiLineInput', text: 'Placeholder' },
-            box2: {
-                type: 'segmentedControl',
-                text1: 'S',
-                text2: 'M',
-            },
-        },
+        // {
+        //     type: 'twoCardComponent',
+        //     title1: 'MultilineInput',
+        //     title2: 'Segmented Control',
+        //     box1: { type: 'multiLineInput', text: 'Placeholder' },
+        //     box2: {
+        //         type: 'segmentedControl',
+        //         text1: 'S',
+        //         text2: 'M',
+        //     },
+        // },
     ];
     const renderComponents = () => {
         return jsonData.map((item, index) => {
@@ -117,7 +120,14 @@ export default function MainPage() {
                     <Button
                         key={boxConfig.text}
                         alignment="center"
-                        onClick={() => {}}
+                        onClick={() => {
+                            navigate(`/edit`, {
+                                state: {
+                                    id: '',
+                                    type: '',
+                                },
+                            });
+                        }}
                         variant="primary"
                     >
                         {boxConfig.text}
@@ -180,7 +190,7 @@ export default function MainPage() {
             case 'checkboxGroup':
                 return (
                     <CheckboxGroup
-                        defaultValue={'blueberry'}
+                        defaultValue={['blueberry']}
                         options={[
                             {
                                 label: 'Blueberry',
