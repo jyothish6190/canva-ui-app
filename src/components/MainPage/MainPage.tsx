@@ -14,15 +14,17 @@ import {
     MultilineInput,
     SegmentedControl,
 } from '@canva/app-ui-kit';
-import SearchBox from './MainageComponents/searchBox';
-import PillBox from './MainageComponents/pillBox';
-import TwoCardComponent from './MainageComponents/TwoCardComponent';
+import SearchBox from '../CommonComponents/searchBox';
+import PillBox from '../CommonComponents/pillBox';
+import TwoCardComponent from '../CommonComponents/TwoCardComponent';
 import styles from 'styles/components.css';
+import Icons from '../../components/Icons/Icons';
 
 export default function MainPage() {
     const jsonData = [
         { type: 'searchBox' },
         { type: 'pillBox' },
+        { type: 'icons' },
         {
             type: 'twoCardComponent',
             title1: 'Button',
@@ -89,6 +91,8 @@ export default function MainPage() {
                     return <SearchBox key={index} />;
                 case 'pillBox':
                     return <PillBox key={index} />;
+                case 'icons':
+                    return <Icons key={index} />;
                 case 'twoCardComponent':
                     return (
                         <TwoCardComponent

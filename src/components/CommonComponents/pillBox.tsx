@@ -1,5 +1,5 @@
-import { Box, Carousel, Pill } from '@canva/app-ui-kit';
 import React from 'react';
+import { Box, Carousel, Pill } from '@canva/app-ui-kit';
 
 export default function PillBox() {
     const Options = [
