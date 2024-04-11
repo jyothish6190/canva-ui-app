@@ -1,7 +1,7 @@
 /* Scroll container */
 .scrollContainer {
     box-sizing: border-box;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     height: 100%;
     padding-top: var(--ui-kit-space-2);
     padding-right: var(--ui-kit-space-2);
@@ -125,6 +125,7 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--ui-kit-space-3);
+    padding-bottom: 100px;
 }
 .ThemeButton {
     display: flex;
@@ -141,4 +142,9 @@
 .ThemeButton img {
     width: 100%;
     display: block;
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 8px;
 }
