@@ -1,32 +1,27 @@
 import React from 'react';
 import {
     CheckIcon,
+    PlayFilledIcon,
     XIcon,
     MusicIcon,
     PauseIcon,
     CodeIcon,
 } from '@canva/app-ui-kit';
+import styles from 'styles/components.css';
 
 export default function IconDiv() {
     return (
-        <div
-            style={{
-                display: 'flex',
-                background: 'var(--Neutral-colorNeutralLow, #FFFFFF12)',
-                height: '90px',
-                alignItems: 'center',
-                paddingLeft: 20,
-                paddingRight: 20,
-            }}
-        >
+        <div className={styles.iconsContainer}>
             <CheckIcon />
-            <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
+            <div style={{ flex: '1' }}></div>
             <XIcon />
-            <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
+            <div style={{ flex: '1' }}></div>
             <MusicIcon />
-            <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
+            <div style={{ flex: '1' }}></div>
+            <PlayFilledIcon />
+            <div style={{ flex: '1' }}></div>
             <PauseIcon />
-            <div style={{ flex: '1' }}></div> {/* Empty div for spacing */}
+            <div style={{ flex: '1' }}></div>
             <CodeIcon />
         </div>
     );

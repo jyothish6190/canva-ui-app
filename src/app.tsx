@@ -9,8 +9,8 @@ export const App = () => {
         <div className={styles.scrollContainer}>
             <MainPage />
 
-            <IconSelectionpage />
-            <EditPage />
+            {/* <IconSelectionpage /> */}
+            {/* <EditPage /> */}
         </div>
     );
 };

@@ -45,11 +45,12 @@ export default function MainPage() {
         {
             type: 'twoCardComponent',
             title1: 'Badge',
-            title2: 'Alert',
+            title2: 'Form Field',
             box1: { type: 'badge', text: 'Badge' },
             box2: {
                 type: 'formField',
-                text: 'This is an alert. Say something here',
+                text1: 'Label',
+                text2: 'Description text',
             },
         },
         {
@@ -143,16 +144,17 @@ export default function MainPage() {
                 return <Badge text={boxConfig.text} tone="assist" />;
             case 'formField':
                 return (
-                    <div
-                        key={boxConfig.text}
-                        className={styles.formFieldContainer}
-                    >
-                        <FormField
-                            label={boxConfig.text}
-                            description="Form field description"
-                            control={(props) => <TextInput {...props} />}
-                            style={{ marginLeft: '30px' }}
-                        />
+                    <div className={styles.formFieldMainContainer}>
+                        <div
+                            key={boxConfig.text}
+                            className={styles.formFieldContainer}
+                        >
+                            <FormField
+                                label={boxConfig.text1}
+                                description={boxConfig.text2}
+                                control={(props) => <TextInput {...props} />}
+                            />
+                        </div>
                     </div>
                 );
             case 'checkbox':
@@ -198,9 +200,17 @@ export default function MainPage() {
                     />
                 );
             case 'textInput':
-                return <TextInput placeholder={boxConfig.text} />;
+                return (
+                    <div className={styles.textInputContainer}>
+                        <TextInput placeholder={boxConfig.text} type={'text'} />
+                    </div>
+                );
             case 'multiLineInput':
-                return <MultilineInput placeholder={boxConfig.text} autoGrow />;
+                return (
+                    <div className={styles.multiLineInnerContainer}>
+                        <MultilineInput placeholder={boxConfig.text} autoGrow />
+                    </div>
+                );
             case 'segmentedControl':
                 return (
                     <SegmentedControl
