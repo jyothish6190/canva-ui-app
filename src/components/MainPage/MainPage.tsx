@@ -13,7 +13,19 @@ import {
     CheckboxGroup,
     MultilineInput,
     SegmentedControl,
+    Slider,
+    NumberInput,
+    FileInput,
     Select,
+    Switch,
+    Swatch,
+    ColorSelector,
+    LoadingIndicator,
+    Placeholder,
+    ProgressBar,
+    AudioCard,
+    ImageCard,
+    AudioContextProvider,
 } from '@canva/app-ui-kit';
 import SearchBox from '../CommonComponents/searchBox';
 import PillBox from '../CommonComponents/pillBox';
@@ -76,18 +88,79 @@ export default function MainPage() {
                 text: 'Placeholder',
             },
         },
-        // {
-        //     type: 'twoCardComponent',
-        //     title1: 'MultilineInput',
-        //     title2: 'Segmented Control',
-        //     box1: { type: 'multiLineInput', text: 'Placeholder' },
-        //     box2: {
-        //         type: 'segmentedControl',
-        //         text1: 'S',
-        //         text2: 'M',
-        //     },
-        // },
+        {
+            type: 'twoCardComponent',
+            title1: 'MultilineInput',
+            title2: 'Segmented Control',
+            box1: { type: 'multiLineInput', text: 'Placeholder' },
+            box2: {
+                type: 'segmentedControl',
+                text1: 'S',
+                text2: 'M',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'Slider',
+            title2: 'NumberInput',
+            box1: { type: 'slider', text: '' },
+            box2: {
+                type: 'numberInput',
+                text: '',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'FileInput',
+            title2: 'Select',
+            box1: { type: 'fileInput', text: '' },
+            box2: {
+                type: 'select',
+                text: '',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'Switch',
+            title2: 'Swatch',
+            box1: { type: 'switch', text: '' },
+            box2: {
+                type: 'swatch',
+                text: '',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'ColorSelector',
+            title2: 'LoadingIndicator',
+            box1: { type: 'ColorSelector', text: '' },
+            box2: {
+                type: 'loadingIndicator',
+                text: '',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'Placeholder',
+            title2: 'ProgressBar',
+            box1: { type: 'placeholder', text: '' },
+            box2: {
+                type: 'progressBar',
+                text: '',
+            },
+        },
+        {
+            type: 'twoCardComponent',
+            title1: 'AudioCard',
+            title2: 'ImageCard',
+            box1: { type: 'audioCard', text: '' },
+            box2: {
+                type: 'imageCard',
+                text: '',
+            },
+        },
     ];
+
     const renderComponents = () => {
         return jsonData.map((item, index) => {
             switch (item.type) {
@@ -217,27 +290,129 @@ export default function MainPage() {
                 );
             case 'multiLineInput':
                 return (
-                    <div className={styles.multiLineInnerContainer}>
-                        <MultilineInput placeholder={boxConfig.text} autoGrow />
+                    <div className={styles.multiLineContainer}>
+                        <div className={styles.multiLineInnerContainer}>
+                            <MultilineInput
+                                placeholder={boxConfig.text}
+                                autoGrow
+                            />
+                        </div>
                     </div>
                 );
             case 'segmentedControl':
                 return (
-                    <SegmentedControl
-                        options={[
-                            {
-                                label: 'S',
-                                value: 's',
-                            },
-                            {
-                                label: 'M',
-                                value: 'm',
-                            },
-                        ]}
-                        defaultValue="s"
-                    />
+                    <div
+                        style={{
+                            width: 165,
+                            marginLeft: 20,
+                            overflow: 'hidden',
+                        }}
+                    >
+                        <SegmentedControl
+                            options={[
+                                {
+                                    label: 'S',
+                                    value: 's',
+                                },
+                                {
+                                    label: 'M',
+                                    value: 'm',
+                                },
+                            ]}
+                            defaultValue="s"
+                        />
+                    </div>
                 );
-
+            case 'slider':
+                return (
+                    <div style={{ width: 128 }}>
+                        <div style={{ width: '100%' }}>
+                            <Slider
+                                defaultValue={0}
+                                max={100}
+                                min={0}
+                                step={1}
+                            />
+                        </div>
+                    </div>
+                );
+            case 'numberInput':
+                return (
+                    <div style={{ width: 128 }}>
+                        <div style={{ width: '100%' }}>
+                            <NumberInput defaultValue={0} />
+                        </div>
+                    </div>
+                );
+            case 'fileInput':
+                return (
+                    <div style={{ width: 128 }}>
+                        <FileInput />
+                    </div>
+                );
+            case 'select':
+                return (
+                    <div style={{ width: 128 }}>
+                        <Select options={[{ label: 'Option 1', value: '1' }]} />
+                    </div>
+                );
+            case 'switch':
+                return (
+                    <div style={{ width: 128 }}>
+                        <Switch />
+                    </div>
+                );
+            case 'swatch':
+                return (
+                    <div style={{ width: 128 }}>
+                        <Swatch color="#FF0000" />
+                    </div>
+                );
+            case 'ColorSelector':
+                return <ColorSelector color="#143F6B" onChange={() => {}} />;
+            case 'loadingIndicator':
+                return <LoadingIndicator />;
+            case 'placeholder':
+                return (
+                    <div
+                        style={{
+                            height: '120px',
+                            width: '100px',
+                        }}
+                    >
+                        <Placeholder shape="rectangle" />
+                    </div>
+                );
+            case 'progressBar':
+                return <ProgressBar size="medium" tone="info" value={50} />;
+            case 'audioCard':
+                return (
+                    <div style={{ width: 128 }}>
+                        <AudioContextProvider>
+                            <AudioCard
+                                ariaLabel="Add audio to design"
+                                audioPreviewUrl="https://www.canva.dev/example-assets/audio-import/audio.mp3"
+                                durationInSeconds={86}
+                                onClick={() => {}}
+                                onDragStart={() => {}}
+                                title="Some audio track"
+                            />
+                        </AudioContextProvider>
+                    </div>
+                );
+            case 'imageCard':
+                return (
+                    <div className={styles.imageCard}>
+                        <ImageCard
+                            alt="grass image"
+                            ariaLabel="Add image to design"
+                            borderRadius="none"
+                            onClick={() => {}}
+                            onDragStart={() => {}}
+                            thumbnailUrl="https://www.canva.dev/example-assets/image-import/grass-image-thumbnail.jpg"
+                        />
+                    </div>
+                );
             default:
                 return null;
         }
@@ -245,4 +420,3 @@ export default function MainPage() {
 
     return <Rows spacing="2u">{renderComponents()}</Rows>;
 }
-``;
