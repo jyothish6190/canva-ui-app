@@ -7,9 +7,9 @@ export default function DimensionSelector() {
         <Rows spacing="1.5u">
             <Text>Width</Text>
             <TextInput type="tel" />
-            <Box display="flex" width="full" justifyContent="spaceBetween">
-                {PillSize.map((item) => {
-                    return <Pill text={item} role="switch" />;
+            <Box display="flex" width="unset" justifyContent="spaceBetween">
+                {PillSize.map((item, index) => {
+                    return <Pill key={index} text={item} role="switch" />;
                 })}
             </Box>
         </Rows>

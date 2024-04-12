@@ -15,8 +15,8 @@ export default function PillBox() {
     return (
         <Box flexDirection="column" justifyContent="spaceBetween">
             <Carousel>
-                {Options.map((item) => {
-                    return <Pill text={item} role="switch" />;
+                {Options.map((item, index) => {
+                    return <Pill key={index} text={item} role="switch" />;
                 })}
             </Carousel>
         </Box>

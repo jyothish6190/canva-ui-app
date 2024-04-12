@@ -21,12 +21,6 @@ export default function EditPage() {
             <div className={styles.EditpageMainContainer}>
                 <LivePreview />
                 <TabComponent />
-                <SegmentedControls />
-                <CommonTextInput />
-                <CommonSelectInput />
-                <Switch label="Hug content" />
-                <DimensionSelector />
-                <FileInputViewer />
                 <Button
                     stretch={true}
                     variant="primary"

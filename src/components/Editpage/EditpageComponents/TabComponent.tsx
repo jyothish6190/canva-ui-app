@@ -3,6 +3,10 @@ import * as Tabs from '@radix-ui/react-tabs';
 import styles from 'styles/components.css';
 import DimensionSelector from './DimensionSelector';
 import CommonSelectInput from './CommonSelectinput';
+import SegmentedControls from './SegmentedControls';
+import { Switch } from '@canva/app-ui-kit';
+import CommonTextInput from './CommontextInput';
+import FileInputViewer from './FileInputViewer';
 
 export default function TabComponent() {
     return (
@@ -16,11 +20,16 @@ export default function TabComponent() {
                 </Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content className={styles.TabsContent} value="tab1">
-                <p>Tab1 value</p>
+                <div className={styles.Tabcontentholder}>
+                    <SegmentedControls />
+                    <CommonTextInput />
+                    <FileInputViewer />
+                </div>
             </Tabs.Content>
             <Tabs.Content className={styles.TabsContent} value="tab2">
                 <div className={styles.Tabcontentholder}>
                     <CommonSelectInput />
+                    <Switch label="Hug content" />
                     <DimensionSelector />
                 </div>
             </Tabs.Content>
