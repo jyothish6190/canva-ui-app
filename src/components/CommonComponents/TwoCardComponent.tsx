@@ -9,7 +9,6 @@ export default function TwoCardComponent({ title1, title2, box1, box2 }) {
                 display="flex"
                 background="neutralLow"
                 borderRadius="standard"
-                padding="2u"
                 className={styles.square}
                 justifyContent="center"
                 alignItems="center"

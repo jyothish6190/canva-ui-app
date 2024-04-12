@@ -45,6 +45,7 @@
 
 .square {
     height: 152px;
+    overflow: hidden;
 }
 
 .iconContainer {
@@ -214,9 +215,26 @@
 .imageCard {
     width: 128px;
     height: 120px;
-    border-radius: var(--Radius-radiusContainerLarge, 8px);
+    gap: 0px;
+    border-radius: var(--RadiusradiusContainerLarge);
 }
 ::-webkit-scrollbar {
     height: 0;
     width: 8px;
+}
+
+.link {
+    color: var(--Typography-colorTypographyLink, #a370fc);
+    font-family: 'Canva Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+    text-decoration-line: underline;
+}
+.videoCard {
+    width: 100%;
+    height: 100%;
+    gap: 0px;
+    overflow: hidden;
 }
