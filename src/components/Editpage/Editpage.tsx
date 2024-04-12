@@ -8,6 +8,7 @@ import CommonTextInput from './EditpageComponents/CommontextInput';
 import CommonSelectInput from './EditpageComponents/CommonSelectinput';
 import DimensionSelector from './EditpageComponents/DimensionSelector';
 import FileInputViewer from './EditpageComponents/FileInputViewer';
+import TabComponent from './EditpageComponents/TabComponent';
 
 export default function EditPage() {
     const { state } = useLocation();
@@ -19,6 +20,7 @@ export default function EditPage() {
         <>
             <div className={styles.EditpageMainContainer}>
                 <LivePreview />
+                <TabComponent />
                 <SegmentedControls />
                 <CommonTextInput />
                 <CommonSelectInput />
