@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Switch } from '@canva/app-ui-kit';
 import styles from 'styles/components.css';
 import LivePreview from './EditpageComponents/Livepreview';
@@ -6,7 +7,7 @@ import SegmentedControls from './EditpageComponents/SegmentedControls';
 import CommonTextInput from './EditpageComponents/CommontextInput';
 import CommonSelectInput from './EditpageComponents/CommonSelectinput';
 import DimensionSelector from './EditpageComponents/DimensionSelector';
-import { useLocation, useNavigate } from 'react-router-dom';
+import FileInputViewer from './EditpageComponents/FileInputViewer';
 
 export default function EditPage() {
     const { state } = useLocation();
@@ -23,6 +24,7 @@ export default function EditPage() {
                 <CommonSelectInput />
                 <Switch label="Hug content" />
                 <DimensionSelector />
+                <FileInputViewer />
                 <Button
                     stretch={true}
                     variant="primary"

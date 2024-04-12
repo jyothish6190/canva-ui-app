@@ -139,6 +139,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     border-radius: var(--ui-kit-border-radius);
 }
 .EditpageMainContainer {
