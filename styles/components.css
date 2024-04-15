@@ -1,38 +1,286 @@
 /* Scroll container */
 .scrollContainer {
-  box-sizing: border-box;
-  overflow-y: scroll;
-  height: 100%;
-  padding-top: var(--ui-kit-space-2);
-  padding-right: var(--ui-kit-space-2);
-  padding-bottom: var(--ui-kit-space-2);
-
-  /* for firefox */
-  scrollbar-width: thin;
-  scrollbar-color: var(--ui-kit-color-typography-quaternary) transparent;
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: var(--ui-kit-space-2);
+    padding-right: var(--ui-kit-space-2);
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--ui-kit-space-3);
+    padding-bottom: 100px;
 }
 
 .scrollContainer::-webkit-scrollbar {
-  position: absolute;
-  width: var(--ui-kit-base-unit);
-  height: 0;
+    position: absolute;
+    width: var(--ui-kit-base-unit);
+    height: 0;
 }
 
 .scrollContainer::-webkit-scrollbar-track {
-  background: transparent;
-  width: var(--ui-kit-base-unit);
-  margin-top: var(--ui-kit-space-1);
-  margin-bottom: var(--ui-kit-space-1);
+    background: transparent;
+    width: var(--ui-kit-base-unit);
+    margin-top: var(--ui-kit-space-1);
+    margin-bottom: var(--ui-kit-space-1);
 }
 
 .scrollContainer::-webkit-scrollbar-thumb {
-  border-radius: var(--ui-kit-border-radius);
-  background: var(--ui-kit-color-typography-quaternary);
-  visibility: hidden;
+    border-radius: var(--ui-kit-border-radius);
+    background: var(--ui-kit-color-typography-quaternary);
+    visibility: hidden;
 }
 
 .scrollContainer:hover::-webkit-scrollbar-thumb,
 .scrollContainer:focus::-webkit-scrollbar-thumb,
 .scrollContainer:focus-within::-webkit-scrollbar-thumb {
-  visibility: visible;
+    visibility: visible;
+}
+
+.title {
+    font-family: Canva Sans;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 2;
+    text-align: left;
+}
+
+.square {
+    height: 152px;
+    overflow: hidden;
+}
+
+.iconContainer {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    opacity: 1;
+    background: #8b3dff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alertContainer {
+    display: flex;
+    height: 152px;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    overflow-x: hidden; /* Ensure the content is hidden if it overflows */
+}
+
+.alertInnerContainer {
+    display: flex;
+    width: 208px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    overflow-x: hidden; /* Hide excess right side */
+}
+.formFieldMainContainer {
+    padding-left: 16px; /* Offset formFieldContainer by 16px from the left */
+    overflow-x: hidden; /* Hide any overflow */
+}
+
+.formFieldContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 200px;
+}
+
+.IconHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100px;
+    transition: 0.3s ease;
+    background-color: var(--COXgsg);
+    border-radius: var(--ui-kit-border-radius);
+}
+.IconHolder:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.IconHolder:active {
+    transition: 0.07s ease;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+.IconListHolder {
+    display: grid;
+    row-gap: var(--ui-kit-space-1);
+    column-gap: var(--ui-kit-space-1);
+    grid-template-columns: repeat(3, 1fr);
+}
+.IconSearchErrorText {
+    grid-column: 1 / span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 66px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: 'Canva Sans';
+
+    color: var(
+        --Typography-colorTypographyPlaceholder,
+        rgba(255, 255, 255, 0.5)
+    );
+}
+.LivePreviewBox {
+    position: relative;
+    width: 99%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: var(--ui-kit-border-radius);
+}
+.EditpageMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--ui-kit-space-3);
+}
+.ThemeButton {
+    display: flex;
+    position: absolute;
+    cursor: pointer;
+    top: 2%;
+    right: 2%;
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+    background-color: rgba(17, 23, 29, 0.6);
+    border-radius: var(--ui-kit-border-radius);
+}
+.ThemeButton img {
+    width: 100%;
+    display: block;
+}
+.iconsContainer {
+    border-radius: 4px;
+    background: var(--Neutral-colorNeutralLow, rgba(255, 255, 255, 0.07));
+    display: flex;
+    padding: 33px 32px;
+    align-items: flex-start;
+}
+.textInputContainer {
+    overflow: hidden;
+    color: var(
+        --Typography-colorTypographyPlaceholder,
+        rgba(255, 255, 255, 0.5)
+    );
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 112px;
+    font-family: 'Canva Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+}
+.multiLineContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: nowrap; /* Prevent items from going to the next line */
+}
+
+.multiLineInnerContainer {
+    display: flex;
+    padding: 4px 4px 4px 12px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    color: var(
+        --Typography-colorTypographyPlaceholder,
+        rgba(255, 255, 255, 0.5)
+    );
+}
+.fileUpload {
+    display: flex;
+    padding: var(--space1, 8px) 16px var(--space1, 8px) var(--space1, 8px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--space1, 8px);
+}
+
+.imageCard {
+    width: 128px;
+    height: 120px;
+    gap: 0px;
+    border-radius: var(--RadiusradiusContainerLarge);
+}
+::-webkit-scrollbar {
+    height: 0;
+    width: 8px;
+}
+
+.link {
+    color: var(--Typography-colorTypographyLink, #a370fc);
+    font-family: 'Canva Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+    text-decoration-line: underline;
+}
+.videoCard {
+    width: 100%;
+    height: 100%;
+    gap: 0px;
+    overflow: hidden;
+}
+
+.TabsRoot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-kit-space-4);
+}
+.TabsList {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 8;
+}
+.Tabcontentholder {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-kit-space-3);
+}
+
+.TabsTrigger {
+    width: 100%;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+.hidden {
+    display: none;
+}
+
+.TabsTrigger[data-state='active'] {
+    border-bottom: 3px solid #8b3cff;
+    font-weight: 500;
 }
