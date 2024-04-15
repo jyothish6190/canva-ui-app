@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    background: var(--Neutral-colorNeutralLow, #ffffff12);
+    height: 90px;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
