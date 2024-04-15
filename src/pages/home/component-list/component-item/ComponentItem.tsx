@@ -1,5 +1,13 @@
 import React from 'react';
-import { Badge, Checkbox, Pill, Text, Title } from '@canva/app-ui-kit';
+import {
+    Badge,
+    Checkbox,
+    FileInput,
+    LoadingIndicator,
+    Pill,
+    Text,
+    Title,
+} from '@canva/app-ui-kit';
 
 import { ComponentType } from 'src/constants/components';
 import { Component } from 'src/models/coponent.model';
@@ -17,6 +25,16 @@ import VideoCardComponent from 'src/components/video-card-component/VideoCardCom
 import TypographyComponent from 'src/components/typography-component/TypographyComponent';
 import ImageCardComponent from 'src/components/image-card/ImageCardComponent';
 import AudioCardComponent from 'src/components/audio-card/AudioCardComponent';
+import ProgressbarComponent from 'src/components/progressbar-component/ProgressbarComponent';
+import PlaceholderComponent from 'src/components/placeholder/PlaceholderComponent';
+import ColorSelectorComponent from 'src/components/color-selector/ColorSelectorComponent';
+import SwatchComponent from 'src/components/swatch-component/SwatchComponent';
+import SwitchComponent from 'src/components/switch-component/SwitchComponent';
+import SelectComponent from 'src/components/select-component/SelectComponent';
+import NumberInputComponent from 'src/components/number-input/NumberInputComponent';
+import SliderComponent from 'src/components/slider/SliderComponent';
+import SegmentedControlComponent from 'src/components/segmented-control/SegmentedControlComponent';
+import MultiInputComponent from 'src/components/multi-input/MultiInputComponent';
 
 type ComponentItemType = {
     component: Component;
@@ -44,7 +62,30 @@ const ComponentItem = ({ component }: ComponentItemType) => {
             return <CheckboxGroupComponent />;
         case ComponentType.TEXT_INPUT:
             return <TextInputComponent component={component} />;
-
+        case ComponentType.MULTILINE_INPUT:
+            return <MultiInputComponent component={component} />;
+        case ComponentType.SEGMENTED_CONTROL:
+            return <SegmentedControlComponent />;
+        case ComponentType.SLIDER:
+            return <SliderComponent />;
+        case ComponentType.NUMBER_INPUT:
+            return <NumberInputComponent />;
+        case ComponentType.FILE_INPUT:
+            return <FileInput />;
+        case ComponentType.SELECT:
+            return <SelectComponent />;
+        case ComponentType.SWITCH:
+            return <SwitchComponent />;
+        case ComponentType.SWATCH:
+            return <SwatchComponent />;
+        case ComponentType.COLOR_PICKER:
+            return <ColorSelectorComponent />;
+        case ComponentType.LOADING_INDICATOR:
+            return <LoadingIndicator />;
+        case ComponentType.PLACEHOLDER:
+            return <PlaceholderComponent />;
+        case ComponentType.PROGRESS_BAR:
+            return <ProgressbarComponent />;
         case ComponentType.AUDIO_CARD:
             return <AudioCardComponent />;
         case ComponentType.IMAGE_CARD:

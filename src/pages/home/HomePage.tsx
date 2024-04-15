@@ -46,19 +46,21 @@ const HomePage = () => {
     };
 
     return (
-        <Rows spacing="2u">
-            <SearchBox onSearchQueryChange={searchHandler} />
-            <CategoriesList
-                categories={categories}
-                selectedCategories={selectedCategories}
-                onClick={categorySelectHandler}
-            />
-            <IconList onClick={iconSelectHandler} />
-            <ComponentList
-                components={components}
-                onClick={componentSelectHandler}
-            />
-        </Rows>
+        <div style={{ paddingBottom: '1rem' }}>
+            <Rows spacing="2u">
+                <SearchBox onSearchQueryChange={searchHandler} />
+                <CategoriesList
+                    categories={categories}
+                    selectedCategories={selectedCategories}
+                    onClick={categorySelectHandler}
+                />
+                <IconList onClick={iconSelectHandler} />
+                <ComponentList
+                    components={components}
+                    onClick={componentSelectHandler}
+                />
+            </Rows>
+        </div>
     );
 };
 
