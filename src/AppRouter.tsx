@@ -8,6 +8,7 @@ import {
 import MainPage from './components/MainPage/MainPage';
 import IconSelectionpage from './components/IconSelectorpage/IconSelectionpage';
 import EditPage from './components/Editpage/Editpage';
+import HomePage from './pages/home/HomePage';
 
 const AppRouter = () => {
     return (
@@ -16,7 +17,7 @@ const AppRouter = () => {
                 <Routes>
                     <Route
                         path="/containers/:containerId?"
-                        element={<MainPage />}
+                        element={<HomePage />}
                     />
                     <Route
                         path="/icons/:iconId?"
