@@ -8,8 +8,10 @@ import CategoriesList from './categories-list/CategoriesList';
 import IconList from './icon-list/IconList';
 
 import { categories } from '../../constants/categories';
+import { components } from 'src/constants/components';
 
 import { Category } from '../../models/category.model';
+import { Component } from 'src/models/coponent.model';
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -33,6 +35,12 @@ const HomePage = () => {
         console.log('🚀 ~ searchHandler ~ searchQuery:', searchQuery);
     };
 
+    const componentSelectHandler = (component: Component) => {
+        navigate(`/component-details`, {
+            state: component,
+        });
+    };
+
     const iconSelectHandler = () => {
         navigate(`/icons`);
     };
@@ -46,7 +54,10 @@ const HomePage = () => {
                 onClick={categorySelectHandler}
             />
             <IconList onClick={iconSelectHandler} />
-            <ComponentList />
+            <ComponentList
+                components={components}
+                onClick={componentSelectHandler}
+            />
         </Rows>
     );
 };
