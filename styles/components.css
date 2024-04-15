@@ -152,25 +152,6 @@
     align-items: flex-start;
 }
 
-.multiLineContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    flex-wrap: nowrap; /* Prevent items from going to the next line */
-}
-
-.multiLineInnerContainer {
-    display: flex;
-    padding: 4px 4px 4px 12px;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
-    color: var(
-        --Typography-colorTypographyPlaceholder,
-        rgba(255, 255, 255, 0.5)
-    );
-}
 .fileUpload {
     display: flex;
     padding: var(--space1, 8px) 16px var(--space1, 8px) var(--space1, 8px);
@@ -179,31 +160,9 @@
     gap: var(--space1, 8px);
 }
 
-.imageCard {
-    width: 128px;
-    height: 120px;
-    gap: 0px;
-    border-radius: var(--RadiusradiusContainerLarge);
-}
 ::-webkit-scrollbar {
     height: 0;
     width: 8px;
-}
-
-.link {
-    color: var(--Typography-colorTypographyLink, #a370fc);
-    font-family: 'Canva Sans';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 26px; /* 162.5% */
-    text-decoration-line: underline;
-}
-.videoCard {
-    width: 100%;
-    height: 100%;
-    gap: 0px;
-    overflow: hidden;
 }
 
 .TabsRoot {

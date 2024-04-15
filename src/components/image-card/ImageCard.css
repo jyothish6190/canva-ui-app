@@ -1,0 +1,6 @@
+.container {
+    width: 128px;
+    height: 120px;
+    gap: 0px;
+    border-radius: var(--RadiusradiusContainerLarge);
+}

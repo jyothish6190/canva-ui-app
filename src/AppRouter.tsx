@@ -5,7 +5,6 @@ import {
     Route,
     Navigate,
 } from 'react-router-dom';
-import MainPage from './components/MainPage/MainPage';
 import IconSelectionpage from './components/IconSelectorpage/IconSelectionpage';
 import EditPage from './components/Editpage/Editpage';
 import HomePage from './pages/home/HomePage';
