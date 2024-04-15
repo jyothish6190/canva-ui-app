@@ -35,30 +35,6 @@
     visibility: visible;
 }
 
-.title {
-    font-family: Canva Sans;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 2;
-    text-align: left;
-}
-
-.square {
-    height: 152px;
-    overflow: hidden;
-}
-
-.iconContainer {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    opacity: 1;
-    background: #8b3dff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .alertContainer {
     display: flex;
     height: 152px;
