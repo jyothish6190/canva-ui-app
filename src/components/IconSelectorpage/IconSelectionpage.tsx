@@ -1,10 +1,10 @@
 import React from 'react';
-import { ArrowLeftIcon, Button, Rows } from '@canva/app-ui-kit';
+import { Rows } from '@canva/app-ui-kit';
 import { IconData } from '../../ConstData/IconConstData.js';
-import SearchBox from '../CommonComponents/searchBox';
+import SearchBox from '../search-box/SearchBox';
 import IconTileHolder from './IconTileHolder';
 import { useSearchInputStore } from 'src/Store/SearchInputstore';
-import { Header } from '../Header';
+import { Header } from '../header/Header';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function IconSelectionpage() {
@@ -21,12 +21,8 @@ export default function IconSelectionpage() {
     const onClickBack = () => navigate(-1);
     return (
         <Rows spacing="2u">
-            <Header
-                showBackButton={true}
-                name={headerName}
-                onClickBack={onClickBack}
-            />
-            <SearchBox />
+            <Header header={headerName} onClick={onClickBack} />
+            <SearchBox onSearchQueryChange={() => {}} />
             <IconTileHolder IconData={filterData} />
         </Rows>
     );
