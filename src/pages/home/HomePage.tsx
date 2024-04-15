@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Rows } from '@canva/app-ui-kit';
 
-import SearchBox from '../../components/CommonComponents/searchBox';
+import SearchBox from '../../components/search-box/SearchBox';
 import ComponentList from './component-list/ComponentList';
 import CategoriesList from './categories-list/CategoriesList';
 import IconList from './icon-list/IconList';
@@ -29,13 +29,17 @@ const HomePage = () => {
         }
     };
 
+    const searchHandler = (searchQuery: string) => {
+        console.log('🚀 ~ searchHandler ~ searchQuery:', searchQuery);
+    };
+
     const iconSelectHandler = () => {
         navigate(`/icons`);
     };
 
     return (
         <Rows spacing="2u">
-            <SearchBox />
+            <SearchBox onSearchQueryChange={searchHandler} />
             <CategoriesList
                 categories={categories}
                 selectedCategories={selectedCategories}

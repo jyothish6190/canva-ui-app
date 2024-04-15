@@ -36,13 +36,13 @@ import {
     Columns,
     Column,
 } from '@canva/app-ui-kit';
-import SearchBox from '../CommonComponents/searchBox';
 import PillBox from '../CommonComponents/pillBox';
 import TwoCardComponent from '../CommonComponents/TwoCardComponent';
 import styles from 'styles/components.css';
 import Icons from '../../components/Icons/Icons';
 import { useNavigate } from 'react-router-dom';
 import ExcessContainer from '../CommonComponents/excessContainer';
+import SearchBox from '../search-box/SearchBox';
 
 export default function MainPage() {
     const navigate = useNavigate();
@@ -200,7 +200,9 @@ export default function MainPage() {
         return jsonData.map((item, index) => {
             switch (item.type) {
                 case 'searchBox':
-                    return <SearchBox key={index} />;
+                    return (
+                        <SearchBox key={index} onSearchQueryChange={() => {}} />
+                    );
                 case 'pillBox':
                     return <PillBox key={index} />;
                 case 'icons':
