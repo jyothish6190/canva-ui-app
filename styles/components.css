@@ -151,21 +151,7 @@
     padding: 33px 32px;
     align-items: flex-start;
 }
-.textInputContainer {
-    overflow: hidden;
-    color: var(
-        --Typography-colorTypographyPlaceholder,
-        rgba(255, 255, 255, 0.5)
-    );
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 112px;
-    font-family: 'Canva Sans';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px; /* 157.143% */
-}
+
 .multiLineContainer {
     display: flex;
     flex-direction: column;
