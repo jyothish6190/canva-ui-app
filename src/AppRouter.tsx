@@ -25,10 +25,7 @@ const AppRouter = () => {
                         element={<IconSelectionpage />}
                     />
                     <Route path="/edit" element={<EditPage />} />
-                    <Route
-                        path="/component-details"
-                        element={<ComponentDetailsPage />}
-                    />
+                    <Route path="/component-details" element={<MainPage />} />
                     <Route
                         path="*"
                         element={<Navigate replace to="/containers" />}

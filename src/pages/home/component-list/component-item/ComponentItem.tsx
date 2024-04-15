@@ -12,6 +12,11 @@ import CheckboxGroupComponent from 'src/components/checkbox-group-component/Chec
 import RadioGroupComponent from 'src/components/radio-group-component/RadioGroupComponent';
 import TextInputComponent from 'src/components/text-input-component/TextInputComponent';
 import LinkComponent from 'src/components/link-component/LinkComponent';
+import EmbedCardComponent from 'src/components/embed-card-component/EmbedCardComponent';
+import VideoCardComponent from 'src/components/video-card-component/VideoCardComponent';
+import TypographyComponent from 'src/components/typography-component/TypographyComponent';
+import ImageCardComponent from 'src/components/image-card/ImageCardComponent';
+import AudioCardComponent from 'src/components/audio-card/AudioCardComponent';
 
 type ComponentItemType = {
     component: Component;
@@ -40,6 +45,16 @@ const ComponentItem = ({ component }: ComponentItemType) => {
         case ComponentType.TEXT_INPUT:
             return <TextInputComponent component={component} />;
 
+        case ComponentType.AUDIO_CARD:
+            return <AudioCardComponent />;
+        case ComponentType.IMAGE_CARD:
+            return <ImageCardComponent />;
+        case ComponentType.TYPOGRAPHY_CARD:
+            return <TypographyComponent />;
+        case ComponentType.VIDEO_CARD:
+            return <VideoCardComponent />;
+        case ComponentType.EMBED_CARD:
+            return <EmbedCardComponent component={component} />;
         case ComponentType.TITLE:
             return <Title>{component.name}</Title>;
         case ComponentType.TEXT:

@@ -24,11 +24,6 @@ const ComponentList = ({ components, onClick }: ComponentListType) => {
                     <div
                         key={component.name}
                         onClick={(e) => {
-                            console.log(
-                                '🚀 ~ {components.map ~ component:',
-                                component
-                            );
-
                             e.preventDefault();
                             onClick(component);
                         }}
