@@ -2,7 +2,9 @@ import React from 'react';
 import { Box, Rows } from '@canva/app-ui-kit';
 
 import styles from './IconCard.css';
+
 import { Icon } from 'src/models/icons.model';
+
 import IconItem from '../icon-item/IconItem';
 
 type IconCardType = {

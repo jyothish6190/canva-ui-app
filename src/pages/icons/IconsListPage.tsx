@@ -16,25 +16,33 @@ const IconsListPage = () => {
 
     const iconList = useMemo(() => {
         const iconsFiltered: Icon[] = icons.filter((icon) =>
-            icon.name.toLowerCase().includes(searchQuery)
+            icon.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
         return iconsFiltered;
     }, [icons, searchQuery]);
 
     const searchHandler = (searchQuery: string) => {
-        setSearchQuery(searchQuery.toLowerCase());
+        setSearchQuery(searchQuery);
     };
 
     const backHandler = () => {
         navigate(-1);
     };
 
+    const iconSelectionHandler = (icon: Icon) => {
+        console.log('🚀 ~ iconSelectionHandler ~ icon:', icon);
+    };
+
     return (
         <Rows spacing="2u">
             <Header header={'Icons'} onClick={backHandler} />
             <SearchBox onSearchQueryChange={searchHandler} />
-            <IconList icons={iconList} />
+            <IconList
+                icons={iconList}
+                searchQuery={searchQuery}
+                onClick={iconSelectionHandler}
+            />
         </Rows>
     );
 };
