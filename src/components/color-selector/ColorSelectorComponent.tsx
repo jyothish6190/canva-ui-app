@@ -17,7 +17,7 @@ const ColorSelectorComponent = () => {
                 variant="solid"
             />
             <img
-                src={require('../../assets/image/ColorPicker.png')}
+                src={require('assets/images/ColorPicker.png')}
                 alt="Image 2"
                 style={{
                     position: 'absolute',

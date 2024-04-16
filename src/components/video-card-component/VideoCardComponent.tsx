@@ -13,8 +13,8 @@ const VideoCardComponent = () => {
                 mimeType="video/mp4"
                 onClick={() => {}}
                 onDragStart={() => {}}
-                thumbnailUrl={require('../../assets/image/default.png')}
-                videoPreviewUrl={require('../../assets/image/default.png')}
+                thumbnailUrl={require('assets/images/default.png')}
+                videoPreviewUrl={require('assets/images/default.png')}
             />
         </div>
     );

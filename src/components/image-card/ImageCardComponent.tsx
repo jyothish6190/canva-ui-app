@@ -12,7 +12,7 @@ const ImageCardComponent = () => {
                 borderRadius="standard"
                 onClick={() => {}}
                 onDragStart={() => {}}
-                thumbnailUrl={require('../../assets/image/default.png')}
+                thumbnailUrl={require('assets/images/default.png')}
             />
         </div>
     );
