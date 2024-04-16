@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@canva/app-ui-kit';
 import styles from 'styles/components.css';
-import { DarkThemeIcon, LightThemeIcon } from '../../../assets/image/image.js';
+import { DarkThemeIcon, LightThemeIcon } from 'assets/images/image.js';
 
 export default function LivePreview() {
     const [bgcolor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.07)');
