@@ -20,7 +20,7 @@ const ComponentCard = ({ component }: ComponentCardType) => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <ComponentItem component={component} />
+                <ComponentItem component={component} isProperty={false} />
             </Box>
             <label className={styles.title}>{component.name}</label>
         </Rows>

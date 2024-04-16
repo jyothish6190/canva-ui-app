@@ -80,12 +80,7 @@
     overflow: hidden;
     border-radius: var(--ui-kit-border-radius);
 }
-.EditpageMainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--ui-kit-space-3);
-}
+
 .ThemeButton {
     display: flex;
     position: absolute;

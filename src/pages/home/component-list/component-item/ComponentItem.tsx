@@ -5,12 +5,11 @@ import {
     FileInput,
     LoadingIndicator,
     Pill,
-    Text,
     Title,
 } from '@canva/app-ui-kit';
 
-import { ComponentType } from 'src/constants/components';
 import { Component } from 'src/models/coponent.model';
+import { ComponentType } from 'src/constants/ComponentTypes';
 
 import ButtonComponent from 'src/components/button/ButtonComponent';
 import IconButton from 'src/components/icon-button/IconButton';
@@ -35,12 +34,14 @@ import NumberInputComponent from 'src/components/number-input/NumberInputCompone
 import SliderComponent from 'src/components/slider/SliderComponent';
 import SegmentedControlComponent from 'src/components/segmented-control/SegmentedControlComponent';
 import MultiInputComponent from 'src/components/multi-input/MultiInputComponent';
+import TextComponent from 'src/components/text/TextComponent';
 
-type ComponentItemType = {
+type PropType = {
     component: Component;
+    isProperty: boolean;
 };
 
-const ComponentItem = ({ component }: ComponentItemType) => {
+const ComponentItem = ({ component, isProperty }: PropType) => {
     switch (component.type) {
         case ComponentType.BUTTON:
             return <ButtonComponent component={component} />;
@@ -53,7 +54,12 @@ const ComponentItem = ({ component }: ComponentItemType) => {
         case ComponentType.BADGE:
             return <Badge text={component.name} tone="assist" />;
         case ComponentType.FORM_FIELD:
-            return <FormFieldComponent component={component} />;
+            return (
+                <FormFieldComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.CHECKBOX:
             return <Checkbox label={component.name} />;
         case ComponentType.RADIO:
@@ -65,7 +71,13 @@ const ComponentItem = ({ component }: ComponentItemType) => {
         case ComponentType.MULTILINE_INPUT:
             return <MultiInputComponent component={component} />;
         case ComponentType.SEGMENTED_CONTROL:
-            return <SegmentedControlComponent />;
+            return (
+                <SegmentedControlComponent
+                    component={component}
+                    isProperty={isProperty}
+                    onChange={() => {}}
+                />
+            );
         case ComponentType.SLIDER:
             return <SliderComponent />;
         case ComponentType.NUMBER_INPUT:
@@ -73,7 +85,12 @@ const ComponentItem = ({ component }: ComponentItemType) => {
         case ComponentType.FILE_INPUT:
             return <FileInput />;
         case ComponentType.SELECT:
-            return <SelectComponent />;
+            return (
+                <SelectComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.SWITCH:
             return <SwitchComponent />;
         case ComponentType.SWATCH:
@@ -99,7 +116,9 @@ const ComponentItem = ({ component }: ComponentItemType) => {
         case ComponentType.TITLE:
             return <Title>{component.name}</Title>;
         case ComponentType.TEXT:
-            return <Text>{component.name}</Text>;
+            return (
+                <TextComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.LINK:
             return <LinkComponent />;
 

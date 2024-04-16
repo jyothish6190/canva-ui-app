@@ -1,37 +1,6 @@
 import { Component } from 'src/models/coponent.model';
-
-export enum ComponentType {
-    BUTTON = 'button',
-    ICON_BUTTON = 'icon-button',
-    PILL = 'pill',
-    ALERT = 'alert',
-    BADGE = 'badge',
-    FORM_FIELD = 'form-field',
-    CHECKBOX = 'checkbox',
-    CHECKBOX_GROUP = 'checkbox-group',
-    RADIO = 'radio',
-    TEXT_INPUT = 'text-input',
-    MULTILINE_INPUT = 'multiline-input',
-    SEGMENTED_CONTROL = 'segmented-control',
-    SLIDER = 'slider',
-    NUMBER_INPUT = 'number-input',
-    FILE_INPUT = 'file-input',
-    SELECT = 'select',
-    SWITCH = 'switch',
-    SWATCH = 'swatch',
-    COLOR_PICKER = 'color-picker',
-    LOADING_INDICATOR = 'loading-indicator',
-    PLACEHOLDER = 'placeholder',
-    PROGRESS_BAR = 'progress-bar',
-    AUDIO_CARD = 'audio-card',
-    IMAGE_CARD = 'image-card',
-    TYPOGRAPHY_CARD = 'typography-card',
-    VIDEO_CARD = 'video-card',
-    EMBED_CARD = 'embed-card',
-    TITLE = 'title',
-    TEXT = 'text',
-    LINK = 'link',
-}
+import { ButtonConfig } from './component-configs/ButtonConfig';
+import { ComponentType } from './ComponentTypes';
 
 export const components: Component[] = [
     {
@@ -39,32 +8,7 @@ export const components: Component[] = [
         name: 'Button',
         varient: 'primary',
         categoryId: 'action',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'button-state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: ButtonConfig,
     },
     {
         type: ComponentType.ICON_BUTTON,
@@ -456,6 +400,7 @@ export const components: Component[] = [
                 selected: 'small',
             },
         ],
+        defaultValue: 's',
     },
     {
         type: ComponentType.SLIDER,

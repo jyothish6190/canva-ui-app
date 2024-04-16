@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Switch } from '@canva/app-ui-kit';
 import styles from 'styles/components.css';
-import LivePreview from './EditpageComponents/Livepreview';
+import LivePreview from '../../pages/component-detail/live-preview/LivePreview';
 import SegmentedControls from './EditpageComponents/SegmentedControls';
 import CommonTextInput from './EditpageComponents/CommontextInput';
 import CommonSelectInput from './EditpageComponents/CommonSelectinput';

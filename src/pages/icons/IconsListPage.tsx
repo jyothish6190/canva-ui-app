@@ -16,7 +16,7 @@ const IconsListPage = () => {
 
     const iconList = useMemo(() => {
         const iconsFiltered: Icon[] = icons.filter((icon) =>
-            icon.name.toLowerCase().includes(searchQuery.toLowerCase())
+            icon.label.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
         return iconsFiltered;

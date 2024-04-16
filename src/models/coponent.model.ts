@@ -1,18 +1,18 @@
-import { ComponentType } from 'src/constants/components';
+import { ComponentType } from 'src/constants/ComponentTypes';
 
 export interface Component {
     type: ComponentType;
     name: string;
     varient?: string;
     categoryId: string;
-    fields?: Field[];
+    fields?: any[];
     'icon-data'?: string;
     placeholder?: string;
     text?: string;
     label?: string;
     description?: string;
-    options?: Option2[];
-    defaultValue?: boolean | number;
+    options?: any[];
+    defaultValue?: any;
     min?: number;
     max?: number;
     disabled?: boolean;
@@ -38,18 +38,6 @@ interface Option2 {
     value: string;
     label: string;
     default?: boolean;
-}
-
-interface Field {
-    id?: string;
-    selected?: boolean | string;
-    optional?: boolean;
-    'default-value'?: string;
-    type?: string;
-    title?: string;
-    options?: Option[];
-    value?: string;
-    placeholder?: string;
 }
 
 interface Option {
