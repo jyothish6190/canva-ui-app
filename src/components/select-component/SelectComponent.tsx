@@ -1,7 +1,36 @@
 import React from 'react';
-import { Select } from '@canva/app-ui-kit';
+import { FormField, Select } from '@canva/app-ui-kit';
 
-const SelectComponent = () => {
+import { Component } from 'src/models/coponent.model';
+
+type PropType = {
+    component: Component;
+    isProperty: boolean;
+    onChange?: (text: string) => void;
+};
+
+const SelectComponent = ({ component, isProperty, onChange }: PropType) => {
+    console.log(
+        '🚀 ~ SelectComponent ~ component, isProperty:',
+        component,
+        isProperty
+    );
+
+    if (isProperty) {
+        return (
+            <FormField
+                label={component.name}
+                control={(props) => (
+                    <Select
+                        options={component.options as any[]}
+                        stretch={true}
+                        placeholder={component.placeholder}
+                        onChange={onChange}
+                    />
+                )}
+            />
+        );
+    }
     return (
         <div
             style={{

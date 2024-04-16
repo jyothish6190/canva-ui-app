@@ -1,5 +1,5 @@
 export interface Icon {
-    id: string;
-    name: string;
-    icon: () => JSX.Element;
+    value: string;
+    label: string;
+    icon?: () => JSX.Element;
 }

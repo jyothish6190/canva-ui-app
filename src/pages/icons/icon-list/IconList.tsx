@@ -32,7 +32,7 @@ const IconList = ({ icons, searchQuery, onClick }: IconListType) => {
             {icons.map((icon) => {
                 return (
                     <div
-                        key={icon.id}
+                        key={icon.value}
                         onClick={(e) => {
                             e.preventDefault();
                             onClick(icon);

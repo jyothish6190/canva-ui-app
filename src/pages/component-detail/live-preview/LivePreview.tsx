@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import { Button } from '@canva/app-ui-kit';
 import styles from 'styles/components.css';
 import { DarkThemeIcon, LightThemeIcon } from 'assets/images/image.js';
 
-export default function LivePreview() {
+const LivePreview = ({ children }) => {
     const [bgcolor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.07)');
     const HandleOnclick = () => {
         bgcolor === 'white'
@@ -19,7 +19,9 @@ export default function LivePreview() {
                     alt="themeicon"
                 />
             </span>
-            <Button variant="primary" children="Button" />
+            {children}
         </div>
     );
-}
+};
+
+export default LivePreview;

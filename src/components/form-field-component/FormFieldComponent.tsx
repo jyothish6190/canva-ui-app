@@ -4,11 +4,26 @@ import { FormField, TextInput } from '@canva/app-ui-kit';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { Component } from 'src/models/coponent.model';
 
-type FormFieldComponentType = {
+type PropType = {
     component: Component;
+    isProperty: boolean;
+    onChange?: (text: string) => void;
 };
 
-const FormFieldComponent = ({ component }: FormFieldComponentType) => {
+const FormFieldComponent = ({ component, isProperty, onChange }: PropType) => {
+    if (isProperty) {
+        return (
+            <FormField
+                label={component.name}
+                control={(props) => (
+                    <TextInput
+                        placeholder={component.placeholder}
+                        onChange={onChange}
+                    />
+                )}
+            />
+        );
+    }
     return (
         <ExcessContainer dynamic={'300px'}>
             <FormField

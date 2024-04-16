@@ -42,217 +42,389 @@ import {
     UnderlineIcon,
     XIcon,
 } from '@canva/app-ui-kit';
+
 import { Icon } from 'src/models/icons.model';
 
 export const icons: Icon[] = [
     {
-        id: 'check-icon',
+        value: 'check-icon',
+        label: 'Check',
         icon: CheckIcon,
-        name: 'Check',
     },
     {
-        id: 'x-icon',
+        value: 'x-icon',
+        label: 'X',
         icon: XIcon,
-        name: 'X',
     },
     {
-        id: 'music-icon',
+        value: 'music-icon',
+        label: 'Music',
         icon: MusicIcon,
-        name: 'Music',
     },
     {
-        id: 'pause-icon',
+        value: 'pause-icon',
+        label: 'Pause',
         icon: PauseIcon,
-        name: 'Pause',
     },
     {
-        id: 'play-filled-icon',
+        value: 'play-filled-icon',
+        label: 'Play Filled',
         icon: PlayFilledIcon,
-        name: 'Play Filled',
     },
     {
-        id: 'code-icon',
+        value: 'code-icon',
+        label: 'Code',
         icon: CodeIcon,
-        name: 'Code',
     },
     {
-        id: 'alert-triangle-icon',
+        value: 'alert-triangle-icon',
+        label: 'Alert triangle',
         icon: AlertTriangleIcon,
-        name: 'Alert triangle',
     },
     {
-        id: 'help-circle-icon',
+        value: 'help-circle-icon',
+        label: 'Help circle',
         icon: HelpCircleIcon,
-        name: 'Help circle',
     },
     {
-        id: 'open-in-new-icon',
+        value: 'open-in-new-icon',
+        label: 'Open in new',
         icon: OpenInNewIcon,
-        name: 'Open in new',
     },
     {
-        id: 'info-icon',
+        value: 'info-icon',
+        label: 'Info',
         icon: InfoIcon,
-        name: 'Info',
     },
     {
-        id: 'eye-icon',
+        value: 'eye-icon',
+        label: 'Eye',
         icon: EyeIcon,
-        name: 'Eye',
     },
     {
-        id: 'folder-icon',
+        value: 'folder-icon',
+        label: 'Folder',
         icon: FolderIcon,
-        name: 'Folder',
     },
     {
-        id: 'grid-icon',
+        value: 'grvalue-icon',
+        label: 'Grvalue',
         icon: GridIcon,
-        name: 'Grid',
     },
     {
-        id: 'flag-icon',
+        value: 'flag-icon',
+        label: 'Flag',
         icon: FlagIcon,
-        name: 'Flag',
     },
     {
-        id: 'light-bulb-icon',
+        value: 'light-bulb-icon',
+        label: 'LightBulb',
         icon: LightBulbIcon,
-        name: 'LightBulb',
     },
     {
-        id: 'bold-icon',
+        value: 'bold-icon',
+        label: 'Bold',
         icon: BoldIcon,
-        name: 'Bold',
     },
     {
-        id: 'italic-icon',
+        value: 'italic-icon',
+        label: 'Italic',
         icon: ItalicIcon,
-        name: 'Italic',
     },
     {
-        id: 'underline-icon',
+        value: 'underline-icon',
+        label: 'Underline',
         icon: UnderlineIcon,
-        name: 'Underline',
     },
     {
-        id: 'paint-roller-icon',
+        value: 'paint-roller-icon',
+        label: 'Paint roller',
         icon: PaintRollerIcon,
-        name: 'Paint roller',
     },
     {
-        id: 'background-icon',
+        value: 'background-icon',
+        label: 'Background',
         icon: BackgroundIcon,
-        name: 'Background',
     },
     {
-        id: 'eyedropper-icon',
+        value: 'eyedropper-icon',
+        label: 'Eyedropper',
         icon: EyedropperIcon,
-        name: 'Eyedropper',
     },
     {
-        id: 'transparency-icon',
+        value: 'transparency-icon',
+        label: 'Transparency',
         icon: TransparencyIcon,
-        name: 'Transparency',
     },
     {
-        id: 'font-icon',
+        value: 'font-icon',
+        label: 'Font',
         icon: FontIcon,
-        name: 'Font',
     },
     {
-        id: 'text-color-icon',
+        value: 'text-color-icon',
+        label: 'Text color',
         icon: TextColorIcon,
-        name: 'Text color',
     },
     {
-        id: 'text-size-icon',
+        value: 'text-size-icon',
+        label: 'Text size',
         icon: TextSizeIcon,
-        name: 'Text size',
     },
     {
-        id: 'list-bullet-ltr-icon',
+        value: 'list-bullet-ltr-icon',
+        label: 'List bulleter ',
         icon: ListBulletLtrIcon,
-        name: 'List bulleter ',
     },
     {
-        id: 'arrow-up-icon',
+        value: 'arrow-up-icon',
+        label: 'Arrow up',
         icon: ArrowUpIcon,
-        name: 'Arrow up',
     },
     {
-        id: 'arrow-down-icon',
+        value: 'arrow-down-icon',
+        label: 'Arrow down',
         icon: ArrowDownIcon,
-        name: 'Arrow down',
     },
     {
-        id: 'arrow-left-icon',
+        value: 'arrow-left-icon',
+        label: 'Arrow left',
         icon: ArrowLeftIcon,
-        name: 'Arrow left',
     },
     {
-        id: 'arrow-rigt-icon',
+        value: 'arrow-rigt-icon',
+        label: 'Arrow right',
         icon: ArrowRightIcon,
-        name: 'Arrow right',
     },
     {
-        id: 'chevron-up-icon',
+        value: 'chevron-up-icon',
+        label: 'Chevron up',
         icon: ChevronUpIcon,
-        name: 'Chevron up',
     },
     {
-        id: 'chevron-down-icon',
+        value: 'chevron-down-icon',
+        label: 'Chevron down',
         icon: ChevronDownIcon,
-        name: 'Chevron down',
     },
     {
-        id: 'chevron-left-icon',
+        value: 'chevron-left-icon',
+        label: 'Chevron left',
         icon: ChevronLeftIcon,
-        name: 'Chevron left',
     },
     {
-        id: 'chevron-right-icon',
+        value: 'chevron-right-icon',
+        label: 'Chevron right',
         icon: ChevronRightIcon,
-        name: 'Chevron right',
     },
     {
-        id: 'align-top-icon',
+        value: 'align-top-icon',
+        label: 'Align top',
         icon: AlignTopIcon,
-        name: 'Align top',
     },
     {
-        id: 'align-bottom-icon',
+        value: 'align-bottom-icon',
+        label: 'Align bottom',
         icon: AlignBottomIcon,
-        name: 'Align bottom',
     },
     {
-        id: 'align-middle-icon',
+        value: 'align-mvaluedle-icon',
+        label: 'Align mvaluedle',
         icon: AlignMiddleIcon,
-        name: 'Align middle',
     },
     {
-        id: 'align-left-icon',
+        value: 'align-left-icon',
+        label: 'Align left',
         icon: AlignLeftIcon,
-        name: 'Align left',
     },
     {
-        id: 'align-right-icon',
+        value: 'align-right-icon',
+        label: 'Align right',
         icon: AlignRightIcon,
-        name: 'Align right',
     },
     {
-        id: 'align-center-icon',
+        value: 'align-center-icon',
+        label: 'Align center',
         icon: AlignCenterIcon,
-        name: 'Align center',
     },
     {
-        id: 'space-horizontal-icon',
+        value: 'space-horizontal-icon',
+        label: 'Space horizontal',
         icon: SpaceHorizontalIcon,
-        name: 'Space horizontal',
     },
     {
-        id: 'space-vertical-icon',
+        value: 'space-vertical-icon',
+        label: 'Space vertical',
         icon: SpaceVerticalIcon,
-        name: 'Space vertical',
+    },
+];
+
+export const iconsWithoutIcon: Icon[] = [
+    {
+        value: 'check-icon',
+        label: 'Check',
+    },
+    {
+        value: 'x-icon',
+        label: 'X',
+    },
+    {
+        value: 'music-icon',
+        label: 'Music',
+    },
+    {
+        value: 'pause-icon',
+        label: 'Pause',
+    },
+    {
+        value: 'play-filled-icon',
+        label: 'Play Filled',
+    },
+    {
+        value: 'code-icon',
+        label: 'Code',
+    },
+    {
+        value: 'alert-triangle-icon',
+        label: 'Alert triangle',
+    },
+    {
+        value: 'help-circle-icon',
+        label: 'Help circle',
+    },
+    {
+        value: 'open-in-new-icon',
+        label: 'Open in new',
+    },
+    {
+        value: 'info-icon',
+        label: 'Info',
+    },
+    {
+        value: 'eye-icon',
+        label: 'Eye',
+    },
+    {
+        value: 'folder-icon',
+        label: 'Folder',
+    },
+    {
+        value: 'grvalue-icon',
+        label: 'Grvalue',
+    },
+    {
+        value: 'flag-icon',
+        label: 'Flag',
+    },
+    {
+        value: 'light-bulb-icon',
+        label: 'LightBulb',
+    },
+    {
+        value: 'bold-icon',
+        label: 'Bold',
+    },
+    {
+        value: 'italic-icon',
+        label: 'Italic',
+    },
+    {
+        value: 'underline-icon',
+        label: 'Underline',
+    },
+    {
+        value: 'paint-roller-icon',
+        label: 'Paint roller',
+    },
+    {
+        value: 'background-icon',
+        label: 'Background',
+    },
+    {
+        value: 'eyedropper-icon',
+        label: 'Eyedropper',
+    },
+    {
+        value: 'transparency-icon',
+        label: 'Transparency',
+    },
+    {
+        value: 'font-icon',
+        label: 'Font',
+    },
+    {
+        value: 'text-color-icon',
+        label: 'Text color',
+    },
+    {
+        value: 'text-size-icon',
+        label: 'Text size',
+    },
+    {
+        value: 'list-bullet-ltr-icon',
+        label: 'List bulleter ',
+    },
+    {
+        value: 'arrow-up-icon',
+        label: 'Arrow up',
+    },
+    {
+        value: 'arrow-down-icon',
+        label: 'Arrow down',
+    },
+    {
+        value: 'arrow-left-icon',
+        label: 'Arrow left',
+    },
+    {
+        value: 'arrow-rigt-icon',
+        label: 'Arrow right',
+    },
+    {
+        value: 'chevron-up-icon',
+        label: 'Chevron up',
+    },
+    {
+        value: 'chevron-down-icon',
+        label: 'Chevron down',
+    },
+    {
+        value: 'chevron-left-icon',
+        label: 'Chevron left',
+    },
+    {
+        value: 'chevron-right-icon',
+        label: 'Chevron right',
+    },
+    {
+        value: 'align-top-icon',
+        label: 'Align top',
+    },
+    {
+        value: 'align-bottom-icon',
+        label: 'Align bottom',
+    },
+    {
+        value: 'align-mvaluedle-icon',
+        label: 'Align mvaluedle',
+    },
+    {
+        value: 'align-left-icon',
+        label: 'Align left',
+    },
+    {
+        value: 'align-right-icon',
+        label: 'Align right',
+    },
+    {
+        value: 'align-center-icon',
+        label: 'Align center',
+    },
+    {
+        value: 'space-horizontal-icon',
+        label: 'Space horizontal',
+    },
+    {
+        value: 'space-vertical-icon',
+        label: 'Space vertical',
     },
 ];
