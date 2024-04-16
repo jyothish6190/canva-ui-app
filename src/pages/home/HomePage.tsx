@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Rows } from '@canva/app-ui-kit';
 
@@ -19,6 +19,34 @@ const HomePage = () => {
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
     );
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredComponentList = useMemo(() => {
+        let componentsByCategory: Component[] = [];
+
+        // filter by category
+        if (selectedCategories.length > 0) {
+            components.forEach((component) => {
+                selectedCategories.forEach((category) => {
+                    if (component.categoryId === category.id) {
+                        componentsByCategory.push(component);
+                    }
+                });
+            });
+        } else {
+            componentsByCategory = [...components];
+        }
+
+        // search
+        let filteredComponents = componentsByCategory.filter((component) => {
+            return component.name
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase());
+        });
+
+        return filteredComponents;
+    }, [searchQuery, selectedCategories, components]);
+
     const categorySelectHandler = (category: Category) => {
         const index = selectedCategories.findIndex(
             (selectedCategory) => selectedCategory.id === category.id
@@ -32,7 +60,7 @@ const HomePage = () => {
     };
 
     const searchHandler = (searchQuery: string) => {
-        console.log('🚀 ~ searchHandler ~ searchQuery:', searchQuery);
+        setSearchQuery(searchQuery);
     };
 
     const componentSelectHandler = (component: Component) => {
@@ -56,7 +84,7 @@ const HomePage = () => {
                 />
                 <IconList onClick={iconSelectHandler} />
                 <ComponentList
-                    components={components}
+                    components={filteredComponentList}
                     onClick={componentSelectHandler}
                 />
             </Rows>
