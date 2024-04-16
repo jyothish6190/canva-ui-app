@@ -15,23 +15,14 @@ const AppRouter = () => {
         <div>
             <Router>
                 <Routes>
-                    <Route
-                        path="/containers/:containerId?"
-                        element={<HomePage />}
-                    />
-                    <Route
-                        path="/icons/:iconId?"
-                        element={<IconSelectionpage />}
-                    />
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/icons" element={<IconSelectionpage />} />
                     <Route path="/edit" element={<EditPage />} />
                     <Route
                         path="/component-details"
                         element={<ComponentDetailsPage />}
                     />
-                    <Route
-                        path="*"
-                        element={<Navigate replace to="/containers" />}
-                    />
+                    <Route path="*" element={<Navigate replace to="/home" />} />
                 </Routes>
             </Router>
         </div>

@@ -42,7 +42,7 @@ const HomePage = () => {
     };
 
     const iconSelectHandler = () => {
-        navigate(`/icons`);
+        navigate('/icons');
     };
 
     return (
