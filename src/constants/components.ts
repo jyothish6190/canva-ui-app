@@ -7,6 +7,7 @@ import { AlertConfig } from './component-configs/AlertConfig';
 import { BadgeConfig } from './component-configs/BadgeConfig';
 import { LinkConfig } from './component-configs/LinkConfig';
 import { TextConfig } from './component-configs/TextConfig';
+import { TitleConfig } from './component-configs/TitleConfig';
 
 export const components: Component[] = [
     {
@@ -620,6 +621,7 @@ export const components: Component[] = [
         name: 'Title',
         placeholder: 'Title',
         categoryId: 'typography',
+        fields: TitleConfig,
     },
     {
         type: ComponentType.TEXT,
