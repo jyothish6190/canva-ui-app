@@ -31,7 +31,7 @@ const HomePage = () => {
         if (selectedCategories.length > 0) {
             components.forEach((component) => {
                 selectedCategories.forEach((category) => {
-                    if (component.categoryId === category.id) {
+                    if (component.categoryId === category.value) {
                         componentsByCategory.push(component);
                     }
                 });
@@ -52,7 +52,7 @@ const HomePage = () => {
 
     const categorySelectHandler = (category: Category) => {
         const index = selectedCategories.findIndex(
-            (selectedCategory) => selectedCategory.id === category.id
+            (selectedCategory) => selectedCategory.value === category.value
         );
         if (index >= 0) {
             selectedCategories.splice(index, 1);

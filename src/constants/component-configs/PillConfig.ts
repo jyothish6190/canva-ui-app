@@ -1,37 +1,23 @@
 import { ComponentType } from '../ComponentTypes';
 import { icons } from '../icons';
 
-export const ButtonConfig = [
-    {
-        type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Variant',
-        options: [
-            {
-                label: 'Primary',
-                value: 'primary',
-            },
-            {
-                label: 'Secondary',
-                value: 'secondary',
-            },
-            {
-                label: 'Tertiary',
-                value: 'Tertiary',
-            },
-        ],
-        defaultValue: 'primary',
-        value: 'primary',
-    },
+export const PillConfig = [
     {
         type: ComponentType.FORM_FIELD,
         name: 'Text',
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Pill',
     },
     {
         type: ComponentType.SELECT,
-        name: 'Icon (optional)',
+        name: 'Start Decorator (optional)',
+        options: icons,
+        placeholder: 'Choose an Icon',
+    },
+    {
+        type: ComponentType.SELECT,
+        name: 'End Decorator (optional)',
         options: icons,
         placeholder: 'Choose an Icon',
     },

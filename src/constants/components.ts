@@ -1,6 +1,8 @@
 import { Component } from 'src/models/coponent.model';
 import { ButtonConfig } from './component-configs/ButtonConfig';
 import { ComponentType } from './ComponentTypes';
+import { IconButtonConfig } from './component-configs/IconButtonConfig';
+import { PillConfig } from './component-configs/PillConfig';
 
 export const components: Component[] = [
     {
@@ -16,63 +18,13 @@ export const components: Component[] = [
         'icon-data': 'InfoIcon',
         varient: 'primary',
         categoryId: 'action',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'button-state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '158',
-                selected: 'small',
-            },
-        ],
+        fields: IconButtonConfig,
     },
     {
         type: ComponentType.PILL,
         name: 'Pill',
         categoryId: 'action',
-        fields: [
-            {
-                id: 'text',
-            },
-            {
-                id: 'start-icon',
-                optional: true,
-            },
-            {
-                id: 'end-icon',
-                optional: true,
-            },
-            {
-                id: 'pill-state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '158',
-                selected: 'small',
-            },
-        ],
+        fields: PillConfig,
     },
     {
         type: ComponentType.ALERT,

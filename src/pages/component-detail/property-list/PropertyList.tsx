@@ -11,7 +11,7 @@ type PropType = {
 const PropertyList = ({ component }: PropType) => {
     return (
         <div style={{ padding: '2rem 0' }}>
-            <Rows spacing="3u">
+            <Rows spacing="2u">
                 {component.fields?.map((field, index) => {
                     return (
                         <ComponentItem

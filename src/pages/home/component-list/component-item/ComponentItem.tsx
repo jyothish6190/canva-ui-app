@@ -35,6 +35,7 @@ import SliderComponent from 'src/components/slider/SliderComponent';
 import SegmentedControlComponent from 'src/components/segmented-control/SegmentedControlComponent';
 import MultiInputComponent from 'src/components/multi-input/MultiInputComponent';
 import TextComponent from 'src/components/text/TextComponent';
+import ButtonTypesComponent from 'src/components/button-types-component/ButtonTypesComponent';
 
 type PropType = {
     component: Component;
@@ -126,6 +127,8 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
             );
         case ComponentType.LINK:
             return <LinkComponent />;
+        case ComponentType.CATEGORY:
+            return <ButtonTypesComponent component={component} />;
 
         default:
             return <></>;
