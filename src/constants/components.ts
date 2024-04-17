@@ -11,6 +11,7 @@ import { TitleConfig } from './component-configs/TitleConfig';
 import { EmbedConfig } from './component-configs/EmbedConfig';
 import { VideoCardConfig } from './component-configs/VideoCardConfig';
 import { TypographyConfig } from './component-configs/TypographyConfig';
+import { ImageCardConfig } from './component-configs/ImageCardConfig';
 
 export const components: Component[] = [
     {
@@ -595,6 +596,7 @@ export const components: Component[] = [
         previewUrl:
             'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
         categoryId: 'card',
+        fields: ImageCardConfig,
     },
     {
         type: ComponentType.TYPOGRAPHY_CARD,
