@@ -1,13 +1,21 @@
 import { ComponentType } from '../ComponentTypes';
 
-export const TypographyConfig = [
+export const AudioCardConfig = [
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: 'Title',
         label: 'Label',
         description: 'Description text',
         placeholder: 'Button',
-        value: 'The Quick brown fox',
+        value: 'Card Title',
+    },
+    {
+        type: ComponentType.FORM_FIELD,
+        name: 'Duration in seconds',
+        label: 'Label',
+        description: 'Description text',
+        placeholder: 'Button',
+        value: '86',
     },
 
     {
