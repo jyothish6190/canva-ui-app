@@ -10,6 +10,7 @@ import { TextConfig } from './component-configs/TextConfig';
 import { TitleConfig } from './component-configs/TitleConfig';
 import { EmbedConfig } from './component-configs/EmbedConfig';
 import { VideoCardConfig } from './component-configs/VideoCardConfig';
+import { TypographyConfig } from './component-configs/TypographyConfig';
 
 export const components: Component[] = [
     {
@@ -600,6 +601,7 @@ export const components: Component[] = [
         name: 'Typography card',
         placeholder: 'The quick brown fox',
         categoryId: 'card',
+        fields: TypographyConfig,
     },
     {
         type: ComponentType.VIDEO_CARD,
