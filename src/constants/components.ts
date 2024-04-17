@@ -6,6 +6,7 @@ import { PillConfig } from './component-configs/PillConfig';
 import { AlertConfig } from './component-configs/AlertConfig';
 import { BadgeConfig } from './component-configs/BadgeConfig';
 import { LinkConfig } from './component-configs/LinkConfig';
+import { TextConfig } from './component-configs/TextConfig';
 
 export const components: Component[] = [
     {
@@ -625,6 +626,7 @@ export const components: Component[] = [
         name: 'Text',
         placeholder: 'Text',
         categoryId: 'typography',
+        fields: TextConfig,
     },
     {
         type: ComponentType.LINK,
