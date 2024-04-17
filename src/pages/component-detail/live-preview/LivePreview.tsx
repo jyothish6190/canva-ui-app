@@ -1,6 +1,6 @@
-import React, { Children, useState } from 'react';
-import { Button } from '@canva/app-ui-kit';
-import styles from 'styles/components.css';
+import React, { useState } from 'react';
+
+import styles from './LivePreview.css';
 import { DarkThemeIcon, LightThemeIcon } from 'assets/images/image.js';
 
 const LivePreview = ({ children }) => {
@@ -12,8 +12,8 @@ const LivePreview = ({ children }) => {
     };
 
     return (
-        <div className={styles.LivePreviewBox} style={{ background: bgcolor }}>
-            <span className={styles.ThemeButton} onClick={HandleOnclick}>
+        <div className={styles.container} style={{ background: bgcolor }}>
+            <span className={styles['theme-btn']} onClick={HandleOnclick}>
                 <img
                     src={bgcolor == 'white' ? LightThemeIcon : DarkThemeIcon}
                     alt="themeicon"

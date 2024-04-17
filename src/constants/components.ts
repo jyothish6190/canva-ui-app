@@ -3,6 +3,7 @@ import { ButtonConfig } from './component-configs/ButtonConfig';
 import { ComponentType } from './ComponentTypes';
 import { IconButtonConfig } from './component-configs/IconButtonConfig';
 import { PillConfig } from './component-configs/PillConfig';
+import { AlertConfig } from './component-configs/AlertConfig';
 
 export const components: Component[] = [
     {
@@ -31,32 +32,7 @@ export const components: Component[] = [
         name: 'Alert',
         placeholder: 'This is an Alert',
         categoryId: 'informational',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: AlertConfig,
     },
     {
         type: ComponentType.BADGE,

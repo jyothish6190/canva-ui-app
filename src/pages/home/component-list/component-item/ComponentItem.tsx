@@ -51,7 +51,9 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.PILL:
             return <Pill key={component.name} text={component.name} />;
         case ComponentType.ALERT:
-            return <AlertComponent component={component} />;
+            return (
+                <AlertComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.BADGE:
             return <Badge text={component.name} tone="assist" />;
         case ComponentType.FORM_FIELD:

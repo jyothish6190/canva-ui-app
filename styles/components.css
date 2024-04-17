@@ -70,49 +70,6 @@
     width: 200px;
 }
 
-.LivePreviewBox {
-    position: relative;
-    width: 99%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: var(--ui-kit-border-radius);
-}
-
-.ThemeButton {
-    display: flex;
-    position: absolute;
-    cursor: pointer;
-    top: 2%;
-    right: 2%;
-    width: 20px;
-    height: 20px;
-    padding: 8px;
-    background-color: rgba(17, 23, 29, 0.6);
-    border-radius: var(--ui-kit-border-radius);
-}
-.ThemeButton img {
-    width: 100%;
-    display: block;
-}
-.iconsContainer {
-    border-radius: 4px;
-    background: var(--Neutral-colorNeutralLow, rgba(255, 255, 255, 0.07));
-    display: flex;
-    padding: 33px 32px;
-    align-items: flex-start;
-}
-
-.fileUpload {
-    display: flex;
-    padding: var(--space1, 8px) 16px var(--space1, 8px) var(--space1, 8px);
-    justify-content: center;
-    align-items: center;
-    gap: var(--space1, 8px);
-}
-
 ::-webkit-scrollbar {
     height: 0;
     width: 8px;
