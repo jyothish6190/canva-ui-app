@@ -1,7 +1,25 @@
 import React from 'react';
 import { Slider } from '@canva/app-ui-kit';
 
-const SliderComponent = () => {
+import { Component } from 'src/models/coponent.model';
+
+type PropType = {
+    component: Component;
+    isProperty: boolean;
+    onChange?: (text: any) => void;
+};
+
+const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
+    if (isProperty) {
+        return (
+            <Slider
+                defaultValue={component.defaultValue}
+                max={100}
+                min={0}
+                step={1}
+            />
+        );
+    }
     return (
         <div
             style={{
