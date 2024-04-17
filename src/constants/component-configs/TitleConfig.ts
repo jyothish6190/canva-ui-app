@@ -5,7 +5,7 @@ import {
 } from '@canva/app-ui-kit';
 import { ComponentType } from '../ComponentTypes';
 
-export const TextConfig = [
+export const TitleConfig = [
     {
         type: ComponentType.MULTILINE_INPUT,
         name: 'Text',
@@ -40,22 +40,6 @@ export const TextConfig = [
         ],
         defaultValue: 'medium',
         placeholder: 'Choose a Size',
-    },
-    {
-        type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Variant',
-        options: [
-            {
-                label: 'Regular',
-                value: 'regular',
-            },
-            {
-                label: 'Bold',
-                value: 'bold',
-            },
-        ],
-        defaultValue: 'regular',
-        value: 'primary',
     },
     {
         type: ComponentType.SELECT,
