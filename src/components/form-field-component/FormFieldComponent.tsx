@@ -18,6 +18,7 @@ const FormFieldComponent = ({ component, isProperty, onChange }: PropType) => {
                 control={(props) => (
                     <TextInput
                         placeholder={component.placeholder}
+                        value={component.value as string}
                         onChange={onChange}
                     />
                 )}
