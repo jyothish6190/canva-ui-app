@@ -8,6 +8,7 @@ import { BadgeConfig } from './component-configs/BadgeConfig';
 import { LinkConfig } from './component-configs/LinkConfig';
 import { TextConfig } from './component-configs/TextConfig';
 import { TitleConfig } from './component-configs/TitleConfig';
+import { EmbedConfig } from './component-configs/EmbedConfig';
 
 export const components: Component[] = [
     {
@@ -615,6 +616,7 @@ export const components: Component[] = [
         title: 'This is a title',
         description: 'This is a subtitle',
         categoryId: 'card',
+        fields: EmbedConfig,
     },
     {
         type: ComponentType.TITLE,
