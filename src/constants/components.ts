@@ -14,6 +14,7 @@ import { TypographyConfig } from './component-configs/TypographyConfig';
 import { ImageCardConfig } from './component-configs/ImageCardConfig';
 import { AudioCardConfig } from './component-configs/AudioCardConfig';
 import { ProgressbarConfig } from './component-configs/ProgressbarComponentConfig';
+import { PlaceholderComponentConfig } from './component-configs/PlaceholderComponentConfig';
 
 export const components: Component[] = [
     {
@@ -573,6 +574,7 @@ export const components: Component[] = [
         name: 'Placeholder',
         size: 'small',
         categoryId: 'progress',
+        fields: PlaceholderComponentConfig,
     },
     {
         type: ComponentType.PROGRESS_BAR,
