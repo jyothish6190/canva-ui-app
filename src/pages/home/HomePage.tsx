@@ -13,8 +13,11 @@ import { components } from 'src/constants/components';
 import { Category } from '../../models/category.model';
 import { Component } from 'src/models/coponent.model';
 
+import { useComponentStore } from 'src/store/ComponentStore';
+
 const HomePage = () => {
     const navigate = useNavigate();
+    const { setSelectedComponent } = useComponentStore();
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
@@ -28,7 +31,7 @@ const HomePage = () => {
         if (selectedCategories.length > 0) {
             components.forEach((component) => {
                 selectedCategories.forEach((category) => {
-                    if (component.categoryId === category.id) {
+                    if (component.categoryId === category.value) {
                         componentsByCategory.push(component);
                     }
                 });
@@ -49,7 +52,7 @@ const HomePage = () => {
 
     const categorySelectHandler = (category: Category) => {
         const index = selectedCategories.findIndex(
-            (selectedCategory) => selectedCategory.id === category.id
+            (selectedCategory) => selectedCategory.value === category.value
         );
         if (index >= 0) {
             selectedCategories.splice(index, 1);
@@ -64,9 +67,8 @@ const HomePage = () => {
     };
 
     const componentSelectHandler = (component: Component) => {
-        navigate(`/component-details`, {
-            state: component,
-        });
+        setSelectedComponent(component);
+        navigate(`/component-details`);
     };
 
     const iconSelectHandler = () => {

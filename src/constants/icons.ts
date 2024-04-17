@@ -49,382 +49,211 @@ export const icons: Icon[] = [
     {
         value: 'check-icon',
         label: 'Check',
-        icon: CheckIcon,
+        Icon: CheckIcon,
     },
     {
         value: 'x-icon',
         label: 'X',
-        icon: XIcon,
+        Icon: XIcon,
     },
     {
         value: 'music-icon',
         label: 'Music',
-        icon: MusicIcon,
+        Icon: MusicIcon,
     },
     {
         value: 'pause-icon',
         label: 'Pause',
-        icon: PauseIcon,
+        Icon: PauseIcon,
     },
     {
         value: 'play-filled-icon',
         label: 'Play Filled',
-        icon: PlayFilledIcon,
+        Icon: PlayFilledIcon,
     },
     {
         value: 'code-icon',
         label: 'Code',
-        icon: CodeIcon,
+        Icon: CodeIcon,
     },
     {
         value: 'alert-triangle-icon',
         label: 'Alert triangle',
-        icon: AlertTriangleIcon,
+        Icon: AlertTriangleIcon,
     },
     {
         value: 'help-circle-icon',
         label: 'Help circle',
-        icon: HelpCircleIcon,
+        Icon: HelpCircleIcon,
     },
     {
         value: 'open-in-new-icon',
         label: 'Open in new',
-        icon: OpenInNewIcon,
+        Icon: OpenInNewIcon,
     },
     {
         value: 'info-icon',
         label: 'Info',
-        icon: InfoIcon,
+        Icon: InfoIcon,
     },
     {
         value: 'eye-icon',
         label: 'Eye',
-        icon: EyeIcon,
+        Icon: EyeIcon,
     },
     {
         value: 'folder-icon',
         label: 'Folder',
-        icon: FolderIcon,
+        Icon: FolderIcon,
     },
     {
         value: 'grvalue-icon',
         label: 'Grvalue',
-        icon: GridIcon,
+        Icon: GridIcon,
     },
     {
         value: 'flag-icon',
         label: 'Flag',
-        icon: FlagIcon,
+        Icon: FlagIcon,
     },
     {
         value: 'light-bulb-icon',
         label: 'LightBulb',
-        icon: LightBulbIcon,
+        Icon: LightBulbIcon,
     },
     {
         value: 'bold-icon',
         label: 'Bold',
-        icon: BoldIcon,
+        Icon: BoldIcon,
     },
     {
         value: 'italic-icon',
         label: 'Italic',
-        icon: ItalicIcon,
+        Icon: ItalicIcon,
     },
     {
         value: 'underline-icon',
         label: 'Underline',
-        icon: UnderlineIcon,
+        Icon: UnderlineIcon,
     },
     {
         value: 'paint-roller-icon',
         label: 'Paint roller',
-        icon: PaintRollerIcon,
+        Icon: PaintRollerIcon,
     },
     {
         value: 'background-icon',
         label: 'Background',
-        icon: BackgroundIcon,
+        Icon: BackgroundIcon,
     },
     {
         value: 'eyedropper-icon',
         label: 'Eyedropper',
-        icon: EyedropperIcon,
+        Icon: EyedropperIcon,
     },
     {
         value: 'transparency-icon',
         label: 'Transparency',
-        icon: TransparencyIcon,
+        Icon: TransparencyIcon,
     },
     {
         value: 'font-icon',
         label: 'Font',
-        icon: FontIcon,
+        Icon: FontIcon,
     },
     {
         value: 'text-color-icon',
         label: 'Text color',
-        icon: TextColorIcon,
+        Icon: TextColorIcon,
     },
     {
         value: 'text-size-icon',
         label: 'Text size',
-        icon: TextSizeIcon,
+        Icon: TextSizeIcon,
     },
     {
         value: 'list-bullet-ltr-icon',
         label: 'List bulleter ',
-        icon: ListBulletLtrIcon,
+        Icon: ListBulletLtrIcon,
     },
     {
         value: 'arrow-up-icon',
         label: 'Arrow up',
-        icon: ArrowUpIcon,
+        Icon: ArrowUpIcon,
     },
     {
         value: 'arrow-down-icon',
         label: 'Arrow down',
-        icon: ArrowDownIcon,
+        Icon: ArrowDownIcon,
     },
     {
         value: 'arrow-left-icon',
         label: 'Arrow left',
-        icon: ArrowLeftIcon,
+        Icon: ArrowLeftIcon,
     },
     {
         value: 'arrow-rigt-icon',
         label: 'Arrow right',
-        icon: ArrowRightIcon,
+        Icon: ArrowRightIcon,
     },
     {
         value: 'chevron-up-icon',
         label: 'Chevron up',
-        icon: ChevronUpIcon,
+        Icon: ChevronUpIcon,
     },
     {
         value: 'chevron-down-icon',
         label: 'Chevron down',
-        icon: ChevronDownIcon,
+        Icon: ChevronDownIcon,
     },
     {
         value: 'chevron-left-icon',
         label: 'Chevron left',
-        icon: ChevronLeftIcon,
+        Icon: ChevronLeftIcon,
     },
     {
         value: 'chevron-right-icon',
         label: 'Chevron right',
-        icon: ChevronRightIcon,
+        Icon: ChevronRightIcon,
     },
     {
         value: 'align-top-icon',
         label: 'Align top',
-        icon: AlignTopIcon,
+        Icon: AlignTopIcon,
     },
     {
         value: 'align-bottom-icon',
         label: 'Align bottom',
-        icon: AlignBottomIcon,
+        Icon: AlignBottomIcon,
     },
     {
         value: 'align-mvaluedle-icon',
         label: 'Align mvaluedle',
-        icon: AlignMiddleIcon,
+        Icon: AlignMiddleIcon,
     },
     {
         value: 'align-left-icon',
         label: 'Align left',
-        icon: AlignLeftIcon,
+        Icon: AlignLeftIcon,
     },
     {
         value: 'align-right-icon',
         label: 'Align right',
-        icon: AlignRightIcon,
+        Icon: AlignRightIcon,
     },
     {
         value: 'align-center-icon',
         label: 'Align center',
-        icon: AlignCenterIcon,
+        Icon: AlignCenterIcon,
     },
     {
         value: 'space-horizontal-icon',
         label: 'Space horizontal',
-        icon: SpaceHorizontalIcon,
+        Icon: SpaceHorizontalIcon,
     },
     {
         value: 'space-vertical-icon',
         label: 'Space vertical',
-        icon: SpaceVerticalIcon,
-    },
-];
-
-export const iconsWithoutIcon: Icon[] = [
-    {
-        value: 'check-icon',
-        label: 'Check',
-    },
-    {
-        value: 'x-icon',
-        label: 'X',
-    },
-    {
-        value: 'music-icon',
-        label: 'Music',
-    },
-    {
-        value: 'pause-icon',
-        label: 'Pause',
-    },
-    {
-        value: 'play-filled-icon',
-        label: 'Play Filled',
-    },
-    {
-        value: 'code-icon',
-        label: 'Code',
-    },
-    {
-        value: 'alert-triangle-icon',
-        label: 'Alert triangle',
-    },
-    {
-        value: 'help-circle-icon',
-        label: 'Help circle',
-    },
-    {
-        value: 'open-in-new-icon',
-        label: 'Open in new',
-    },
-    {
-        value: 'info-icon',
-        label: 'Info',
-    },
-    {
-        value: 'eye-icon',
-        label: 'Eye',
-    },
-    {
-        value: 'folder-icon',
-        label: 'Folder',
-    },
-    {
-        value: 'grvalue-icon',
-        label: 'Grvalue',
-    },
-    {
-        value: 'flag-icon',
-        label: 'Flag',
-    },
-    {
-        value: 'light-bulb-icon',
-        label: 'LightBulb',
-    },
-    {
-        value: 'bold-icon',
-        label: 'Bold',
-    },
-    {
-        value: 'italic-icon',
-        label: 'Italic',
-    },
-    {
-        value: 'underline-icon',
-        label: 'Underline',
-    },
-    {
-        value: 'paint-roller-icon',
-        label: 'Paint roller',
-    },
-    {
-        value: 'background-icon',
-        label: 'Background',
-    },
-    {
-        value: 'eyedropper-icon',
-        label: 'Eyedropper',
-    },
-    {
-        value: 'transparency-icon',
-        label: 'Transparency',
-    },
-    {
-        value: 'font-icon',
-        label: 'Font',
-    },
-    {
-        value: 'text-color-icon',
-        label: 'Text color',
-    },
-    {
-        value: 'text-size-icon',
-        label: 'Text size',
-    },
-    {
-        value: 'list-bullet-ltr-icon',
-        label: 'List bulleter ',
-    },
-    {
-        value: 'arrow-up-icon',
-        label: 'Arrow up',
-    },
-    {
-        value: 'arrow-down-icon',
-        label: 'Arrow down',
-    },
-    {
-        value: 'arrow-left-icon',
-        label: 'Arrow left',
-    },
-    {
-        value: 'arrow-rigt-icon',
-        label: 'Arrow right',
-    },
-    {
-        value: 'chevron-up-icon',
-        label: 'Chevron up',
-    },
-    {
-        value: 'chevron-down-icon',
-        label: 'Chevron down',
-    },
-    {
-        value: 'chevron-left-icon',
-        label: 'Chevron left',
-    },
-    {
-        value: 'chevron-right-icon',
-        label: 'Chevron right',
-    },
-    {
-        value: 'align-top-icon',
-        label: 'Align top',
-    },
-    {
-        value: 'align-bottom-icon',
-        label: 'Align bottom',
-    },
-    {
-        value: 'align-mvaluedle-icon',
-        label: 'Align mvaluedle',
-    },
-    {
-        value: 'align-left-icon',
-        label: 'Align left',
-    },
-    {
-        value: 'align-right-icon',
-        label: 'Align right',
-    },
-    {
-        value: 'align-center-icon',
-        label: 'Align center',
-    },
-    {
-        value: 'space-horizontal-icon',
-        label: 'Space horizontal',
-    },
-    {
-        value: 'space-vertical-icon',
-        label: 'Space vertical',
+        Icon: SpaceVerticalIcon,
     },
 ];

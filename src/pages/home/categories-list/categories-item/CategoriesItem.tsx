@@ -18,7 +18,7 @@ const CategoriesItem = ({
     const isCategorySelected = useMemo(() => {
         let selected = false;
         selectedCategories.forEach((selectedCategory) => {
-            if (selectedCategory.id === category.id) {
+            if (selectedCategory.value === category.value) {
                 selected = true;
             }
         });
@@ -27,8 +27,8 @@ const CategoriesItem = ({
 
     return (
         <Pill
-            key={category.id}
-            text={category.name}
+            key={category.value}
+            text={category.label}
             selected={isCategorySelected}
             role="switch"
             onClick={() => {

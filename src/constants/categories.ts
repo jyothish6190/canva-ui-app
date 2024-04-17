@@ -2,35 +2,35 @@ import { Category } from '../models/category.model';
 
 export const categories: Category[] = [
     {
-        id: 'action',
-        name: 'Action',
+        value: 'action',
+        label: 'Action',
     },
     {
-        id: 'card',
-        name: 'Card',
+        value: 'card',
+        label: 'Card',
     },
     {
-        id: 'color',
-        name: 'Color',
+        value: 'color',
+        label: 'Color',
     },
     {
-        id: 'form',
-        name: 'Form',
+        value: 'form',
+        label: 'Form',
     },
     {
-        id: 'informational',
-        name: 'Informational',
+        value: 'informational',
+        label: 'Informational',
     },
     {
-        id: 'typography',
-        name: 'Typography',
+        value: 'typography',
+        label: 'Typography',
     },
     {
-        id: 'icons',
-        name: 'Icons',
+        value: 'icons',
+        label: 'Icons',
     },
     {
-        id: 'progress',
-        name: 'Progress',
+        value: 'progress',
+        label: 'Progress',
     },
 ];

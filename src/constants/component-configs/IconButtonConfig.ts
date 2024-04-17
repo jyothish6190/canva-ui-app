@@ -1,7 +1,7 @@
 import { ComponentType } from '../ComponentTypes';
 import { icons } from '../icons';
 
-export const ButtonConfig = [
+export const IconButtonConfig = [
     {
         type: ComponentType.SEGMENTED_CONTROL,
         name: 'Variant',
@@ -22,13 +22,7 @@ export const ButtonConfig = [
         defaultValue: 'primary',
         value: 'primary',
     },
-    {
-        type: ComponentType.FORM_FIELD,
-        name: 'Text',
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Button',
-    },
+
     {
         type: ComponentType.SELECT,
         name: 'Icon (optional)',

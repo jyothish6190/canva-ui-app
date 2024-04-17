@@ -21,7 +21,7 @@ const CategoriesList = ({
                 {categories.map((category) => {
                     return (
                         <CategoriesItem
-                            key={category.id}
+                            key={category.value}
                             category={category}
                             selectedCategories={selectedCategories}
                             onClick={onClick}

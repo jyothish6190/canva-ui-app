@@ -29,4 +29,5 @@ export enum ComponentType {
     TITLE = 'title',
     TEXT = 'text',
     LINK = 'link',
+    CATEGORY = 'category',
 }
