@@ -211,7 +211,6 @@ export const components: Component[] = [
             {
                 value: 'blueberry',
                 label: 'Blueberry',
-                default: true,
             },
             {
                 value: 'apple',
@@ -257,7 +256,6 @@ export const components: Component[] = [
             {
                 value: 'blueberry',
                 label: 'Blueberry',
-                default: true,
             },
             {
                 value: 'apple',
@@ -367,7 +365,6 @@ export const components: Component[] = [
             {
                 value: 's',
                 label: 'S',
-                default: true,
             },
             {
                 value: 'm',
@@ -514,7 +511,6 @@ export const components: Component[] = [
             {
                 value: 'blueberry',
                 label: 'Blueberry',
-                default: true,
             },
             {
                 value: 'apple',

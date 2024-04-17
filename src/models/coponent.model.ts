@@ -1,3 +1,4 @@
+import { SelectOption } from '@canva/app-ui-kit';
 import { ComponentType } from 'src/constants/ComponentTypes';
 
 export interface Component {
@@ -11,7 +12,7 @@ export interface Component {
     text?: string;
     label?: string;
     description?: string;
-    options?: any[];
+    options?: SelectOption<string>[];
     defaultValue?: any;
     min?: number;
     max?: number;

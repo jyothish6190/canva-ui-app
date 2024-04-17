@@ -6,16 +6,10 @@ import { Component } from 'src/models/coponent.model';
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (text: string) => void;
+    onChange?: (text: any) => void;
 };
 
 const SelectComponent = ({ component, isProperty, onChange }: PropType) => {
-    console.log(
-        '🚀 ~ SelectComponent ~ component, isProperty:',
-        component,
-        isProperty
-    );
-
     if (isProperty) {
         return (
             <FormField

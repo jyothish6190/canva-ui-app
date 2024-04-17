@@ -13,8 +13,11 @@ import { components } from 'src/constants/components';
 import { Category } from '../../models/category.model';
 import { Component } from 'src/models/coponent.model';
 
+import { useComponentStore } from 'src/store/ComponentStore';
+
 const HomePage = () => {
     const navigate = useNavigate();
+    const { setSelectedComponent } = useComponentStore();
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
@@ -64,9 +67,8 @@ const HomePage = () => {
     };
 
     const componentSelectHandler = (component: Component) => {
-        navigate(`/component-details`, {
-            state: component,
-        });
+        setSelectedComponent(component);
+        navigate(`/component-details`);
     };
 
     const iconSelectHandler = () => {

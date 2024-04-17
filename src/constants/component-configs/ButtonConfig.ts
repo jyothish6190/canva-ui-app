@@ -1,5 +1,6 @@
+import { SpaceVerticalIcon } from '@canva/app-ui-kit';
 import { ComponentType } from '../ComponentTypes';
-import { iconsWithoutIcon } from '../icons';
+import { icons } from '../icons';
 
 export const ButtonConfig = [
     {
@@ -32,7 +33,7 @@ export const ButtonConfig = [
     {
         type: ComponentType.SELECT,
         name: 'Icon (optional)',
-        options: iconsWithoutIcon,
+        options: icons,
         placeholder: 'Choose an Icon',
     },
     {
@@ -44,12 +45,20 @@ export const ButtonConfig = [
                 value: 'default',
             },
             {
-                label: 'Secondary',
-                value: 'secondary',
+                label: 'Hover',
+                value: 'hover',
             },
             {
-                label: 'Tertiary',
-                value: 'Tertiary',
+                label: 'Active',
+                value: 'active',
+            },
+            {
+                label: 'Loading',
+                value: 'loading',
+            },
+            {
+                label: 'Disabled',
+                value: 'disabled',
             },
         ],
         defaultValue: 'default',
@@ -60,24 +69,4 @@ export const ButtonConfig = [
         name: 'Hug Content',
         defaultValue: true,
     },
-    // {
-    //     id: 'text',
-    // },
-    // {
-    //     id: 'icon',
-    //     optional: true,
-    // },
-    // {
-    //     id: 'button-state',
-    //     selected: 'default',
-    // },
-    // {
-    //     id: 'hug-content',
-    //     selected: true,
-    // },
-    // {
-    //     id: 'width',
-    //     'default-value': '56',
-    //     selected: 'small',
-    // },
 ];
