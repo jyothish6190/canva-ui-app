@@ -87,7 +87,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.SLIDER:
-            return <SliderComponent />;
+            return (
+                <SliderComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.NUMBER_INPUT:
             return <NumberInputComponent />;
         case ComponentType.FILE_INPUT:
@@ -115,7 +120,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.PLACEHOLDER:
             return <PlaceholderComponent />;
         case ComponentType.PROGRESS_BAR:
-            return <ProgressbarComponent />;
+            return (
+                <ProgressbarComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.AUDIO_CARD:
             return <AudioCardComponent />;
         case ComponentType.IMAGE_CARD:

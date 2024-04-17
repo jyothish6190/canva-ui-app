@@ -13,6 +13,7 @@ import { VideoCardConfig } from './component-configs/VideoCardConfig';
 import { TypographyConfig } from './component-configs/TypographyConfig';
 import { ImageCardConfig } from './component-configs/ImageCardConfig';
 import { AudioCardConfig } from './component-configs/AudioCardConfig';
+import { ProgressbarConfig } from './component-configs/ProgressbarComponentConfig';
 
 export const components: Component[] = [
     {
@@ -580,6 +581,7 @@ export const components: Component[] = [
         size: 'medium',
         tone: 'info',
         categoryId: 'progress',
+        fields: ProgressbarConfig,
     },
     {
         type: ComponentType.AUDIO_CARD,
