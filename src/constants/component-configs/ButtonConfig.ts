@@ -1,6 +1,5 @@
-import { Placeholder } from '@canva/app-ui-kit';
 import { ComponentType } from '../ComponentTypes';
-import { icons, iconsWithoutIcon } from '../icons';
+import { iconsWithoutIcon } from '../icons';
 
 export const ButtonConfig = [
     {
@@ -39,8 +38,27 @@ export const ButtonConfig = [
     {
         type: ComponentType.SELECT,
         name: 'State',
-        options: iconsWithoutIcon,
-        placeholder: 'Choose an Icon',
+        options: [
+            {
+                label: 'Default',
+                value: 'default',
+            },
+            {
+                label: 'Secondary',
+                value: 'secondary',
+            },
+            {
+                label: 'Tertiary',
+                value: 'Tertiary',
+            },
+        ],
+        defaultValue: 'default',
+        placeholder: 'Choose a State',
+    },
+    {
+        type: ComponentType.SWITCH,
+        name: 'Hug Content',
+        defaultValue: true,
     },
     // {
     //     id: 'text',
