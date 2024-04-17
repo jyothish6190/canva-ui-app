@@ -121,7 +121,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.IMAGE_CARD:
             return <ImageCardComponent />;
         case ComponentType.TYPOGRAPHY_CARD:
-            return <TypographyComponent />;
+            return (
+                <TypographyComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.VIDEO_CARD:
             return <VideoCardComponent />;
         case ComponentType.EMBED_CARD:
