@@ -5,6 +5,7 @@ import { IconButtonConfig } from './component-configs/IconButtonConfig';
 import { PillConfig } from './component-configs/PillConfig';
 import { AlertConfig } from './component-configs/AlertConfig';
 import { BadgeConfig } from './component-configs/BadgeConfig';
+import { LinkConfig } from './component-configs/LinkConfig';
 
 export const components: Component[] = [
     {
@@ -630,5 +631,6 @@ export const components: Component[] = [
         name: 'Link',
         children: 'Go to Canva',
         categoryId: 'typography',
+        fields: LinkConfig,
     },
 ];

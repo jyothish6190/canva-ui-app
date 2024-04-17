@@ -1,5 +1,4 @@
 import { ComponentType } from '../ComponentTypes';
-import { icons } from '../icons';
 
 export const AlertConfig = [
     {

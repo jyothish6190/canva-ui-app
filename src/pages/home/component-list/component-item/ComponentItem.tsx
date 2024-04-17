@@ -33,9 +33,9 @@ import SelectComponent from 'src/components/select-component/SelectComponent';
 import NumberInputComponent from 'src/components/number-input/NumberInputComponent';
 import SliderComponent from 'src/components/slider/SliderComponent';
 import SegmentedControlComponent from 'src/components/segmented-control/SegmentedControlComponent';
-import MultiInputComponent from 'src/components/multi-input/MultiInputComponent';
 import TextComponent from 'src/components/text/TextComponent';
 import ButtonTypesComponent from 'src/components/button-types-component/ButtonTypesComponent';
+import MultilineInputComponent from 'src/components/multiline-input-component/MultilineInputComponent';
 
 type PropType = {
     component: Component;
@@ -72,7 +72,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.TEXT_INPUT:
             return <TextInputComponent component={component} />;
         case ComponentType.MULTILINE_INPUT:
-            return <MultiInputComponent component={component} />;
+            return (
+                <MultilineInputComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.SEGMENTED_CONTROL:
             return (
                 <SegmentedControlComponent
