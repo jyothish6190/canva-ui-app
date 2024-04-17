@@ -26,6 +26,7 @@ const SelectComponent = ({ component, isProperty, onChange }: PropType) => {
                         stretch={true}
                         placeholder={component.placeholder}
                         onChange={onChange}
+                        value={component.defaultValue}
                     />
                 )}
             />

@@ -1,7 +1,24 @@
 import React from 'react';
 import { Switch } from '@canva/app-ui-kit';
 
-const SwitchComponent = () => {
+import { Component } from 'src/models/coponent.model';
+
+type PropType = {
+    component: Component;
+    isProperty: boolean;
+    onChange?: (changes: boolean) => void;
+};
+
+const SwitchComponent = ({ component, isProperty, onChange }: PropType) => {
+    if (isProperty) {
+        return (
+            <Switch
+                defaultValue={component.defaultValue}
+                label={component.name}
+                onChange={onChange}
+            />
+        );
+    }
     return (
         <div style={{ padding: 16 }}>
             <Switch defaultValue={true} />
