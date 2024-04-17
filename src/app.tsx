@@ -6,7 +6,6 @@ import {
     Navigate,
 } from 'react-router-dom';
 
-import EditPage from './components/Editpage/Editpage';
 import HomePage from './pages/home/HomePage';
 import ComponentDetailsPage from './pages/component-detail/ComponentDetailsPage';
 import IconsListPage from './pages/icons/IconsListPage';
@@ -20,7 +19,6 @@ export const App = () => {
                 <Routes>
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/icons" element={<IconsListPage />} />
-                    <Route path="/edit" element={<EditPage />} />
                     <Route
                         path="/component-details"
                         element={<ComponentDetailsPage />}

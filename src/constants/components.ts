@@ -4,6 +4,7 @@ import { ComponentType } from './ComponentTypes';
 import { IconButtonConfig } from './component-configs/IconButtonConfig';
 import { PillConfig } from './component-configs/PillConfig';
 import { AlertConfig } from './component-configs/AlertConfig';
+import { BadgeConfig } from './component-configs/BadgeConfig';
 
 export const components: Component[] = [
     {
@@ -39,32 +40,7 @@ export const components: Component[] = [
         name: 'Badge',
         text: 'Badge',
         categoryId: 'informational',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: BadgeConfig,
     },
     {
         type: ComponentType.FORM_FIELD,
