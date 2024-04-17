@@ -12,6 +12,7 @@ import { EmbedConfig } from './component-configs/EmbedConfig';
 import { VideoCardConfig } from './component-configs/VideoCardConfig';
 import { TypographyConfig } from './component-configs/TypographyConfig';
 import { ImageCardConfig } from './component-configs/ImageCardConfig';
+import { AudioCardConfig } from './component-configs/AudioCardConfig';
 
 export const components: Component[] = [
     {
@@ -588,6 +589,7 @@ export const components: Component[] = [
         previewUrl:
             'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
         categoryId: 'card',
+        fields: AudioCardConfig,
     },
     {
         type: ComponentType.IMAGE_CARD,
