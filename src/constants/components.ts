@@ -9,6 +9,7 @@ import { LinkConfig } from './component-configs/LinkConfig';
 import { TextConfig } from './component-configs/TextConfig';
 import { TitleConfig } from './component-configs/TitleConfig';
 import { EmbedConfig } from './component-configs/EmbedConfig';
+import { VideoCardConfig } from './component-configs/VideoCardConfig';
 
 export const components: Component[] = [
     {
@@ -607,6 +608,7 @@ export const components: Component[] = [
             'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
         durationInSeconds: 11,
         categoryId: 'card',
+        fields: VideoCardConfig,
     },
     {
         type: ComponentType.EMBED_CARD,
