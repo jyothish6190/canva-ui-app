@@ -8,17 +8,17 @@ export const SwitchConfig = [
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: 'Label(optional)',
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Enter switch label',
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: 'Description(optional)',
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Enter description',
     },
 
     {
