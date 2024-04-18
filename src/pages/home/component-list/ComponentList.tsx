@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Grid } from '@canva/app-ui-kit';
 
 import ComponentCard from './component-card/ComponentCard';
 
 import { Component } from 'src/models/coponent.model';
+import ErrrorMessage from 'src/components/error-message/ErrrorMessage';
 
 type ComponentListType = {
     components: Component[];
+    searchQuery: string;
     onClick: (component: Component) => void;
 };
 
-const ComponentList = ({ components, onClick }: ComponentListType) => {
+const ComponentList = ({
+    components,
+    searchQuery,
+    onClick,
+}: ComponentListType) => {
+    const errorMessage = useMemo(() => {
+        return `Sorry, we couldn’t find any components for “${searchQuery}”.
+                Try adjusting your search or filters.`;
+    }, [searchQuery]);
+
+    if (!components || components.length === 0) {
+        return <ErrrorMessage errorMessage={errorMessage} />;
+    }
     return (
         <Grid
             alignX="stretch"

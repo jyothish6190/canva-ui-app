@@ -4,7 +4,7 @@ import { Grid } from '@canva/app-ui-kit';
 import IconCard from '../icon-card/IconCard';
 import { Icon } from 'src/models/icons.model';
 
-import styles from './IconList.css';
+import ErrrorMessage from 'src/components/error-message/ErrrorMessage';
 
 type IconListType = {
     icons: Icon[];
@@ -18,7 +18,7 @@ const IconList = ({ icons, searchQuery, onClick }: IconListType) => {
     }, [searchQuery]);
 
     if (!icons || icons.length === 0) {
-        return <p className={styles['error-message']}>{errorMessage}</p>;
+        return <ErrrorMessage errorMessage={errorMessage} />;
     }
 
     return (

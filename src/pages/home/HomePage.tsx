@@ -18,6 +18,7 @@ import { useComponentStore } from 'src/store/ComponentStore';
 const HomePage = () => {
     const navigate = useNavigate();
     const { setSelectedComponent } = useComponentStore();
+    const [showIcons, setShowIcons] = useState(true);
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
@@ -63,6 +64,11 @@ const HomePage = () => {
     };
 
     const searchHandler = (searchQuery: string) => {
+        if (searchQuery.length > 0) {
+            setShowIcons(false);
+        } else {
+            setShowIcons(true);
+        }
         setSearchQuery(searchQuery);
     };
 
@@ -84,9 +90,11 @@ const HomePage = () => {
                     selectedCategories={selectedCategories}
                     onClick={categorySelectHandler}
                 />
-                <IconList onClick={iconSelectHandler} />
+                {showIcons && <IconList onClick={iconSelectHandler} />}
+
                 <ComponentList
                     components={filteredComponentList}
+                    searchQuery={searchQuery}
                     onClick={componentSelectHandler}
                 />
             </Rows>
