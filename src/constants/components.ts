@@ -17,7 +17,8 @@ import { ProgressbarConfig } from './component-configs/ProgressbarComponentConfi
 import { PlaceholderComponentConfig } from './component-configs/PlaceholderComponentConfig';
 import { LoadingIndicatorConfig } from './component-configs/LoadingIndicatorConfig';
 import { ColorPickerConfig } from './component-configs/ColorPickerConfig';
-import { SwatchConfig } from './component-configs/SWatchConfig';
+import { SwatchConfig } from './component-configs/SwatchConfig';
+import { SwitchConfig } from './component-configs/SwitchConfig';
 
 export const components: Component[] = [
     {
@@ -466,91 +467,7 @@ export const components: Component[] = [
         name: 'Switch',
         defaultValue: true,
         categoryId: 'form',
-        fields: [
-            {
-                type: 'segmented-control',
-                id: 'varient',
-                title: 'Varient',
-                options: [
-                    {
-                        value: 'primary',
-                        label: 'Primary',
-                        selected: true,
-                    },
-                    {
-                        value: 'secondary',
-                        label: 'Secondary',
-                    },
-                    {
-                        value: 'tertiary',
-                        label: 'Tertiary',
-                    },
-                ],
-            },
-            {
-                type: 'text',
-                title: 'Text',
-                value: 'Button',
-            },
-            {
-                type: 'icon',
-                title: 'Icon',
-                placeholder: 'Choose an icon',
-                optional: true,
-            },
-            {
-                type: 'state',
-                title: 'State',
-                options: [
-                    {
-                        value: 'default',
-                        label: 'Default',
-                        selected: true,
-                    },
-                    {
-                        value: 'hover',
-                        label: 'Hover',
-                    },
-                    {
-                        value: 'active',
-                        label: 'Active',
-                    },
-                    {
-                        value: 'loading',
-                        label: 'Loading',
-                    },
-
-                    {
-                        value: 'disabled',
-                        label: 'Disabled',
-                    },
-                ],
-            },
-            {
-                type: 'width',
-                title: 'Width',
-                value: '56',
-                options: [
-                    {
-                        value: 'small',
-                        label: 'Small',
-                        selected: true,
-                    },
-                    {
-                        value: 'medium',
-                        label: 'Medium',
-                    },
-                    {
-                        value: 'large',
-                        label: 'Large',
-                    },
-                    {
-                        value: 'custom',
-                        label: 'Custom',
-                    },
-                ],
-            },
-        ],
+        fields: SwitchConfig,
     },
     {
         type: ComponentType.SWATCH,
