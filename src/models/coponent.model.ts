@@ -1,5 +1,6 @@
 import { SelectOption } from '@canva/app-ui-kit';
 import { ComponentType } from 'src/constants/ComponentTypes';
+import { Category } from './category.model';
 
 export interface Component {
     type: ComponentType;
@@ -33,6 +34,7 @@ export interface Component {
     borderRadius?: string;
     thumbnailUrl?: string;
     children?: string;
+    selectedCategories?: Category[];
 }
 
 interface Option2 {
