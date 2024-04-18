@@ -23,7 +23,9 @@ const ButtonTypesComponent = ({ component }: PropType) => {
                                 key={index}
                                 category={category as any}
                                 selectedCategories={
-                                    component.selectedCategories as Category[]
+                                    component.selectedCategories
+                                        ? (component.selectedCategories as Category[])
+                                        : []
                                 }
                                 onClick={() => {}}
                             />
