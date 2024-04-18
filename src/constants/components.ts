@@ -15,6 +15,7 @@ import { ImageCardConfig } from './component-configs/ImageCardConfig';
 import { AudioCardConfig } from './component-configs/AudioCardConfig';
 import { ProgressbarConfig } from './component-configs/ProgressbarComponentConfig';
 import { PlaceholderComponentConfig } from './component-configs/PlaceholderComponentConfig';
+import { LoadingIndicatorConfig } from './component-configs/LoadingIndicatorConfig';
 
 export const components: Component[] = [
     {
@@ -568,6 +569,7 @@ export const components: Component[] = [
         name: 'Loading indicator',
         size: 'large',
         categoryId: 'progress',
+        fields: LoadingIndicatorConfig,
     },
     {
         type: ComponentType.PLACEHOLDER,
