@@ -1,6 +1,10 @@
-import { Box, Column, Columns } from '@canva/app-ui-kit';
 import React from 'react';
+
+import { Box } from '@canva/app-ui-kit';
+
+import { Category } from 'src/models/category.model';
 import { Component } from 'src/models/coponent.model';
+
 import CategoriesItem from 'src/pages/home/categories-list/categories-item/CategoriesItem';
 
 type PropType = {
@@ -18,7 +22,9 @@ const ButtonTypesComponent = ({ component }: PropType) => {
                             <CategoriesItem
                                 key={index}
                                 category={category as any}
-                                selectedCategories={[]}
+                                selectedCategories={
+                                    component.selectedCategories as Category[]
+                                }
                                 onClick={() => {}}
                             />
                         );

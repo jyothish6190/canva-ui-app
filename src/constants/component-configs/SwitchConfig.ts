@@ -8,14 +8,14 @@ export const SwitchConfig = [
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Label(optional)',
+        name: 'Label (optional)',
         label: 'Label',
         description: 'Description text',
         placeholder: 'Enter switch label',
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Description(optional)',
+        name: 'Description (optional)',
         label: 'Label',
         description: 'Description text',
         placeholder: 'Enter description',
@@ -25,10 +25,12 @@ export const SwitchConfig = [
         type: ComponentType.FORM_FIELD,
         name: 'Width',
         label: 'Label',
+        value: '328',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
+
         options: [
             {
                 label: 'Small',
@@ -44,7 +46,13 @@ export const SwitchConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Medium',
+                value: 'medium',
             },
         ],
     },
@@ -59,14 +67,6 @@ export const SwitchConfig = [
             {
                 label: 'Hover',
                 value: 'hover',
-            },
-            {
-                label: 'Active',
-                value: 'active',
-            },
-            {
-                label: 'Loading',
-                value: 'loading',
             },
             {
                 label: 'Disabled',
