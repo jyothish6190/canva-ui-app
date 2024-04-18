@@ -16,6 +16,8 @@ import { AudioCardConfig } from './component-configs/AudioCardConfig';
 import { ProgressbarConfig } from './component-configs/ProgressbarComponentConfig';
 import { PlaceholderComponentConfig } from './component-configs/PlaceholderComponentConfig';
 import { LoadingIndicatorConfig } from './component-configs/LoadingIndicatorConfig';
+import { ColorPickerConfig } from './component-configs/ColorPickerConfig';
+import { SwatchConfig } from './component-configs/SWatchConfig';
 
 export const components: Component[] = [
     {
@@ -557,12 +559,14 @@ export const components: Component[] = [
         size: 'small',
         variant: 'solid',
         categoryId: 'color',
+        fields: SwatchConfig,
     },
     {
         type: ComponentType.COLOR_PICKER,
         name: 'Color picker',
         color: '#E0D9FC',
         categoryId: 'color',
+        fields: ColorPickerConfig,
     },
     {
         type: ComponentType.LOADING_INDICATOR,

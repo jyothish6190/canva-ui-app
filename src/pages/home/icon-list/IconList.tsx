@@ -7,6 +7,7 @@ import {
     PauseIcon,
     CodeIcon,
     PlayFilledIcon,
+    Box,
 } from '@canva/app-ui-kit';
 
 import styles from './icon-list.css';
@@ -17,25 +18,28 @@ type IconListType = {
 
 const IconList = ({ onClick }: IconListType) => {
     return (
-        <div
-            className={styles.container}
-            onClick={(e) => {
-                e.preventDefault();
-                onClick();
-            }}
-        >
-            <CheckIcon />
-            <div style={{ flex: '1' }}></div>
-            <XIcon />
-            <div style={{ flex: '1' }}></div>
-            <MusicIcon />
-            <div style={{ flex: '1' }}></div>
-            <PlayFilledIcon />
-            <div style={{ flex: '1' }}></div>
-            <PauseIcon />
-            <div style={{ flex: '1' }}></div>
-            <CodeIcon />
-        </div>
+        <Box>
+            <div
+                className={styles.container}
+                onClick={(e) => {
+                    e.preventDefault();
+                    onClick();
+                }}
+            >
+                <CheckIcon />
+                <div style={{ flex: '1' }}></div>
+                <XIcon />
+                <div style={{ flex: '1' }}></div>
+                <MusicIcon />
+                <div style={{ flex: '1' }}></div>
+                <PlayFilledIcon />
+                <div style={{ flex: '1' }}></div>
+                <PauseIcon />
+                <div style={{ flex: '1' }}></div>
+                <CodeIcon />
+            </div>
+            <label className={styles.title}>Icons</label>
+        </Box>
     );
 };
 

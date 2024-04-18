@@ -1,7 +1,22 @@
 import React from 'react';
-import { Swatch } from '@canva/app-ui-kit';
+import { ColorSelector, Swatch } from '@canva/app-ui-kit';
+import { Component } from 'src/models/coponent.model';
 
-const ColorSelectorComponent = () => {
+type PropType = {
+    component: Component;
+    isProperty: boolean;
+    onChange?: (text: string) => void;
+};
+
+const ColorSelectorComponent = ({
+    component,
+    isProperty,
+    onChange,
+}: PropType) => {
+    if (isProperty) {
+        return <ColorSelector color="#143F6B" onChange={() => {}} />;
+    }
+
     return (
         <div
             style={{
@@ -10,12 +25,7 @@ const ColorSelectorComponent = () => {
                 height: 128,
             }}
         >
-            <Swatch
-                fill={['#E0D9FC']}
-                onClick={() => {}}
-                size="small"
-                variant="solid"
-            />
+            <ColorSelector color="#143F6B" onChange={() => {}} />
             <img
                 src={require('assets/images/ColorPicker.png')}
                 alt="Image 2"
