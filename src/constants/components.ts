@@ -19,6 +19,7 @@ import { LoadingIndicatorConfig } from './component-configs/LoadingIndicatorConf
 import { ColorPickerConfig } from './component-configs/ColorPickerConfig';
 import { SwatchConfig } from './component-configs/SwatchConfig';
 import { SwitchConfig } from './component-configs/SwitchConfig';
+import { MultiLineInputConfig } from './component-configs/MultiLineInputConfig';
 
 export const components: Component[] = [
     {
@@ -247,33 +248,9 @@ export const components: Component[] = [
         type: ComponentType.MULTILINE_INPUT,
         name: 'Multiline Input',
         categoryId: 'form',
+        max: 50,
         placeholder: 'Placeholder',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: MultiLineInputConfig,
     },
     {
         type: ComponentType.SEGMENTED_CONTROL,
