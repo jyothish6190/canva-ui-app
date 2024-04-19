@@ -15,14 +15,21 @@ const NumberInputComponent = ({
     isProperty,
     onChange,
 }: PropType) => {
+    if (component.hasSpinButtons) {
+        return (
+            <div style={{ padding: 16 }}>
+                <NumberInput
+                    defaultValue={component.defaultValue}
+                    decrementAriaLabel="decrease"
+                    incrementAriaLabel="increase"
+                    hasSpinButtons={true}
+                />
+            </div>
+        );
+    }
     return (
         <div style={{ padding: 16 }}>
-            <NumberInput
-                defaultValue={component.defaultValue}
-                decrementAriaLabel="decrease"
-                incrementAriaLabel="increase"
-                hasSpinButtons={true}
-            />
+            <NumberInput defaultValue={component.defaultValue} />
         </div>
     );
 };
