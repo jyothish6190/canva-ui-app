@@ -95,7 +95,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.NUMBER_INPUT:
-            return <NumberInputComponent />;
+            return (
+                <NumberInputComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.FILE_INPUT:
             return <FileInput />;
         case ComponentType.SELECT:

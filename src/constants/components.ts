@@ -21,6 +21,7 @@ import { SwatchConfig } from './component-configs/SwatchConfig';
 import { SwitchConfig } from './component-configs/SwitchConfig';
 import { MultiLineInputConfig } from './component-configs/MultiLineInputConfig';
 import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
+import { NumberInputConfig } from './component-configs/NumberInputConfig';
 
 export const components: Component[] = [
     {
@@ -313,32 +314,7 @@ export const components: Component[] = [
         step: 1,
         disabled: true,
         categoryId: 'form',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: NumberInputConfig,
     },
     {
         type: ComponentType.FILE_INPUT,
