@@ -20,6 +20,7 @@ import { ColorPickerConfig } from './component-configs/ColorPickerConfig';
 import { SwatchConfig } from './component-configs/SwatchConfig';
 import { SwitchConfig } from './component-configs/SwitchConfig';
 import { MultiLineInputConfig } from './component-configs/MultiLineInputConfig';
+import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 
 export const components: Component[] = [
     {
@@ -185,32 +186,7 @@ export const components: Component[] = [
                 label: 'Strawberry',
             },
         ],
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: RadioGroupConfig,
     },
     {
         type: ComponentType.TEXT_INPUT,
