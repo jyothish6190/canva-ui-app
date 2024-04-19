@@ -22,6 +22,7 @@ import { SwitchConfig } from './component-configs/SwitchConfig';
 import { MultiLineInputConfig } from './component-configs/MultiLineInputConfig';
 import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
+import { SliderConfig } from './component-configs/SliderConfig';
 
 export const components: Component[] = [
     {
@@ -274,37 +275,12 @@ export const components: Component[] = [
     {
         type: ComponentType.SLIDER,
         name: 'Slider',
-        defaultValue: 0,
-        min: -50,
-        max: 50,
+        defaultValue: 25,
+        min: 0,
+        max: 100,
         disabled: true,
         categoryId: 'form',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: SliderConfig,
     },
     {
         type: ComponentType.NUMBER_INPUT,
