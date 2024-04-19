@@ -30,4 +30,5 @@ export enum ComponentType {
     TEXT = 'text',
     LINK = 'link',
     CATEGORY = 'category',
+    OPTIONS_LIST = 'options-list',
 }

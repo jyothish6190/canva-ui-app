@@ -36,6 +36,7 @@ import SegmentedControlComponent from 'src/components/segmented-control/Segmente
 import TextComponent from 'src/components/text/TextComponent';
 import ButtonTypesComponent from 'src/components/button-types-component/ButtonTypesComponent';
 import MultilineInputComponent from 'src/components/multiline-input-component/MultilineInputComponent';
+import OptionsListComponent from 'src/components/options-list-component/OptionsListComponent';
 
 type PropType = {
     component: Component;
@@ -161,6 +162,13 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
             return <LinkComponent />;
         case ComponentType.CATEGORY:
             return <ButtonTypesComponent component={component} />;
+        case ComponentType.OPTIONS_LIST:
+            return (
+                <OptionsListComponent
+                    component={component}
+                    isProprty={isProperty}
+                />
+            );
 
         default:
             return <></>;
