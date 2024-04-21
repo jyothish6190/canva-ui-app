@@ -8,7 +8,7 @@ import {
     Title,
 } from '@canva/app-ui-kit';
 
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
 
 import ButtonComponent from 'src/components/button/ButtonComponent';

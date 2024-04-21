@@ -1,10 +1,13 @@
 import React, { useMemo } from 'react';
-import { PlusIcon, Rows } from '@canva/app-ui-kit';
+import { Box, Column, Columns, PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
 import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
 
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
+
+import styles from './OptionsListComponent.css';
+import Title from '../title/Title';
 
 type PropType = {
     component: Component;
@@ -22,6 +25,14 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
 
     return (
         <Rows spacing="2u">
+            <div className={styles.header}>
+                <div style={{ justifyContent: 'flex-start' }}>
+                    <Title title="Options"></Title>
+                </div>
+                <div style={{ justifyContent: 'flex-end' }}>
+                    <Title title="Clear Selection"></Title>
+                </div>
+            </div>
             <>
                 {options.map((option) => {
                     return (
@@ -31,7 +42,6 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     );
                 })}
             </>
-
             <ButtonWithIcon
                 title="Add an option"
                 icon={PlusIcon}
