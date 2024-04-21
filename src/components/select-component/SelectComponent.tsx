@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormField, Select } from '@canva/app-ui-kit';
 
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 type PropType = {
     component: Component;

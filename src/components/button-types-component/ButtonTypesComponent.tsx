@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@canva/app-ui-kit';
 
 import { Category } from 'src/models/category.model';
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 import CategoriesItem from 'src/pages/home/categories-list/categories-item/CategoriesItem';
 
