@@ -24,6 +24,7 @@ import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
 import { SliderConfig } from './component-configs/SliderConfig';
 import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
+import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupCongig';
 
 export const components: Component[] = [
     {
@@ -120,32 +121,7 @@ export const components: Component[] = [
                 label: 'Strawberry',
             },
         ],
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: CheckBoxGroupConfig,
     },
     {
         type: ComponentType.RADIO,

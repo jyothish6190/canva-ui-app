@@ -37,6 +37,7 @@ import ButtonTypesComponent from 'src/components/button-types-component/ButtonTy
 import MultilineInputComponent from 'src/components/multiline-input-component/MultilineInputComponent';
 import OptionsListComponent from 'src/components/options-list-component/OptionsListComponent';
 import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
+import CheckBoxOptionListComponent from 'src/components/check-box-option-list-component/CheckBoxOptionsListComponent';
 
 type PropType = {
     component: Component;
@@ -179,7 +180,13 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                     isProprty={isProperty}
                 />
             );
-
+        case ComponentType.CHECKBOXOPTION:
+            return (
+                <CheckBoxOptionListComponent
+                    component={component}
+                    isProprty={isProperty}
+                />
+            );
         default:
             return <></>;
     }
