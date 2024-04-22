@@ -8,7 +8,7 @@ export const CheckBoxGroupConfig = [
     },
 
     {
-        type: ComponentType.CHECKBOXOPTION,
+        type: ComponentType.OPTIONS_LIST,
         name: 'Options',
         options: [
             {

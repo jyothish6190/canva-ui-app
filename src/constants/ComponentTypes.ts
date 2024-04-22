@@ -31,5 +31,4 @@ export enum ComponentType {
     LINK = 'link',
     CATEGORY = 'category',
     OPTIONS_LIST = 'options-list',
-    CHECKBOXOPTION = 'check-box-option',
 }
