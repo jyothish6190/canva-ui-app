@@ -32,3 +32,8 @@ export enum ComponentType {
     CATEGORY = 'category',
     OPTIONS_LIST = 'options-list',
 }
+
+export enum OptionTypes {
+    RADIO = 'radio',
+    CHECKBOX = 'checkbox',
+}

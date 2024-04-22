@@ -1,4 +1,4 @@
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../ComponentTypes';
 
 export const RadioGroupConfig = [
     {
@@ -9,6 +9,7 @@ export const RadioGroupConfig = [
 
     {
         type: ComponentType.OPTIONS_LIST,
+        optionType: OptionTypes.RADIO,
         options: [
             {
                 label: 'Small',
