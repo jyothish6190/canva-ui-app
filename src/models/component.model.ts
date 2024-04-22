@@ -35,6 +35,9 @@ export interface Component {
     thumbnailUrl?: string;
     children?: string;
     selectedCategories?: Category[];
+    tabs?: Category[];
+    tabId?: string;
+    defaultTabValue?: string;
 }
 
 interface Option2 {

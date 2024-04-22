@@ -1,0 +1,32 @@
+.TabsRoot {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+}
+
+.TabsList {
+    display: flex;
+    width: 100%;
+    margin-bottom: 8;
+}
+
+.TabsTrigger {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 8px 8px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    flex: 1;
+}
+
+.TabsTrigger[data-state='active'] {
+    border-bottom: 2px solid #8b3cff;
+    font-weight: 500;
+}
