@@ -23,6 +23,7 @@ import { MultiLineInputConfig } from './component-configs/MultiLineInputConfig';
 import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
 import { SliderConfig } from './component-configs/SliderConfig';
+import { FileInputConfig } from './component-configs/FileInputConfig';
 import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
 import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupConfig';
 import { SelectConfig } from './component-configs/SelectConfig';
@@ -252,32 +253,7 @@ export const components: Component[] = [
         disabled: true,
         multiple: true,
         categoryId: 'form',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: FileInputConfig,
     },
     {
         type: ComponentType.SELECT,
