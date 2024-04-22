@@ -1,4 +1,4 @@
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../ComponentTypes';
 
 export const CheckBoxGroupConfig = [
     {
@@ -8,8 +8,9 @@ export const CheckBoxGroupConfig = [
     },
 
     {
-        type: ComponentType.CHECKBOXOPTION,
+        type: ComponentType.OPTIONS_LIST,
         name: 'Options',
+        optionType: OptionTypes.CHECKBOX,
         options: [
             {
                 value: 'blueberry',
