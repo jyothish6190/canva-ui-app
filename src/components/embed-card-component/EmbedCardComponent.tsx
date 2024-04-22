@@ -1,6 +1,6 @@
 import React from 'react';
 import { EmbedCard } from '@canva/app-ui-kit';
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 const EmbedCardComponent = ({ component }: { component: Component }) => {
     return (

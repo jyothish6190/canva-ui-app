@@ -3,7 +3,8 @@ import { Box, Rows } from '@canva/app-ui-kit';
 
 import styles from './ComponentCard.css';
 import ComponentItem from '../component-item/ComponentItem';
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
+import Title from 'src/components/title/Title';
 
 type ComponentCardType = {
     component: Component;
@@ -22,7 +23,7 @@ const ComponentCard = ({ component }: ComponentCardType) => {
             >
                 <ComponentItem component={component} isProperty={false} />
             </Box>
-            <label className={styles.title}>{component.name}</label>
+            <Title title={component.name}></Title>
         </Rows>
     );
 };
