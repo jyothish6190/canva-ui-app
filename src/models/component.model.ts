@@ -38,6 +38,8 @@ export interface Component {
     tabs?: Category[];
     tabId?: string;
     defaultTabValue?: string;
+    startDecorator?: () => JSX.Element;
+    endDecorator?: () => JSX.Element;
 }
 
 interface Option2 {

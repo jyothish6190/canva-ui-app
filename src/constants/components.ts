@@ -24,6 +24,7 @@ import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
 import { SliderConfig } from './component-configs/SliderConfig';
 import { SelectConfig } from './component-configs/SelectConfig';
+import { TextInputConfig } from './component-configs/TextInputConfig';
 
 export const components: Component[] = [
     {
@@ -196,32 +197,7 @@ export const components: Component[] = [
         name: 'Text Input',
         categoryId: 'form',
         placeholder: 'Placeholder',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: TextInputConfig,
     },
     {
         type: ComponentType.MULTILINE_INPUT,
