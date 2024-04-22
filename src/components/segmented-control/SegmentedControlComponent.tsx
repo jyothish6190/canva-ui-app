@@ -3,7 +3,7 @@ import { FormField, SegmentedControl } from '@canva/app-ui-kit';
 
 import ExcessContainer from '../CommonComponents/excessContainer';
 
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 type PropsType = {
     component: Component;

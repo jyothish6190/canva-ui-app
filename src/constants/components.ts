@@ -1,4 +1,4 @@
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 import { ButtonConfig } from './component-configs/ButtonConfig';
 import { ComponentType } from './ComponentTypes';
 import { IconButtonConfig } from './component-configs/IconButtonConfig';
@@ -24,6 +24,9 @@ import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
 import { SliderConfig } from './component-configs/SliderConfig';
 import { FileInputConfig } from './component-configs/FileInputConfig';
+import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
+import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupConfig';
+import { SelectConfig } from './component-configs/SelectConfig';
 
 export const components: Component[] = [
     {
@@ -98,33 +101,9 @@ export const components: Component[] = [
     {
         type: ComponentType.CHECKBOX,
         name: 'Checkbox',
+        defaultValue: true,
         categoryId: 'form',
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: CheckBoxConfig,
     },
     {
         type: ComponentType.CHECKBOX_GROUP,
@@ -144,32 +123,7 @@ export const components: Component[] = [
                 label: 'Strawberry',
             },
         ],
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: CheckBoxGroupConfig,
     },
     {
         type: ComponentType.RADIO,
@@ -306,6 +260,17 @@ export const components: Component[] = [
         name: 'Select',
         stretch: true,
         categoryId: 'form',
+        tabs: [
+            {
+                label: 'Control',
+                value: 'control',
+            },
+            {
+                label: 'Options',
+                value: 'options',
+            },
+        ],
+        defaultTabValue: 'control',
         options: [
             {
                 value: 'blueberry',
@@ -316,32 +281,7 @@ export const components: Component[] = [
                 label: 'Apple',
             },
         ],
-        fields: [
-            {
-                id: 'varient',
-                selected: 'primary',
-            },
-            {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
-            },
-        ],
+        fields: SelectConfig,
     },
     {
         type: ComponentType.SWITCH,

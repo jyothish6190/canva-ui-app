@@ -3,7 +3,7 @@ import { Grid } from '@canva/app-ui-kit';
 
 import ComponentCard from './component-card/ComponentCard';
 
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 import ErrrorMessage from 'src/components/error-message/ErrrorMessage';
 
 type ComponentListType = {

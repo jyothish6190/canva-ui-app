@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 type PropType = {
     selectedComponent: Component | undefined;

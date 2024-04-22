@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@canva/app-ui-kit';
 
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 type ButtonComponentType = {
     component: Component;

@@ -11,7 +11,7 @@ import { categories } from '../../constants/categories';
 import { components } from 'src/constants/components';
 
 import { Category } from '../../models/category.model';
-import { Component } from 'src/models/coponent.model';
+import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 
