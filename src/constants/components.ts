@@ -24,7 +24,7 @@ import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
 import { SliderConfig } from './component-configs/SliderConfig';
 import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
-import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupCongig';
+import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupConfig';
 import { SelectConfig } from './component-configs/SelectConfig';
 
 export const components: Component[] = [
