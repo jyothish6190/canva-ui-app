@@ -1,5 +1,5 @@
 import { SelectOption } from '@canva/app-ui-kit';
-import { ComponentType } from 'src/constants/ComponentTypes';
+import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
 import { Category } from './category.model';
 
 export interface Component {
@@ -38,6 +38,7 @@ export interface Component {
     tabs?: Category[];
     tabId?: string;
     defaultTabValue?: string;
+    optionType?: OptionTypes;
 }
 
 interface Option2 {

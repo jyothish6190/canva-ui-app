@@ -37,7 +37,10 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 {options.map((option) => {
                     return (
                         <div key={option.value}>
-                            <OptionsItemComponent option={option} />
+                            <OptionsItemComponent
+                                option={option}
+                                OptionType={component.optionType}
+                            />
                         </div>
                     );
                 })}

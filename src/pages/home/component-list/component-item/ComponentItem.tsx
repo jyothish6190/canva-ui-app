@@ -37,6 +37,8 @@ import TextComponent from 'src/components/text/TextComponent';
 import ButtonTypesComponent from 'src/components/button-types-component/ButtonTypesComponent';
 import MultilineInputComponent from 'src/components/multiline-input-component/MultilineInputComponent';
 import OptionsListComponent from 'src/components/options-list-component/OptionsListComponent';
+import FileInputComponent from 'src/components/file-input-component/FileInputComponent';
+import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
 
 type PropType = {
     component: Component;
@@ -65,7 +67,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.CHECKBOX:
-            return <Checkbox label={component.name} />;
+            return (
+                <CheckBoxComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.RADIO:
             return <RadioGroupComponent />;
         case ComponentType.CHECKBOX_GROUP:
@@ -102,7 +109,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.FILE_INPUT:
-            return <FileInput />;
+            return (
+                <FileInputComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.SELECT:
             return (
                 <SelectComponent
