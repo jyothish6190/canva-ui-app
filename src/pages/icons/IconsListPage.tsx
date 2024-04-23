@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Rows } from '@canva/app-ui-kit';
 
 import { Header } from 'src/components/header/Header';
@@ -8,9 +8,13 @@ import IconList from './icon-list/IconList';
 
 import { icons } from 'src/constants/icons';
 import { Icon } from 'src/models/icons.model';
+import { useIconStore } from 'src/store/IconStore';
 
 const IconsListPage = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { setSelectedIcon } = useIconStore();
+    const previousPath = location.state;
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -31,6 +35,12 @@ const IconsListPage = () => {
     };
 
     const iconSelectionHandler = (icon: Icon) => {
+        if (previousPath !== 'home') {
+            setSelectedIcon(icon);
+            navigate(-1);
+        }
+        {
+        }
         console.log('🚀 ~ iconSelectionHandler ~ icon:', icon);
     };
 

@@ -17,8 +17,6 @@ const FormFieldComponent = ({ component, isProperty, onChange }: PropType) => {
                 label={component.name}
                 control={(props) => (
                     <TextInput
-                        start={component.startDecorator}
-                        end={component.endDecorator}
                         placeholder={component.placeholder}
                         value={component.value as string}
                         onChange={onChange}

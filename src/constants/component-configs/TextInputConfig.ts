@@ -14,12 +14,8 @@ export const TextInputConfig = [
         NoneValue: true,
     },
     {
-        type: ComponentType.FORM_FIELD,
-        name: ' Start decorator (optional)',
-        endDecorator: ChevronDownIcon,
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Select an option',
+        type: ComponentType.ICON_SELECTOR,
+        name: 'Start decorator (optional)',
     },
     {
         type: ComponentType.SELECT,
@@ -42,7 +38,14 @@ export const TextInputConfig = [
                 value: 'Character count',
             },
         ],
-        defaultValue: 'none',
+        defaultValue: 'text',
+    },
+    {
+        type: ComponentType.FORM_FIELD,
+        name: 'End Text',
+        label: 'Label',
+        value: 'End Text',
+        description: 'Description text',
     },
 
     {
