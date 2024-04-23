@@ -18,7 +18,7 @@ const ProgressbarComponent = ({
     if (isProperty) {
         return (
             <div style={{ width: '100%' }}>
-                <ProgressBar size="medium" tone="info" value={50} />;
+                <ProgressBar size="medium" tone="info" value={50} />
             </div>
         );
     }
