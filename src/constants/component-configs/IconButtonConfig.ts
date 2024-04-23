@@ -86,7 +86,7 @@ export const IconButtonConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
             },
         ],
         selectedCategories: [

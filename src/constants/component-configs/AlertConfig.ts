@@ -64,7 +64,7 @@ export const AlertConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
             },
         ],
         selectedCategories: [

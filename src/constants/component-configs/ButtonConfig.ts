@@ -92,7 +92,7 @@ export const ButtonConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
             },
         ],
         selectedCategories: [
