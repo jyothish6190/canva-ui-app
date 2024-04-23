@@ -44,6 +44,7 @@ export const AlertConfig = [
         type: ComponentType.FORM_FIELD,
         name: 'Width',
         label: 'Label',
+        value: '328',
         description: 'Description text',
     },
     {
@@ -63,7 +64,13 @@ export const AlertConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Small',
+                value: 'small',
             },
         ],
     },

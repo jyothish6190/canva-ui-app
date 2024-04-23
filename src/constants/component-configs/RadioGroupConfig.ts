@@ -26,7 +26,7 @@ export const RadioGroupConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
             },
         ],
     },

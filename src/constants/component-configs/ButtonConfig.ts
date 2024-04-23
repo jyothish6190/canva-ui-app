@@ -72,6 +72,7 @@ export const ButtonConfig = [
         type: ComponentType.FORM_FIELD,
         name: 'Width',
         label: 'Label',
+        value: '158',
         description: 'Description text',
     },
     {
@@ -91,7 +92,13 @@ export const ButtonConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Small',
+                value: 'small',
             },
         ],
     },

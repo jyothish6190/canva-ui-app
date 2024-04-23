@@ -106,7 +106,7 @@ export const SelectConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
             },
         ],
     },
