@@ -58,6 +58,7 @@ export const PillConfig = [
         type: ComponentType.FORM_FIELD,
         name: 'Width',
         label: 'Label',
+        vlue: '158',
         description: 'Description text',
     },
     {
@@ -77,7 +78,13 @@ export const PillConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Small',
+                value: 'small',
             },
         ],
     },
