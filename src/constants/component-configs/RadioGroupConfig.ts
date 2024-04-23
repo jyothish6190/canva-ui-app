@@ -10,6 +10,7 @@ export const RadioGroupConfig = [
     {
         type: ComponentType.OPTIONS_LIST,
         optionType: OptionTypes.RADIO,
+        name: 'Options',
         options: [
             {
                 label: 'Small',

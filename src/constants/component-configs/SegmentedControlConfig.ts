@@ -55,6 +55,7 @@ export const SegmentedControlConfig = [
     {
         type: ComponentType.OPTIONS_LIST,
         optionType: OptionTypes.RADIO,
+        name: 'Options',
         options: [
             {
                 label: 'S',

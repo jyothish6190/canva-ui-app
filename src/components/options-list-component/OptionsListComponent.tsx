@@ -27,7 +27,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         <Rows spacing="2u">
             <div className={styles.header}>
                 <div style={{ justifyContent: 'flex-start' }}>
-                    <Title title="Options"></Title>
+                    <Title title={component.name}></Title>
                 </div>
                 <div style={{ justifyContent: 'flex-end' }}>
                     <Title title="Clear Selection"></Title>

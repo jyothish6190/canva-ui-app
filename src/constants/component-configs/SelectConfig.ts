@@ -45,7 +45,13 @@ export const SelectConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Medium',
+                value: 'medium',
             },
         ],
     },
@@ -82,6 +88,8 @@ export const SelectConfig = [
     {
         type: ComponentType.OPTIONS_LIST,
         tabId: 'options',
+        name: 'Options',
+
         optionType: OptionTypes.RADIO,
         options: [
             {
