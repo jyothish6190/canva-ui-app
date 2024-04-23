@@ -50,7 +50,7 @@ export const ProgressbarConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
             },
         ],
         selectedCategories: [
