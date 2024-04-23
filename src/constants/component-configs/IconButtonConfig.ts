@@ -66,6 +66,7 @@ export const IconButtonConfig = [
         type: ComponentType.FORM_FIELD,
         name: 'Width',
         label: 'Label',
+        value: '158',
         description: 'Description text',
     },
     {
@@ -86,6 +87,12 @@ export const IconButtonConfig = [
             {
                 label: 'Custom',
                 value: 'lcustom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Small',
+                value: 'small',
             },
         ],
     },
