@@ -37,6 +37,7 @@ import TextComponent from 'src/components/text/TextComponent';
 import ButtonTypesComponent from 'src/components/button-types-component/ButtonTypesComponent';
 import MultilineInputComponent from 'src/components/multiline-input-component/MultilineInputComponent';
 import OptionsListComponent from 'src/components/options-list-component/OptionsListComponent';
+import IconSelctionComponent from 'src/components/icon-selection-component/IconSelectionComponent';
 import FileInputComponent from 'src/components/file-input-component/FileInputComponent';
 import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
 
@@ -78,7 +79,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.CHECKBOX_GROUP:
             return <CheckboxGroupComponent />;
         case ComponentType.TEXT_INPUT:
-            return <TextInputComponent component={component} />;
+            return (
+                <TextInputComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.MULTILINE_INPUT:
             return (
                 <MultilineInputComponent
@@ -186,6 +192,8 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                     isProprty={isProperty}
                 />
             );
+        case ComponentType.ICON_SELECTOR:
+            return <IconSelctionComponent component={component} />;
 
         default:
             return <></>;

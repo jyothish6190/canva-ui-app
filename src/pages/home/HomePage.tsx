@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Rows } from '@canva/app-ui-kit';
 
 import SearchBox from '../../components/search-box/SearchBox';
@@ -78,7 +79,7 @@ const HomePage = () => {
     };
 
     const iconSelectHandler = () => {
-        navigate('/icons');
+        navigate('/icons', { state: 'home' });
     };
 
     return (

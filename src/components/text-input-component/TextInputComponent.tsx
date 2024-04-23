@@ -5,7 +5,15 @@ import { Component } from 'src/models/component.model';
 
 import styles from './TextInput.css';
 
-const TextInputComponent = ({ component }: { component: Component }) => {
+type PropType = {
+    component: Component;
+    isProperty: boolean;
+};
+
+const TextInputComponent = ({ component, isProperty }: PropType) => {
+    if (isProperty) {
+        return <TextInput placeholder={component.placeholder} type={'text'} />;
+    }
     return (
         <div className={styles.container}>
             <TextInput placeholder={component.placeholder} type={'text'} />

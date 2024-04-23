@@ -31,7 +31,7 @@ export const ProgressbarConfig = [
         name: 'Width',
         label: 'Label',
         description: 'Description text',
-        value: '258',
+        value: '158',
     },
     {
         type: ComponentType.CATEGORY,
@@ -50,7 +50,13 @@ export const ProgressbarConfig = [
             },
             {
                 label: 'Custom',
-                value: 'lcustom',
+                value: 'custom',
+            },
+        ],
+        selectedCategories: [
+            {
+                label: 'Small',
+                value: 'small',
             },
         ],
     },
