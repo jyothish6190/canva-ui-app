@@ -1,4 +1,4 @@
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../ComponentTypes';
 
 export const SegmentedControlConfig = [
     {
@@ -54,6 +54,7 @@ export const SegmentedControlConfig = [
 
     {
         type: ComponentType.OPTIONS_LIST,
+        optionType: OptionTypes.RADIO,
         options: [
             {
                 label: 'S',
