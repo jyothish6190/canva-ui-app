@@ -1,5 +1,5 @@
 import { Component } from 'src/models/component.model';
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../ComponentTypes';
 import { icons } from '../icons';
 
 export const SelectConfig = [
@@ -82,6 +82,7 @@ export const SelectConfig = [
     {
         type: ComponentType.OPTIONS_LIST,
         tabId: 'options',
+        optionType: OptionTypes.RADIO,
         options: [
             {
                 label: 'Small',
