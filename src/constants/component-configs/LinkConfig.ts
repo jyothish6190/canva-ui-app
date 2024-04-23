@@ -9,7 +9,7 @@ export const LinkConfig = [
     },
     {
         type: ComponentType.SELECT,
-        name: 'State',
+        name: 'Size',
         options: [
             {
                 label: 'Small',
