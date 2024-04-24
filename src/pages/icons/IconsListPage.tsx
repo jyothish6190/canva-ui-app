@@ -17,8 +17,9 @@ import { useIconStore } from 'src/store/IconStore';
 const IconsListPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { setSelectedIcon } = useIconStore();
-    const previousPath = location.state;
+    const { setSelectedIcons } = useIconStore();
+    const previousPath = location?.state?.path;
+    const componentId = location?.state?.componentId;
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -62,7 +63,7 @@ const IconsListPage = () => {
 
     const iconSelectionHandler = (icon: Icon) => {
         if (previousPath !== 'home') {
-            setSelectedIcon(icon);
+            setSelectedIcons({ selectedIcon: icon, componentId: componentId });
             navigate(-1);
         } else {
             updateComponentHandler(icon);
