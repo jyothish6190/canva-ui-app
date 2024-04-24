@@ -79,7 +79,7 @@ const HomePage = () => {
     };
 
     const iconSelectHandler = () => {
-        navigate('/icons', { state: 'home' });
+        navigate('/icons', { state: { path: 'home' } });
     };
 
     return (

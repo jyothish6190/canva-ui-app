@@ -19,15 +19,19 @@ type PropType = {
 const IconSelctionComponent = ({ component }: PropType) => {
     const navigate = useNavigate();
 
-    const { selectedIcon, setSelectedIcon } = useIconStore();
+    const { selectedIcons, deleteSelectedIcon } = useIconStore();
+
+    const selectedObject = selectedIcons.find(
+        (obj) => obj.componentId == component.name
+    );
 
     const clearSelectInput = () => {
-        return selectedIcon ? (
+        return selectedObject ? (
             <Button
                 variant="tertiary"
                 icon={ClearIcon}
                 onClick={() => {
-                    setSelectedIcon(undefined);
+                    deleteSelectedIcon(selectedObject.componentId);
                 }}
             />
         ) : (
@@ -35,7 +39,12 @@ const IconSelctionComponent = ({ component }: PropType) => {
                 variant="tertiary"
                 icon={ChevronDownIcon}
                 onClick={() => {
-                    navigate('/icons');
+                    navigate('/icons', {
+                        state: {
+                            path: 'iconSelector',
+                            componentId: component.name,
+                        },
+                    });
                 }}
             />
         );
@@ -46,11 +55,20 @@ const IconSelctionComponent = ({ component }: PropType) => {
             label={component.name}
             control={(props) => (
                 <TextInput
+                    key={selectedObject?.selectedIcon?.label}
                     type="text"
                     placeholder={'Select an icon'}
-                    value={selectedIcon?.label || ''}
-                    start={selectedIcon?.Icon}
+                    value={selectedObject?.selectedIcon?.label || ''}
+                    start={selectedObject?.selectedIcon.Icon || ''}
                     end={clearSelectInput}
+                    onFocus={() => {
+                        navigate('/icons', {
+                            state: {
+                                path: 'iconSelector',
+                                componentId: component.name,
+                            },
+                        });
+                    }}
                 />
             )}
         />
