@@ -24,10 +24,8 @@ export const IconButtonConfig = [
     },
 
     {
-        type: ComponentType.SELECT,
-        name: 'Icon (optional)',
-        options: icons,
-        placeholder: 'Choose an Icon',
+        type: ComponentType.ICON_SELECTOR,
+        name: 'Icon',
     },
     {
         type: ComponentType.SELECT,

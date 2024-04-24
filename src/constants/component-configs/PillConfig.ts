@@ -10,16 +10,12 @@ export const PillConfig = [
         placeholder: 'Pill',
     },
     {
-        type: ComponentType.SELECT,
-        name: 'Start Decorator (optional)',
-        options: icons,
-        placeholder: 'Choose an Icon',
+        type: ComponentType.ICON_SELECTOR,
+        name: 'Start decorator (optional)',
     },
     {
-        type: ComponentType.SELECT,
-        name: 'End Decorator (optional)',
-        options: icons,
-        placeholder: 'Choose an Icon',
+        type: ComponentType.ICON_SELECTOR,
+        name: 'End decorator (optional)',
     },
     {
         type: ComponentType.SELECT,
