@@ -30,10 +30,8 @@ export const ButtonConfig = [
         placeholder: 'Button',
     },
     {
-        type: ComponentType.SELECT,
+        type: ComponentType.ICON_SELECTOR,
         name: 'Icon (optional)',
-        options: icons,
-        placeholder: 'Choose an Icon',
     },
     {
         type: ComponentType.SELECT,
