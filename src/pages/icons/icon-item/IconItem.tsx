@@ -8,7 +8,11 @@ type IconItemType = {
 };
 
 const IconItem = ({ icon }: IconItemType) => {
-    return <div className={styles['icon-container']}>{icon.Icon()}</div>;
+    return (
+        <div id={icon.label} className={styles['icon-container']}>
+            {icon.Icon()}
+        </div>
+    );
 };
 
 export default IconItem;

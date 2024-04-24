@@ -1,6 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import { Rows } from '@canva/app-ui-kit';
+import html2canvas from 'html2canvas';
+import { upload } from '@canva/asset';
+import { addNativeElement } from '@canva/design';
 
 import { Header } from 'src/components/header/Header';
 import SearchBox from 'src/components/search-box/SearchBox';
@@ -34,13 +38,35 @@ const IconsListPage = () => {
     const backHandler = () => {
         navigate(-1);
     };
+    const updateComponentHandler = async (icon) => {
+        const element = document.getElementById(icon.label),
+            canvas = await html2canvas(element as HTMLElement),
+            data = canvas.toDataURL('image/jpeg');
+
+        const result = await upload({
+            type: 'IMAGE',
+            mimeType: 'image/jpeg',
+            url: data,
+            thumbnailUrl: data,
+        });
+        console.log('🚀 ~ updateComponentHandler ~ result:', result);
+
+        await addNativeElement({
+            type: 'IMAGE',
+            ref: result.ref,
+            width: 100,
+            height: 100,
+            top: 250,
+            left: 350,
+        });
+    };
 
     const iconSelectionHandler = (icon: Icon) => {
         if (previousPath !== 'home') {
             setSelectedIcons({ selectedIcon: icon, componentId: componentId });
             navigate(-1);
         } else {
-            console.log('🚀 ~ iconSelectionHandler ~ icon:', icon);
+            updateComponentHandler(icon);
         }
     };
 
