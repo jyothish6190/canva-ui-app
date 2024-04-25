@@ -51,7 +51,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.BUTTON:
             return <ButtonComponent component={component} />;
         case ComponentType.ICON_BUTTON:
-            return <IconButton />;
+            return <IconButton component={component} isProperty={isProperty} />;
         case ComponentType.PILL:
             return <Pill key={component.name} text={component.name} />;
         case ComponentType.ALERT:

@@ -1,10 +1,18 @@
 import { ComponentType } from '../ComponentTypes';
 import { icons } from '../icons';
+export enum IconButtonFieldNames {
+    VARIANT = 'Variant',
+    ICON_SELECTION = 'Icon ',
+    STATE = 'State',
+    HUG_CONTENT = 'Hug Content',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+}
 
 export const IconButtonConfig = [
     {
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Variant',
+        name: IconButtonFieldNames.VARIANT,
         options: [
             {
                 label: 'Primary',
@@ -16,7 +24,7 @@ export const IconButtonConfig = [
             },
             {
                 label: 'Tertiary',
-                value: 'Tertiary',
+                value: 'tertiary',
             },
         ],
         defaultValue: 'primary',
@@ -25,11 +33,11 @@ export const IconButtonConfig = [
 
     {
         type: ComponentType.ICON_SELECTOR,
-        name: 'Icon',
+        name: IconButtonFieldNames.ICON_SELECTION,
     },
     {
         type: ComponentType.SELECT,
-        name: 'State',
+        name: IconButtonFieldNames.STATE,
         options: [
             {
                 label: 'Default',
@@ -57,18 +65,19 @@ export const IconButtonConfig = [
     },
     {
         type: ComponentType.SWITCH,
-        name: 'Hug Content',
+        name: IconButtonFieldNames.HUG_CONTENT,
         defaultValue: true,
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: IconButtonFieldNames.WIDTH,
         label: 'Label',
         value: '158',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
+        name: IconButtonFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
