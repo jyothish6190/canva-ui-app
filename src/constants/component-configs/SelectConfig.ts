@@ -1,6 +1,4 @@
-import { Component } from 'src/models/component.model';
 import { ComponentType, OptionTypes } from '../ComponentTypes';
-import { icons } from '../icons';
 
 export const SelectConfig = [
     {
