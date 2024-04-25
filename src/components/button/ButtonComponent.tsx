@@ -3,6 +3,7 @@ import { Button } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { Variant } from '@canva/app-ui-kit/dist/cjs/ui/apps/developing/ui_kit/components/button/button';
+import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 
 type ButtonComponentType = {
     component: Component;
@@ -13,7 +14,7 @@ const ButtonComponent = ({ component }: ButtonComponentType) => {
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
-            if (field.name === 'Variant') {
+            if (field.name === ButtonFieldNames.VARIANT) {
                 setVariant(field.value ? field.value : 'primary');
             }
         });

@@ -1,10 +1,14 @@
 import { ComponentType } from '../ComponentTypes';
 import { icons } from '../icons';
 
+export enum ButtonFieldNames {
+    VARIANT = 'Variant',
+}
+
 export const ButtonConfig = [
     {
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Variant',
+        name: ButtonFieldNames.VARIANT,
         options: [
             {
                 label: 'Primary',
