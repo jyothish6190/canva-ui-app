@@ -79,7 +79,8 @@ const IconSelctionComponent = ({ component }: PropType) => {
                             '🚀 ~ IconSelctionComponent ~ event:',
                             event
                         );
-
+                        selectedIcon?.icon &&
+                            deleteIcon(selectedIcon.componentId);
                         navigate('/icons', {
                             state: {
                                 path: 'iconSelector',
