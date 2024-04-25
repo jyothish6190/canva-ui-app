@@ -3,6 +3,12 @@ import { icons } from '../icons';
 
 export enum ButtonFieldNames {
     VARIANT = 'Variant',
+    TEXT = 'Text',
+    ICON_SELECTION = 'Icon (optional)',
+    STATE = 'State',
+    HUG_CONTENT = 'Hug Content',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
 }
 
 export const ButtonConfig = [
@@ -20,7 +26,7 @@ export const ButtonConfig = [
             },
             {
                 label: 'Tertiary',
-                value: 'Tertiary',
+                value: 'tertiary',
             },
         ],
         defaultValue: 'primary',
@@ -28,18 +34,18 @@ export const ButtonConfig = [
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: ButtonFieldNames.TEXT,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Button',
     },
     {
         type: ComponentType.ICON_SELECTOR,
-        name: 'Icon (optional)',
+        name: ButtonFieldNames.ICON_SELECTION,
     },
     {
         type: ComponentType.SELECT,
-        name: 'State',
+        name: ButtonFieldNames.STATE,
         options: [
             {
                 label: 'Default',
@@ -67,40 +73,40 @@ export const ButtonConfig = [
     },
     {
         type: ComponentType.SWITCH,
-        name: 'Hug Content',
+        name: ButtonFieldNames.HUG_CONTENT,
         defaultValue: true,
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: ButtonFieldNames.WIDTH,
         label: 'Label',
-        value: '158',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
+        name: ButtonFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
         ],
     },
