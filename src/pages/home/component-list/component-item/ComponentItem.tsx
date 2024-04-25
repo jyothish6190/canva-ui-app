@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-    Badge,
-    Checkbox,
-    FileInput,
-    LoadingIndicator,
-    Pill,
-    Title,
-} from '@canva/app-ui-kit';
+import { Badge, LoadingIndicator, Pill, Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';

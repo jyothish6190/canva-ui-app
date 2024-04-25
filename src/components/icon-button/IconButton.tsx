@@ -13,10 +13,7 @@ type IconIconButtonComponentType = {
     isProperty: boolean;
 };
 
-const IconIconButton = ({
-    component,
-    isProperty,
-}: IconIconButtonComponentType) => {
+const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
     const [buttonVariant, setbuttonVariant] = useState<Variant>('primary');
     const [buttonIcon, setbuttonIcon] = useState<Icon | undefined>(undefined);
     const [buttonState, setbuttonState] = useState<
@@ -59,4 +56,4 @@ const IconIconButton = ({
     );
 };
 
-export default IconIconButton;
+export default IconButton;
