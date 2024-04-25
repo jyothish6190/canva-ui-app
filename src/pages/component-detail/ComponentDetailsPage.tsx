@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { addNativeElement } from '@canva/design';
 import { upload } from '@canva/asset';
 import { Button, Rows } from '@canva/app-ui-kit';
-import html2canvas from 'html2canvas';
+import { toPng } from 'html-to-image';
 
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
@@ -14,31 +14,40 @@ import { useComponentStore } from 'src/store/ComponentStore';
 const ComponentDetailsPage = () => {
     const { selectedComponent } = useComponentStore();
 
-    const updateComponentHandler = async () => {
-        const element = document.getElementById('live-preview'),
-            canvas = await html2canvas(element as HTMLElement),
-            data = canvas.toDataURL('image/jpeg');
+    const ref = useRef<HTMLDivElement>(null);
 
-        const result = await upload({
-            type: 'IMAGE',
-            mimeType: 'image/jpeg',
-            url: data,
-            thumbnailUrl: data,
-        });
-        console.log('🚀 ~ updateComponentHandler ~ result:', result);
+    const onButtonClick = useCallback(() => {
+        if (ref.current === null) {
+            return;
+        }
 
-        await addNativeElement({
-            type: 'IMAGE',
-            ref: result.ref,
-        });
-    };
+        toPng(ref.current, { cacheBust: true })
+            .then(async (dataUrl) => {
+                console.log('🚀 ~ .then ~ dataUrl:', dataUrl);
+
+                const result = await upload({
+                    type: 'IMAGE',
+                    mimeType: 'image/png',
+                    url: dataUrl,
+                    thumbnailUrl: dataUrl,
+                });
+
+                await addNativeElement({
+                    type: 'IMAGE',
+                    ref: result.ref,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [ref]);
 
     return (
         <>
             {selectedComponent && (
                 <Rows spacing="2u">
                     <LivePreview>
-                        <div id="live-preview">
+                        <div ref={ref}>
                             <ComponentItem
                                 component={selectedComponent}
                                 isProperty={true}
@@ -50,7 +59,7 @@ const ComponentDetailsPage = () => {
                         stretch={true}
                         variant="primary"
                         children="Update Component"
-                        onClick={updateComponentHandler}
+                        onClick={onButtonClick}
                     />
                 </Rows>
             )}
