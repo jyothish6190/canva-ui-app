@@ -3,19 +3,33 @@ import { Switch } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 
+import { useComponentStore } from 'src/store/ComponentStore';
+
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (changes: boolean) => void;
 };
 
-const SwitchComponent = ({ component, isProperty, onChange }: PropType) => {
+const SwitchComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const changeHandler = (value: boolean) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
+
     if (isProperty) {
         return (
             <Switch
                 defaultValue={component.defaultValue}
                 label={component.name}
-                onChange={onChange}
+                value={component.value}
+                onChange={changeHandler}
             />
         );
     }

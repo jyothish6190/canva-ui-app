@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Box } from '@canva/app-ui-kit';
 
@@ -6,12 +6,28 @@ import { Category } from 'src/models/category.model';
 import { Component } from 'src/models/component.model';
 
 import CategoriesItem from 'src/pages/home/categories-list/categories-item/CategoriesItem';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
 };
 
 const ButtonTypesComponent = ({ component }: PropType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const [selectedCategory, setSelectedCategory] = useState<Category>();
+
+    const selectHandler = (category: Category) => {
+        setSelectedCategory(category);
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = category.value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
+
     return (
         <>
             <Box display="flex" justifyContent="spaceBetween">
@@ -23,11 +39,11 @@ const ButtonTypesComponent = ({ component }: PropType) => {
                                 key={index}
                                 category={category as any}
                                 selectedCategories={
-                                    component.selectedCategories
-                                        ? (component.selectedCategories as Category[])
-                                        : []
+                                    selectedCategory
+                                        ? [selectedCategory]
+                                        : (component.selectedCategories as Category[])
                                 }
-                                onClick={() => {}}
+                                onClick={selectHandler}
                             />
                         );
                     })}

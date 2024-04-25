@@ -2,15 +2,29 @@ import React from 'react';
 import { FormField, TextInput } from '@canva/app-ui-kit';
 
 import ExcessContainer from '../CommonComponents/excessContainer';
+
 import { Component } from 'src/models/component.model';
+
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (text: string) => void;
 };
 
-const FormFieldComponent = ({ component, isProperty, onChange }: PropType) => {
+const FormFieldComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const changeHandler = (value: string) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
+
     if (isProperty) {
         return (
             <FormField
@@ -19,7 +33,7 @@ const FormFieldComponent = ({ component, isProperty, onChange }: PropType) => {
                     <TextInput
                         placeholder={component.placeholder}
                         value={component.value as string}
-                        onChange={onChange}
+                        onChange={changeHandler}
                     />
                 )}
             />

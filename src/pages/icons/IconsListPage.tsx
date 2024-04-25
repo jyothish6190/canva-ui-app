@@ -17,7 +17,8 @@ import { useIconStore } from 'src/store/IconStore';
 const IconsListPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { setSelectedIcons } = useIconStore();
+    const { setIconsList: setSelectedIcons } = useIconStore();
+
     const previousPath = location?.state?.path;
     const componentId = location?.state?.componentId;
 
@@ -30,6 +31,15 @@ const IconsListPage = () => {
 
         return iconsFiltered;
     }, [icons, searchQuery]);
+
+    const iconSelectionHandler = (icon: Icon) => {
+        if (previousPath !== 'home') {
+            setSelectedIcons({ icon: icon, componentId: componentId });
+            navigate(-1);
+        } else {
+            updateComponentHandler(icon);
+        }
+    };
 
     const searchHandler = (searchQuery: string) => {
         setSearchQuery(searchQuery);
@@ -59,15 +69,6 @@ const IconsListPage = () => {
             top: 250,
             left: 350,
         });
-    };
-
-    const iconSelectionHandler = (icon: Icon) => {
-        if (previousPath !== 'home') {
-            setSelectedIcons({ selectedIcon: icon, componentId: componentId });
-            navigate(-1);
-        } else {
-            updateComponentHandler(icon);
-        }
     };
 
     return (

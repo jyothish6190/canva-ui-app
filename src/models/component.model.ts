@@ -26,7 +26,7 @@ export interface Component {
     size?: string;
     variant?: string;
     color?: string;
-    value?: number | string;
+    value?: any;
     tone?: string;
     title?: string;
     durationInSeconds?: number | string;

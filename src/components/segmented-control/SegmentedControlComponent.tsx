@@ -5,17 +5,26 @@ import ExcessContainer from '../CommonComponents/excessContainer';
 
 import { Component } from 'src/models/component.model';
 
+import { useComponentStore } from 'src/store/ComponentStore';
+
 type PropsType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (selectedOption: string) => void;
 };
 
-const SegmentedControlComponent = ({
-    component,
-    isProperty,
-    onChange,
-}: PropsType) => {
+const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const changeHandler = (value: string) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
+
     if (isProperty) {
         return (
             <FormField
@@ -25,7 +34,8 @@ const SegmentedControlComponent = ({
                     <SegmentedControl
                         options={component.options as any[]}
                         defaultValue={component.defaultValue}
-                        onChange={onChange}
+                        value={component.value as string}
+                        onChange={changeHandler}
                     />
                 )}
             />

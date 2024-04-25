@@ -97,7 +97,6 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 <SegmentedControlComponent
                     component={component}
                     isProperty={isProperty}
-                    onChange={() => {}}
                 />
             );
         case ComponentType.SLIDER:

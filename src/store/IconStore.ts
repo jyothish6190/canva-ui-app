@@ -2,25 +2,25 @@ import { create } from 'zustand';
 import { Icon } from 'src/models/icons.model';
 
 type IconType = {
-    selectedIcon: Icon;
+    icon: Icon;
     componentId: string;
 };
 
 type PropType = {
-    selectedIcons: IconType[];
-    setSelectedIcons: (iconType: IconType) => void;
-    deleteSelectedIcon: (componentId: string) => void;
+    iconsList: IconType[];
+    setIconsList: (iconType: IconType) => void;
+    deleteIcon: (componentId: string) => void;
 };
 
 export const useIconStore = create<PropType>((set) => ({
-    selectedIcons: [],
-    setSelectedIcons: (iconType: IconType) =>
+    iconsList: [],
+    setIconsList: (iconType: IconType) =>
         set((state) => ({
-            selectedIcons: [...state.selectedIcons, iconType],
+            iconsList: [...state.iconsList, iconType],
         })),
-    deleteSelectedIcon: (componentId: string) =>
+    deleteIcon: (componentId: string) =>
         set((state) => ({
-            selectedIcons: state.selectedIcons.filter(
+            iconsList: state.iconsList.filter(
                 (obj) => obj.componentId !== componentId
             ),
         })),
