@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Badge,
     Checkbox,
     FileInput,
     LoadingIndicator,
@@ -40,6 +39,7 @@ import OptionsListComponent from 'src/components/options-list-component/OptionsL
 import IconSelctionComponent from 'src/components/icon-selection-component/IconSelectionComponent';
 import FileInputComponent from 'src/components/file-input-component/FileInputComponent';
 import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
+import BadgeComponent from 'src/components/badge-component/BadgeComponent';
 
 type PropType = {
     component: Component;
@@ -59,7 +59,9 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 <AlertComponent component={component} isProperty={isProperty} />
             );
         case ComponentType.BADGE:
-            return <Badge text={component.name} tone="assist" />;
+            return (
+                <BadgeComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.FORM_FIELD:
             return (
                 <FormFieldComponent
