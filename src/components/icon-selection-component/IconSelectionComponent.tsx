@@ -36,7 +36,7 @@ const IconSelctionComponent = ({ component }: PropType) => {
                 return true;
             }
         });
-    }, []);
+    }, [iconsList]);
 
     const clearSelectInput = () => {
         return selectedIcon ? (
@@ -68,7 +68,7 @@ const IconSelctionComponent = ({ component }: PropType) => {
             label={component.name}
             control={(props) => (
                 <TextInput
-                    key={selectedIcon?.icon?.label}
+                    key={selectedIcon?.icon?.label || ''}
                     type="text"
                     placeholder={'Select an icon'}
                     value={selectedIcon?.icon?.label || ''}
