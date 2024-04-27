@@ -1,9 +1,18 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum AlertFieldNames {
+    TONE = 'Tone',
+    TITLE = 'Title (Optional)',
+    TEXT = 'Text',
+    WIDTH = 'Width',
+    WIDTH_OPTION = 'Width option',
+    DISMISSIBLE = 'Dismissible',
+}
+
 export const AlertConfig = [
     {
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Tone',
+        name: AlertFieldNames.TONE,
         options: [
             {
                 label: 'Positive',
@@ -11,7 +20,7 @@ export const AlertConfig = [
             },
             {
                 label: 'Warning',
-                value: 'warning',
+                value: 'warn',
             },
             {
                 label: 'Critical',
@@ -27,14 +36,14 @@ export const AlertConfig = [
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Title (Optional)',
+        name: AlertFieldNames.TITLE,
         label: 'Label',
         description: 'Description text',
         placeholder: 'This is an alert.',
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: AlertFieldNames.TEXT,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Alert with a title.',
@@ -42,13 +51,14 @@ export const AlertConfig = [
 
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: AlertFieldNames.WIDTH,
         label: 'Label',
         value: '328',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
+        name: AlertFieldNames.WIDTH_OPTION,
         options: [
             {
                 label: 'Small',
@@ -76,7 +86,7 @@ export const AlertConfig = [
     },
     {
         type: ComponentType.SWITCH,
-        name: 'Dismissible',
+        name: AlertFieldNames.DISMISSIBLE,
         defaultValue: false,
     },
 ];

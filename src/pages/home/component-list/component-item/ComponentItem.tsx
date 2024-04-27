@@ -7,6 +7,7 @@ import {
     Title,
 } from '@canva/app-ui-kit';
 
+
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
 
@@ -40,6 +41,7 @@ import IconSelctionComponent from 'src/components/icon-selection-component/IconS
 import FileInputComponent from 'src/components/file-input-component/FileInputComponent';
 import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
 import BadgeComponent from 'src/components/badge-component/BadgeComponent';
+import PillComponent from 'src/components/pill-component/PillComponent';
 
 type PropType = {
     component: Component;
@@ -51,9 +53,11 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.BUTTON:
             return <ButtonComponent component={component} />;
         case ComponentType.ICON_BUTTON:
-            return <IconButton />;
+            return <IconButton component={component} isProperty={isProperty} />;
         case ComponentType.PILL:
-            return <Pill key={component.name} text={component.name} />;
+            return (
+                <PillComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.ALERT:
             return (
                 <AlertComponent component={component} isProperty={isProperty} />
