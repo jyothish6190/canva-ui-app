@@ -29,6 +29,7 @@ import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
 import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupConfig';
 import { SelectConfig } from './component-configs/SelectConfig';
 import { TextInputConfig } from './component-configs/TextInputConfig';
+import { FormFieldConfig } from './component-configs/FormFieldConfig';
 
 export const components: Component[] = [
     {
@@ -73,32 +74,18 @@ export const components: Component[] = [
         description: 'Description text',
         placeholder: 'Placeholder',
         categoryId: 'form',
-        fields: [
+        tabs: [
             {
-                id: 'varient',
-                selected: 'primary',
+                label: 'Form field',
+                value: 'form field',
             },
             {
-                id: 'text',
-            },
-            {
-                id: 'icon',
-                optional: true,
-            },
-            {
-                id: 'state',
-                selected: 'default',
-            },
-            {
-                id: 'hug-content',
-                selected: true,
-            },
-            {
-                id: 'width',
-                'default-value': '56',
-                selected: 'small',
+                label: 'Control',
+                value: 'control',
             },
         ],
+        defaultTabValue: 'form field',
+        fields: FormFieldConfig,
     },
     {
         type: ComponentType.CHECKBOX,
