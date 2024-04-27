@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-    Badge,
-    Checkbox,
-    FileInput,
-    LoadingIndicator,
-    Pill,
-    Title,
-} from '@canva/app-ui-kit';
+import { Badge, LoadingIndicator, Pill, Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
@@ -51,7 +44,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.BUTTON:
             return <ButtonComponent component={component} />;
         case ComponentType.ICON_BUTTON:
-            return <IconButton />;
+            return <IconButton component={component} isProperty={isProperty} />;
         case ComponentType.PILL:
             return <Pill key={component.name} text={component.name} />;
         case ComponentType.ALERT:
