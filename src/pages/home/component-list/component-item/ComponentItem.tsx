@@ -45,7 +45,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.BUTTON:
             return <ButtonComponent component={component} />;
         case ComponentType.ICON_BUTTON:
-            return <IconButton />;
+            return <IconButton component={component} isProperty={isProperty} />;
         case ComponentType.PILL:
             return (
                 <PillComponent component={component} isProperty={isProperty} />
