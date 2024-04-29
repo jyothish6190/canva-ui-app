@@ -36,6 +36,7 @@ const ComponentList = ({
             {components.map((component) => {
                 return (
                     <div
+                        style={{ cursor: 'pointer' }}
                         key={component.name}
                         onClick={(e) => {
                             e.preventDefault();
