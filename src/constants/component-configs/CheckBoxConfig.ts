@@ -1,14 +1,23 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum CheckBoxFieldNames {
+    CHECKED = 'Checked',
+    CHECKBOX_LABEL = 'Label (optional)',
+    HUG_CONTENT = 'Hug Content',
+    WIDTH = 'Width',
+    WIDTH_OPTION = 'Width option',
+    STATE = 'State',
+}
+
 export const CheckBoxConfig = [
     {
         type: ComponentType.SWITCH,
-        name: 'Checked',
-        defaultValue: true,
+        name: CheckBoxFieldNames.CHECKED,
+        value: true,
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Label (optional)',
+        name: CheckBoxFieldNames.CHECKBOX_LABEL,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Enter checkbox label',
@@ -16,19 +25,20 @@ export const CheckBoxConfig = [
     },
     {
         type: ComponentType.SWITCH,
-        name: 'Hug content',
+        name: CheckBoxFieldNames.HUG_CONTENT,
         defaultValue: false,
     },
 
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: CheckBoxFieldNames.WIDTH,
         label: 'Label',
         value: '158',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
+        name: CheckBoxFieldNames.WIDTH_OPTION,
 
         options: [
             {
@@ -57,7 +67,7 @@ export const CheckBoxConfig = [
     },
     {
         type: ComponentType.SELECT,
-        name: 'State',
+        name: CheckBoxFieldNames.STATE,
         options: [
             {
                 label: 'Default',
