@@ -32,6 +32,7 @@ import { TextInputConfig } from './component-configs/TextInputConfig';
 
 export const components: Component[] = [
     {
+        showComponent: true,
         type: ComponentType.BUTTON,
         name: 'Button',
         varient: 'primary',
@@ -39,6 +40,7 @@ export const components: Component[] = [
         fields: ButtonConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.ICON_BUTTON,
         name: 'Icon Button',
         'icon-data': 'InfoIcon',
@@ -47,12 +49,14 @@ export const components: Component[] = [
         fields: IconButtonConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.PILL,
         name: 'Pill',
         categoryId: 'action',
         fields: PillConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.ALERT,
         name: 'Alert',
         placeholder: 'This is an Alert',
@@ -60,6 +64,7 @@ export const components: Component[] = [
         fields: AlertConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.BADGE,
         name: 'Badge',
         text: 'Badge',
@@ -67,6 +72,7 @@ export const components: Component[] = [
         fields: BadgeConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: 'Form field',
         label: 'Label',
@@ -101,6 +107,7 @@ export const components: Component[] = [
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.CHECKBOX,
         name: 'Checkbox',
         defaultValue: true,
@@ -108,6 +115,7 @@ export const components: Component[] = [
         fields: CheckBoxConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.CHECKBOX_GROUP,
         name: 'Checkbox group',
         categoryId: 'form',
@@ -128,6 +136,7 @@ export const components: Component[] = [
         fields: CheckBoxGroupConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.RADIO,
         name: 'Radio',
         categoryId: 'form',
@@ -148,6 +157,7 @@ export const components: Component[] = [
         fields: RadioGroupConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.TEXT_INPUT,
         name: 'Text Input',
         categoryId: 'form',
@@ -155,6 +165,7 @@ export const components: Component[] = [
         fields: TextInputConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
         name: 'Multiline Input',
         categoryId: 'form',
@@ -163,6 +174,7 @@ export const components: Component[] = [
         fields: MultiLineInputConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: 'Segmented control',
         categoryId: 'form',
@@ -180,6 +192,7 @@ export const components: Component[] = [
         fields: SegmentedControlConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.SLIDER,
         name: 'Slider',
         defaultValue: 25,
@@ -190,6 +203,7 @@ export const components: Component[] = [
         fields: SliderConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.NUMBER_INPUT,
         name: 'Number input',
         defaultValue: 0,
@@ -200,6 +214,7 @@ export const components: Component[] = [
         fields: NumberInputConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.FILE_INPUT,
         name: 'File input',
         disabled: true,
@@ -208,6 +223,7 @@ export const components: Component[] = [
         fields: FileInputConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: 'Select',
         stretch: true,
@@ -236,6 +252,7 @@ export const components: Component[] = [
         fields: SelectConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: 'Switch',
         defaultValue: true,
@@ -243,6 +260,7 @@ export const components: Component[] = [
         fields: SwitchConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.SWATCH,
         name: 'Swatch',
         fill: ['#E0D9FC'],
@@ -252,6 +270,7 @@ export const components: Component[] = [
         fields: SwatchConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.COLOR_PICKER,
         name: 'Color picker',
         color: '#E0D9FC',
@@ -259,6 +278,7 @@ export const components: Component[] = [
         fields: ColorPickerConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.LOADING_INDICATOR,
         name: 'Loading indicator',
         size: 'large',
@@ -266,6 +286,7 @@ export const components: Component[] = [
         fields: LoadingIndicatorConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.PLACEHOLDER,
         name: 'Placeholder',
         size: 'small',
@@ -273,6 +294,7 @@ export const components: Component[] = [
         fields: PlaceholderComponentConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.PROGRESS_BAR,
         name: 'Progress bar',
         value: 50,
@@ -282,6 +304,7 @@ export const components: Component[] = [
         fields: ProgressbarConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.AUDIO_CARD,
         name: 'Audio card',
         title: 'Card title',
@@ -292,6 +315,7 @@ export const components: Component[] = [
         fields: AudioCardConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.IMAGE_CARD,
         name: 'Image card',
         borderRadius: 'standard',
@@ -301,6 +325,7 @@ export const components: Component[] = [
         fields: ImageCardConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.TYPOGRAPHY_CARD,
         name: 'Typography card',
         placeholder: 'The quick brown fox',
@@ -308,6 +333,7 @@ export const components: Component[] = [
         fields: TypographyConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.VIDEO_CARD,
         name: 'Video card',
         thumbnailUrl:
@@ -317,6 +343,7 @@ export const components: Component[] = [
         fields: VideoCardConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.EMBED_CARD,
         name: 'Embed card',
         thumbnailUrl:
@@ -327,6 +354,7 @@ export const components: Component[] = [
         fields: EmbedConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.TITLE,
         name: 'Title',
         placeholder: 'Title',
@@ -334,6 +362,7 @@ export const components: Component[] = [
         fields: TitleConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.TEXT,
         name: 'Text',
         placeholder: 'Text',
@@ -341,6 +370,7 @@ export const components: Component[] = [
         fields: TextConfig,
     },
     {
+        showComponent: true,
         type: ComponentType.LINK,
         name: 'Link',
         children: 'Go to Canva',

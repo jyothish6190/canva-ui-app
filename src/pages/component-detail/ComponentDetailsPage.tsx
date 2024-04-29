@@ -3,7 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import { addNativeElement } from '@canva/design';
 import { upload } from '@canva/asset';
 import { Button, Rows } from '@canva/app-ui-kit';
-import { toPng } from 'html-to-image';
+import { elementToSVG, inlineResources } from 'dom-to-svg';
 
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
@@ -16,30 +16,41 @@ const ComponentDetailsPage = () => {
 
     const ref = useRef<HTMLDivElement>(null);
 
-    const onButtonClick = useCallback(() => {
+    const onButtonClick = useCallback(async () => {
         if (ref.current === null) {
             return;
         }
+        const svgDocument = elementToSVG(ref.current);
 
-        toPng(ref.current, { cacheBust: true })
-            .then(async (dataUrl) => {
-                console.log('🚀 ~ .then ~ dataUrl:', dataUrl);
+        // Inline external resources (fonts, images, etc) as data: URIs
+        await inlineResources(svgDocument.documentElement);
 
-                const result = await upload({
-                    type: 'IMAGE',
-                    mimeType: 'image/png',
-                    url: dataUrl,
-                    thumbnailUrl: dataUrl,
-                });
+        // Get SVG string
+        const svgString = new XMLSerializer().serializeToString(svgDocument);
 
-                await addNativeElement({
-                    type: 'IMAGE',
-                    ref: result.ref,
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        // Remove any characters outside the Latin1 range
+        var decoded = unescape(encodeURIComponent(svgString));
+
+        // Now we can use btoa to convert the svg to base64
+        var base64 = btoa(decoded);
+
+        var imgSource = `data:image/svg+xml;base64,${base64}`;
+
+        const result = await upload({
+            id: 'sajhdgjadgd',
+            type: 'IMAGE',
+            mimeType: 'image/svg+xml',
+            url: imgSource,
+            thumbnailUrl: imgSource,
+        });
+        console.log('🚀 ~ onButtonClick ~ result:', result);
+
+        const res = await addNativeElement({
+            type: 'IMAGE',
+            ref: result.ref,
+        });
+
+        console.log('🚀 ~ onButtonClick ~ res:', res);
     }, [ref]);
 
     return (

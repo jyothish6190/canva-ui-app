@@ -3,17 +3,18 @@ import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
 import { Category } from './category.model';
 
 export interface Component {
+    showComponent: boolean;
     type: ComponentType;
     name: string;
     varient?: string;
-    categoryId: string;
+    categoryId?: string;
     fields?: any[];
     'icon-data'?: string;
     placeholder?: string;
     text?: string;
     label?: string;
     description?: string;
-    options?: SelectOption<string>[];
+    options?: SelectOption<string | number>[];
     defaultValue?: any;
     min?: number;
     max?: number;

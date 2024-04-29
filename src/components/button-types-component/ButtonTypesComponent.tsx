@@ -13,19 +13,13 @@ type PropType = {
 };
 
 const ButtonTypesComponent = ({ component }: PropType) => {
-    const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const { selectedComponent, setComponentField } = useComponentStore();
 
     const [selectedCategory, setSelectedCategory] = useState<Category>();
 
     const selectHandler = (category: Category) => {
         setSelectedCategory(category);
-        selectedComponent?.fields?.forEach((field: Component) => {
-            if (field.name === component.name) {
-                field.value = category.value;
-            }
-            setSelectedComponent({ ...selectedComponent });
-            return;
-        });
+        setComponentField(component, category.value);
     };
 
     return (

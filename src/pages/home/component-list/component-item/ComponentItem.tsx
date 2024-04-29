@@ -47,9 +47,17 @@ type PropType = {
 };
 
 const ComponentItem = ({ component, isProperty }: PropType) => {
+    if (!component.showComponent) {
+        return;
+    }
     switch (component.type) {
         case ComponentType.BUTTON:
-            return <ButtonComponent component={component} />;
+            return (
+                <ButtonComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.ICON_BUTTON:
             return <IconButton />;
         case ComponentType.PILL:

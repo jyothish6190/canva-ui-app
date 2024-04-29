@@ -1,3 +1,4 @@
+import { Component } from 'src/models/component.model';
 import { ComponentType } from '../ComponentTypes';
 import { icons } from '../icons';
 
@@ -11,8 +12,9 @@ export enum ButtonFieldNames {
     WIDTH_OPTIONS = 'Width options',
 }
 
-export const ButtonConfig = [
+export const ButtonConfig: Component[] = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: ButtonFieldNames.VARIANT,
         options: [
@@ -33,6 +35,7 @@ export const ButtonConfig = [
         value: 'primary',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: ButtonFieldNames.TEXT,
         label: 'Label',
@@ -40,10 +43,12 @@ export const ButtonConfig = [
         placeholder: 'Button',
     },
     {
+        showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: ButtonFieldNames.ICON_SELECTION,
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: ButtonFieldNames.STATE,
         options: [
@@ -72,17 +77,20 @@ export const ButtonConfig = [
         placeholder: 'Choose a State',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: ButtonFieldNames.HUG_CONTENT,
         defaultValue: true,
     },
     {
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
         name: ButtonFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
     },
     {
+        showComponent: false,
         type: ComponentType.CATEGORY,
         name: ButtonFieldNames.WIDTH_OPTIONS,
         options: [
