@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-    Checkbox,
-    FileInput,
-    LoadingIndicator,
-    Pill,
-    Title,
-} from '@canva/app-ui-kit';
 
+import { Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
@@ -42,6 +36,7 @@ import FileInputComponent from 'src/components/file-input-component/FileInputCom
 import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
 import BadgeComponent from 'src/components/badge-component/BadgeComponent';
 import PillComponent from 'src/components/pill-component/PillComponent';
+import LoadingIndicatorComponent from 'src/components/loading-indicator-component/LoadingIndicatorComponent';
 
 type PropType = {
     component: Component;
@@ -150,7 +145,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.LOADING_INDICATOR:
-            return <LoadingIndicator />;
+            return (
+                <LoadingIndicatorComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.PLACEHOLDER:
             return (
                 <PlaceholderComponent
