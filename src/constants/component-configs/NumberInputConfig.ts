@@ -1,9 +1,17 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum NumberInputFieldNames {
+    VALUE = 'value',
+    SPIN_BUTTONS = 'Spin buttons',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+    STATE = 'State',
+}
+
 export const NumberInputConfig = [
     {
         type: ComponentType.FORM_FIELD,
-        name: 'value',
+        name: NumberInputFieldNames.VALUE,
         value: 0,
         label: 'Label',
         description: 'Description text',
@@ -11,20 +19,20 @@ export const NumberInputConfig = [
     },
     {
         type: ComponentType.SWITCH,
-        name: 'Spin buttons',
-        defaultValue: true,
+        name: NumberInputFieldNames.SPIN_BUTTONS,
+        value: true,
     },
 
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: NumberInputFieldNames.WIDTH,
         label: 'Label',
         value: '328',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
-
+        name: NumberInputFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
@@ -52,7 +60,7 @@ export const NumberInputConfig = [
     },
     {
         type: ComponentType.SELECT,
-        name: 'State',
+        name: NumberInputFieldNames.STATE,
         options: [
             {
                 label: 'Default',
