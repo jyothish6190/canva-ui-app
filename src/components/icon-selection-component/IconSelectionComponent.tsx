@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -36,7 +36,32 @@ const IconSelctionComponent = ({ component }: PropType) => {
                 return true;
             }
         });
-    }, []);
+    }, [iconsList]);
+
+    useEffect(() => {
+        changeHandler;
+    }, [selectedIcon?.icon]);
+
+    const changeHandler = () => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = selectedIcon?.icon;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
+
+    const onFocusHandler = (event) => {
+        selectedIcon?.icon && deleteIcon(selectedIcon.componentId);
+        navigate('/icons', {
+            state: {
+                path: 'iconSelector',
+                componentId: component.name,
+            },
+        });
+    };
+
 
     const clearSelectInput = () => {
         return selectedIcon ? (
@@ -68,26 +93,13 @@ const IconSelctionComponent = ({ component }: PropType) => {
             label={component.name}
             control={(props) => (
                 <TextInput
-                    key={selectedIcon?.icon?.label}
+                    key={selectedIcon?.icon?.label || ''}
                     type="text"
                     placeholder={'Select an icon'}
                     value={selectedIcon?.icon?.label || ''}
                     start={selectedIcon?.icon.Icon || ''}
                     end={clearSelectInput}
-                    onFocus={(event) => {
-                        console.log(
-                            '🚀 ~ IconSelctionComponent ~ event:',
-                            event
-                        );
-                        selectedIcon?.icon &&
-                            deleteIcon(selectedIcon.componentId);
-                        navigate('/icons', {
-                            state: {
-                                path: 'iconSelector',
-                                componentId: component.name,
-                            },
-                        });
-                    }}
+                    onFocus={(event) => onFocusHandler(event)}
                 />
             )}
         />

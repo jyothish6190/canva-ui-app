@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-    Badge,
-    Checkbox,
-    FileInput,
-    LoadingIndicator,
-    Pill,
-    Title,
-} from '@canva/app-ui-kit';
+
+import { Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
@@ -40,6 +34,9 @@ import OptionsListComponent from 'src/components/options-list-component/OptionsL
 import IconSelctionComponent from 'src/components/icon-selection-component/IconSelectionComponent';
 import FileInputComponent from 'src/components/file-input-component/FileInputComponent';
 import CheckBoxComponent from 'src/components/check-box-component/CheckBoxComponent';
+import BadgeComponent from 'src/components/badge-component/BadgeComponent';
+import PillComponent from 'src/components/pill-component/PillComponent';
+import LoadingIndicatorComponent from 'src/components/loading-indicator-component/LoadingIndicatorComponent';
 
 type PropType = {
     component: Component;
@@ -59,15 +56,19 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.ICON_BUTTON:
-            return <IconButton />;
+            return <IconButton component={component} isProperty={isProperty} />;
         case ComponentType.PILL:
-            return <Pill key={component.name} text={component.name} />;
+            return (
+                <PillComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.ALERT:
             return (
                 <AlertComponent component={component} isProperty={isProperty} />
             );
         case ComponentType.BADGE:
-            return <Badge text={component.name} tone="assist" />;
+            return (
+                <BadgeComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.FORM_FIELD:
             return (
                 <FormFieldComponent
@@ -152,7 +153,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.LOADING_INDICATOR:
-            return <LoadingIndicator />;
+            return (
+                <LoadingIndicatorComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.PLACEHOLDER:
             return (
                 <PlaceholderComponent

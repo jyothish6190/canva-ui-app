@@ -1,9 +1,13 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum LoadingIndicatorFieldNames {
+    SIZE = 'Size',
+}
+
 export const LoadingIndicatorConfig = [
     {
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Size',
+        name: LoadingIndicatorFieldNames.SIZE,
         options: [
             {
                 label: 'Small',
@@ -19,6 +23,5 @@ export const LoadingIndicatorConfig = [
             },
         ],
         defaultValue: 'small',
-        value: 'primary',
     },
 ];

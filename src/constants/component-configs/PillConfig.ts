@@ -1,25 +1,33 @@
 import { ComponentType } from '../ComponentTypes';
-import { icons } from '../icons';
 
+export enum PillFieldNames {
+    TEXT = 'Text',
+    START_ICON_SELECTION = 'Start decorator (optional)',
+    END_ICON_SELECTION = 'End decorator (optional)',
+    STATE = 'State',
+    HUG_CONTENT = 'Hug Content',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+}
 export const PillConfig = [
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: PillFieldNames.TEXT,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Pill',
     },
     {
         type: ComponentType.ICON_SELECTOR,
-        name: 'Start decorator (optional)',
+        name: PillFieldNames.START_ICON_SELECTION,
     },
     {
         type: ComponentType.ICON_SELECTOR,
-        name: 'End decorator (optional)',
+        name: PillFieldNames.END_ICON_SELECTION,
     },
     {
         type: ComponentType.SELECT,
-        name: 'State',
+        name: PillFieldNames.STATE,
         options: [
             {
                 label: 'Default',
@@ -47,40 +55,41 @@ export const PillConfig = [
     },
     {
         type: ComponentType.SWITCH,
-        name: 'Hug Content',
+        name: PillFieldNames.HUG_CONTENT,
         defaultValue: true,
     },
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: PillFieldNames.WIDTH,
         label: 'Label',
         vlue: '158',
         description: 'Description text',
     },
     {
         type: ComponentType.CATEGORY,
+        name: PillFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
         ],
     },

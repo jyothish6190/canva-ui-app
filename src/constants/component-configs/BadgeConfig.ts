@@ -1,18 +1,27 @@
 import { ComponentType } from '../ComponentTypes';
 import { icons } from '../icons';
+export enum BadgeFieldNames {
+    TEXT = 'Text',
+    TONE = 'Tone',
+    SHAPE = 'Shape',
+}
 
 export const BadgeConfig = [
     {
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: BadgeFieldNames.TEXT,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Badge',
     },
     {
         type: ComponentType.SELECT,
-        name: 'Tone',
+        name: BadgeFieldNames.TONE,
         options: [
+            {
+                label: 'assist',
+                value: 'assist',
+            },
             {
                 label: 'critical',
                 value: 'critical',
@@ -26,10 +35,6 @@ export const BadgeConfig = [
                 value: 'nuetral',
             },
             {
-                label: 'assist',
-                value: 'assist',
-            },
-            {
                 label: 'positive',
                 value: 'positive',
             },
@@ -38,12 +43,12 @@ export const BadgeConfig = [
                 value: 'warn',
             },
         ],
-        defaultValue: 'critical',
+        defaultValue: 'assist',
         placeholder: 'Choose a Tone',
     },
     {
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Shape',
+        name: BadgeFieldNames.SHAPE,
         options: [
             {
                 label: 'Regular',
