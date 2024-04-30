@@ -1,13 +1,21 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum LinkFieldConfig {
+    TEXT = 'Text',
+    SIZE = 'Size',
+    VARIANT = 'Variant',
+}
+
 export const LinkConfig = [
     {
+        showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
         name: 'Text',
         placeholder: '',
         value: 'Go to Canva',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: 'Size',
         options: [
@@ -23,15 +31,12 @@ export const LinkConfig = [
                 label: 'Large',
                 value: 'large',
             },
-            {
-                label: 'Custom',
-                value: 'custom',
-            },
         ],
         defaultValue: 'medium',
         placeholder: 'Choose a Size',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: 'Variant',
         options: [
@@ -45,6 +50,6 @@ export const LinkConfig = [
             },
         ],
         defaultValue: 'regular',
-        value: 'primary',
+        value: 'regular',
     },
 ];

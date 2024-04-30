@@ -195,7 +195,9 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 <TextComponent component={component} isProperty={isProperty} />
             );
         case ComponentType.LINK:
-            return <LinkComponent />;
+            return (
+                <LinkComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.CATEGORY:
             return <ButtonTypesComponent component={component} />;
         case ComponentType.OPTIONS_LIST:

@@ -8,6 +8,7 @@ import {
 
 import { Component } from 'src/models/component.model';
 import ExcessContainer from '../CommonComponents/excessContainer';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
@@ -15,11 +16,18 @@ type PropType = {
     onChange?: (text: string) => void;
 };
 
-const MultilineInputComponent = ({
-    component,
-    isProperty,
-    onChange,
-}: PropType) => {
+const MultilineInputComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const changeHandler = (value: string) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
     if (isProperty) {
         return (
             <FormField
@@ -34,7 +42,7 @@ const MultilineInputComponent = ({
                             ) : null
                         }
                         minRows={1}
-                        onChange={onChange}
+                        onChange={changeHandler}
                         placeholder={component.placeholder}
                     />
                 )}
@@ -47,7 +55,6 @@ const MultilineInputComponent = ({
                 value={component.value as string}
                 autoGrow
                 minRows={2}
-                onChange={onChange}
                 placeholder={component.placeholder}
             />
         </ExcessContainer>
