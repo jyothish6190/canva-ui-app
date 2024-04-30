@@ -187,7 +187,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.VIDEO_CARD:
             return <VideoCardComponent />;
         case ComponentType.EMBED_CARD:
-            return <EmbedCardComponent component={component} />;
+            return (
+                <EmbedCardComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.TITLE:
             return <Title>{component.name}</Title>;
         case ComponentType.TEXT:
