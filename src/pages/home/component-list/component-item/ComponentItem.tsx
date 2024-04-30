@@ -174,7 +174,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.AUDIO_CARD:
-            return <AudioCardComponent />;
+            return (
+                <AudioCardComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.IMAGE_CARD:
             return <ImageCardComponent />;
         case ComponentType.TYPOGRAPHY_CARD:

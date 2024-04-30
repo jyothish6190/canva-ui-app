@@ -1,26 +1,36 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum AudioCardFieldNames {
+    TITLE = 'Title',
+    DURATION = 'Duration in seconds',
+    STATE = 'State',
+    WIDTH = 'Width',
+}
+
 export const AudioCardConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Title',
+        name: AudioCardFieldNames.TITLE,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Title',
         value: 'Card Title',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Duration in seconds',
+        name: AudioCardFieldNames.DURATION,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '86',
+        placeholder: 'Duration',
+        value: 86,
     },
 
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
+        name: AudioCardFieldNames.STATE,
         options: [
             {
                 label: 'Default',
@@ -32,15 +42,17 @@ export const AudioCardConfig = [
             },
         ],
         defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: AudioCardFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '296',
+        placeholder: 'Width',
+        value: 296,
     },
 ];
