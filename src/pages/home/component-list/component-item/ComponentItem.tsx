@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Title } from '@canva/app-ui-kit';
-
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
 
@@ -37,6 +35,7 @@ import CheckBoxComponent from 'src/components/check-box-component/CheckBoxCompon
 import BadgeComponent from 'src/components/badge-component/BadgeComponent';
 import PillComponent from 'src/components/pill-component/PillComponent';
 import LoadingIndicatorComponent from 'src/components/loading-indicator-component/LoadingIndicatorComponent';
+import TitleComponent from 'src/components/title/TitleComponent';
 
 type PropType = {
     component: Component;
@@ -189,7 +188,9 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.EMBED_CARD:
             return <EmbedCardComponent component={component} />;
         case ComponentType.TITLE:
-            return <Title>{component.name}</Title>;
+            return (
+                <TitleComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.TEXT:
             return (
                 <TextComponent component={component} isProperty={isProperty} />

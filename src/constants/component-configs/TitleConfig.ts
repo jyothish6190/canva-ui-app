@@ -5,16 +5,25 @@ import {
 } from '@canva/app-ui-kit';
 import { ComponentType } from '../ComponentTypes';
 
+export enum TitleFieldNames {
+    TEXT = 'Text',
+    SIZE = 'Size',
+    TONE = 'Tone',
+    ALIGNMENT = 'Alignment',
+}
+
 export const TitleConfig = [
     {
+        showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
-        name: 'Text',
-        placeholder: '',
+        name: TitleFieldNames.TEXT,
+        placeholder: 'Enter your title',
         value: 'Example title',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Size',
+        name: TitleFieldNames.SIZE,
         options: [
             {
                 label: 'xlarge',
@@ -38,12 +47,13 @@ export const TitleConfig = [
                 value: 'xsmall',
             },
         ],
-        defaultValue: 'medium',
+        value: 'medium',
         placeholder: 'Choose a Size',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Tone',
+        name: TitleFieldNames.TONE,
         options: [
             {
                 label: 'primary',
@@ -62,27 +72,26 @@ export const TitleConfig = [
                 value: 'critical',
             },
         ],
-        defaultValue: 'primary',
         value: 'primary',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Alignment',
+        name: TitleFieldNames.ALIGNMENT,
         options: [
             {
                 label: TextAlignLeftIcon(),
-                value: 'left-icon',
+                value: 'start',
             },
             {
                 label: TextAlignCenterIcon(),
-                value: 'center-icon',
+                value: 'center',
             },
             {
                 label: TextAlignRightIcon(),
-                value: 'right-icon',
+                value: 'end',
             },
         ],
-        defaultValue: 'left-icon',
-        value: 'primary',
+        value: 'center',
     },
 ];
