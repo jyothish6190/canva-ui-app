@@ -56,19 +56,19 @@ export const TitleConfig = [
         name: TitleFieldNames.TONE,
         options: [
             {
-                label: 'primary',
+                label: 'Primary',
                 value: 'primary',
             },
             {
-                label: 'secondary',
+                label: 'Secondary',
                 value: 'secondary',
             },
             {
-                label: 'tertiary',
+                label: 'Tertiary',
                 value: 'Tertiary',
             },
             {
-                label: 'critical',
+                label: 'Critical',
                 value: 'critical',
             },
         ],
