@@ -1,9 +1,18 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum PlaceHolderFieldNames {
+    STYLE = 'Style',
+    SIZE = 'Size',
+    SHAPE = 'Shape',
+    WIDTH = 'Width',
+    HEIGHT = 'Height',
+}
+
 export const PlaceholderComponentConfig = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Style',
+        name: PlaceHolderFieldNames.STYLE,
         options: [
             {
                 label: 'Text',
@@ -19,12 +28,13 @@ export const PlaceholderComponentConfig = [
             },
         ],
         defaultValue: 'text',
-        value: 'small',
+        value: 'text',
     },
 
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Size',
+        name: PlaceHolderFieldNames.SIZE,
         options: [
             {
                 label: 'xlarge',
@@ -51,10 +61,45 @@ export const PlaceholderComponentConfig = [
         defaultValue: 'medium',
         placeholder: 'Choose a Size',
     },
+    {
+        showComponent: false,
+        type: ComponentType.SELECT,
+        name: PlaceHolderFieldNames.SHAPE,
+        options: [
+            {
+                label: 'Circle',
+                value: 'circle',
+            },
+            {
+                label: 'Square',
+                value: 'square',
+            },
+
+            {
+                label: 'Rectangle',
+                value: 'rectangle',
+            },
+            {
+                label: 'Sharp rectangle',
+                value: 'sharpRectangle',
+            },
+        ],
+        defaultValue: 'circle',
+        placeholder: 'Choose a Shape',
+    },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: PlaceHolderFieldNames.WIDTH,
+        label: 'Label',
+        description: 'Description text',
+        value: '258',
+    },
+    {
+        showComponent: false,
+        type: ComponentType.FORM_FIELD,
+        name: PlaceHolderFieldNames.HEIGHT,
         label: 'Label',
         description: 'Description text',
         value: '258',

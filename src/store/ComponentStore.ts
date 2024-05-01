@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { Component } from 'src/models/component.model';
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
+import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -60,6 +61,41 @@ const updateField = (
                     field.value = value;
                 }
             });
+            break;
+        case PlaceHolderFieldNames.STYLE:
+            if (value === 'shape') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === PlaceHolderFieldNames.HEIGHT) {
+                        field.showComponent = true;
+                        field.value = 96;
+                    }
+                    if (field.name === PlaceHolderFieldNames.SHAPE) {
+                        field.showComponent = true;
+                    }
+                    if (field.name === PlaceHolderFieldNames.SIZE) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === PlaceHolderFieldNames.WIDTH) {
+                        field.value = 96;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === PlaceHolderFieldNames.HEIGHT) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === PlaceHolderFieldNames.SHAPE) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === PlaceHolderFieldNames.SIZE) {
+                        field.showComponent = true;
+                        field.value = 'medium';
+                    }
+                    if (field.name === PlaceHolderFieldNames.WIDTH) {
+                        field.value = 296;
+                    }
+                });
+            }
             break;
         default:
             break;
