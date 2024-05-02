@@ -3,6 +3,7 @@ import { Component } from 'src/models/component.model';
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
+import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -97,6 +98,7 @@ const updateField = (
                     }
                 });
             }
+            break;
         case ProgressBarFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ProgressBarFieldNames.WIDTH) {
@@ -104,6 +106,37 @@ const updateField = (
                 }
             });
             break;
+        case CheckBoxFieldNames.HUG_CONTENT:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === CheckBoxFieldNames.WIDTH) {
+                        console.log('field', newComponent.fields);
+                        field.showComponent = true;
+                        field.value = 158;
+                    }
+                    if (field.name === CheckBoxFieldNames.WIDTH_OPTIONS) {
+                        console.log('value', field.value);
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === CheckBoxFieldNames.WIDTH) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === CheckBoxFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            }
+            break;
+        case CheckBoxFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === CheckBoxFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+
         default:
             break;
     }

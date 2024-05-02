@@ -5,17 +5,19 @@ export enum CheckBoxFieldNames {
     CHECKBOX_LABEL = 'Label (optional)',
     HUG_CONTENT = 'Hug Content',
     WIDTH = 'Width',
-    WIDTH_OPTION = 'Width option',
+    WIDTH_OPTIONS = 'Width option',
     STATE = 'State',
 }
 
 export const CheckBoxConfig = [
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: CheckBoxFieldNames.CHECKED,
         value: true,
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: CheckBoxFieldNames.CHECKBOX_LABEL,
         label: 'Label',
@@ -24,12 +26,14 @@ export const CheckBoxConfig = [
         value: 'Checkbox',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: CheckBoxFieldNames.HUG_CONTENT,
-        defaultValue: false,
+        defaultValue: true,
     },
 
     {
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
         name: CheckBoxFieldNames.WIDTH,
         label: 'Label',
@@ -37,35 +41,36 @@ export const CheckBoxConfig = [
         description: 'Description text',
     },
     {
+        showComponent: false,
         type: ComponentType.CATEGORY,
-        name: CheckBoxFieldNames.WIDTH_OPTION,
-
+        name: CheckBoxFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: CheckBoxFieldNames.STATE,
         options: [

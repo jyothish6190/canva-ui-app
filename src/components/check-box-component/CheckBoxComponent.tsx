@@ -11,34 +11,76 @@ type PropType = {
     onChange?: (text: string) => void;
 };
 
+type CheckboxStateData = {
+    checkedState: boolean;
+    checkBoxLabel: string;
+    checkBoxState: 'default' | 'hover' | 'pressed' | 'disabled' | 'error';
+    checkBoxWidth: number;
+};
+
+const initialState: CheckboxStateData = {
+    checkedState: true,
+    checkBoxLabel: 'Checkbox',
+    checkBoxState: 'default',
+    checkBoxWidth: 150,
+};
+
 const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
-    const [checkedState, setCheckedState] = useState<boolean>(true);
-    const [checkBoxLabel, setCheckBoxLabel] = useState<string>('Checkbox');
-    const [checkBoxState, setCheckBoxState] = useState<
-        'default' | 'hover' | 'pressed' | 'disabled' | 'error'
-    >('default');
+    const [checkboxDataState, setCheckboxDataState] =
+        useState<CheckboxStateData>(initialState);
+
+    console.log('component', component);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === CheckBoxFieldNames.CHECKED) {
-                setCheckedState(field.value ? field.value : false);
+                setCheckboxDataState((prevState) => {
+                    return {
+                        ...prevState,
+                        checkedState: field.value ? field.value : false,
+                    };
+                });
             }
             if (field.name === CheckBoxFieldNames.CHECKBOX_LABEL) {
-                setCheckBoxLabel(field.value ? field.value : 'Checkbox');
+                setCheckboxDataState((prevState) => {
+                    return {
+                        ...prevState,
+                        checkBoxLabel: field.value ? field.value : 'Checkbox',
+                    };
+                });
             }
             if (field.name === CheckBoxFieldNames.STATE) {
-                setCheckBoxState(field.value ? field.value : 'default');
+                setCheckboxDataState((prevState) => {
+                    return {
+                        ...prevState,
+                        checkBoxState: field.value ? field.value : 'default',
+                    };
+                });
+            }
+            if (field.name === CheckBoxFieldNames.WIDTH) {
+                setCheckboxDataState((prevState) => {
+                    return {
+                        ...prevState,
+                        checkBoxWidth: field.value ? field.value : 150,
+                    };
+                });
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <Checkbox
-                checked={checkedState ? true : false}
-                label={checkBoxLabel}
-                disabled={checkBoxState === 'disabled' ? true : false}
-            />
+            <div style={{ width: checkboxDataState.checkBoxWidth }}>
+                <Checkbox
+                    checked={checkboxDataState.checkedState ? true : false}
+                    label={checkboxDataState.checkBoxLabel}
+                    disabled={
+                        checkboxDataState.checkBoxState === 'disabled'
+                            ? true
+                            : false
+                    }
+                />
+            </div>
         );
     } else {
         return (
