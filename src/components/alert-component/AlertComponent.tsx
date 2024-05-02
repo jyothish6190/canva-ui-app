@@ -10,40 +10,81 @@ type AlertType = {
     isProperty: boolean;
 };
 
+type AlertStateData = {
+    alertTone: 'critical' | 'warn' | 'positive' | 'info';
+    alertTitle: string;
+    alertText: string;
+    alertDismiss: boolean;
+    alertWidth: number;
+};
+
+const InitialState: AlertStateData = {
+    alertTone: 'positive',
+    alertTitle: '',
+    alertText: ' Alert',
+    alertDismiss: false,
+    alertWidth: 328,
+};
+
 const AlertComponent = ({ component, isProperty }: AlertType) => {
-    const [alertTone, setAlertTone] = useState<
-        'critical' | 'warn' | 'positive' | 'info'
-    >('positive');
-    const [alertTitle, setAlertTitle] = useState<string>('');
-    const [alertText, setAlertText] = useState<string>(' Alert');
-    const [alertDismiss, setAlertDismiss] = useState<boolean>(false);
+    const [alertState, setAlertState] = useState<AlertStateData>(InitialState);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === AlertFieldNames.TONE) {
-                setAlertTone(field.value ? field.value : 'positive');
+                setAlertState((prevState) => {
+                    return {
+                        ...prevState,
+                        alertTone: field.value ? field.value : 'positive',
+                    };
+                });
             }
             if (field.name === AlertFieldNames.TITLE) {
-                setAlertTitle(field.value ? field.value : '');
+                setAlertState((prevState) => {
+                    return {
+                        ...prevState,
+                        alertTitle: field.value ? field.value : '',
+                    };
+                });
             }
             if (field.name === AlertFieldNames.TEXT) {
-                setAlertText(field.value ? field.value : ' Alert');
+                setAlertState((prevState) => {
+                    return {
+                        ...prevState,
+                        alertText: field.value ? field.value : 'Alert',
+                    };
+                });
             }
             if (field.name === AlertFieldNames.DISMISSIBLE) {
-                setAlertDismiss(field.value ? field.value : false);
+                setAlertState((prevState) => {
+                    return {
+                        ...prevState,
+                        alertDismiss: field.value ? field.value : false,
+                    };
+                });
+            }
+            if (field.name === AlertFieldNames.WIDTH) {
+                setAlertState((prevState) => {
+                    return {
+                        ...prevState,
+                        alertWidth: field.value ? field.value : 328,
+                    };
+                });
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <Alert
-                tone={alertTone}
-                title={alertTitle}
-                onDismiss={alertDismiss ? () => {} : undefined}
-            >
-                {alertText}
-            </Alert>
+            <div style={{ width: alertState.alertWidth }}>
+                <Alert
+                    tone={alertState.alertTone}
+                    title={alertState.alertTitle}
+                    onDismiss={alertState.alertDismiss ? () => {} : undefined}
+                >
+                    {alertState.alertText}
+                </Alert>
+            </div>
         );
     }
     return (

@@ -1,5 +1,4 @@
 import { ComponentType } from '../ComponentTypes';
-import { icons } from '../icons';
 export enum IconButtonFieldNames {
     VARIANT = 'Variant',
     ICON_SELECTION = 'Icon ',
@@ -11,6 +10,7 @@ export enum IconButtonFieldNames {
 
 export const IconButtonConfig = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: IconButtonFieldNames.VARIANT,
         options: [
@@ -32,10 +32,12 @@ export const IconButtonConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: IconButtonFieldNames.ICON_SELECTION,
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: IconButtonFieldNames.STATE,
         options: [
@@ -64,11 +66,13 @@ export const IconButtonConfig = [
         placeholder: 'Choose a State',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: IconButtonFieldNames.HUG_CONTENT,
         defaultValue: true,
     },
     {
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
         name: IconButtonFieldNames.WIDTH,
         label: 'Label',
@@ -76,30 +80,31 @@ export const IconButtonConfig = [
         description: 'Description text',
     },
     {
+        showComponent: false,
         type: ComponentType.CATEGORY,
         name: IconButtonFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
         ],
     },
