@@ -10,35 +10,61 @@ type ButtonComponentType = {
     isProperty: boolean;
 };
 
+type BadgeComponentStateData = {
+    badgeText: string;
+    badgeTone: 'assist' | 'positive' | 'warn' | 'info' | 'critical' | 'neutral';
+    badgeShape: 'regular' | 'circle';
+};
+
+const initialState: BadgeComponentStateData = {
+    badgeText: 'Badge',
+    badgeTone: 'assist',
+    badgeShape: 'regular',
+};
+
 const BadgeComponent = ({ isProperty, component }: ButtonComponentType) => {
-    const [badgeText, setBadgeText] = useState<string>('Badge');
-    const [badgeTone, setBadgeTone] = useState<
-        'assist' | 'positive' | 'warn' | 'info' | 'critical' | 'neutral'
-    >('assist');
-    const [badgeShape, setBadgeShape] = useState<'regular' | 'circle'>(
-        'regular'
-    );
+    const [badgeState, setBadgeState] =
+        useState<BadgeComponentStateData>(initialState);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === BadgeFieldNames.TEXT) {
-                setBadgeText(field.value ? field.value : 'Badge');
+                setBadgeState((prevState) => {
+                    return {
+                        ...prevState,
+                        badgeText: field.value ? field.value : 'Badge',
+                    };
+                });
             }
             if (field.name === BadgeFieldNames.TONE) {
-                setBadgeTone(field.value ? field.value : 'assist');
+                setBadgeState((prevState) => {
+                    return {
+                        ...prevState,
+                        badgeTone: field.value ? field.value : 'assist',
+                    };
+                });
             }
             if (field.name === BadgeFieldNames.SHAPE) {
-                setBadgeShape(field.value ? field.value : 'regular');
+                setBadgeState((prevState) => {
+                    return {
+                        ...prevState,
+                        badgeShape: field.value ? field.value : 'regular',
+                    };
+                });
             }
         });
     }, [component]);
     if (isProperty) {
         return (
             <Badge
-                text={badgeText}
-                tone={badgeTone}
-                shape={badgeShape}
-                ariaLabel={badgeShape === 'circle' ? badgeText : ''}
+                text={badgeState.badgeText}
+                tone={badgeState.badgeTone}
+                shape={badgeState.badgeShape}
+                ariaLabel={
+                    badgeState.badgeShape === 'circle'
+                        ? badgeState.badgeText
+                        : ''
+                }
             />
         );
     } else {

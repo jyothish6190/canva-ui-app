@@ -11,6 +11,7 @@ export enum PillFieldNames {
 }
 export const PillConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: PillFieldNames.TEXT,
         label: 'Label',
@@ -18,14 +19,17 @@ export const PillConfig = [
         placeholder: 'Pill',
     },
     {
+        showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: PillFieldNames.START_ICON_SELECTION,
     },
     {
+        showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: PillFieldNames.END_ICON_SELECTION,
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: PillFieldNames.STATE,
         options: [
@@ -54,11 +58,13 @@ export const PillConfig = [
         placeholder: 'Choose a State',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: PillFieldNames.HUG_CONTENT,
         defaultValue: true,
     },
     {
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
         name: PillFieldNames.WIDTH,
         label: 'Label',
@@ -66,6 +72,7 @@ export const PillConfig = [
         description: 'Description text',
     },
     {
+        showComponent: false,
         type: ComponentType.CATEGORY,
         name: PillFieldNames.WIDTH_OPTIONS,
         options: [

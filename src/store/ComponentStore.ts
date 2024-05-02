@@ -1,9 +1,16 @@
 import { create } from 'zustand';
+
 import { Component } from 'src/models/component.model';
+
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
+import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
 import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
+import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
+import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
+import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
+import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -65,6 +72,36 @@ const updateField = (
                 }
             });
             break;
+        case IconButtonFieldNames.HUG_CONTENT:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === IconButtonFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 158;
+                    }
+                    if (field.name === IconButtonFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === IconButtonFieldNames.WIDTH) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === IconButtonFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            }
+            break;
+        case IconButtonFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === IconButtonFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+
         case PlaceHolderFieldNames.STYLE:
             if (value === 'shape') {
                 newComponent.fields?.forEach((field: Component) => {
@@ -103,6 +140,102 @@ const updateField = (
         case ProgressBarFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ProgressBarFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+
+        case AlertFieldNames.WIDTH_OPTION:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === AlertFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+        case PillFieldNames.HUG_CONTENT:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === PillFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 158;
+                    }
+                    if (field.name === PillFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === PillFieldNames.WIDTH) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === PillFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            }
+            break;
+        case PillFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === PillFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+        case TextFieldNames.VARIANT:
+            if (value === 'bold') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextFieldNames.SIZE) {
+                        field.options = [
+                            {
+                                label: 'large',
+                                value: 'large',
+                            },
+
+                            {
+                                label: 'Medium',
+                                value: 'medium',
+                            },
+                            {
+                                label: 'Small',
+                                value: 'small',
+                            },
+                        ];
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextFieldNames.SIZE) {
+                        field.options = [
+                            {
+                                label: 'xlarge',
+                                value: 'xlarge',
+                            },
+                            {
+                                label: 'large',
+                                value: 'large',
+                            },
+
+                            {
+                                label: 'Medium',
+                                value: 'medium',
+                            },
+                            {
+                                label: 'Small',
+                                value: 'small',
+                            },
+                            {
+                                label: 'xsmall',
+                                value: 'xsmall',
+                            },
+                        ];
+                    }
+                });
+            }
+            break;
+        
+        case SliderFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.WIDTH) {
                     field.value = value;
                 }
             });

@@ -1,60 +1,74 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum SliderFieldNames {
+    MINIMUM = 'Minimum',
+    MAXIMUM = 'Maximum',
+    VALUE = 'Value',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width Options',
+}
+
 export const SliderConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Minimum',
+        name: SliderFieldNames.MINIMUM,
         value: 0,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Enter description',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Maximum',
+        name: SliderFieldNames.MAXIMUM,
         value: 100,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Enter description',
     },
     {
+        showComponent: true,
         type: ComponentType.SLIDER,
-        name: 'Value',
+        name: SliderFieldNames.VALUE,
+        value: 25,
         defaultValue: 25,
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: SliderFieldNames.WIDTH,
         label: 'Label',
         value: '328',
         description: 'Description text',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
-
+        name: SliderFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },
