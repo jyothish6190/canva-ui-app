@@ -1,17 +1,25 @@
 import { ComponentType } from '../ComponentTypes';
+export enum VideoFieldNames {
+    DURATION = 'Duration in seconds',
+    ROUNDED_CORNER = 'Rounded Corners',
+    WIDTH = 'Width ',
+    HEIGHT = 'Height',
+}
 
 export const VideoCardConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Duration in seconds',
+        name: VideoFieldNames.DURATION,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Duration',
         value: '11',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Rounded Corners',
+        name: VideoFieldNames.ROUNDED_CORNER,
         options: [
             {
                 label: 'None',
@@ -22,23 +30,25 @@ export const VideoCardConfig = [
                 value: 'standard',
             },
         ],
-        defaultValue: 'standard',
-        value: 'primary',
+
+        value: 'none',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: VideoFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '256',
+        placeholder: 'Width',
+        value: 256,
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Height',
+        name: VideoFieldNames.HEIGHT,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '168',
+        placeholder: 'Height',
+        value: 168,
     },
 ];
