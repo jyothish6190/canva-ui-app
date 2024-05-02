@@ -1,37 +1,43 @@
 import { ComponentType } from '../ComponentTypes';
-
+export enum ImageCardFieldNames {
+    ROUNDED_CORNER = 'Rounded Corners',
+    WIDTH = 'Width ',
+    HEIGHT = 'Height',
+}
 export const ImageCardConfig = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Rounded Corners',
+        name: ImageCardFieldNames.ROUNDED_CORNER,
         options: [
-            {
-                label: 'Standard',
-                value: 'standard',
-            },
             {
                 label: 'None',
                 value: 'none',
             },
+            {
+                label: 'Standard',
+                value: 'standard',
+            },
         ],
-        defaultValue: 'standard',
-        value: 'primary',
-    },
 
-    {
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Button',
-        value: '256',
+        value: 'none',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Height',
+        name: ImageCardFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '168',
+        placeholder: 'Width',
+        value: 160,
+    },
+    {
+        showComponent: true,
+        type: ComponentType.FORM_FIELD,
+        name: ImageCardFieldNames.HEIGHT,
+        label: 'Label',
+        description: 'Description text',
+        placeholder: 'Height',
+        value: 160,
     },
 ];
