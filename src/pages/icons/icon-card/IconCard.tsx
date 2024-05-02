@@ -6,7 +6,7 @@ import styles from './IconCard.css';
 import { Icon } from 'src/models/icons.model';
 
 import IconItem from '../icon-item/IconItem';
-import Title from 'src/components/title/Title';
+import CardTitle from 'src/components/card-title/CardTitle';
 
 type IconCardType = {
     icon: Icon;
@@ -25,7 +25,7 @@ const IconCard = ({ icon }: IconCardType) => {
             >
                 <IconItem icon={icon} />
             </Box>
-            <Title title={icon.label}></Title>
+            <CardTitle title={'Icons'}></CardTitle>
         </Rows>
     );
 };

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { Component } from 'src/models/component.model';
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
+import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -96,6 +97,12 @@ const updateField = (
                     }
                 });
             }
+        case ProgressBarFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === ProgressBarFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
             break;
         default:
             break;

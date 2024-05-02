@@ -1,18 +1,26 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum TypographyFiledNames {
+    TEXT = 'Text',
+    STATE = 'State',
+    WIDTH = 'Width',
+}
+
 export const TypographyConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: TypographyFiledNames.TEXT,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Text',
         value: 'The Quick brown fox',
     },
 
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
+        name: TypographyFiledNames.STATE,
         options: [
             {
                 label: 'Default',
@@ -23,16 +31,17 @@ export const TypographyConfig = [
                 value: 'hover',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: TypographyFiledNames.WIDTH,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '296',
+        placeholder: 'Width',
+        value: 296,
     },
 ];

@@ -1,29 +1,37 @@
 import { ComponentType } from '../ComponentTypes';
+export enum EmbedFieldNames {
+    TITLE = 'Title (optional)',
+    DESCRIPTION = 'Description (optional)',
+    WIDTH = 'Width',
+}
 
 export const EmbedConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Title (optional)',
+        name: EmbedFieldNames.TITLE,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Title',
         value: 'Heartwarming Chatter: Adorable Conversation with a puppy',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Description (optional)',
+        name: EmbedFieldNames.DESCRIPTION,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
+        placeholder: 'Description text',
         value: 'Puppyhood',
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: EmbedFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Button',
-        value: '256',
+        placeholder: 'Width',
+        value: 296,
     },
 ];

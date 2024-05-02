@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Title } from '@canva/app-ui-kit';
-
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
 
@@ -37,6 +35,7 @@ import CheckBoxComponent from 'src/components/check-box-component/CheckBoxCompon
 import BadgeComponent from 'src/components/badge-component/BadgeComponent';
 import PillComponent from 'src/components/pill-component/PillComponent';
 import LoadingIndicatorComponent from 'src/components/loading-indicator-component/LoadingIndicatorComponent';
+import TitleComponent from 'src/components/title/TitleComponent';
 
 type PropType = {
     component: Component;
@@ -174,9 +173,19 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.AUDIO_CARD:
-            return <AudioCardComponent />;
+            return (
+                <AudioCardComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.IMAGE_CARD:
-            return <ImageCardComponent />;
+            return (
+                <ImageCardComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.TYPOGRAPHY_CARD:
             return (
                 <TypographyComponent
@@ -185,17 +194,31 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.VIDEO_CARD:
-            return <VideoCardComponent />;
+            return (
+                <VideoCardComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.EMBED_CARD:
-            return <EmbedCardComponent component={component} />;
+            return (
+                <EmbedCardComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.TITLE:
-            return <Title>{component.name}</Title>;
+            return (
+                <TitleComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.TEXT:
             return (
                 <TextComponent component={component} isProperty={isProperty} />
             );
         case ComponentType.LINK:
-            return <LinkComponent />;
+            return (
+                <LinkComponent component={component} isProperty={isProperty} />
+            );
         case ComponentType.CATEGORY:
             return <ButtonTypesComponent component={component} />;
         case ComponentType.OPTIONS_LIST:

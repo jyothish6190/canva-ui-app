@@ -2,14 +2,25 @@ import React from 'react';
 import { Slider } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (text: any) => void;
 };
 
-const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
+const SliderComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const changeHandler = (value: number) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    };
     if (isProperty) {
         return (
             <div
@@ -22,6 +33,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                     max={100}
                     min={0}
                     step={1}
+                    onChange={changeHandler}
                 />
             </div>
         );
