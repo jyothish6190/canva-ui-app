@@ -11,6 +11,7 @@ export enum AlertFieldNames {
 
 export const AlertConfig = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: AlertFieldNames.TONE,
         options: [
@@ -35,6 +36,7 @@ export const AlertConfig = [
         value: 'positive',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: AlertFieldNames.TITLE,
         label: 'Label',
@@ -42,6 +44,7 @@ export const AlertConfig = [
         placeholder: 'This is an alert.',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: AlertFieldNames.TEXT,
         label: 'Label',
@@ -50,6 +53,7 @@ export const AlertConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: AlertFieldNames.WIDTH,
         label: 'Label',
@@ -57,34 +61,36 @@ export const AlertConfig = [
         description: 'Description text',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
         name: AlertFieldNames.WIDTH_OPTION,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 328,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 768,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 1366,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 328,
             },
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: AlertFieldNames.DISMISSIBLE,
         defaultValue: false,
