@@ -8,6 +8,7 @@ import { PlaceHolderFieldNames } from 'src/constants/component-configs/Placehold
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
+import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -136,7 +137,6 @@ const updateField = (
         case ProgressBarFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ProgressBarFieldNames.WIDTH) {
-
                     field.value = value;
                 }
             });
@@ -173,6 +173,14 @@ const updateField = (
         case PillFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === PillFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+
+        case SliderFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.WIDTH) {
                     field.value = value;
                 }
             });

@@ -1,16 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Slider } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
+import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
+    onChange?: (text: any) => void;
 };
 
-const SliderComponent = ({ component, isProperty }: PropType) => {
+type SliderStateData = {
+    sliderValue: number | undefined;
+    maxValue: number;
+    minValue: number;
+};
+
+const initialState: SliderStateData = {
+    sliderValue: undefined,
+    maxValue: 100,
+    minValue: 0,
+};
+
+const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
+    const [sliderState, setSliderState] =
+        useState<SliderStateData>(initialState);
     const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    useEffect(() => {
+        component.fields?.forEach((field: Component) => {
+            if (field.name === SliderFieldNames.VALUE) {
+                setSliderState((prevState) => {
+                    return {
+                        ...prevState,
+                        sliderValue: field.value,
+                    };
+                });
+            }
+            if (field.name === SliderFieldNames.MINIMUM) {
+                setSliderState((prevState) => {
+                    return {
+                        ...prevState,
+                        minValue: field.value ? field.value : 0,
+                    };
+                });
+            }
+            if (field.name === SliderFieldNames.MAXIMUM) {
+                setSliderState((prevState) => {
+                    return {
+                        ...prevState,
+                        maxValue: field.value ? field.value : 100,
+                    };
+                });
+            }
+        });
+    }, [component]);
 
     const changeHandler = (value: number) => {
         selectedComponent?.fields?.forEach((field: Component) => {
@@ -21,17 +66,15 @@ const SliderComponent = ({ component, isProperty }: PropType) => {
             return;
         });
     };
+
     if (isProperty) {
         return (
-            <div
-                style={{
-                    width: '100%',
-                }}
-            >
+            <div style={{ width: 250 }}>
                 <Slider
                     defaultValue={component.defaultValue}
-                    max={100}
-                    min={0}
+                    value={sliderState.sliderValue}
+                    max={sliderState.maxValue}
+                    min={sliderState.minValue}
                     step={1}
                     onChange={changeHandler}
                 />
