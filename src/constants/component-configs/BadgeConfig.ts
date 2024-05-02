@@ -8,6 +8,7 @@ export enum BadgeFieldNames {
 
 export const BadgeConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: BadgeFieldNames.TEXT,
         label: 'Label',
@@ -15,6 +16,7 @@ export const BadgeConfig = [
         placeholder: 'Badge',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: BadgeFieldNames.TONE,
         options: [
@@ -47,6 +49,7 @@ export const BadgeConfig = [
         placeholder: 'Choose a Tone',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: BadgeFieldNames.SHAPE,
         options: [
