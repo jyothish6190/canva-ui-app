@@ -5,7 +5,7 @@ export enum CheckBoxFieldNames {
     CHECKBOX_LABEL = 'Label (optional)',
     HUG_CONTENT = 'Hug Content',
     WIDTH = 'Width',
-    WIDTH_OPTIONS = 'Width option',
+    WIDTH_OPTIONS = 'Width options',
     STATE = 'State',
 }
 

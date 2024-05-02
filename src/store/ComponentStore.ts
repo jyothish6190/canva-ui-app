@@ -50,6 +50,7 @@ const updateField = (
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === ButtonFieldNames.WIDTH) {
                         field.showComponent = false;
+                        field.value = undefined;
                     }
                     if (field.name === ButtonFieldNames.WIDTH_OPTIONS) {
                         field.showComponent = false;
@@ -102,36 +103,6 @@ const updateField = (
         case ProgressBarFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ProgressBarFieldNames.WIDTH) {
-                    field.value = value;
-                }
-            });
-            break;
-        case CheckBoxFieldNames.HUG_CONTENT:
-            if (!value) {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === CheckBoxFieldNames.WIDTH) {
-                        console.log('field', newComponent.fields);
-                        field.showComponent = true;
-                        field.value = 158;
-                    }
-                    if (field.name === CheckBoxFieldNames.WIDTH_OPTIONS) {
-                        console.log('value', field.value);
-                    }
-                });
-            } else {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === CheckBoxFieldNames.WIDTH) {
-                        field.showComponent = false;
-                    }
-                    if (field.name === CheckBoxFieldNames.WIDTH_OPTIONS) {
-                        field.showComponent = false;
-                    }
-                });
-            }
-            break;
-        case CheckBoxFieldNames.WIDTH_OPTIONS:
-            newComponent.fields?.forEach((field: Component) => {
-                if (field.name === CheckBoxFieldNames.WIDTH) {
                     field.value = value;
                 }
             });

@@ -15,14 +15,14 @@ type CheckboxStateData = {
     checkedState: boolean;
     checkBoxLabel: string;
     checkBoxState: 'default' | 'hover' | 'pressed' | 'disabled' | 'error';
-    checkBoxWidth: number;
+    checkBoxWidth: number | undefined;
 };
 
 const initialState: CheckboxStateData = {
     checkedState: true,
     checkBoxLabel: 'Checkbox',
     checkBoxState: 'default',
-    checkBoxWidth: 150,
+    checkBoxWidth: undefined,
 };
 
 const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
@@ -61,7 +61,7 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
                 setCheckboxDataState((prevState) => {
                     return {
                         ...prevState,
-                        checkBoxWidth: field.value ? field.value : 150,
+                        checkBoxWidth: field.value,
                     };
                 });
             }
