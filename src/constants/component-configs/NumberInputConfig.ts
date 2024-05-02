@@ -10,6 +10,7 @@ export enum NumberInputFieldNames {
 
 export const NumberInputConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: NumberInputFieldNames.VALUE,
         value: 0,
@@ -18,12 +19,14 @@ export const NumberInputConfig = [
         placeholder: 'Enter description',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: NumberInputFieldNames.SPIN_BUTTONS,
         value: true,
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: NumberInputFieldNames.WIDTH,
         label: 'Label',
@@ -31,24 +34,25 @@ export const NumberInputConfig = [
         description: 'Description text',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
         name: NumberInputFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
@@ -59,6 +63,7 @@ export const NumberInputConfig = [
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: NumberInputFieldNames.STATE,
         options: [
