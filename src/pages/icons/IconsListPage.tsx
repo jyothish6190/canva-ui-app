@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Rows } from '@canva/app-ui-kit';
-import html2canvas from 'html2canvas';
 import { upload } from '@canva/asset';
 import { addNativeElement } from '@canva/design';
 
@@ -13,6 +12,7 @@ import IconList from './icon-list/IconList';
 import { icons } from 'src/constants/icons';
 import { Icon } from 'src/models/icons.model';
 import { useIconStore } from 'src/store/IconStore';
+import { elementToSVG, inlineResources } from 'dom-to-svg';
 
 const IconsListPage = () => {
     const navigate = useNavigate();
@@ -49,15 +49,32 @@ const IconsListPage = () => {
         navigate(-1);
     };
     const updateComponentHandler = async (icon) => {
-        const element = document.getElementById(icon.label),
-            canvas = await html2canvas(element as HTMLElement),
-            data = canvas.toDataURL('image/jpeg');
+        const element = document.getElementById(icon.label);
+
+        const svgDocument = elementToSVG(element as HTMLElement);
+
+        await inlineResources(svgDocument.documentElement);
+
+        // Get SVG string
+        const svgString = new XMLSerializer().serializeToString(svgDocument);
+
+        // Remove any characters outside the Latin1 range
+        var decoded = unescape(encodeURIComponent(svgString));
+
+        // Remove style tag if any as it is not supported in canva
+        decoded = decoded.replace('<style/>', '');
+        // Now we can use btoa to convert the svg to base64
+
+        var base64 = btoa(decoded);
+
+        var imgSource = `data:image/svg+xml;base64,${base64}`;
 
         const result = await upload({
             type: 'IMAGE',
-            mimeType: 'image/jpeg',
-            url: data,
-            thumbnailUrl: data,
+            mimeType: 'image/svg+xml',
+
+            url: imgSource,
+            thumbnailUrl: imgSource,
         });
         console.log('🚀 ~ updateComponentHandler ~ result:', result);
 
