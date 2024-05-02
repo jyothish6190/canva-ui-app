@@ -1,25 +1,41 @@
 import { ChevronDownIcon, ClearIcon, SearchIcon } from '@canva/app-ui-kit';
 import { ComponentType } from '../ComponentTypes';
 
+export enum TextInputSearchFieldNames {
+    TEXT = 'Text',
+    WITH_TEXT = 'With Text',
+    START_DECORATOR = 'Start decorator (optional)',
+    END_DECORATOR = 'End decorator',
+    END_TEXT = 'End text',
+    MAX_CHAR_COUNT = 'Maximum character count',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width option',
+    STATE = 'State',
+}
+
 export const TextInputConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: TextInputSearchFieldNames.TEXT,
         value: 'Hello world',
         placeholder: 'Placeholder',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'With text',
+        name: TextInputSearchFieldNames.WITH_TEXT,
         NoneValue: true,
     },
     {
+        showComponent: true,
         type: ComponentType.ICON_SELECTOR,
-        name: 'Start decorator (optional)',
+        name: TextInputSearchFieldNames.START_DECORATOR,
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'End decorator',
+        name: TextInputSearchFieldNames.END_DECORATOR,
         options: [
             {
                 label: 'None',
@@ -27,7 +43,7 @@ export const TextInputConfig = [
             },
             {
                 label: 'Clear',
-                value: ClearIcon,
+                value: 'clear',
             },
             {
                 label: 'Text',
@@ -35,61 +51,72 @@ export const TextInputConfig = [
             },
             {
                 label: 'Character count',
-                value: 'Character count',
+                value: 'character count',
             },
         ],
-        defaultValue: 'text',
+        value: 'none',
     },
     {
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
-        name: 'End Text',
+        name: TextInputSearchFieldNames.END_TEXT,
         label: 'Label',
         value: 'End Text',
         description: 'Description text',
     },
+    {
+        showComponent: false,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputSearchFieldNames.MAX_CHAR_COUNT,
+        label: 'Label',
+        description: 'Description text',
+    },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: TextInputSearchFieldNames.WIDTH,
         label: 'Label',
         value: '328',
         description: 'Description text',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
-
+        name: TextInputSearchFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
+        name: TextInputSearchFieldNames.STATE,
         options: [
             {
-                label: 'None',
-                value: 'None',
+                label: 'Default',
+                value: 'default',
             },
             {
                 label: 'Hover',
@@ -108,7 +135,7 @@ export const TextInputConfig = [
                 value: 'disabled',
             },
         ],
-        NoneValue: 'None',
+        value: 'none',
         placeholder: 'Choose a State',
     },
 ];
