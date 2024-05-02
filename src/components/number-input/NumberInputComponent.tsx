@@ -11,42 +11,87 @@ type PropType = {
     onChange?: (text: string) => void;
 };
 
+type NumberInputStateData = {
+    inputValue: number;
+    spinButtonValue: boolean;
+    numberInputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
+    numberInputWidth: number;
+};
+
+const initialState: NumberInputStateData = {
+    inputValue: 0,
+    spinButtonValue: false,
+    numberInputState: 'default',
+    numberInputWidth: 328,
+};
+
 const NumberInputComponent = ({
     component,
     isProperty,
     onChange,
 }: PropType) => {
-    const [inputValue, setInputValue] = useState<number>(0);
-    const [spinButtonValue, setSpinButtonValue] = useState<boolean>(true);
-    const [numberInputState, setNumberInputState] = useState<
-        'default' | 'hover' | 'active' | 'error' | 'disabled'
-    >('default');
+    const [numberInputData, setNumberInputData] =
+        useState<NumberInputStateData>(initialState);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === NumberInputFieldNames.VALUE) {
-                setInputValue(field.value ? field.value : 0);
+                setNumberInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        inputValue: field.value ? field.value : 0,
+                    };
+                });
             }
             if (field.name === NumberInputFieldNames.SPIN_BUTTONS) {
-                setSpinButtonValue(field.value ? field.value : false);
+                setNumberInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        spinButtonValue: field.value ? field.value : false,
+                    };
+                });
             }
             if (field.name === NumberInputFieldNames.STATE) {
-                setNumberInputState(field.value ? field.value : 'default');
+                setNumberInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        numberInputState: field.value ? field.value : 'default',
+                    };
+                });
+            }
+            if (field.name === NumberInputFieldNames.WIDTH) {
+                setNumberInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        numberInputWidth: field.value ? field.value : 328,
+                    };
+                });
             }
         });
     }, [component]);
 
     if (isProperty) {
-        if (spinButtonValue === true) {
+        if (numberInputData.spinButtonValue === true) {
             return (
-                <div style={{ padding: 16 }}>
+                <div
+                    style={{
+                        padding: 16,
+                        width: numberInputData.numberInputWidth,
+                    }}
+                >
                     <NumberInput
                         defaultValue={0}
-                        value={inputValue}
+                        value={numberInputData.inputValue}
                         disabled={
-                            numberInputState === 'disabled' ? true : false
+                            numberInputData.numberInputState === 'disabled'
+                                ? true
+                                : false
                         }
-                        error={numberInputState === 'error' ? true : false}
+                        error={
+                            numberInputData.numberInputState === 'error'
+                                ? true
+                                : false
+                        }
                         decrementAriaLabel={'Decrease'}
                         incrementAriaLabel={'Increase '}
                         hasSpinButtons={true}
@@ -55,14 +100,25 @@ const NumberInputComponent = ({
             );
         } else {
             return (
-                <div style={{ padding: 16 }}>
+                <div
+                    style={{
+                        padding: 16,
+                        width: numberInputData.numberInputWidth,
+                    }}
+                >
                     <NumberInput
                         defaultValue={0}
-                        value={inputValue}
+                        value={numberInputData.inputValue}
                         disabled={
-                            numberInputState === 'disabled' ? true : false
+                            numberInputData.numberInputState === 'disabled'
+                                ? true
+                                : false
                         }
-                        error={numberInputState === 'error' ? true : false}
+                        error={
+                            numberInputData.numberInputState === 'error'
+                                ? true
+                                : false
+                        }
                     />
                 </div>
             );
