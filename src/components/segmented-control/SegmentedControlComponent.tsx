@@ -13,7 +13,8 @@ type PropsType = {
 };
 
 const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
-    const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const { selectedComponent, setSelectedComponent, setComponentField } =
+        useComponentStore();
 
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
@@ -23,6 +24,7 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
             setSelectedComponent({ ...selectedComponent });
             return;
         });
+        setComponentField(component, value);
     };
 
     if (isProperty) {
