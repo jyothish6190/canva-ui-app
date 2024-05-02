@@ -9,6 +9,7 @@ import { ProgressBarFieldNames } from 'src/constants/component-configs/Progressb
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
+import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -177,7 +178,58 @@ const updateField = (
                 }
             });
             break;
+        case TextFieldNames.VARIANT:
+            if (value === 'bold') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextFieldNames.SIZE) {
+                        field.options = [
+                            {
+                                label: 'large',
+                                value: 'large',
+                            },
 
+                            {
+                                label: 'Medium',
+                                value: 'medium',
+                            },
+                            {
+                                label: 'Small',
+                                value: 'small',
+                            },
+                        ];
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextFieldNames.SIZE) {
+                        field.options = [
+                            {
+                                label: 'xlarge',
+                                value: 'xlarge',
+                            },
+                            {
+                                label: 'large',
+                                value: 'large',
+                            },
+
+                            {
+                                label: 'Medium',
+                                value: 'medium',
+                            },
+                            {
+                                label: 'Small',
+                                value: 'small',
+                            },
+                            {
+                                label: 'xsmall',
+                                value: 'xsmall',
+                            },
+                        ];
+                    }
+                });
+            }
+            break;
+        
         case SliderFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === SliderFieldNames.WIDTH) {
