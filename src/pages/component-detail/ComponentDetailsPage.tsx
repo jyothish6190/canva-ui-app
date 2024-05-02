@@ -4,12 +4,31 @@ import { addNativeElement } from '@canva/design';
 import { upload } from '@canva/asset';
 import { Button, Rows } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
+import { initAppElement } from '@canva/design';
 
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
 
 import { useComponentStore } from 'src/store/ComponentStore';
+
+type UIData = {
+    imgSource: string;
+};
+const appElementClient = initAppElement<UIData>({
+    render: ({ imgSource }) => {
+        return [
+            {
+                type: 'IMAGE',
+                dataUrl: imgSource,
+                width: 'auto',
+                height: 100,
+                top: 0,
+                left: 0,
+            },
+        ];
+    },
+});
 
 const ComponentDetailsPage = () => {
     const { selectedComponent } = useComponentStore();
@@ -31,26 +50,15 @@ const ComponentDetailsPage = () => {
         // Remove any characters outside the Latin1 range
         var decoded = unescape(encodeURIComponent(svgString));
 
+        // Remove style tag if any as it is not supported in canva
+        decoded = decoded.replace('<style/>', '');
         // Now we can use btoa to convert the svg to base64
+
         var base64 = btoa(decoded);
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
 
-        const result = await upload({
-            id: 'sajhdgjadgd',
-            type: 'IMAGE',
-            mimeType: 'image/svg+xml',
-            url: imgSource,
-            thumbnailUrl: imgSource,
-        });
-        console.log('🚀 ~ onButtonClick ~ result:', result);
-
-        const res = await addNativeElement({
-            type: 'IMAGE',
-            ref: result.ref,
-        });
-
-        console.log('🚀 ~ onButtonClick ~ res:', res);
+        await appElementClient.addOrUpdateElement({ imgSource });
     }, [ref]);
 
     return (

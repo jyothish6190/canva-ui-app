@@ -7,7 +7,7 @@ import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
 import { Component } from 'src/models/component.model';
 
 import styles from './OptionsListComponent.css';
-import Title from '../title/Title';
+import CardTitle from '../card-title/CardTitle';
 
 type PropType = {
     component: Component;
@@ -27,10 +27,10 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         <Rows spacing="2u">
             <div className={styles.header}>
                 <div style={{ justifyContent: 'flex-start' }}>
-                    <Title title={component.name}></Title>
+                    <CardTitle title={component.name}></CardTitle>
                 </div>
                 <div style={{ justifyContent: 'flex-end' }}>
-                    <Title title="Clear Selection"></Title>
+                    <CardTitle title="Clear Selection"></CardTitle>
                 </div>
             </div>
             <>
