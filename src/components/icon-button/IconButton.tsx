@@ -13,38 +13,77 @@ type IconIconButtonComponentType = {
     isProperty: boolean;
 };
 
+type IconButtonStateData = {
+    buttonVariant: Variant;
+    buttonIcon: Icon | undefined;
+    buttonState: 'default' | 'hover' | 'active' | 'loading' | 'disabled';
+    buttonWidth: number | undefined;
+};
+
+const initialState: IconButtonStateData = {
+    buttonVariant: 'primary',
+    buttonIcon: undefined,
+    buttonState: 'default',
+    buttonWidth: undefined,
+};
+
 const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
-    const [buttonVariant, setbuttonVariant] = useState<Variant>('primary');
-    const [buttonIcon, setbuttonIcon] = useState<Icon | undefined>(undefined);
-    const [buttonState, setbuttonState] = useState<
-        'default' | 'hover' | 'active' | 'loading' | 'disabled'
-    >('default');
+    const [IconButtonState, setIconButtonState] =
+        useState<IconButtonStateData>(initialState);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === IconButtonFieldNames.VARIANT) {
-                setbuttonVariant(field.value ? field.value : 'primary');
+                setIconButtonState((prevState) => {
+                    return {
+                        ...prevState,
+                        buttonVariant: field.value ? field.value : 'primary',
+                    };
+                });
             }
 
             if (field.name === IconButtonFieldNames.ICON_SELECTION) {
-                setbuttonIcon(field.value ? field.value : undefined);
+                setIconButtonState((prevState) => {
+                    return {
+                        ...prevState,
+                        buttonIcon: field.value ? field.value : InfoIcon,
+                    };
+                });
             }
             if (field.name === IconButtonFieldNames.STATE) {
-                setbuttonState(field.value ? field.value : '');
+                setIconButtonState((prevState) => {
+                    return {
+                        ...prevState,
+                        buttonState: field.value ? field.value : 'default',
+                    };
+                });
+            }
+            if (field.name === IconButtonFieldNames.WIDTH) {
+                setIconButtonState((prevState) => {
+                    return {
+                        ...prevState,
+                        buttonWidth: field.value ? field.value : 100,
+                    };
+                });
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <div>
+            <div style={{ width: IconButtonState.buttonWidth }}>
                 <Button
-                    variant={buttonVariant}
-                    icon={buttonIcon?.Icon || InfoIcon}
+                    variant={IconButtonState.buttonVariant}
+                    stretch={true}
+                    icon={IconButtonState.buttonIcon?.Icon || InfoIcon}
                     key={component.name}
                     alignment="center"
-                    loading={buttonState == 'loading' ? true : false}
-                    disabled={buttonState == 'disabled' ? true : false}
+                    loading={
+                        IconButtonState.buttonState == 'loading' ? true : false
+                    }
+                    disabled={
+                        IconButtonState.buttonState == 'disabled' ? true : false
+                    }
                 ></Button>
             </div>
         );

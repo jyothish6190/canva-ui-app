@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { Component } from 'src/models/component.model';
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
+import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -57,6 +58,35 @@ const updateField = (
         case ButtonFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ButtonFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+        case IconButtonFieldNames.HUG_CONTENT:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === IconButtonFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 158;
+                    }
+                    if (field.name === IconButtonFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === IconButtonFieldNames.WIDTH) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === IconButtonFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            }
+            break;
+        case IconButtonFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === IconButtonFieldNames.WIDTH) {
                     field.value = value;
                 }
             });
