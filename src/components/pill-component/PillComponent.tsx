@@ -11,46 +11,87 @@ type PillComponentType = {
     isProperty: boolean;
 };
 
+type PillComponentStateData = {
+    pillText: string;
+    startDecorator: Icon | undefined;
+    endDecorator: Icon | undefined;
+    pillState: 'default' | 'hover' | 'active' | 'loading' | 'disabled';
+    pillWidth: number | undefined;
+};
+
+const initialState: PillComponentStateData = {
+    pillText: 'Pill',
+    startDecorator: undefined,
+    endDecorator: undefined,
+    pillState: 'default',
+    pillWidth: undefined,
+};
+
 const PillComponent = ({ component, isProperty }: PillComponentType) => {
-    const [pillText, setPillText] = useState<string>('pill');
-    const [startDecorator, setStartDecorator] = useState<Icon | undefined>(
-        undefined
-    );
-    const [endDecorator, setEndDecorator] = useState<Icon | undefined>(
-        undefined
-    );
-    const [pillState, setPillState] = useState<
-        'default' | 'hover' | 'active' | 'loading' | 'disabled'
-    >('default');
+    const [pillComponentState, setPillComponentState] =
+        useState<PillComponentStateData>(initialState);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === PillFieldNames.TEXT) {
-                setPillText(field.value ? field.value : 'pill');
+                setPillComponentState((prevState) => {
+                    return {
+                        ...prevState,
+                        pillText: field.value ? field.value : 'pill',
+                    };
+                });
             }
             if (field.name === PillFieldNames.START_ICON_SELECTION) {
-                setStartDecorator(field.value ? field.value : undefined);
+                setPillComponentState((prevState) => {
+                    return {
+                        ...prevState,
+                        startDecorator: field.value ? field.value : undefined,
+                    };
+                });
             }
             if (field.name === PillFieldNames.END_ICON_SELECTION) {
-                setEndDecorator(field.value ? field.value : undefined);
+                setPillComponentState((prevState) => {
+                    return {
+                        ...prevState,
+                        endDecorator: field.value ? field.value : undefined,
+                    };
+                });
             }
             if (field.name === PillFieldNames.STATE) {
-                setPillState(field.value ? field.value : 'default');
+                setPillComponentState((prevState) => {
+                    return {
+                        ...prevState,
+                        pillState: field.value ? field.value : 'default',
+                    };
+                });
+            }
+            if (field.name === PillFieldNames.WIDTH) {
+                setPillComponentState((prevState) => {
+                    return {
+                        ...prevState,
+                        pillWidth: field.value ? field.value : undefined,
+                    };
+                });
             }
         });
-        console.log('start', startDecorator);
-        console.log('end', endDecorator);
     }, [component]);
+
     if (isProperty) {
         return (
             <div>
                 <Pill
-                    key={endDecorator?.label}
-                    text={pillText}
-                    start={startDecorator?.Icon || null}
-                    end={endDecorator?.Icon || null}
-                    disabled={pillState === 'disabled' ? true : false}
-                    selected={pillState === 'active' ? true : false}
+                    key={pillComponentState.endDecorator?.label}
+                    text={pillComponentState.pillText}
+                    start={pillComponentState.startDecorator?.Icon || undefined}
+                    end={pillComponentState.endDecorator?.Icon || undefined}
+                    disabled={
+                        pillComponentState.pillState === 'disabled'
+                            ? true
+                            : false
+                    }
+                    selected={
+                        pillComponentState.pillState === 'active' ? true : false
+                    }
                 />
             </div>
         );

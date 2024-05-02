@@ -6,6 +6,7 @@ import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
+import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 
 type PropType = {
@@ -143,6 +144,35 @@ const updateField = (
         case AlertFieldNames.WIDTH_OPTION:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === AlertFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+        case PillFieldNames.HUG_CONTENT:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === PillFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 158;
+                    }
+                    if (field.name === PillFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === PillFieldNames.WIDTH) {
+                        field.showComponent = false;
+                    }
+                    if (field.name === PillFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            }
+            break;
+        case PillFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === PillFieldNames.WIDTH) {
                     field.value = value;
                 }
             });
