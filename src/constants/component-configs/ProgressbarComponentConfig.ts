@@ -1,17 +1,26 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum ProgressBarFieldNames {
+    PERCENTAGE = 'Percentage',
+    SIZE = 'Size',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width Options',
+}
+
 export const ProgressbarConfig = [
     {
+        showComponent: true,
         type: ComponentType.SLIDER,
-        name: 'Slider',
-        defaultValue: 25,
+        name: ProgressBarFieldNames.PERCENTAGE,
+        defaultValue: 50,
         min: 0,
         max: 100,
         disabled: true,
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Size',
+        name: ProgressBarFieldNames.SIZE,
         options: [
             {
                 label: 'Small',
@@ -27,36 +36,39 @@ export const ProgressbarConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: ProgressBarFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
         value: '158',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
+        name: ProgressBarFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
         ],
     },
