@@ -11,7 +11,7 @@ import {
 } from '@canva/app-ui-kit';
 
 import styles from './icon-list.css';
-import Title from 'src/components/title/Title';
+import CardTitle from 'src/components/card-title/CardTitle';
 
 type IconListType = {
     onClick: () => void;
@@ -39,7 +39,7 @@ const IconList = ({ onClick }: IconListType) => {
                 <div style={{ flex: '1' }}></div>
                 <CodeIcon />
             </div>
-            <Title title="Icons"></Title>
+            <CardTitle title="Icons"></CardTitle>
         </Box>
     );
 };

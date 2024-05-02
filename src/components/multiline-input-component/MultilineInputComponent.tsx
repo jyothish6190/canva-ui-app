@@ -13,7 +13,6 @@ import { useComponentStore } from 'src/store/ComponentStore';
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (text: string) => void;
 };
 
 const MultilineInputComponent = ({ component, isProperty }: PropType) => {
@@ -28,6 +27,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
             return;
         });
     };
+
     if (isProperty) {
         return (
             <FormField

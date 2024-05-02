@@ -1,13 +1,13 @@
 import React from 'react';
 
-import styles from './Title.css';
+import styles from './CardTitle.css';
 
 type PropType = {
     title: string;
     onClick?: () => void;
 };
 
-const Title = ({ title, onClick }: PropType) => {
+const CardTitle = ({ title, onClick }: PropType) => {
     return (
         <label className={styles.title} onClick={onClick}>
             {title}
@@ -15,4 +15,4 @@ const Title = ({ title, onClick }: PropType) => {
     );
 };
 
-export default Title;
+export default CardTitle;
