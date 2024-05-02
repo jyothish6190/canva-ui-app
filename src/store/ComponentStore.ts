@@ -6,6 +6,7 @@ import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
+import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
@@ -56,6 +57,7 @@ const updateField = (
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === ButtonFieldNames.WIDTH) {
                         field.showComponent = false;
+                        field.value = undefined;
                     }
                     if (field.name === ButtonFieldNames.WIDTH_OPTIONS) {
                         field.showComponent = false;
@@ -142,6 +144,7 @@ const updateField = (
                 }
             });
             break;
+
         case AlertFieldNames.WIDTH_OPTION:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === AlertFieldNames.WIDTH) {
