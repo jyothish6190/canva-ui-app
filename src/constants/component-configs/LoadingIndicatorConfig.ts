@@ -6,6 +6,7 @@ export enum LoadingIndicatorFieldNames {
 
 export const LoadingIndicatorConfig = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
         name: LoadingIndicatorFieldNames.SIZE,
         options: [
