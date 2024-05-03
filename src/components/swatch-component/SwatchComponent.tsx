@@ -31,7 +31,7 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
                 setSwatchData((prevState) => {
                     return {
                         ...prevState,
-                        swatchColor: field.value,
+                        swatchColor: field.value || initialState.swatchColor,
                     };
                 });
                 console.log('color', field.value);
