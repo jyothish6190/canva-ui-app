@@ -28,7 +28,7 @@ const initialState: MultilineInputStateData = {
     inputValue: undefined,
     inputLabel: undefined,
     maxCharacterCount: undefined,
-    inputWidth: '240',
+    inputWidth: undefined,
     inputState: 'default',
 };
 
