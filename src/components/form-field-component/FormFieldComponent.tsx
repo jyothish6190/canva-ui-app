@@ -13,7 +13,8 @@ type PropType = {
 };
 
 const FormFieldComponent = ({ component, isProperty }: PropType) => {
-    const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const { selectedComponent, setSelectedComponent, setComponentField } =
+        useComponentStore();
 
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
@@ -23,6 +24,7 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
             setSelectedComponent({ ...selectedComponent });
             return;
         });
+        setComponentField(component, value);
     };
 
     if (isProperty) {
