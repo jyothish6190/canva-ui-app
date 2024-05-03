@@ -30,6 +30,7 @@ const initialState: SwitchStateData = {
 const SwitchComponent = ({ component, isProperty }: PropType) => {
     const [switchData, setSwitchData] = useState<SwitchStateData>(initialState);
 
+    console.log('Switchcomponent', component);
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === SwitchFieldNames.CHECKED) {
@@ -47,6 +48,7 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                         switchLabel: field.value || undefined,
                     };
                 });
+                console.log('Switchdata', switchData);
             }
             if (field.name === SwitchFieldNames.DESCRIPTION) {
                 setSwitchData((prevState) => {
@@ -94,21 +96,20 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
         return (
             <div style={{ width: switchData.switchWidth }}>
                 <Switch
-                    id={component.categoryId}
                     defaultValue={component.defaultValue}
                     disabled={
                         switchData.switchState === 'disabled' ? true : false
                     }
                     label={
-                        component.categoryId === 'fieldComponent'
-                            ? component.name
-                            : switchData.switchLabel
+                        switchData.switchLabel
+                            ? switchData.switchLabel
+                            : component.name
                     }
                     value={switchData.switchValue}
                     description={
-                        component.categoryId === 'fieldComponent'
-                            ? component?.description
-                            : switchData.switchDescription
+                        switchData.switchDescription
+                            ? switchData.switchDescription
+                            : component.description
                     }
                     onChange={changeHandler}
                 />

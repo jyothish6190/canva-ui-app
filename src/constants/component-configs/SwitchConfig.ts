@@ -12,7 +12,6 @@ export enum SwitchFieldNames {
 export const SwitchConfig = [
     {
         showComponent: true,
-        categoryId: 'fieldComponent',
         type: ComponentType.SWITCH,
         name: SwitchFieldNames.CHECKED,
         defaultValue: true,
