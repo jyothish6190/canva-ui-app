@@ -1,20 +1,40 @@
 import React from 'react';
-import { ColorSelector, Swatch } from '@canva/app-ui-kit';
+
+import { ColorSelector, Swatch, Text } from '@canva/app-ui-kit';
+
 import { Component } from 'src/models/component.model';
+import styles from './colorSelector.css';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (text: string) => void;
 };
 
-const ColorSelectorComponent = ({
-    component,
-    isProperty,
-    onChange,
-}: PropType) => {
+const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setComponentField, setSelectedComponent } =
+        useComponentStore();
+
+    const changeHandler = (color: string) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = color;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+        setComponentField(component, color);
+    };
+
     if (isProperty) {
-        return <ColorSelector color="#143F6B" onChange={() => {}} />;
+        return (
+            <div className={styles.container}>
+                <Text variant="bold" size="medium">
+                    {component?.name}
+                </Text>
+                <ColorSelector color="#5ba1e7" onChange={changeHandler} />
+            </div>
+        );
     }
 
     return (

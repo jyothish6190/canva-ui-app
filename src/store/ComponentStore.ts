@@ -202,7 +202,7 @@ const updateField = (
                         ];
                     }
                 });
-            } else {
+            } else if (value === 'regular') {
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === TextFieldNames.SIZE) {
                         field.options = [
@@ -232,7 +232,7 @@ const updateField = (
                 });
             }
             break;
-        
+
         case SliderFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === SliderFieldNames.WIDTH) {
