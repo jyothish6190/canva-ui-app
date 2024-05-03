@@ -45,7 +45,7 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                 setSwitchData((prevState) => {
                     return {
                         ...prevState,
-                        switchLabel: field.value || undefined,
+                        switchLabel: field.value || '  ',
                     };
                 });
                 console.log('Switchdata', switchData);
