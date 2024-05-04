@@ -3,7 +3,7 @@ export enum CheckboxGroupFieldNames {
     HUG_CONTENT = 'Hug Content',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width options',
-    RADIO_OPTIONS = 'Radio Options',
+    CHECKBOX_OPTIONS = ' Options',
 }
 
 export const CheckBoxGroupConfig = [
@@ -54,7 +54,7 @@ export const CheckBoxGroupConfig = [
         showComponent: true,
         type: ComponentType.OPTIONS_LIST,
         optionType: OptionTypes.CHECKBOX,
-        name: CheckboxGroupFieldNames.RADIO_OPTIONS,
+        name: CheckboxGroupFieldNames.CHECKBOX_OPTIONS,
         options: [
             {
                 label: 'Small',
