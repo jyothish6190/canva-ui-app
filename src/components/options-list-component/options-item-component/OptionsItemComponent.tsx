@@ -10,6 +10,7 @@ import {
 
 import styles from './OptionsItemComponent.css';
 import { OptionTypes } from 'src/constants/ComponentTypes';
+import { useOptionStore } from 'src/store/OptionListStore';
 
 type PropType = {
     option: SelectOption<string>;
@@ -17,6 +18,7 @@ type PropType = {
 };
 
 const OptionsItemComponent = ({ option, OptionType }: PropType) => {
+    const { deleteItem, OptionList } = useOptionStore();
     const renderOptionComponent = () => {
         switch (OptionType) {
             case OptionTypes.RADIO:
@@ -43,13 +45,24 @@ const OptionsItemComponent = ({ option, OptionType }: PropType) => {
             <div style={{ flex: 0 }}>{renderOptionComponent()}</div>
 
             <div style={{ flex: 1 }}>
-                <TextInput value={option.label} />
+                <TextInput
+                    defaultValue={option.label}
+                    value={undefined}
+                    onChange={() => {}}
+                />
             </div>
-            <div style={{ flex: 0 }}>
-                <div onClick={() => {}}>
-                    <TrashIcon />
+            {OptionList.length > 1 && (
+                <div style={{ flex: 0 }}>
+                    <div
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                            deleteItem(option.value);
+                        }}
+                    >
+                        <TrashIcon />
+                    </div>
                 </div>
-            </div>
+            )}
         </Box>
     );
 };

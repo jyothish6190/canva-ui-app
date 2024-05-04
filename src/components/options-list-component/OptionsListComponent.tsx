@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Box, Column, Columns, PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
@@ -8,6 +8,7 @@ import { Component } from 'src/models/component.model';
 
 import styles from './OptionsListComponent.css';
 import CardTitle from '../card-title/CardTitle';
+import { useOptionStore } from 'src/store/OptionListStore';
 
 type PropType = {
     component: Component;
@@ -15,8 +16,11 @@ type PropType = {
 };
 
 const OptionsListComponent = ({ component, isProprty }: PropType) => {
+    const { setNewlist, OptionList, addNewItem } = useOptionStore();
+
     const options = useMemo(() => {
         if (component && component.options) {
+            setNewlist(component.options);
             return component.options;
         } else {
             return [];
@@ -34,7 +38,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 </div>
             </div>
             <>
-                {options.map((option) => {
+                {OptionList.map((option) => {
                     return (
                         <div key={option.value}>
                             <OptionsItemComponent
@@ -48,7 +52,9 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             <ButtonWithIcon
                 title="Add an option"
                 icon={PlusIcon}
-                onClick={() => {}}
+                onClick={() => {
+                    addNewItem();
+                }}
             />
         </Rows>
     );
