@@ -12,7 +12,7 @@ type PropType = {
     addNewItem: () => void;
     editItem: (
         editValue: string | undefined,
-        newName: string | undefined
+        newData: string | undefined
     ) => void;
     deleteItem: (optionValue: string) => void;
 };
@@ -33,11 +33,11 @@ export const useOptionStore = create<PropType>((set) => ({
             ],
         }));
     },
-    editItem: (editValue: string | undefined, newName: string | undefined) => {
+    editItem: (editValue: string | undefined, newData: string | undefined) => {
         set((state) => ({
             OptionList: state.OptionList.map((option) =>
                 option.value === editValue
-                    ? { ...option, label: newName }
+                    ? { ...option, label: newData, value: newData }
                     : option
             ),
         }));

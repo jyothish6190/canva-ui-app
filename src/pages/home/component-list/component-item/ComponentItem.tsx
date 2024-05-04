@@ -90,7 +90,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.CHECKBOX_GROUP:
-            return <CheckboxGroupComponent />;
+            return (
+                <CheckboxGroupComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.TEXT_INPUT:
             return (
                 <TextInputComponent

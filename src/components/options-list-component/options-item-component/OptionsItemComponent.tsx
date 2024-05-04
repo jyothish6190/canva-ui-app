@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Checkbox,
@@ -18,7 +18,9 @@ type PropType = {
 };
 
 const OptionsItemComponent = ({ option, OptionType }: PropType) => {
-    const { deleteItem, OptionList } = useOptionStore();
+    const { deleteItem, OptionList, editItem } = useOptionStore();
+    const [inputValue, setInputValue] = useState(option.label || ''); // Store input value in component state
+
     const renderOptionComponent = () => {
         switch (OptionType) {
             case OptionTypes.RADIO:
@@ -40,6 +42,12 @@ const OptionsItemComponent = ({ option, OptionType }: PropType) => {
         }
     };
 
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = event.target.value;
+        setInputValue(newValue);
+        editItem(option.value, newValue);
+    };
+
     return (
         <Box display="flex" flexDirection="row" className={styles.container}>
             <div style={{ flex: 0 }}>{renderOptionComponent()}</div>
@@ -48,7 +56,7 @@ const OptionsItemComponent = ({ option, OptionType }: PropType) => {
                 <TextInput
                     defaultValue={option.label}
                     value={undefined}
-                    onChange={() => {}}
+                    onBlur={changeHandler}
                 />
             </div>
             {OptionList.length > 1 && (
