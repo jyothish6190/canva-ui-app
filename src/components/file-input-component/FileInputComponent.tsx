@@ -12,11 +12,13 @@ type PropType = {
     onChange?: (changes: boolean) => void;
 };
 type FileInputStateData = {
-    FileInputwidth: number | undefined;
+    fileInputwidth: number | undefined;
+    fileOptionView: boolean;
 };
 
 const initialState: FileInputStateData = {
-    FileInputwidth: undefined,
+    fileInputwidth: undefined,
+    fileOptionView: false,
 };
 const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
     const [fileInputData, setFileInputData] =
@@ -30,7 +32,15 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
                 setFileInputData((prevState) => {
                     return {
                         ...prevState,
-                        FileInputwidth: field.value || undefined,
+                        fileInputwidth: field.value || undefined,
+                    };
+                });
+            }
+            if (field.name === FileInputFieldNames.FILE_INPUT_ITEM) {
+                setFileInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        fileOptionView: field.value,
                     };
                 });
             }
@@ -39,17 +49,19 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: fileInputData.FileInputwidth || undefined }}>
+            <div style={{ width: fileInputData.fileInputwidth || undefined }}>
                 <FileInput accept={OptionList} stretchButton={true} />
-                {OptionList.map((option, index) => {
-                    return (
-                        <FileInputItem
-                            key={index}
-                            label={option.label}
-                            onDeleteClick={() => void null}
-                        />
-                    );
-                })}
+                {fileInputData.fileOptionView === true &&
+                    OptionList &&
+                    OptionList.map((option, index) => {
+                        return (
+                            <FileInputItem
+                                key={index}
+                                label={option.label}
+                                onDeleteClick={() => void null}
+                            />
+                        );
+                    })}
             </div>
         );
     }
