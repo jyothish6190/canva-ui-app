@@ -12,6 +12,7 @@ import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
+import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -240,6 +241,30 @@ const updateField = (
                     field.value = value;
                 }
             });
+            break;
+        case SwitchFieldNames.LABEL:
+            if (value === '') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SwitchFieldNames.WIDTH) {
+                        field.showComponent = false;
+                        field.value = undefined;
+                    }
+                    if (field.name === SwitchFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SwitchFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 328;
+                    }
+                    if (field.name === SwitchFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            }
+
             break;
 
         case TextInputSearchFieldNames.END_DECORATOR:
