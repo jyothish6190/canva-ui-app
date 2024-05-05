@@ -1,20 +1,30 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum SwatchFieldnames {
+    COLOR_PICKER = 'Color picker',
+    ACTIVE = 'Active',
+    VARIANT = 'Variant',
+    SIZE = 'Size',
+}
+
 export const SwatchConfig = [
     {
-        type: ComponentType.SWATCH,
-        name: 'Color picker',
+        showComponent: true,
+        type: ComponentType.COLOR_PICKER,
+        name: SwatchFieldnames.COLOR_PICKER,
         color: '#E0D9FC',
         categoryId: 'color',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'Active',
+        name: SwatchFieldnames.ACTIVE,
         defaultValue: false,
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Variant',
+        name: SwatchFieldnames.VARIANT,
         options: [
             {
                 label: 'Solid',
@@ -26,15 +36,16 @@ export const SwatchConfig = [
             },
         ],
         defaultValue: 'solid',
-        value: 'primary',
+        value: 'solid',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Size',
+        name: SwatchFieldnames.SIZE,
         options: [
             {
                 label: 'Xsmall',
-                value: 'xsamll',
+                value: 'xsmall',
             },
             {
                 label: 'Small',
@@ -42,6 +53,6 @@ export const SwatchConfig = [
             },
         ],
         defaultValue: 'small',
-        value: 'primary',
+        value: 'small',
     },
 ];
