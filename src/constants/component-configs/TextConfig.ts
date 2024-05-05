@@ -5,21 +5,27 @@ import {
 } from '@canva/app-ui-kit';
 import { ComponentType } from '../ComponentTypes';
 
+export enum TextFieldNames {
+    TEXT = 'Text',
+    SIZE = 'Size',
+    VARIANT = 'Variant',
+    TONE = 'Tone',
+    ALIGNMENT = 'Alignment',
+}
+
 export const TextConfig = [
     {
+        showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
-        name: 'Text',
+        name: TextFieldNames.TEXT,
         placeholder: '',
         value: 'Example title',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Size',
+        name: TextFieldNames.SIZE,
         options: [
-            {
-                label: 'xlarge',
-                value: 'xlarge',
-            },
             {
                 label: 'large',
                 value: 'large',
@@ -33,17 +39,14 @@ export const TextConfig = [
                 label: 'Small',
                 value: 'small',
             },
-            {
-                label: 'xsmall',
-                value: 'xsmall',
-            },
         ],
         defaultValue: 'medium',
         placeholder: 'Choose a Size',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Variant',
+        name: TextFieldNames.VARIANT,
         options: [
             {
                 label: 'Regular',
@@ -55,11 +58,12 @@ export const TextConfig = [
             },
         ],
         defaultValue: 'regular',
-        value: 'primary',
+        value: 'regular',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Tone',
+        name: TextFieldNames.TONE,
         options: [
             {
                 label: 'primary',
@@ -82,23 +86,24 @@ export const TextConfig = [
         value: 'primary',
     },
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Alignment',
+        name: TextFieldNames.ALIGNMENT,
         options: [
             {
                 label: TextAlignLeftIcon(),
-                value: 'left-icon',
+                value: 'start',
             },
             {
                 label: TextAlignCenterIcon(),
-                value: 'center-icon',
+                value: 'center',
             },
             {
                 label: TextAlignRightIcon(),
-                value: 'right-icon',
+                value: 'end',
             },
         ],
-        defaultValue: 'left-icon',
-        value: 'primary',
+        defaultValue: 'center',
+        value: 'center',
     },
 ];

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { addNativeElement } from '@canva/design';
 import { upload } from '@canva/asset';
@@ -11,6 +11,7 @@ import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
 
 import { useComponentStore } from 'src/store/ComponentStore';
+import { useNavigate } from 'react-router-dom';
 
 type UIData = {
     imgSource: string;
@@ -31,11 +32,20 @@ const appElementClient = initAppElement<UIData>({
 });
 
 const ComponentDetailsPage = () => {
+    const navigate = useNavigate();
     const { selectedComponent } = useComponentStore();
-
+    const initialLoad = useRef(true);
     const ref = useRef<HTMLDivElement>(null);
 
-    const onButtonClick = useCallback(async () => {
+    useEffect(() => {
+        onAddComponent();
+        appElementClient.registerOnElementChange((appElement) => {
+            if (!appElement && !initialLoad.current) navigate('/home');
+            initialLoad.current = false;
+        });
+    }, []);
+
+    const onAddComponent = useCallback(async () => {
         if (ref.current === null) {
             return;
         }
@@ -78,7 +88,7 @@ const ComponentDetailsPage = () => {
                         stretch={true}
                         variant="primary"
                         children="Update Component"
-                        onClick={onButtonClick}
+                        onClick={onAddComponent}
                     />
                 </Rows>
             )}

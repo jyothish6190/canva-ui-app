@@ -6,9 +6,12 @@ import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
+import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
+import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
+import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -55,6 +58,7 @@ const updateField = (
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === ButtonFieldNames.WIDTH) {
                         field.showComponent = false;
+                        field.value = undefined;
                     }
                     if (field.name === ButtonFieldNames.WIDTH_OPTIONS) {
                         field.showComponent = false;
@@ -141,6 +145,7 @@ const updateField = (
                 }
             });
             break;
+
         case AlertFieldNames.WIDTH_OPTION:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === AlertFieldNames.WIDTH) {
@@ -173,6 +178,65 @@ const updateField = (
         case PillFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === PillFieldNames.WIDTH) {
+                    field.value = value;
+                }
+            });
+            break;
+        case TextFieldNames.VARIANT:
+            if (value === 'bold') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextFieldNames.SIZE) {
+                        field.options = [
+                            {
+                                label: 'large',
+                                value: 'large',
+                            },
+
+                            {
+                                label: 'Medium',
+                                value: 'medium',
+                            },
+                            {
+                                label: 'Small',
+                                value: 'small',
+                            },
+                        ];
+                    }
+                });
+            } else if (value === 'regular') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextFieldNames.SIZE) {
+                        field.options = [
+                            {
+                                label: 'xlarge',
+                                value: 'xlarge',
+                            },
+                            {
+                                label: 'large',
+                                value: 'large',
+                            },
+
+                            {
+                                label: 'Medium',
+                                value: 'medium',
+                            },
+                            {
+                                label: 'Small',
+                                value: 'small',
+                            },
+                            {
+                                label: 'xsmall',
+                                value: 'xsmall',
+                            },
+                        ];
+                    }
+                });
+            }
+            break;
+
+        case SliderFieldNames.WIDTH_OPTIONS:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.WIDTH) {
                     field.value = value;
                 }
             });
