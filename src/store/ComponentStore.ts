@@ -11,6 +11,7 @@ import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
+import { FileInputFieldNames } from 'src/constants/component-configs/FileInputConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -232,13 +233,28 @@ const updateField = (
                 });
             }
             break;
-        
+
         case SliderFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === SliderFieldNames.WIDTH) {
                     field.value = value;
                 }
             });
+            break;
+        case FileInputFieldNames.FILE_INPUT_ITEM:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            }
             break;
 
         default:

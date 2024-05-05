@@ -9,7 +9,7 @@ type OptionType = {
 type PropType = {
     OptionList: any[];
     setNewlist: (newList: any[]) => void;
-    addNewItem: () => void;
+    addNewItem: (file?: boolean) => void;
     editItem: (
         editValue: string | undefined,
         newData: string | undefined
@@ -22,13 +22,21 @@ export const useOptionStore = create<PropType>((set) => ({
     setNewlist: (newList: any[]) => {
         set({ OptionList: newList });
     },
-    addNewItem: () => {
+    addNewItem: (file?: boolean) => {
         set((state) => ({
             OptionList: [
                 ...state.OptionList,
                 {
-                    label: 'Option' + (state.OptionList.length + 1),
-                    value: 'Option' + (state.OptionList.length + 1),
+                    label: file
+                        ? 'Option' + (state.OptionList.length + 1)
+                        : 'exapmple File' +
+                          (state.OptionList.length + 1) +
+                          '.png',
+                    value: file
+                        ? 'Option' + (state.OptionList.length + 1)
+                        : 'exapmple File' +
+                          (state.OptionList.length + 1) +
+                          '.png',
                 },
             ],
         }));

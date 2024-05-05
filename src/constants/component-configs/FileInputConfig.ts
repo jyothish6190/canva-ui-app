@@ -1,63 +1,76 @@
 import { option } from 'yargs';
 import { ComponentType } from '../ComponentTypes';
 
+export enum FileInputFieldNames {
+    HUG_CONTENT = 'Hug Content',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+    FILE_INPUT_ITEM = 'File input items',
+    FILE_INPUT_OPTIONS = 'File input Label',
+}
+
 export const FileInputConfig = [
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'Hug content',
-        defaultValue: false,
+        name: FileInputFieldNames.HUG_CONTENT,
+        defaultValue: true,
     },
     {
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: FileInputFieldNames.WIDTH,
         label: 'Label',
         value: '328',
         description: 'Description text',
     },
     {
+        showComponent: false,
         type: ComponentType.CATEGORY,
-
+        name: FileInputFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
-                label: 'Medium',
-                value: 'medium',
+                label: 'Small',
+                value: 158,
             },
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'File input items',
-        defaultValue: true,
+        name: FileInputFieldNames.FILE_INPUT_ITEM,
+        defaultValue: false,
     },
     {
+        showComponent: false,
         type: ComponentType.OPTIONS_LIST,
-        name: 'File input Label',
+        name: FileInputFieldNames.FILE_INPUT_OPTIONS,
         options: [
             {
-                label: 'examplefile.png',
-                value: 'examplefile.png',
+                label: 'examplefile1.png',
+                value: 'examplefile1.png',
             },
             {
-                label: 'examplefile.png',
-                value: 'examplefile.png',
+                label: 'examplefile2.png',
+                value: 'examplefile2.png',
             },
         ],
     },
