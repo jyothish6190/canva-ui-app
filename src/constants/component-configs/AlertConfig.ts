@@ -12,6 +12,7 @@ export enum AlertFieldNames {
 export const AlertConfig = [
     {
         showComponent: true,
+        tabId: 'control',
         type: ComponentType.SEGMENTED_CONTROL,
         name: AlertFieldNames.TONE,
         options: [
