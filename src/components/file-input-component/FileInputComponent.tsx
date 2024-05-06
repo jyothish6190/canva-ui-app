@@ -14,11 +14,13 @@ type PropType = {
 type FileInputStateData = {
     fileInputwidth: number | undefined;
     fileOptionView: boolean;
+    fileOption: any[];
 };
 
 const initialState: FileInputStateData = {
     fileInputwidth: undefined,
     fileOptionView: false,
+    fileOption: [],
 };
 const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
     const [fileInputData, setFileInputData] =
@@ -44,16 +46,27 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
                     };
                 });
             }
+            if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
+                setFileInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        fileOption: field.value,
+                    };
+                });
+            }
         });
     }, [component]);
 
     if (isProperty) {
         return (
             <div style={{ width: fileInputData.fileInputwidth || undefined }}>
-                <FileInput accept={OptionList} stretchButton={true} />
+                <FileInput
+                    accept={fileInputData.fileOption}
+                    stretchButton={true}
+                />
                 {fileInputData.fileOptionView === true &&
-                    OptionList &&
-                    OptionList.map((option, index) => {
+                    fileInputData.fileOption &&
+                    fileInputData.fileOption.map((option, index) => {
                         return (
                             <FileInputItem
                                 key={index}
