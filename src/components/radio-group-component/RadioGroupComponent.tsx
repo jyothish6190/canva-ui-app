@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { RadioGroup, RadioOption, SelectOption } from '@canva/app-ui-kit';
+import { RadioGroup } from '@canva/app-ui-kit';
+
 import { Component } from 'src/models/component.model';
-import { useOptionStore } from 'src/store/OptionListStore';
 import { RadioConfigFieldNames } from 'src/constants/component-configs/RadioGroupConfig';
 
 type RadioPropType = {
@@ -12,16 +12,16 @@ type RadioPropType = {
 
 type RadioStateData = {
     radioWidth: number | undefined;
+    radioOptions: any[];
 };
 
 const initialState: RadioStateData = {
     radioWidth: undefined,
+    radioOptions: [],
 };
 
 const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
     const [radioData, setRadioData] = useState<RadioStateData>(initialState);
-
-    const { OptionList } = useOptionStore();
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
@@ -30,6 +30,14 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
                     return {
                         ...prevState,
                         radioWidth: field.value || undefined,
+                    };
+                });
+            }
+            if (field.name === RadioConfigFieldNames.RADIO_OPTIONS) {
+                setRadioData((prevState) => {
+                    return {
+                        ...prevState,
+                        radioOptions: field.value,
                     };
                 });
             }
@@ -47,7 +55,7 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
             >
                 <RadioGroup
                     defaultValue={'blueberry'}
-                    options={[...OptionList]}
+                    options={radioData.radioOptions}
                 />
             </div>
         );
