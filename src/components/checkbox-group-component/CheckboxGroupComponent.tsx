@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+
 import { CheckboxGroup } from '@canva/app-ui-kit';
+
 import { Component } from 'src/models/component.model';
 import { CheckboxGroupFieldNames } from 'src/constants/component-configs/CheckBoxGroupConfig';
-import { useOptionStore } from 'src/store/OptionListStore';
 
 type CheckBoxPropType = {
     component: Component;
@@ -11,10 +12,12 @@ type CheckBoxPropType = {
 
 type CheckBoxStateData = {
     checkBoxWidth: number | undefined;
+    checkBoxOptions: any[];
 };
 
 const initialState: CheckBoxStateData = {
     checkBoxWidth: undefined,
+    checkBoxOptions: [],
 };
 
 const CheckboxGroupComponent = ({
@@ -24,8 +27,6 @@ const CheckboxGroupComponent = ({
     const [checkboxData, setcheckboxData] =
         useState<CheckBoxStateData>(initialState);
 
-    const { OptionList } = useOptionStore();
-
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === CheckboxGroupFieldNames.WIDTH) {
@@ -33,6 +34,14 @@ const CheckboxGroupComponent = ({
                     return {
                         ...prevState,
                         checkBoxWidth: field.value || undefined,
+                    };
+                });
+            }
+            if (field.name === CheckboxGroupFieldNames.CHECKBOX_OPTIONS) {
+                setcheckboxData((prevState) => {
+                    return {
+                        ...prevState,
+                        checkBoxOptions: field.value,
                     };
                 });
             }
@@ -48,7 +57,13 @@ const CheckboxGroupComponent = ({
                         : undefined,
                 }}
             >
-                <CheckboxGroup options={[...OptionList]} />
+                <CheckboxGroup
+                    options={
+                        checkboxData.checkBoxOptions
+                            ? checkboxData.checkBoxOptions
+                            : []
+                    }
+                />
             </div>
         );
     } else {
