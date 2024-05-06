@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { addNativeElement } from '@canva/design';
-import { upload } from '@canva/asset';
 import { Button, Rows } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
 import { initAppElement } from '@canva/design';
@@ -38,9 +36,12 @@ const ComponentDetailsPage = () => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        onAddComponent();
         appElementClient.registerOnElementChange((appElement) => {
-            if (!appElement && !initialLoad.current) navigate('/home');
+            if (!appElement && !initialLoad.current) {
+                navigate('/home');
+            } else {
+                onAddComponent();
+            }
             initialLoad.current = false;
         });
     }, []);
@@ -51,18 +52,16 @@ const ComponentDetailsPage = () => {
         }
         const svgDocument = elementToSVG(ref.current);
 
-        // Inline external resources (fonts, images, etc) as data: URIs
         await inlineResources(svgDocument.documentElement);
 
-        // Get SVG string
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
-        // Remove any characters outside the Latin1 range
         var decoded = unescape(encodeURIComponent(svgString));
 
-        // Remove style tag if any as it is not supported in canva
-        decoded = decoded.replace('<style/>', '');
-        // Now we can use btoa to convert the svg to base64
+        decoded = decoded.replace(
+            /data-stacking-context="true"|<g data-stacking-layer[^/<]*\/>|<!--[^>]*><style\/>|aria-[^"]*"[^"]*"|[^\x20-\x7E]+/g,
+            ''
+        );
 
         var base64 = btoa(decoded);
 
