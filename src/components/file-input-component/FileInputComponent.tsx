@@ -26,8 +26,6 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
     const [fileInputData, setFileInputData] =
         useState<FileInputStateData>(initialState);
 
-    const { OptionList } = useOptionStore();
-
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === FileInputFieldNames.WIDTH) {
