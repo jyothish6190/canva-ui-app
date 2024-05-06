@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FormField, Select } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
+import { SelectFieldNames } from 'src/constants/component-configs/SelectConfig';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
 };
 
+type SelectStateData = {
+    selectOptions: any[] | null;
+    componentPlaceHolder: string | undefined;
+    componentWidth: number | undefined;
+    componentLabel: string | null;
+    componentState: 'default' | 'hover' | 'error' | 'disabled';
+};
+
+const initialState: SelectStateData = {
+    selectOptions: null,
+    componentPlaceHolder: undefined,
+    componentWidth: undefined,
+    componentLabel: null,
+    componentState: 'default',
+};
+
 const SelectComponent = ({ component, isProperty }: PropType) => {
     const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const [selectData, setSelectData] = useState<SelectStateData>(initialState);
+
+    const selectRef = useRef<HTMLDivElement | null>(null);
 
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
@@ -23,24 +44,92 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         });
     };
 
+    useEffect(() => {
+        component.fields?.forEach((field: Component) => {
+            if (field.name === SelectFieldNames.PLACEHOLDER) {
+                setSelectData((prevState) => {
+                    return {
+                        ...prevState,
+                        componentPlaceHolder: field.value || ' ',
+                        componentLabel: '  ',
+                    };
+                });
+            }
+            if (field.name === SelectFieldNames.WIDTH) {
+                setSelectData((prevState) => {
+                    return {
+                        ...prevState,
+                        componentWidth: field.value || undefined,
+                    };
+                });
+            }
+            if (field.name === SelectFieldNames.SELECT_OPTIONS) {
+                setSelectData((prevState) => {
+                    return {
+                        ...prevState,
+                        selectOptions: field.value,
+                    };
+                });
+            }
+            if (field.name === SelectFieldNames.STATE) {
+                setSelectData((prevState) => {
+                    return {
+                        ...prevState,
+                        componentState: field.value,
+                    };
+                });
+            }
+            if (field.name === SelectFieldNames.STATE) {
+                field.value === true ? selectRef?.current?.focus() : '';
+            }
+        });
+    }, [component]);
+
     if (isProperty) {
         return (
-            <FormField
-                label={component.name}
-                control={(props) => (
-                    <Select
-                        options={component.options as any[]}
-                        stretch={true}
-                        placeholder={component.placeholder}
-                        onChange={changeHandler}
-                        value={
-                            component.value
-                                ? component.value
-                                : component.defaultValue
-                        }
-                    />
-                )}
-            />
+            <div
+                style={{ width: selectData.componentWidth + 'px' }}
+                ref={selectRef}
+            >
+                <FormField
+                    label={
+                        selectData.componentLabel
+                            ? selectData.componentLabel
+                            : component.name
+                    }
+                    control={(props) => (
+                        <Select
+                            disabled={
+                                selectData.componentState === 'disabled'
+                                    ? true
+                                    : false
+                            }
+                            error={
+                                selectData.componentState === 'error'
+                                    ? true
+                                    : false
+                            }
+                            options={
+                                selectData.selectOptions
+                                    ? selectData.selectOptions
+                                    : (component.options as any[])
+                            }
+                            stretch={true}
+                            placeholder={
+                                selectData.componentPlaceHolder
+                                    ? selectData.componentPlaceHolder
+                                    : component.placeholder
+                            }
+                            onChange={changeHandler}
+                            value={
+                                component.value
+                                    ? component.value
+                                    : component.defaultValue
+                            }
+                        />
+                    )}
+                />
+            </div>
         );
     }
     return (

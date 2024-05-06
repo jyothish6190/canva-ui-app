@@ -9,6 +9,7 @@ import { Component } from 'src/models/component.model';
 import styles from './OptionsListComponent.css';
 import CardTitle from '../card-title/CardTitle';
 import { useOptionStore } from 'src/store/OptionListStore';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
@@ -16,9 +17,10 @@ type PropType = {
 };
 
 const OptionsListComponent = ({ component, isProprty }: PropType) => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
     const { setNewlist, OptionList, addNewItem } = useOptionStore();
 
-    const options = useMemo(() => {
+    useMemo(() => {
         if (component && component.options) {
             setNewlist(component.options);
             return component.options;
@@ -26,6 +28,16 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             return [];
         }
     }, [component]);
+
+    useEffect(() => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = OptionList;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    }, [OptionList]);
 
     return (
         <Rows spacing="2u">
