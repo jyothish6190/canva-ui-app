@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Slider } from '@canva/app-ui-kit';
+import { FormField, Slider } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
@@ -15,12 +15,16 @@ type SliderStateData = {
     sliderValue: number | undefined;
     maxValue: number;
     minValue: number;
+    sliderLabel: string | undefined;
+    sliderWidth: number | undefined;
 };
 
 const initialState: SliderStateData = {
     sliderValue: undefined,
     maxValue: 100,
     minValue: 0,
+    sliderLabel: undefined,
+    sliderWidth: undefined,
 };
 
 const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
@@ -35,6 +39,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                     return {
                         ...prevState,
                         sliderValue: field.value,
+                        sliderLabel: ' ',
                     };
                 });
             }
@@ -54,6 +59,14 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                     };
                 });
             }
+            if (field.name === SliderFieldNames.WIDTH) {
+                setSliderState((prevState) => {
+                    return {
+                        ...prevState,
+                        sliderWidth: field.value,
+                    };
+                });
+            }
         });
     }, [component]);
 
@@ -69,14 +82,29 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: 250 }}>
-                <Slider
-                    defaultValue={component.defaultValue}
-                    value={sliderState.sliderValue}
-                    max={sliderState.maxValue}
-                    min={sliderState.minValue}
-                    step={1}
-                    onChange={changeHandler}
+            <div
+                style={{
+                    width: sliderState.sliderWidth
+                        ? sliderState.sliderWidth
+                        : '100% !important',
+                }}
+            >
+                <FormField
+                    label={
+                        sliderState.sliderLabel
+                            ? sliderState.sliderLabel
+                            : component.name
+                    }
+                    control={(props) => (
+                        <Slider
+                            defaultValue={component.defaultValue}
+                            value={sliderState.sliderValue}
+                            max={sliderState.maxValue}
+                            min={sliderState.minValue}
+                            step={1}
+                            onChange={changeHandler}
+                        />
+                    )}
                 />
             </div>
         );
