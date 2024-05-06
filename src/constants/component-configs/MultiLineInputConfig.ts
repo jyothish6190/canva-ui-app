@@ -1,62 +1,77 @@
 import { ComponentType } from '../ComponentTypes';
 
+export enum MultilineInputFieldNames {
+    TEXT = 'Text',
+    WITH_TEXT = 'With Text',
+    MAX_CHAR_COUNT = 'Maximum character count  (optional)',
+    WIDTH = 'Width',
+    WIDTH_OPTION = 'Width Options',
+    STATE = 'State',
+}
+
 export const MultiLineInputConfig = [
     {
+        showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
-        name: 'Text',
+        name: MultilineInputFieldNames.TEXT,
         placeholder: 'Placeholder',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'With text',
+        name: MultilineInputFieldNames.WITH_TEXT,
         defaultValue: false,
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Maximum character count  (optional)',
+        name: MultilineInputFieldNames.MAX_CHAR_COUNT,
         label: 'Label',
         description: 'Description text',
         value: '50',
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: MultilineInputFieldNames.WIDTH,
         label: 'Label',
-        value: '328',
+        value: 328,
         description: 'Description text',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
-
+        name: MultilineInputFieldNames.WIDTH_OPTION,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
+        name: MultilineInputFieldNames.STATE,
         options: [
             {
                 label: 'Default',

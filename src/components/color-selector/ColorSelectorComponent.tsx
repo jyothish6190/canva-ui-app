@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { ColorSelector, Swatch, Text } from '@canva/app-ui-kit';
 
@@ -6,6 +7,7 @@ import { Component } from 'src/models/component.model';
 import styles from './colorSelector.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { ColorFieldNames } from 'src/constants/component-configs/ColorPickerConfig';
+
 
 type PropType = {
     component: Component;
@@ -91,6 +93,29 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                         right: -25,
                     }}
                 />
+
+const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setComponentField, setSelectedComponent } =
+        useComponentStore();
+
+    const changeHandler = (color: string) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = color;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+        setComponentField(component, color);
+    };
+
+    if (isProperty) {
+        return (
+            <div className={styles.container}>
+                <Text variant="bold" size="medium">
+                    {component?.name}
+                </Text>
+                <ColorSelector color="#5ba1e7" onChange={changeHandler} />
             </div>
         );
     }

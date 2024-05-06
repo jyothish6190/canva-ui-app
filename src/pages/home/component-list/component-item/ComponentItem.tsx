@@ -143,7 +143,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.SWATCH:
-            return <SwatchComponent />;
+            return (
+                <SwatchComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.COLOR_PICKER:
             return (
                 <ColorSelectorComponent

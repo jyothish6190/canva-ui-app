@@ -9,8 +9,10 @@ import { ProgressBarFieldNames } from 'src/constants/component-configs/Progressb
 import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
+import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
+import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -202,7 +204,7 @@ const updateField = (
                         ];
                     }
                 });
-            } else {
+            } else if (value === 'regular') {
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === TextFieldNames.SIZE) {
                         field.options = [
@@ -232,7 +234,7 @@ const updateField = (
                 });
             }
             break;
-        
+
         case SliderFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === SliderFieldNames.WIDTH) {
@@ -240,7 +242,63 @@ const updateField = (
                 }
             });
             break;
+        case SwitchFieldNames.LABEL:
+            if (value === '') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SwitchFieldNames.WIDTH) {
+                        field.showComponent = false;
+                        field.value = undefined;
+                    }
+                    if (field.name === SwitchFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SwitchFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 328;
+                    }
+                    if (field.name === SwitchFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                    }
+                });
+            }
 
+            break;
+
+        case TextInputSearchFieldNames.END_DECORATOR:
+            if (value == 'text') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextInputSearchFieldNames.END_TEXT) {
+                        field.showComponent = true;
+                    }
+                });
+            } else if (value == 'character count') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (
+                        field.name === TextInputSearchFieldNames.MAX_CHAR_COUNT
+                    ) {
+                        field.showComponent = true;
+                        field.value = 50;
+                    }
+                    if (field.name === TextInputSearchFieldNames.END_TEXT) {
+                        field.showComponent = false;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === TextInputSearchFieldNames.END_TEXT) {
+                        field.showComponent = false;
+                    }
+                    if (
+                        field.name === TextInputSearchFieldNames.MAX_CHAR_COUNT
+                    ) {
+                        field.showComponent = false;
+                    }
+                });
+            }
+            break;
         default:
             break;
     }
