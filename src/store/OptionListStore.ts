@@ -27,16 +27,18 @@ export const useOptionStore = create<PropType>((set) => ({
             OptionList: [
                 ...state.OptionList,
                 {
-                    label: file
-                        ? 'Option' + (state.OptionList.length + 1)
-                        : 'exapmple File' +
-                          (state.OptionList.length + 1) +
-                          '.png',
-                    value: file
-                        ? 'Option' + (state.OptionList.length + 1)
-                        : 'exapmple File' +
-                          (state.OptionList.length + 1) +
-                          '.png',
+                    label:
+                        file === true
+                            ? 'Option' + (state.OptionList.length + 1)
+                            : 'exapmple File' +
+                              (state.OptionList.length + 1) +
+                              '.png',
+                    value:
+                        file === true
+                            ? 'Option' + (state.OptionList.length + 1)
+                            : 'exapmple File' +
+                              (state.OptionList.length + 1) +
+                              '.png',
                 },
             ],
         }));

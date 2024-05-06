@@ -53,7 +53,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 title="Add an option"
                 icon={PlusIcon}
                 onClick={() => {
-                    addNewItem();
+                    addNewItem(component.optionType ? true : false);
                 }}
             />
         </Rows>
