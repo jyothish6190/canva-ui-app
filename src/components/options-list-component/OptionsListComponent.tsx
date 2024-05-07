@@ -55,8 +55,8 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             };
         } else {
             newOption = {
-                value: 'example file' + (optionList.length + 1),
-                label: 'example file' + (optionList.length + 1),
+                value: 'example file ' + (optionList.length + 1) + ' png',
+                label: 'example file ' + (optionList.length + 1) + ' png',
             };
         }
         setOptionList([...optionList, newOption]);
