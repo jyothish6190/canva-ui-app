@@ -13,6 +13,13 @@ import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextI
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
+import { SegmentedControlFieldNames } from 'src/constants/component-configs/SegmentedControlConfig';
+import {
+    ChevronDownIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    ChevronUpIcon,
+} from '@canva/app-ui-kit';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -299,6 +306,55 @@ const updateField = (
                 });
             }
             break;
+        case SegmentedControlFieldNames.TYPE:
+            if (value === 'text') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                        field.options = [
+                            {
+                                label: 'S',
+                                value: 's',
+                            },
+                            {
+                                label: 'M',
+                                value: 'm',
+                            },
+                            {
+                                label: 'L',
+                                value: 'l',
+                            },
+                        ];
+                    }
+                    console.log('text', field.options);
+                });
+            } else if (value === 'icon') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                        field.options = [
+                            {
+                                label: ChevronUpIcon() as any,
+                                value: 'ChevronLeftIcon',
+                            },
+                            {
+                                label: ChevronUpIcon() as any,
+                                value: ' ChevronUpIcon',
+                            },
+
+                            {
+                                label: ChevronDownIcon() as any,
+                                value: ' ChevronDownIcon',
+                            },
+                            {
+                                label: ChevronRightIcon() as any,
+                                value: 'ChevronRightIcon',
+                            },
+                        ];
+                    }
+                    console.log('icon', field.options);
+                });
+            }
+            break;
+
         default:
             break;
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormField, SegmentedControl } from '@canva/app-ui-kit';
 
 import ExcessContainer from '../CommonComponents/excessContainer';
@@ -6,15 +6,52 @@ import ExcessContainer from '../CommonComponents/excessContainer';
 import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
+import { SegmentedControlFieldNames } from 'src/constants/component-configs/SegmentedControlConfig';
 
 type PropsType = {
     component: Component;
     isProperty: boolean;
 };
 
+type SegmentedControlStateData = {
+    segmentedControlLabel: string | undefined;
+    segmentedControlOptions: any[] | undefined;
+    segmentedControlWidth: number | undefined;
+};
+
+const initialState: SegmentedControlStateData = {
+    segmentedControlLabel: undefined,
+    segmentedControlOptions: undefined,
+    segmentedControlWidth: undefined,
+};
+
 const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
+    const [segmentedControlData, setSegmentedControlData] =
+        useState<SegmentedControlStateData>(initialState);
     const { selectedComponent, setSelectedComponent, setComponentField } =
         useComponentStore();
+
+    useEffect(() => {
+        component.fields?.forEach((field: Component) => {
+            if (field.name === SegmentedControlFieldNames.WIDTH) {
+                setSegmentedControlData((prevState) => {
+                    return {
+                        ...prevState,
+                        segmentedControlWidth: field.value,
+                    };
+                });
+            }
+            if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                setSegmentedControlData((prevState) => {
+                    return {
+                        ...prevState,
+                        segmentedControlOptions: field.options as any[],
+                        segmentedControlLabel: '  ',
+                    };
+                });
+            }
+        });
+    }, [component, component.options]);
 
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
@@ -29,18 +66,34 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
 
     if (isProperty) {
         return (
-            <FormField
-                label={component.name}
-                description=""
-                control={(props) => (
-                    <SegmentedControl
-                        options={component.options as any[]}
-                        defaultValue={component.defaultValue}
-                        value={component.value as string}
-                        onChange={changeHandler}
-                    />
-                )}
-            />
+            <div
+                style={{
+                    width: segmentedControlData.segmentedControlWidth
+                        ? segmentedControlData.segmentedControlWidth + 'px'
+                        : undefined,
+                }}
+            >
+                <FormField
+                    label={
+                        segmentedControlData.segmentedControlLabel
+                            ? segmentedControlData.segmentedControlLabel
+                            : component.name
+                    }
+                    description=""
+                    control={(props) => (
+                        <SegmentedControl
+                            options={
+                                segmentedControlData.segmentedControlOptions
+                                    ? segmentedControlData.segmentedControlOptions
+                                    : (component.options as any[])
+                            }
+                            defaultValue={component.defaultValue}
+                            value={component.value as string}
+                            onChange={changeHandler}
+                        />
+                    )}
+                />
+            </div>
         );
     }
 

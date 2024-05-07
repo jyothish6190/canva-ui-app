@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Box, Column, Columns, PlusIcon, Rows } from '@canva/app-ui-kit';
+import { PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
 import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
@@ -27,7 +27,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         } else {
             return [];
         }
-    }, [component]);
+    }, [component, component.options]);
 
     useEffect(() => {
         selectedComponent?.fields?.forEach((field: Component) => {
