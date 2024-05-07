@@ -83,7 +83,12 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                 />
             );
         case ComponentType.RADIO:
-            return <RadioGroupComponent />;
+            return (
+                <RadioGroupComponent
+                    component={component}
+                    isProperty={isProperty}
+                />
+            );
         case ComponentType.CHECKBOX_GROUP:
             return (
                 <CheckboxGroupComponent
