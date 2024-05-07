@@ -40,7 +40,7 @@ export const SliderConfig = [
         type: ComponentType.FORM_FIELD,
         name: SliderFieldNames.WIDTH,
         label: 'Label',
-        value: '328',
+        value: 328,
         description: 'Description text',
     },
     {
