@@ -1,24 +1,37 @@
 import { ComponentType, OptionTypes } from '../ComponentTypes';
 
+export const enum SelectFieldNames {
+    PLACEHOLDER = 'Placeholder',
+    ACTIVE = 'Active',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+    STATE = 'State',
+    SELECT_OPTIONS = 'Options',
+}
+
 export const SelectConfig = [
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'placeholder',
+        name: SelectFieldNames.PLACEHOLDER,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Select',
+        value: 'select',
         tabId: 'control',
     },
 
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'Active',
-        defaultValue: true,
+        name: SelectFieldNames.ACTIVE,
+        defaultValue: false,
         tabId: 'control',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: SelectFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
         value: '328',
@@ -26,36 +39,39 @@ export const SelectConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
+        name: SelectFieldNames.WIDTH_OPTIONS,
         tabId: 'control',
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
+        name: SelectFieldNames.STATE,
         tabId: 'control',
         options: [
             {
@@ -67,12 +83,8 @@ export const SelectConfig = [
                 value: 'hover',
             },
             {
-                label: 'Active',
-                value: 'active',
-            },
-            {
-                label: 'Loading',
-                value: 'loading',
+                label: 'Error',
+                value: 'error',
             },
             {
                 label: 'Disabled',
@@ -84,10 +96,10 @@ export const SelectConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.OPTIONS_LIST,
         tabId: 'options',
-        name: 'Options',
-
+        name: SelectFieldNames.SELECT_OPTIONS,
         optionType: OptionTypes.RADIO,
         options: [
             {
