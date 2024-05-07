@@ -14,9 +14,18 @@ import { OptionTypes } from 'src/constants/ComponentTypes';
 type PropType = {
     option: SelectOption<string>;
     OptionType: OptionTypes | undefined;
+    onChange: (updatedOption: string, newValue: string) => void;
+    onClick?: (optionValue: string) => void;
+    showDeleteIcon: boolean;
 };
 
-const OptionsItemComponent = ({ option, OptionType }: PropType) => {
+const OptionsItemComponent = ({
+    option,
+    OptionType,
+    onChange,
+    onClick,
+    showDeleteIcon,
+}: PropType) => {
     const renderOptionComponent = () => {
         switch (OptionType) {
             case OptionTypes.RADIO:
@@ -43,13 +52,19 @@ const OptionsItemComponent = ({ option, OptionType }: PropType) => {
             <div style={{ flex: 0 }}>{renderOptionComponent()}</div>
 
             <div style={{ flex: 1 }}>
-                <TextInput value={option.label} />
+                <TextInput
+                    value={undefined}
+                    defaultValue={option.label}
+                    onChange={(value) => onChange(option.value, value)}
+                />
             </div>
-            <div style={{ flex: 0 }}>
-                <div onClick={() => {}}>
-                    <TrashIcon />
+            {showDeleteIcon && (
+                <div style={{ flex: 0, cursor: 'pointer' }}>
+                    <div onClick={() => onClick && onClick(option.value)}>
+                        <TrashIcon />
+                    </div>
                 </div>
-            </div>
+            )}
         </Box>
     );
 };

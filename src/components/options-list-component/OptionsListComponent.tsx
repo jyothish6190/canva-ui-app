@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Box, Column, Columns, PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
@@ -8,6 +8,7 @@ import { Component } from 'src/models/component.model';
 
 import styles from './OptionsListComponent.css';
 import CardTitle from '../card-title/CardTitle';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
@@ -15,13 +16,61 @@ type PropType = {
 };
 
 const OptionsListComponent = ({ component, isProprty }: PropType) => {
-    const options = useMemo(() => {
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    const [optionList, setOptionList] = useState<any[]>([]);
+
+    useMemo(() => {
         if (component && component.options) {
+            setOptionList(component.options);
             return component.options;
         } else {
             return [];
         }
     }, [component]);
+
+    useEffect(() => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.options = optionList;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+    }, [optionList]);
+
+    const deleteHandler = (optionValue: string) => {
+        const updatedOptions = optionList.filter(
+            (option) => option.value !== optionValue
+        );
+        setOptionList(updatedOptions);
+    };
+
+    const addNewItemHandler = () => {
+        let newOption;
+        if (component.optionType) {
+            newOption = {
+                value: 'Option' + (optionList.length + 1),
+                label: 'Option' + (optionList.length + 1),
+            };
+        } else {
+            newOption = {
+                value: 'example file' + (optionList.length + 1),
+                label: 'example file' + (optionList.length + 1),
+            };
+        }
+        setOptionList([...optionList, newOption]);
+    };
+
+    const updateHandler = (updatedOption, newValue) => {
+        const updatedList = optionList.map((option) =>
+            option.value === updatedOption
+                ? { ...option, label: newValue, value: newValue }
+                : option
+        );
+        console.log('updated', updatedList);
+        setOptionList(updatedList);
+    };
 
     return (
         <Rows spacing="2u">
@@ -34,10 +83,15 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 </div>
             </div>
             <>
-                {options.map((option) => {
+                {optionList.map((option) => {
                     return (
                         <div key={option.value}>
                             <OptionsItemComponent
+                                showDeleteIcon={
+                                    optionList.length > 1 ? true : false
+                                }
+                                onChange={updateHandler}
+                                onClick={deleteHandler}
                                 option={option}
                                 OptionType={component.optionType}
                             />
@@ -48,7 +102,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             <ButtonWithIcon
                 title="Add an option"
                 icon={PlusIcon}
-                onClick={() => {}}
+                onClick={addNewItemHandler}
             />
         </Rows>
     );
