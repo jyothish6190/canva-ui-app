@@ -9,7 +9,7 @@ export const ColorPickerConfig = [
         showComponent: true,
         type: ComponentType.COLOR_PICKER,
         name: ColorFieldNames.COLOR_PICKER,
-        color: '#E0D9FC',
+        color: '#5BA1E7',
         categoryId: 'color',
     },
     {
