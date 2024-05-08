@@ -70,15 +70,10 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                     return {
                         ...prevState,
                         inputState: field.value ? field.value : 'default',
+                        inputLabel: '  ',
                     };
                 });
             }
-        });
-        setMultilineInputData((prevState) => {
-            return {
-                ...prevState,
-                inputLabel: '',
-            };
         });
     }, [component]);
 
@@ -96,7 +91,11 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
         return (
             <div style={{ width: multilineInputData.inputWidth + 'px' }}>
                 <FormField
-                    label={component.name}
+                    label={
+                        multilineInputData.inputLabel
+                            ? multilineInputData.inputLabel
+                            : component.name
+                    }
                     control={(props) => (
                         <MultilineInput
                             disabled={
@@ -109,7 +108,11 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                                     ? true
                                     : false
                             }
-                            value={multilineInputData.inputValue}
+                            value={
+                                multilineInputData.inputValue
+                                    ? multilineInputData.inputValue
+                                    : component.value
+                            }
                             autoGrow
                             footer={
                                 multilineInputData.maxCharacterCount ? (
