@@ -50,25 +50,27 @@ const IconsListPage = () => {
     };
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.label);
-
         const svgDocument = elementToSVG(element as HTMLElement);
+        console.log('Element', svgDocument);
+        const pathElement = svgDocument.querySelector(
+            '#mask-for-svg11 + g > path'
+        );
 
+        pathElement?.setAttribute('fill', 'black');
         await inlineResources(svgDocument.documentElement);
 
-        // Get SVG string
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
-        // Remove any characters outside the Latin1 range
         var decoded = unescape(encodeURIComponent(svgString));
 
-        // Remove style tag if any as it is not supported in canva
-        decoded = decoded.replace('<style/>', '');
-        // Now we can use btoa to convert the svg to base64
+        decoded = decoded.replace(
+            /data-stacking-context="true"|<g data-stacking-layer[^/<]*\/>|<!--[^>]*><style\/>|aria-[^"]*"[^"]*"|[^\x20-\x7E]+/g,
+            ''
+        );
 
         var base64 = btoa(decoded);
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
-
         const result = await upload({
             type: 'IMAGE',
             mimeType: 'image/svg+xml',
