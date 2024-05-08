@@ -13,6 +13,7 @@ import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextI
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
+import { FileInputFieldNames } from 'src/constants/component-configs/FileInputConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -295,6 +296,21 @@ const updateField = (
                         field.name === TextInputSearchFieldNames.MAX_CHAR_COUNT
                     ) {
                         field.showComponent = false;
+                    }
+                });
+            }
+            break;
+        case FileInputFieldNames.FILE_INPUT_ITEM:
+            if (!value) {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
+                        field.showComponent = false;
+                    }
+                });
+            } else {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
+                        field.showComponent = true;
                     }
                 });
             }
