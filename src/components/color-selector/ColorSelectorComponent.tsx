@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react';
-
 import { ColorSelector, Swatch, Text } from '@canva/app-ui-kit';
-
 import { Component } from 'src/models/component.model';
 import styles from './colorSelector.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { ColorFieldNames } from 'src/constants/component-configs/ColorPickerConfig';
-
 type PropType = {
     component: Component;
     isProperty: boolean;
 };
 type ColorStateData = {
-    color: string;
+    color: string | undefined;
     colorlabel: string | undefined;
     activeState: boolean;
 };
 const initialState: ColorStateData = {
-    color: '#5ba1e7',
+    color: undefined,
     colorlabel: undefined,
     activeState: false,
 };
-
 const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
     const [colorData, setColorData] = useState<ColorStateData>(initialState);
     useEffect(() => {
@@ -30,7 +26,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                 setColorData((prevState) => {
                     return {
                         ...prevState,
-                        color: field.value || initialState.color,
+                        color: field.value || '#5BA1E7',
                         colorlabel: '  ',
                     };
                 });
@@ -45,21 +41,24 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
             }
         });
     }, [component]);
-
     const { selectedComponent, setComponentField, setSelectedComponent } =
         useComponentStore();
-
     const changeHandler = (color: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
             if (field.name === component.name) {
                 field.value = color;
             }
             setSelectedComponent({ ...selectedComponent });
+            setColorData((prevState) => {
+                return {
+                    ...prevState,
+                    color: color,
+                };
+            });
             return;
         });
         setComponentField(component, color);
     };
-
     if (isProperty) {
         return colorData.activeState === false ? (
             <div className={styles.container}>
@@ -69,7 +68,11 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                         : component.name}
                 </Text>
                 <ColorSelector
-                    color={colorData.color}
+                    color={
+                        colorData.color
+                            ? colorData.color
+                            : (component.color as any)
+                    }
                     onChange={changeHandler}
                 />
             </div>
@@ -81,7 +84,14 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                     height: 128,
                 }}
             >
-                <ColorSelector color={colorData.color} onChange={() => {}} />
+                <ColorSelector
+                    color={
+                        colorData.color
+                            ? colorData.color
+                            : (component.color as any)
+                    }
+                    onChange={() => {}}
+                />
                 <img
                     src={require('assets/images/ColorPicker.png')}
                     alt="Image 2"
@@ -94,7 +104,6 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
             </div>
         );
     }
-
     return (
         <div
             style={{
@@ -116,5 +125,4 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
         </div>
     );
 };
-
 export default ColorSelectorComponent;
