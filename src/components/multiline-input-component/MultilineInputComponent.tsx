@@ -109,7 +109,11 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                                     ? true
                                     : false
                             }
-                            value={multilineInputData.inputValue}
+                            value={
+                                multilineInputData.inputValue
+                                    ? multilineInputData.inputValue
+                                    : component.value
+                            }
                             autoGrow
                             footer={
                                 multilineInputData.maxCharacterCount ? (
