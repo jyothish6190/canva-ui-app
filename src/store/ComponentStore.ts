@@ -14,12 +14,7 @@ import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 import { SegmentedControlFieldNames } from 'src/constants/component-configs/SegmentedControlConfig';
-import {
-    ChevronDownIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ChevronUpIcon,
-} from '@canva/app-ui-kit';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowUpIcon } from '@canva/app-ui-kit';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -332,21 +327,19 @@ const updateField = (
                     if (field.name === SegmentedControlFieldNames.OPTIONS) {
                         field.options = [
                             {
-                                label: ChevronUpIcon() as any,
-                                value: 'ChevronLeftIcon',
+                                value: 'arrow-up-icon',
+                                label: 'Arrow up',
+                                Icon: ArrowUpIcon,
                             },
                             {
-                                label: ChevronUpIcon() as any,
-                                value: ' ChevronUpIcon',
-                            },
-
-                            {
-                                label: ChevronDownIcon() as any,
-                                value: ' ChevronDownIcon',
+                                value: 'arrow-down-icon',
+                                label: 'Arrow down',
+                                Icon: ArrowDownIcon,
                             },
                             {
-                                label: ChevronRightIcon() as any,
-                                value: 'ChevronRightIcon',
+                                value: 'arrow-left-icon',
+                                label: 'Arrow left',
+                                Icon: ArrowLeftIcon,
                             },
                         ];
                     }

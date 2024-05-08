@@ -7,6 +7,7 @@ import {
     Button,
     ClearIcon,
     ChevronDownIcon,
+    SelectOption,
 } from '@canva/app-ui-kit';
 
 import { useIconStore } from 'src/store/IconStore';
@@ -15,9 +16,10 @@ import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
+    optionField?: SelectOption<string>;
 };
 
-const IconSelctionComponent = ({ component }: PropType) => {
+const IconSelctionComponent = ({ component, optionField }: PropType) => {
     const navigate = useNavigate();
 
     const { iconsList, deleteIcon } = useIconStore();
@@ -25,15 +27,27 @@ const IconSelctionComponent = ({ component }: PropType) => {
 
     const selectedIcon = useMemo(() => {
         return iconsList.find((iconObj) => {
-            if (iconObj.componentId == component.name) {
-                selectedComponent?.fields?.forEach((field: Component) => {
-                    if (field.name === component.name) {
-                        field.value = iconObj.icon;
-                    }
-                    setSelectedComponent({ ...selectedComponent });
-                    return;
-                });
-                return true;
+            if (optionField) {
+                if (iconObj.componentId == optionField.label) {
+                    selectedComponent?.fields?.forEach((field: Component) => {
+                        if (field.name === component.name) {
+                            field.value = iconObj.icon;
+                        }
+                        return;
+                    });
+                    return true;
+                }
+            } else {
+                if (iconObj.componentId == component.name) {
+                    selectedComponent?.fields?.forEach((field: Component) => {
+                        if (field.name === component.name) {
+                            field.value = iconObj.icon;
+                        }
+                        setSelectedComponent({ ...selectedComponent });
+                        return;
+                    });
+                    return true;
+                }
             }
         });
     }, [iconsList]);
@@ -44,11 +58,20 @@ const IconSelctionComponent = ({ component }: PropType) => {
 
     const changeHandler = () => {
         selectedComponent?.fields?.forEach((field: Component) => {
-            if (field.name === component.name) {
-                field.value = selectedIcon?.icon;
+            if (optionField) {
+                if (optionField.label === selectedIcon?.componentId) {
+                    if (field.name === component.name) {
+                        field.value = selectedIcon?.icon;
+                    }
+                    return;
+                }
+            } else {
+                if (field.name === component.name) {
+                    field.value = selectedIcon?.icon;
+                }
+                setSelectedComponent({ ...selectedComponent });
+                return;
             }
-            setSelectedComponent({ ...selectedComponent });
-            return;
         });
     };
 
@@ -57,11 +80,10 @@ const IconSelctionComponent = ({ component }: PropType) => {
         navigate('/icons', {
             state: {
                 path: 'iconSelector',
-                componentId: component.name,
+                componentId: optionField ? optionField.label : component.name,
             },
         });
     };
-
 
     const clearSelectInput = () => {
         return selectedIcon ? (
@@ -69,7 +91,7 @@ const IconSelctionComponent = ({ component }: PropType) => {
                 variant="tertiary"
                 icon={ClearIcon}
                 onClick={() => {
-                    deleteIcon(selectedIcon.componentId);
+                    deleteIcon(selectedIcon?.componentId);
                 }}
             />
         ) : (
@@ -80,7 +102,9 @@ const IconSelctionComponent = ({ component }: PropType) => {
                     navigate('/icons', {
                         state: {
                             path: 'iconSelector',
-                            componentId: component.name,
+                            componentId: optionField
+                                ? optionField.label
+                                : component.name,
                         },
                     });
                 }}
@@ -90,7 +114,7 @@ const IconSelctionComponent = ({ component }: PropType) => {
 
     return (
         <FormField
-            label={component.name}
+            label={optionField?.label ? '' : component.name}
             control={(props) => (
                 <TextInput
                     key={selectedIcon?.icon?.label || ''}

@@ -62,10 +62,15 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         setOptionList([...optionList, newOption]);
     };
 
-    const updateHandler = (updatedOption, newValue) => {
+    const updateHandler = (updatedOption, newValue, Icon) => {
         const updatedList = optionList.map((option) =>
             option.value === updatedOption
-                ? { ...option, label: newValue, value: newValue }
+                ? {
+                      ...option,
+                      label: newValue,
+                      value: newValue,
+                      Icon: Icon,
+                  }
                 : option
         );
         console.log('updated', updatedList);
@@ -90,6 +95,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                                 showDeleteIcon={
                                     optionList.length > 1 ? true : false
                                 }
+                                component={component}
                                 onChange={updateHandler}
                                 onClick={deleteHandler}
                                 option={option}
