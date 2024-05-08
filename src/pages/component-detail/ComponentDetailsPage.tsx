@@ -9,13 +9,15 @@ import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
 
 import { useComponentStore } from 'src/store/ComponentStore';
-import { useNavigate } from 'react-router-dom';
+import { useElementStore } from 'src/store/elementStore';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 type UIData = {
     imgSource: string;
+    elementId: string;
 };
 const appElementClient = initAppElement<UIData>({
-    render: ({ imgSource }) => {
+    render: ({ imgSource, elementId }) => {
         return [
             {
                 type: 'IMAGE',
@@ -28,23 +30,47 @@ const appElementClient = initAppElement<UIData>({
         ];
     },
 });
-
+type RefValueType = string | null;
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
-    const { selectedComponent } = useComponentStore();
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const { elements, setElements } = useElementStore();
     const initialLoad = useRef(true);
+    const elementId = useRef<RefValueType>(null);
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        elementId.current = null;
         appElementClient.registerOnElementChange((appElement) => {
             if (!appElement && !initialLoad.current) {
                 navigate('/home');
+            } else if (appElement) {
+                elementId.current = appElement.data.elementId;
+                assignDetails(appElement);
             } else {
                 onAddComponent();
             }
             initialLoad.current = false;
         });
     }, []);
+
+    async function assignDetails(appElement) {
+        let elementId = appElement.data.elementId;
+        let imgSource = appElement.data.imgSource;
+
+        let element = elements.find(
+            (obj) => obj.elementId === appElement.data.elementId
+        );
+
+        if (element?.component) {
+            setSelectedComponent(element?.component);
+        }
+        await appElementClient.addOrUpdateElement({
+            imgSource,
+            elementId,
+        });
+        navigate(`/component-details`);
+    }
 
     const onAddComponent = useCallback(async () => {
         if (ref.current === null) {
@@ -66,9 +92,28 @@ const ComponentDetailsPage = () => {
         var base64 = btoa(decoded);
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
-
-        await appElementClient.addOrUpdateElement({ imgSource });
+        let elementId = getElementId();
+        if (selectedComponent) {
+            let updatedElements = [
+                ...elements,
+                {
+                    elementId: elementId,
+                    component: selectedComponent,
+                },
+            ];
+            setElements(updatedElements);
+        }
+        await appElementClient.addOrUpdateElement({
+            imgSource,
+            elementId,
+        });
     }, [ref]);
+
+    function getElementId() {
+        const timestamp = new Date().getTime().toString(16);
+        const random = Math.random().toString(16).slice(2);
+        return elementId.current ? elementId.current : timestamp + random;
+    }
 
     return (
         <>
