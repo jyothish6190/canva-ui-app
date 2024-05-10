@@ -1,6 +1,6 @@
-.componenDetailPage {
+.iconPage {
     display: flex;
     flex-direction: column;
-    gap: var(--ui-kit-space-3);
+    gap: var(--ui-kit-space-2);
     padding-bottom: var(--ui-kit-space-2);
 }

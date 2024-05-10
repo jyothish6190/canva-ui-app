@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Rows } from '@canva/app-ui-kit';
 import { upload } from '@canva/asset';
 import { addNativeElement } from '@canva/design';
 
@@ -9,6 +8,7 @@ import { Header } from 'src/components/header/Header';
 import SearchBox from 'src/components/search-box/SearchBox';
 import IconList from './icon-list/IconList';
 
+import styles from './IconlistPage.css';
 import { icons } from 'src/constants/icons';
 import { Icon } from 'src/models/icons.model';
 import { useIconStore } from 'src/store/IconStore';
@@ -91,7 +91,7 @@ const IconsListPage = () => {
     };
 
     return (
-        <Rows spacing="2u">
+        <div className={styles.iconPage}>
             <Header header={'Icons'} onClick={backHandler} />
             <SearchBox onSearchQueryChange={searchHandler} />
             <IconList
@@ -99,7 +99,7 @@ const IconsListPage = () => {
                 searchQuery={searchQuery}
                 onClick={iconSelectionHandler}
             />
-        </Rows>
+        </div>
     );
 };
 

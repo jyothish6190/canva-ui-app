@@ -4,6 +4,7 @@ import { Button, Rows } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
 import { initAppElement } from '@canva/design';
 
+import styles from './ComponentDetailsPage.css';
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
@@ -118,7 +119,7 @@ const ComponentDetailsPage = () => {
     return (
         <>
             {selectedComponent && (
-                <Rows spacing="2u">
+                <div className={styles.componenDetailPage}>
                     <LivePreview>
                         <div ref={ref} style={{ pointerEvents: 'none' }}>
                             <ComponentItem
@@ -134,7 +135,7 @@ const ComponentDetailsPage = () => {
                         children="Update Component"
                         onClick={onAddComponent}
                     />
-                </Rows>
+                </div>
             )}
         </>
     );
