@@ -41,6 +41,7 @@ export const ButtonConfig: Component[] = [
         label: 'Label',
         description: 'Description text',
         placeholder: 'Button',
+        value: 'Button',
     },
     {
         showComponent: true,

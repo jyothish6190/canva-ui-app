@@ -116,7 +116,7 @@ const PlaceholderComponent = ({ component, isProperty }: PropType) => {
         );
     }
     return (
-        <div style={{ width: 90 + '%' }}>
+        <div style={{ width: 11 + 'rem' }}>
             <TextPlaceholder size="small" />
             <TextPlaceholder size="small" />
             <div style={{ width: 70 + '%' }}>

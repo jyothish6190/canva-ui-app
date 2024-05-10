@@ -13,7 +13,8 @@ export const BadgeConfig = [
         name: BadgeFieldNames.TEXT,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Badge',
+        placeholder: 'Badge text',
+        value: 'Badge',
     },
     {
         showComponent: true,

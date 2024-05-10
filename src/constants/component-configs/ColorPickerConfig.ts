@@ -1,7 +1,7 @@
 import { ComponentType } from '../ComponentTypes';
 
 export enum ColorFieldNames {
-    COLOR_PICKER = 'Color picker',
+    COLOR_PICKER = 'Color',
     ACTIVE = 'Active',
 }
 export const ColorPickerConfig = [

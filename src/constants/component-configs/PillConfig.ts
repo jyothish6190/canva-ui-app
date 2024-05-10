@@ -17,6 +17,7 @@ export const PillConfig = [
         label: 'Label',
         description: 'Description text',
         placeholder: 'Pill',
+        value: 'Pill',
     },
     {
         showComponent: true,

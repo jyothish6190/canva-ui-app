@@ -11,7 +11,7 @@ export const LinkConfig = [
         showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
         name: 'Text',
-        placeholder: '',
+        placeholder: 'Enter your link text',
         value: 'Go to Canva',
     },
     {
