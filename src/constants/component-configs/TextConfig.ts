@@ -66,19 +66,19 @@ export const TextConfig = [
         name: TextFieldNames.TONE,
         options: [
             {
-                label: 'primary',
+                label: 'Primary',
                 value: 'primary',
             },
             {
-                label: 'secondary',
+                label: 'Secondary',
                 value: 'secondary',
             },
             {
-                label: 'tertiary',
-                value: 'Tertiary',
+                label: 'Tertiary',
+                value: 'tertiary',
             },
             {
-                label: 'critical',
+                label: 'Critical',
                 value: 'critical',
             },
         ],
