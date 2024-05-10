@@ -25,7 +25,7 @@ const IconCard = ({ icon }: IconCardType) => {
             >
                 <IconItem icon={icon} />
             </Box>
-            <CardTitle title={'Icons'}></CardTitle>
+            <CardTitle title={icon.label}></CardTitle>
         </Rows>
     );
 };
