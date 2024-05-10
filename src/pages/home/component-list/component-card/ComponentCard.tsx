@@ -15,13 +15,14 @@ const ComponentCard = ({ component }: ComponentCardType) => {
         <Rows spacing="0.5u">
             <Box
                 display="flex"
-                background="neutralLow"
                 borderRadius="standard"
                 className={styles.card}
                 justifyContent="center"
                 alignItems="center"
             >
-                <ComponentItem component={component} isProperty={false} />
+                <div className={styles.item}>
+                    <ComponentItem component={component} isProperty={false} />
+                </div>
             </Box>
             <CardTitle title={component.name}></CardTitle>
         </Rows>
