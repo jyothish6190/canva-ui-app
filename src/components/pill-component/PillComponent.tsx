@@ -37,7 +37,7 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 setPillComponentState((prevState) => {
                     return {
                         ...prevState,
-                        pillText: field.value ? field.value : 'pill',
+                        pillText: field.value ? field.value : 'Pill',
                     };
                 });
             }
