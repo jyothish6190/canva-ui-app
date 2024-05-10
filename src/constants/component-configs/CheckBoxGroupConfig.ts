@@ -58,19 +58,23 @@ export const CheckBoxGroupConfig = [
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 'Small',
+                checked: true,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 'Medium',
+                checked: false,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 'Large',
+                checked: false,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 'Custom',
+                checked: false,
             },
         ],
     },

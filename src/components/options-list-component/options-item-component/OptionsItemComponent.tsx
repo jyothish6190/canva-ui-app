@@ -2,6 +2,7 @@ import React from 'react';
 import {
     Box,
     Checkbox,
+    CheckboxOption,
     RadioGroup,
     SelectOption,
     TextInput,
@@ -12,9 +13,13 @@ import styles from './OptionsItemComponent.css';
 import { OptionTypes } from 'src/constants/ComponentTypes';
 
 type PropType = {
-    option: SelectOption<string>;
+    option: SelectOption<string> | any;
     OptionType: OptionTypes | undefined;
-    onChange: (updatedOption: string, newValue: string) => void;
+    onChange: (
+        updatedOption: string,
+        newValue: string,
+        checked: boolean
+    ) => void;
     onClick?: (optionValue: string) => void;
     showDeleteIcon: boolean;
 };
@@ -41,7 +46,16 @@ const OptionsItemComponent = ({
                     />
                 );
             case OptionTypes.CHECKBOX:
-                return <Checkbox key={'checkbox'} value={option.value} />;
+                return (
+                    <Checkbox
+                        key={'checkbox'}
+                        value={option.value}
+                        checked={option.checked}
+                        onChange={(value, checked) =>
+                            onChange(option.value, value, checked)
+                        }
+                    />
+                );
             default:
                 return null;
         }
@@ -55,7 +69,9 @@ const OptionsItemComponent = ({
                 <TextInput
                     value={undefined}
                     defaultValue={option.label}
-                    onChange={(value) => onChange(option.value, value)}
+                    onChange={(value) =>
+                        onChange(option.value, value, option.checked)
+                    }
                 />
             </div>
             {showDeleteIcon && (
