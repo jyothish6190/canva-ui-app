@@ -120,7 +120,7 @@ const ComponentDetailsPage = () => {
             {selectedComponent && (
                 <Rows spacing="2u">
                     <LivePreview>
-                        <div ref={ref}>
+                        <div ref={ref} style={{ pointerEvents: 'none' }}>
                             <ComponentItem
                                 component={selectedComponent}
                                 isProperty={true}
