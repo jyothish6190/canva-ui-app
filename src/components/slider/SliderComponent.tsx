@@ -110,7 +110,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
         );
     }
     return (
-        <div style={{ width: '80%', paddingLeft: 17 }}>
+        <div style={{ width: 10 + 'rem', paddingLeft: 17 }}>
             <Slider defaultValue={0} max={100} min={20} step={0} />
         </div>
     );
