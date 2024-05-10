@@ -18,7 +18,7 @@ export const TextConfig = [
         showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
         name: TextFieldNames.TEXT,
-        placeholder: '',
+        placeholder: 'Enter your text',
         value: 'Example title',
     },
     {
