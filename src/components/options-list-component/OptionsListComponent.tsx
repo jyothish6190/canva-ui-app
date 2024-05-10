@@ -52,6 +52,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             newOption = {
                 value: 'Option' + (optionList.length + 1),
                 label: 'Option' + (optionList.length + 1),
+                checked: false,
             };
         } else {
             newOption = {
@@ -62,10 +63,15 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         setOptionList([...optionList, newOption]);
     };
 
-    const updateHandler = (updatedOption, newValue) => {
+    const updateHandler = (updatedOption, newValue, checked) => {
         const updatedList = optionList.map((option) =>
             option.value === updatedOption
-                ? { ...option, label: newValue, value: newValue }
+                ? {
+                      ...option,
+                      label: newValue,
+                      value: newValue,
+                      checked: checked,
+                  }
                 : option
         );
         console.log('updated', updatedList);

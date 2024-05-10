@@ -57,7 +57,14 @@ const CheckboxGroupComponent = ({
                         : undefined,
                 }}
             >
-                <CheckboxGroup options={checkboxData.checkBoxoption} />
+                <CheckboxGroup
+                    options={checkboxData?.checkBoxoption}
+                    value={[
+                        ...checkboxData?.checkBoxoption
+                            .filter((option) => option.checked !== false)
+                            .map((option) => option.value),
+                    ]}
+                />
             </div>
         );
     } else {
