@@ -16,8 +16,8 @@ export const SelectConfig = [
         name: SelectFieldNames.PLACEHOLDER,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Select',
-        value: 'select',
+        placeholder: 'Placeholder',
+        value: 'Select',
         tabId: 'control',
     },
 
