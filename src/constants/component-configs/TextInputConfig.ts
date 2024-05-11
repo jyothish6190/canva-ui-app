@@ -135,7 +135,7 @@ export const TextInputConfig = [
                 value: 'disabled',
             },
         ],
-        value: 'none',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 ];
