@@ -19,7 +19,7 @@ type PropType = {
 type MultilineInputStateData = {
     inputValue: string | undefined;
     maxCharacterCount: number | undefined;
-    inputWidth: string | undefined;
+    inputWidth: number | undefined;
     inputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
     inputLabel: string | undefined;
 };
@@ -61,7 +61,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                 setMultilineInputData((prevState) => {
                     return {
                         ...prevState,
-                        inputWidth: field.value as string,
+                        inputWidth: field.value || undefined,
                     };
                 });
             }
@@ -113,7 +113,6 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                                     ? multilineInputData.inputValue
                                     : component.value
                             }
-                            autoGrow
                             footer={
                                 multilineInputData.maxCharacterCount ? (
                                     <WordCountDecorator

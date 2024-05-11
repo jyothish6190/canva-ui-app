@@ -62,7 +62,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
                 setIconButtonState((prevState) => {
                     return {
                         ...prevState,
-                        buttonWidth: field.value,
+                        buttonWidth: field.value || undefined,
                     };
                 });
             }
@@ -71,7 +71,15 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: IconButtonState.buttonWidth || undefined }}>
+            <div
+                style={
+                    IconButtonState.buttonWidth
+                        ? {
+                              width: IconButtonState.buttonWidth + 'px',
+                          }
+                        : {}
+                }
+            >
                 <Button
                     variant={IconButtonState.buttonVariant}
                     stretch={IconButtonState.buttonWidth ? true : false}

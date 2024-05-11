@@ -76,7 +76,6 @@ export const IconButtonConfig = [
         type: ComponentType.FORM_FIELD,
         name: IconButtonFieldNames.WIDTH,
         label: 'Label',
-        value: '158',
         description: 'Description text',
     },
     {

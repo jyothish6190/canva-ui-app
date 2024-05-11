@@ -56,7 +56,7 @@ const ProgressbarComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: progressBarState.progressBarWidth }}>
+            <div style={{ width: progressBarState.progressBarWidth + 'px' }}>
                 <ProgressBar
                     size={progressBarState.progressBarSize}
                     tone="info"

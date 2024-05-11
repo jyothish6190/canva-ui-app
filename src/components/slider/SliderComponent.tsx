@@ -84,9 +84,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
         return (
             <div
                 style={{
-                    width: sliderState.sliderWidth
-                        ? sliderState.sliderWidth
-                        : '100% !important',
+                    width: sliderState.sliderWidth + 'px',
                 }}
             >
                 <FormField

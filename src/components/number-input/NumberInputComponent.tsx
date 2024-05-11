@@ -76,7 +76,7 @@ const NumberInputComponent = ({
                 <div
                     style={{
                         padding: 16,
-                        width: numberInputData.numberInputWidth,
+                        width: numberInputData.numberInputWidth + 'px',
                     }}
                 >
                     <NumberInput
