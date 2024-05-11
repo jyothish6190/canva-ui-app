@@ -14,6 +14,8 @@ import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 import { FileInputFieldNames } from 'src/constants/component-configs/FileInputConfig';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowUpIcon } from '@canva/app-ui-kit';
+import { SegmentedControlFieldNames } from 'src/constants/component-configs/SegmentedControlConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -312,6 +314,52 @@ const updateField = (
                     if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
                         field.showComponent = true;
                     }
+                });
+            }
+            break;
+        case SegmentedControlFieldNames.TYPE:
+            if (value === 'text') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                        field.options = [
+                            {
+                                label: 'S',
+                                value: 's',
+                            },
+                            {
+                                label: 'M',
+                                value: 'm',
+                            },
+                            {
+                                label: 'L',
+                                value: 'l',
+                            },
+                        ];
+                    }
+                    console.log('text', field.options);
+                });
+            } else if (value === 'icon') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                        field.options = [
+                            {
+                                value: 'arrow-up-icon',
+                                label: ArrowUpIcon() as any,
+                                description: 'option1',
+                            },
+                            {
+                                value: 'arrow-down-icon',
+                                label: ArrowDownIcon() as any,
+                                description: 'option2',
+                            },
+                            {
+                                value: 'arrow-left-icon',
+                                label: ArrowLeftIcon() as any,
+                                description: 'option3',
+                            },
+                        ];
+                    }
+                    console.log('icon', field.options);
                 });
             }
             break;

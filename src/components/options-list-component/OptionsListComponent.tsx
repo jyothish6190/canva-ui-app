@@ -28,7 +28,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         } else {
             return [];
         }
-    }, [component]);
+    }, [component, component.options]);
 
     useEffect(() => {
         selectedComponent?.fields?.forEach((field: Component) => {
@@ -65,7 +65,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         setOptionList([...optionList, newOption]);
     };
 
-    const updateHandler = (updatedOption, newValue, checked) => {
+    const updateHandler = (updatedOption, newValue, checked, description) => {
         const updatedList = optionList.map((option) =>
             option.value === updatedOption
                 ? {
@@ -73,6 +73,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                       label: newValue,
                       value: newValue,
                       checked: checked,
+                      description: description || null,
                   }
                 : option
         );
