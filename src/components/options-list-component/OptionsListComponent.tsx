@@ -19,6 +19,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
     const { selectedComponent, setSelectedComponent } = useComponentStore();
 
     const [optionList, setOptionList] = useState<any[]>([]);
+    const [radioChecked, setRadioChecked] = useState<any>(component.value);
 
     useMemo(() => {
         if (component && component.options) {
@@ -33,11 +34,12 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         selectedComponent?.fields?.forEach((field: Component) => {
             if (field.name === component.name) {
                 field.options = optionList;
+                field.value = radioChecked;
             }
             setSelectedComponent({ ...selectedComponent });
             return;
         });
-    }, [optionList]);
+    }, [optionList, radioChecked]);
 
     const deleteHandler = (optionValue: string) => {
         const updatedOptions = optionList.filter(
@@ -93,6 +95,8 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     return (
                         <div key={option.value}>
                             <OptionsItemComponent
+                                setRadioChecked={setRadioChecked}
+                                radioChecked={radioChecked}
                                 showDeleteIcon={
                                     optionList.length > 1 ? true : false
                                 }
