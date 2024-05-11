@@ -23,6 +23,7 @@ export const NumberInputConfig = [
         type: ComponentType.SWITCH,
         name: NumberInputFieldNames.SPIN_BUTTONS,
         value: true,
+        defaultValue: true,
     },
 
     {
