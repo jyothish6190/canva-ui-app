@@ -30,7 +30,6 @@ const initialState: SwitchStateData = {
 const SwitchComponent = ({ component, isProperty }: PropType) => {
     const [switchData, setSwitchData] = useState<SwitchStateData>(initialState);
 
-    console.log('Switchcomponent', component);
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === SwitchFieldNames.CHECKED) {

@@ -62,7 +62,6 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
                     };
                 });
             }
-            console.log('Fielda', field);
         });
     }, [component]);
 

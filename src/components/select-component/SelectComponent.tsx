@@ -5,6 +5,8 @@ import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { SelectFieldNames } from 'src/constants/component-configs/SelectConfig';
+import { FormFieldNames } from 'src/constants/component-configs/FormFieldConfig';
+import { components } from 'src/constants/components';
 
 type PropType = {
     component: Component;
@@ -34,11 +36,25 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
 
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === FormFieldNames.CONTROL) {
+                updateComponent(value);
+            }
             if (field.name === component.name) {
                 field.value = value;
             }
             setSelectedComponent({ ...selectedComponent });
             return;
+        });
+    };
+
+    const updateComponent = (value: string) => {
+        components.forEach((component) => {
+            if (component.name === value) {
+                let newComponent = { ...component };
+                console.log('🚀 ~ components.forEach ~ component:', component);
+
+                setSelectedComponent(newComponent);
+            }
         });
     };
 
