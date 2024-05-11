@@ -14,6 +14,7 @@ type PropType = {
 
 type TextInputStateData = {
     inputText: string;
+    inputPlaceHolder: string;
     startDecorator: Icon | undefined;
     endDecorator: any;
     endText: string;
@@ -24,6 +25,7 @@ type TextInputStateData = {
 
 const initialState: TextInputStateData = {
     inputText: '',
+    inputPlaceHolder: '',
     startDecorator: undefined,
     endDecorator: null,
     endText: 'EndText',
@@ -94,6 +96,14 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
+            if (field.name === TextInputSearchFieldNames.PLACEHOLDER) {
+                setTextInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        inputPlaceHolder: field.value,
+                    };
+                });
+            }
         });
     }, [component]);
 
@@ -125,7 +135,11 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     error={
                         textInputData.textInputState === 'error' ? true : false
                     }
-                    placeholder={component.placeholder}
+                    placeholder={
+                        textInputData.inputPlaceHolder
+                            ? textInputData.inputPlaceHolder
+                            : component.placeholder
+                    }
                     type={'text'}
                     value={textInputData.inputText}
                     start={textInputData.startDecorator?.Icon}
