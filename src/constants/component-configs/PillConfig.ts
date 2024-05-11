@@ -69,7 +69,7 @@ export const PillConfig = [
         type: ComponentType.FORM_FIELD,
         name: PillFieldNames.WIDTH,
         label: 'Label',
-        vlue: '158',
+
         description: 'Description text',
     },
     {
