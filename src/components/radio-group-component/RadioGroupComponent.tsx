@@ -13,11 +13,13 @@ type RadioPropType = {
 type RadioStateData = {
     radioWidth: number | undefined;
     radioOptions: any[];
+    radioValue: string;
 };
 
 const initialState: RadioStateData = {
     radioWidth: undefined,
     radioOptions: [],
+    radioValue: '',
 };
 
 const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
@@ -38,6 +40,7 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
                     return {
                         ...prevState,
                         radioOptions: field.options as any[],
+                        radioValue: field.value,
                     };
                 });
             }
@@ -54,7 +57,10 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
                 }}
             >
                 <RadioGroup
-                    defaultValue={'blueberry'}
+                    defaultValue={component.value}
+                    value={
+                        component.value ? component.value : radioData.radioValue
+                    }
                     options={radioData.radioOptions}
                 />
             </div>
