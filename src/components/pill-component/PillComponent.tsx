@@ -37,7 +37,7 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 setPillComponentState((prevState) => {
                     return {
                         ...prevState,
-                        pillText: field.value ? field.value : 'pill',
+                        pillText: field.value ? field.value : 'Pill',
                     };
                 });
             }
@@ -78,7 +78,13 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
 
     if (isProperty) {
         return (
-            <div>
+            <div
+                style={
+                    pillComponentState.pillWidth
+                        ? { width: pillComponentState.pillWidth + 'px' }
+                        : {}
+                }
+            >
                 <Pill
                     key={pillComponentState.endDecorator?.label}
                     text={pillComponentState.pillText}

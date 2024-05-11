@@ -1,5 +1,13 @@
 .card {
     height: 152px;
     overflow: hidden;
+    background: var(--ui-kit-color-neutral-low);
+    transition: var(--ui-kit-hover-transition);
+}
+.card:hover {
+    transition: var(--ui-kit-hover-transition);
+    background: var(--ui-kit-color-neutral);
+}
+.item {
     pointer-events: none;
 }

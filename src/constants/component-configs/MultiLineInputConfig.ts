@@ -2,7 +2,7 @@ import { ComponentType } from '../ComponentTypes';
 
 export enum MultilineInputFieldNames {
     TEXT = 'Text',
-    WITH_TEXT = 'With Text',
+    PLACEHOLDER = 'placeholder',
     MAX_CHAR_COUNT = 'Maximum character count  (optional)',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width Options',
@@ -14,13 +14,13 @@ export const MultiLineInputConfig = [
         showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
         name: MultilineInputFieldNames.TEXT,
-        placeholder: 'Placeholder',
+        placeholder: 'Enter your text',
     },
     {
         showComponent: true,
-        type: ComponentType.SWITCH,
-        name: MultilineInputFieldNames.WITH_TEXT,
-        defaultValue: false,
+        type: ComponentType.FORM_FIELD,
+        name: MultilineInputFieldNames.PLACEHOLDER,
+        placeholder: 'Placeholder',
     },
     {
         showComponent: true,

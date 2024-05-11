@@ -1,3 +1,3 @@
-import DarkThemeIcon from './Icon.png';
-import LightThemeIcon from './fill.png';
+import DarkThemeIcon from './Dark.svg';
+import LightThemeIcon from './light.svg';
 export { DarkThemeIcon, LightThemeIcon };

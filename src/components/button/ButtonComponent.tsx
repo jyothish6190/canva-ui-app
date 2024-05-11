@@ -34,7 +34,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
             if (field.name === ButtonFieldNames.STATE) {
                 setButtonState(field.value);
             }
-            if (field.name === ButtonFieldNames.WIDTH_OPTIONS) {
+            if (field.name === ButtonFieldNames.WIDTH) {
                 setWidth(field.value);
             }
         });
@@ -42,7 +42,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: width }}>
+            <div style={width ? { width: width + 'px' } : {}}>
                 <Button
                     key={component.name}
                     alignment="center"

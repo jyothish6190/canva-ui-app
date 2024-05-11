@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './ErrrorMessage.css';
+import { Text } from '@canva/app-ui-kit';
 
 type PropType = {
     errorMessage: string;
@@ -8,7 +9,9 @@ type PropType = {
 const ErrrorMessage = ({ errorMessage }: PropType) => {
     return (
         <div className={styles.container}>
-            <p className={styles['error-message']}>{errorMessage}</p>
+            <Text tone="secondary" alignment="center">
+                {errorMessage}
+            </Text>
         </div>
     );
 };

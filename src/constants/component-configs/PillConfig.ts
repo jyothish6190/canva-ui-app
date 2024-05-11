@@ -17,6 +17,7 @@ export const PillConfig = [
         label: 'Label',
         description: 'Description text',
         placeholder: 'Pill',
+        value: 'Pill',
     },
     {
         showComponent: true,
@@ -68,7 +69,7 @@ export const PillConfig = [
         type: ComponentType.FORM_FIELD,
         name: PillFieldNames.WIDTH,
         label: 'Label',
-        vlue: '158',
+
         description: 'Description text',
     },
     {

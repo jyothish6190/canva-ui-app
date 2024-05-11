@@ -3,7 +3,7 @@ import { ComponentType } from '../ComponentTypes';
 
 export enum TextInputSearchFieldNames {
     TEXT = 'Text',
-    WITH_TEXT = 'With Text',
+    PLACEHOLDER = 'Placeholder',
     START_DECORATOR = 'Start decorator (optional)',
     END_DECORATOR = 'End decorator',
     END_TEXT = 'End text',
@@ -19,13 +19,13 @@ export const TextInputConfig = [
         type: ComponentType.FORM_FIELD,
         name: TextInputSearchFieldNames.TEXT,
         value: 'Hello world',
-        placeholder: 'Placeholder',
+        placeholder: 'Enter your text',
     },
     {
         showComponent: true,
-        type: ComponentType.SWITCH,
-        name: TextInputSearchFieldNames.WITH_TEXT,
-        NoneValue: true,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputSearchFieldNames.PLACEHOLDER,
+        placeholder: 'Placeholder',
     },
     {
         showComponent: true,
@@ -135,7 +135,7 @@ export const TextInputConfig = [
                 value: 'disabled',
             },
         ],
-        value: 'none',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 ];

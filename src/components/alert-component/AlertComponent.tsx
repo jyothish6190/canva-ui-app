@@ -76,7 +76,13 @@ const AlertComponent = ({ component, isProperty }: AlertType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: alertState.alertWidth }}>
+            <div
+                style={
+                    alertState.alertWidth
+                        ? { width: alertState.alertWidth + 'px' }
+                        : {}
+                }
+            >
                 <Alert
                     tone={alertState.alertTone}
                     title={alertState.alertTitle}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeftIcon } from '@canva/app-ui-kit';
+import { ArrowLeftIcon, Button, Title } from '@canva/app-ui-kit';
 
 import styles from './Header.css';
 
@@ -11,11 +11,14 @@ type HeaderType = {
 export const Header = ({ header, onClick }: HeaderType) => {
     return (
         <div className={styles.container}>
-            <button className={styles['back-button']} onClick={onClick}>
-                <ArrowLeftIcon />
-            </button>
+            <Button
+                variant="tertiary"
+                icon={ArrowLeftIcon}
+                ariaLabel="Go back"
+                onClick={onClick}
+            />
 
-            <span className={styles.header}>{header}</span>
+            <Title size="small">{header}</Title>
         </div>
     );
 };

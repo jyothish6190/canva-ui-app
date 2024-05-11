@@ -1,7 +1,7 @@
 import { ComponentType } from '../ComponentTypes';
 
 export enum SwatchFieldnames {
-    COLOR_PICKER = 'Color picker',
+    COLOR_PICKER = 'Color',
     ACTIVE = 'Active',
     VARIANT = 'Variant',
     SIZE = 'Size',

@@ -41,7 +41,8 @@ export const AlertConfig = [
         name: AlertFieldNames.TITLE,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'This is an alert.',
+        value: 'This is an alert.',
+        placeholder: 'Alert title',
     },
     {
         showComponent: true,
@@ -49,7 +50,8 @@ export const AlertConfig = [
         name: AlertFieldNames.TEXT,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Alert with a title.',
+        value: 'Alert with a title.',
+        placeholder: 'Alert text',
     },
 
     {

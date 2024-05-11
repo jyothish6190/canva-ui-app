@@ -15,19 +15,17 @@ const PropertyList = ({ component }: PropType) => {
     }
 
     return (
-        <div style={{ padding: '2rem 0' }}>
-            <Rows spacing="2u">
-                {component.fields?.map((field, index) => {
-                    return (
-                        <ComponentItem
-                            component={field}
-                            isProperty={true}
-                            key={index}
-                        />
-                    );
-                })}
-            </Rows>
-        </div>
+        <Rows spacing="2u">
+            {component.fields?.map((field, index) => {
+                return (
+                    <ComponentItem
+                        component={field}
+                        isProperty={true}
+                        key={index}
+                    />
+                );
+            })}
+        </Rows>
     );
 };
 
