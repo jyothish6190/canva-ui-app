@@ -22,6 +22,7 @@ type MultilineInputStateData = {
     inputWidth: string | undefined;
     inputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
     inputLabel: string | undefined;
+    inputPlaceholder: string | undefined;
 };
 
 const initialState: MultilineInputStateData = {
@@ -30,6 +31,7 @@ const initialState: MultilineInputStateData = {
     maxCharacterCount: undefined,
     inputWidth: undefined,
     inputState: 'default',
+    inputPlaceholder: undefined,
 };
 
 const MultilineInputComponent = ({ component, isProperty }: PropType) => {
@@ -70,7 +72,15 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                     return {
                         ...prevState,
                         inputState: field.value ? field.value : 'default',
-                        inputLabel: '  ',
+                        inputLabel: ' ',
+                    };
+                });
+            }
+            if (field.name === MultilineInputFieldNames.PLACEHOLDER) {
+                setMultilineInputData((prevState) => {
+                    return {
+                        ...prevState,
+                        inputPlaceholder: field.value ? field.value : undefined,
                     };
                 });
             }
@@ -109,9 +119,9 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                                     : false
                             }
                             value={
-                                multilineInputData.inputValue
-                                    ? multilineInputData.inputValue
-                                    : component.value
+                                component.value
+                                    ? component.value
+                                    : multilineInputData.inputValue
                             }
                             autoGrow
                             footer={
@@ -125,7 +135,11 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                             }
                             minRows={1}
                             onChange={changeHandler}
-                            placeholder={component.placeholder}
+                            placeholder={
+                                multilineInputData.inputPlaceholder
+                                    ? multilineInputData.inputPlaceholder
+                                    : component.placeholder
+                            }
                         />
                     )}
                 />
