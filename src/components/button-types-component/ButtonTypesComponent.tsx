@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box } from '@canva/app-ui-kit';
-
+import styles from './ButtonType.css';
 import { Category } from 'src/models/category.model';
 import { Component } from 'src/models/component.model';
 
@@ -24,7 +23,7 @@ const ButtonTypesComponent = ({ component }: PropType) => {
 
     return (
         <>
-            <Box display="flex" justifyContent="spaceBetween">
+            <div className={styles.container}>
                 {component &&
                     component.options &&
                     component.options.map((category, index) => {
@@ -41,7 +40,7 @@ const ButtonTypesComponent = ({ component }: PropType) => {
                             />
                         );
                     })}
-            </Box>
+            </div>
         </>
     );
 };

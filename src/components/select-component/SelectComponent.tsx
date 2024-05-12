@@ -15,6 +15,7 @@ type PropType = {
 
 type SelectStateData = {
     selectOptions: any[] | null;
+    selectValue: string | undefined;
     componentPlaceHolder: string | undefined;
     componentWidth: number | undefined;
     componentLabel: string | null;
@@ -23,6 +24,7 @@ type SelectStateData = {
 
 const initialState: SelectStateData = {
     selectOptions: null,
+    selectValue: undefined,
     componentPlaceHolder: undefined,
     componentWidth: undefined,
     componentLabel: null,
@@ -82,6 +84,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                     return {
                         ...prevState,
                         selectOptions: field.options as any[],
+                        selectValue: field.value,
                     };
                 });
             }
@@ -132,7 +135,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                             value={
                                 component.value
                                     ? component.value
-                                    : component.defaultValue
+                                    : selectData.selectValue
                             }
                         />
                     )}

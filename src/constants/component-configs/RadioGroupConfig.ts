@@ -74,5 +74,6 @@ export const RadioGroupConfig = [
                 value: 'custom',
             },
         ],
+        value: 'small',
     },
 ];

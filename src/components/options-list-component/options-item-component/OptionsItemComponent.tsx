@@ -18,10 +18,13 @@ type PropType = {
     onChange: (
         updatedOption: string,
         newValue: string,
-        checked: boolean
+        checked: boolean,
+        description: string | null
     ) => void;
     onClick?: (optionValue: string) => void;
     showDeleteIcon: boolean;
+    radioChecked: string;
+    setRadioChecked: React.Dispatch<any>;
 };
 
 const OptionsItemComponent = ({
@@ -30,6 +33,8 @@ const OptionsItemComponent = ({
     onChange,
     onClick,
     showDeleteIcon,
+    radioChecked,
+    setRadioChecked,
 }: PropType) => {
     const renderOptionComponent = () => {
         switch (OptionType) {
@@ -37,6 +42,12 @@ const OptionsItemComponent = ({
                 return (
                     <RadioGroup
                         key={'radiogroup'}
+                        value={
+                            option.value === radioChecked ? option.value : ''
+                        }
+                        onChange={(value) => {
+                            setRadioChecked(value);
+                        }}
                         options={[
                             {
                                 label: '',
@@ -52,7 +63,7 @@ const OptionsItemComponent = ({
                         value={option.value}
                         checked={option.checked}
                         onChange={(value, checked) =>
-                            onChange(option.value, value, checked)
+                            onChange(option.value, value, checked, null)
                         }
                     />
                 );
@@ -70,7 +81,7 @@ const OptionsItemComponent = ({
                     value={undefined}
                     defaultValue={option.label}
                     onChange={(value) =>
-                        onChange(option.value, value, option.checked)
+                        onChange(option.value, value, option.checked, null)
                     }
                 />
             </div>

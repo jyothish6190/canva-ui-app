@@ -37,7 +37,7 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
                 setCheckboxDataState((prevState) => {
                     return {
                         ...prevState,
-                        checkedState: field.value ? field.value : false,
+                        checkedState: field.value,
                     };
                 });
             }
@@ -72,7 +72,7 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
         return (
             <div style={{ width: checkboxDataState.checkBoxWidth }}>
                 <Checkbox
-                    checked={checkboxDataState.checkedState ? true : false}
+                    checked={checkboxDataState.checkedState}
                     label={checkboxDataState.checkBoxLabel}
                     disabled={
                         checkboxDataState.checkBoxState === 'disabled'

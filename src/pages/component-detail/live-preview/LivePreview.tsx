@@ -11,7 +11,11 @@ const LivePreview = ({ children }) => {
     };
     return (
         <div
-            className={bgcolor === tokens.colorContrastFore ? 'light' : 'dark'}
+            className={
+                bgcolor === tokens.colorContrastFore
+                    ? 'theme light'
+                    : 'theme dark'
+            }
         >
             <div className={styles.container} style={{ background: bgcolor }}>
                 <span className={styles['theme-btn']} onClick={HandleOnclick}>

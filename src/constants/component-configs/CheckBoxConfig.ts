@@ -14,6 +14,7 @@ export const CheckBoxConfig = [
         showComponent: true,
         type: ComponentType.SWITCH,
         name: CheckBoxFieldNames.CHECKED,
+        defaultValue: true,
         value: true,
     },
     {

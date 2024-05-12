@@ -19,6 +19,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
     const { selectedComponent, setSelectedComponent } = useComponentStore();
 
     const [optionList, setOptionList] = useState<any[]>([]);
+    const [radioChecked, setRadioChecked] = useState<any>(component.value);
 
     useMemo(() => {
         if (component && component.options) {
@@ -27,17 +28,18 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         } else {
             return [];
         }
-    }, [component]);
+    }, [component, component.options]);
 
     useEffect(() => {
         selectedComponent?.fields?.forEach((field: Component) => {
             if (field.name === component.name) {
                 field.options = optionList;
+                field.value = radioChecked;
             }
             setSelectedComponent({ ...selectedComponent });
             return;
         });
-    }, [optionList]);
+    }, [optionList, radioChecked]);
 
     const deleteHandler = (optionValue: string) => {
         const updatedOptions = optionList.filter(
@@ -63,7 +65,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         setOptionList([...optionList, newOption]);
     };
 
-    const updateHandler = (updatedOption, newValue, checked) => {
+    const updateHandler = (updatedOption, newValue, checked, description) => {
         const updatedList = optionList.map((option) =>
             option.value === updatedOption
                 ? {
@@ -71,6 +73,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                       label: newValue,
                       value: newValue,
                       checked: checked,
+                      description: description || null,
                   }
                 : option
         );
@@ -93,6 +96,8 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     return (
                         <div key={option.value}>
                             <OptionsItemComponent
+                                setRadioChecked={setRadioChecked}
+                                radioChecked={radioChecked}
                                 showDeleteIcon={
                                     optionList.length > 1 ? true : false
                                 }
