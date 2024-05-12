@@ -1,9 +1,17 @@
 import { ComponentType, OptionTypes } from '../ComponentTypes';
 
+export enum SegmentedControlFieldNames {
+    TYPE = 'Type',
+    WIDTH = 'Width',
+    WIDTH_OPTION = 'Width options',
+    OPTIONS = 'Options',
+}
+
 export const SegmentedControlConfig = [
     {
+        showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Type',
+        name: SegmentedControlFieldNames.TYPE,
         options: [
             {
                 label: 'Text',
@@ -17,45 +25,48 @@ export const SegmentedControlConfig = [
         defaultValue: 'text',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        name: SegmentedControlFieldNames.WIDTH,
         label: 'Label',
-        value: '328',
+        value: 328,
         description: 'Description text',
     },
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
-
+        name: SegmentedControlFieldNames.WIDTH_OPTION,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },
 
     {
+        showComponent: true,
         type: ComponentType.OPTIONS_LIST,
         optionType: OptionTypes.RADIO,
-        name: 'Options',
+        name: SegmentedControlFieldNames.OPTIONS,
         options: [
             {
                 label: 'S',
@@ -70,5 +81,6 @@ export const SegmentedControlConfig = [
                 value: 'l',
             },
         ],
+        value: 's',
     },
 ];
