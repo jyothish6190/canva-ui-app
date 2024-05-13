@@ -21,6 +21,7 @@ export const MultiLineInputConfig = [
         type: ComponentType.FORM_FIELD,
         name: MultilineInputFieldNames.PLACEHOLDER,
         placeholder: 'Placeholder',
+        value: 'Placeholder',
     },
     {
         showComponent: true,

@@ -80,7 +80,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                 setMultilineInputData((prevState) => {
                     return {
                         ...prevState,
-                        inputPlaceholder: field.value ? field.value : undefined,
+                        inputPlaceholder: field.value ? field.value : '   ',
                     };
                 });
             }

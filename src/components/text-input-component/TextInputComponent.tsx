@@ -100,7 +100,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
-                        inputPlaceHolder: field.value,
+                        inputPlaceHolder: field.value || '  ',
                     };
                 });
             }
