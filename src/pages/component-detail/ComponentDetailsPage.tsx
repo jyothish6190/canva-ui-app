@@ -45,7 +45,7 @@ const ComponentDetailsPage = () => {
         appElementClient.registerOnElementChange((appElement) => {
             if (!appElement && !initialLoad.current) {
                 navigate('/home');
-            } else if (appElement) {
+            } else if (appElement && !initialLoad.current) {
                 elementId.current = appElement.data.elementId;
                 assignDetails(appElement);
             } else {
@@ -116,12 +116,27 @@ const ComponentDetailsPage = () => {
         return elementId.current ? elementId.current : timestamp + random;
     }
 
+    function getScale(component) {
+        let scale = 1;
+        let width = parseInt(
+            component?.fields.filter((field) => field.name === 'Width')[0].value
+        );
+        if (width > 308) scale = 300 / width;
+        return scale.toString();
+    }
+
     return (
         <>
             {selectedComponent && (
                 <div className={styles.componenDetailPage}>
                     <LivePreview>
-                        <div ref={ref} style={{ pointerEvents: 'none' }}>
+                        <div
+                            ref={ref}
+                            style={{
+                                pointerEvents: 'none',
+                                scale: getScale(selectedComponent),
+                            }}
+                        >
                             <ComponentItem
                                 component={selectedComponent}
                                 isProperty={true}
