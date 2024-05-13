@@ -1,13 +1,24 @@
+* {
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Scroll container */
+
 /* Scroll container */
 .scrollContainer {
     box-sizing: border-box;
+    overflow-y: scroll;
     height: 100%;
     padding-top: var(--ui-kit-space-2);
-    padding-right: var(--ui-kit-space-2);
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--ui-kit-space-3);
-    padding-bottom: 100px;
+    padding-right: var(--ui-kit-space-1);
+    padding-bottom: var(--ui-kit-space-2);
+
+    /* for firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--ui-kit-color-typography-quaternary) transparent;
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -33,9 +44,4 @@
 .scrollContainer:focus::-webkit-scrollbar-thumb,
 .scrollContainer:focus-within::-webkit-scrollbar-thumb {
     visibility: visible;
-}
-
-::-webkit-scrollbar {
-    height: 0;
-    width: 8px;
 }
