@@ -14,7 +14,7 @@ export const TypographyConfig = [
         label: 'Label',
         description: 'Description text',
         placeholder: 'Text',
-        value: 'The Quick brown fox',
+        value: 'The quick brown fox',
     },
 
     {

@@ -26,6 +26,7 @@ export const TextInputConfig = [
         type: ComponentType.FORM_FIELD,
         name: TextInputSearchFieldNames.PLACEHOLDER,
         placeholder: 'Placeholder',
+        value: 'Placeholder',
     },
     {
         showComponent: true,
