@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Rows } from '@canva/app-ui-kit';
@@ -52,6 +52,20 @@ const HomePage = () => {
         return filteredComponents;
     }, [searchQuery, selectedCategories, components]);
 
+    useEffect(() => {
+        {
+            selectedCategories.length > 0
+                ? selectedCategories.forEach((item) => {
+                      if (item.value === 'icons') {
+                          setShowIcons(true);
+                      } else {
+                          setShowIcons(false);
+                      }
+                  })
+                : setShowIcons(true);
+        }
+    }, [selectedCategories]);
+
     const categorySelectHandler = (category: Category) => {
         const index = selectedCategories.findIndex(
             (selectedCategory) => selectedCategory.value === category.value
@@ -65,10 +79,13 @@ const HomePage = () => {
     };
 
     const searchHandler = (searchQuery: string) => {
-        if (searchQuery.length > 0) {
-            setShowIcons(false);
-        } else {
+        if (
+            'icons'.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            searchQuery.length < 1
+        ) {
             setShowIcons(true);
+        } else {
+            setShowIcons(false);
         }
         setSearchQuery(searchQuery);
     };
@@ -94,6 +111,7 @@ const HomePage = () => {
                 {showIcons && <IconList onClick={iconSelectHandler} />}
 
                 <ComponentList
+                    showIcon={showIcons}
                     components={filteredComponentList}
                     searchQuery={searchQuery}
                     onClick={componentSelectHandler}
