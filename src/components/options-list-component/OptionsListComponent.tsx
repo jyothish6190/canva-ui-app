@@ -88,7 +88,10 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     <CardTitle title={component.name}></CardTitle>
                 </div>
                 <div style={{ justifyContent: 'flex-end' }}>
-                    <CardTitle title="Clear Selection"></CardTitle>
+                    <CardTitle
+                        title="Clear Selection"
+                        onClick={() => setRadioChecked('')}
+                    ></CardTitle>
                 </div>
             </div>
             <>
