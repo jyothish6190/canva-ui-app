@@ -48,7 +48,6 @@ const HomePage = () => {
                 .toLowerCase()
                 .includes(searchQuery.toLowerCase());
         });
-        filteredComponents = JSON.parse(JSON.stringify(filteredComponents));
         return filteredComponents;
     }, [searchQuery, selectedCategories, components]);
 
@@ -91,7 +90,9 @@ const HomePage = () => {
     };
 
     const componentSelectHandler = (component: Component) => {
-        setSelectedComponent(component);
+        let newComponent = { ...component };
+        newComponent.fields = component.fields?.map((item) => ({ ...item }));
+        setSelectedComponent(newComponent);
         navigate(`/component-details`);
     };
 
