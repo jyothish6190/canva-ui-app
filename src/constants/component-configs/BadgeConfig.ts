@@ -22,31 +22,31 @@ export const BadgeConfig = [
         name: BadgeFieldNames.TONE,
         options: [
             {
-                label: 'assist',
+                label: 'Assist',
                 value: 'assist',
             },
             {
-                label: 'critical',
+                label: 'Critical',
                 value: 'critical',
             },
             {
-                label: 'info',
+                label: 'Info',
                 value: 'info',
             },
             {
-                label: 'nuetral',
+                label: 'Nuetral',
                 value: 'nuetral',
             },
             {
-                label: 'positive',
+                label: 'Positive',
                 value: 'positive',
             },
             {
-                label: 'warn',
+                label: 'Warn',
                 value: 'warn',
             },
         ],
-        defaultValue: 'assist',
+        value: 'assist',
         placeholder: 'Choose a Tone',
     },
     {

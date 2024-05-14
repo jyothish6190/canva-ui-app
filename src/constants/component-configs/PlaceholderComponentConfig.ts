@@ -58,7 +58,7 @@ export const PlaceholderComponentConfig = [
                 value: 'xsmall',
             },
         ],
-        defaultValue: 'medium',
+        value: 'medium',
         placeholder: 'Choose a Size',
     },
     {
