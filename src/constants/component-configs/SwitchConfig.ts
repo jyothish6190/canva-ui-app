@@ -87,7 +87,7 @@ export const SwitchConfig = [
                 value: 'disabled',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 ];

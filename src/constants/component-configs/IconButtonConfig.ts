@@ -62,7 +62,7 @@ export const IconButtonConfig = [
                 value: 'disabled',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
     {

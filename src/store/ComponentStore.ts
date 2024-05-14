@@ -207,16 +207,12 @@ const updateField = (
                         ];
                     }
                 });
-            } else if (value === 'regular') {
+            } else if (value === 'bold') {
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === TextFieldNames.SIZE) {
                         field.options = [
                             {
-                                label: 'xlarge',
-                                value: 'xlarge',
-                            },
-                            {
-                                label: 'large',
+                                label: 'Large',
                                 value: 'large',
                             },
 
@@ -227,10 +223,6 @@ const updateField = (
                             {
                                 label: 'Small',
                                 value: 'small',
-                            },
-                            {
-                                label: 'xsmall',
-                                value: 'xsmall',
                             },
                         ];
                     }
