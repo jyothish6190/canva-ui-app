@@ -3,21 +3,27 @@ import styles from './LivePreview.css';
 import { DarkThemeIcon, LightThemeIcon } from 'assets/images/image.js';
 import { tokens } from '@canva/app-ui-kit';
 const LivePreview = ({ children }) => {
-    const [bgcolor, setBgColor] = useState<string>(tokens.colorTertiaryActive);
+    const [bgcolor, setBgColor] = useState<string>(tokens.colorContrastFore);
     const HandleOnclick = () => {
         bgcolor === tokens.colorContrastFore
-            ? setBgColor(tokens.colorTertiaryActive)
+            ? setBgColor(tokens.colorContrastActive)
             : setBgColor(tokens.colorContrastFore);
     };
     return (
-        <div
-            className={
-                bgcolor === tokens.colorContrastFore
-                    ? 'theme light'
-                    : 'theme dark'
-            }
-        >
-            <div className={styles.container} style={{ background: bgcolor }}>
+        <div style={{ background: bgcolor, borderRadius: '4px' }}>
+            <div
+                className={`${styles.container} ${
+                    bgcolor === tokens.colorContrastFore
+                        ? 'theme light'
+                        : 'theme dark'
+                }`}
+                style={{
+                    background:
+                        bgcolor === tokens.colorContrastFore
+                            ? 'var(--ui-kit-color-neutral-low)'
+                            : 'var(--ui-kit-color-neutral)',
+                }}
+            >
                 <span className={styles['theme-btn']} onClick={HandleOnclick}>
                     <img
                         src={
