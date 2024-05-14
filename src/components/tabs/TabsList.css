@@ -12,7 +12,7 @@
 
 .TabsTrigger {
     background: none;
-    color: inherit;
+    color: var(--ui-kit-color-typography-tertiary);
     border: none;
     padding: 0;
     font: inherit;
@@ -27,6 +27,7 @@
 }
 
 .TabsTrigger[data-state='active'] {
-    border-bottom: 2px solid #8b3cff;
+    border-bottom: 2.5px solid var(--ui-kit-color-border-active);
     font-weight: 500;
+    color: var(--ui-kit-color-typography-primary);
 }
