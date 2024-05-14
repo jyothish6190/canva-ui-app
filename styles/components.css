@@ -15,6 +15,7 @@
     padding-top: var(--ui-kit-space-2);
     padding-right: var(--ui-kit-space-1);
     padding-bottom: var(--ui-kit-space-2);
+    position: relative;
 
     /* for firefox */
     scrollbar-width: thin;

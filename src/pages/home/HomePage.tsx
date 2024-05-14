@@ -48,7 +48,7 @@ const HomePage = () => {
                 .toLowerCase()
                 .includes(searchQuery.toLowerCase());
         });
-
+        filteredComponents = JSON.parse(JSON.stringify(filteredComponents));
         return filteredComponents;
     }, [searchQuery, selectedCategories, components]);
 
