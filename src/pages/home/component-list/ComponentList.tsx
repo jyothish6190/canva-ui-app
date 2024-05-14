@@ -10,21 +10,25 @@ type ComponentListType = {
     components: Component[];
     searchQuery: string;
     onClick: (component: Component) => void;
+    showIcon: boolean;
 };
 
 const ComponentList = ({
     components,
     searchQuery,
     onClick,
+    showIcon,
 }: ComponentListType) => {
     const errorMessage = useMemo(() => {
         return `Sorry, we couldn’t find any components for “${searchQuery}”.
                 Try adjusting your search or filters.`;
     }, [searchQuery]);
-
     if (!components || components.length === 0) {
-        return <ErrrorMessage errorMessage={errorMessage} />;
+        return showIcon === false ? (
+            <ErrrorMessage errorMessage={errorMessage} />
+        ) : null;
     }
+
     return (
         <Grid
             alignX="stretch"

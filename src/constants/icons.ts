@@ -227,8 +227,8 @@ export const icons: Icon[] = [
         Icon: AlignBottomIcon,
     },
     {
-        value: 'align-mvaluedle-icon',
-        label: 'Align mvaluedle',
+        value: 'align-middle-icon',
+        label: 'Align middle',
         Icon: AlignMiddleIcon,
     },
     {

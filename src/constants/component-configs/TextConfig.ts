@@ -27,7 +27,11 @@ export const TextConfig = [
         name: TextFieldNames.SIZE,
         options: [
             {
-                label: 'large',
+                label: 'X large',
+                value: 'xlarge',
+            },
+            {
+                label: 'Large',
                 value: 'large',
             },
 
@@ -39,8 +43,12 @@ export const TextConfig = [
                 label: 'Small',
                 value: 'small',
             },
+            {
+                label: 'X small',
+                value: 'xsmall',
+            },
         ],
-        defaultValue: 'medium',
+        value: 'medium',
         placeholder: 'Choose a Size',
     },
     {

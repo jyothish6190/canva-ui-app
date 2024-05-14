@@ -96,11 +96,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
             </div>
         );
     }
-    return (
-        <div className={styles.container}>
-            <InfoIcon />
-        </div>
-    );
+    return <Button variant="primary" icon={InfoIcon} />;
 };
 
 export default IconButton;

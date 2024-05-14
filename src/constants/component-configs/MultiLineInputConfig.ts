@@ -21,6 +21,7 @@ export const MultiLineInputConfig = [
         type: ComponentType.FORM_FIELD,
         name: MultilineInputFieldNames.PLACEHOLDER,
         placeholder: 'Placeholder',
+        value: 'Placeholder',
     },
     {
         showComponent: true,
@@ -94,7 +95,7 @@ export const MultiLineInputConfig = [
                 value: 'disabled',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 ];

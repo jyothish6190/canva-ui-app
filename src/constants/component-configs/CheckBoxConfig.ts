@@ -96,7 +96,7 @@ export const CheckBoxConfig = [
                 value: 'error',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 ];

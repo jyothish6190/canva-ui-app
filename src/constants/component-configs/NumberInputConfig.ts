@@ -89,7 +89,7 @@ export const NumberInputConfig = [
                 value: 'disabled',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
     },
 ];

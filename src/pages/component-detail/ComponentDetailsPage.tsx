@@ -32,12 +32,14 @@ const appElementClient = initAppElement<UIData>({
     },
 });
 type RefValueType = string | null;
+type ElementListType = any;
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
     const { elements, setElements } = useElementStore();
     const initialLoad = useRef(true);
     const elementId = useRef<RefValueType>(null);
+    const updatedElementList = useRef<ElementListType>(null);
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -45,7 +47,7 @@ const ComponentDetailsPage = () => {
         appElementClient.registerOnElementChange((appElement) => {
             if (!appElement && !initialLoad.current) {
                 navigate('/home');
-            } else if (appElement) {
+            } else if (appElement && !initialLoad.current) {
                 elementId.current = appElement.data.elementId;
                 assignDetails(appElement);
             } else {
@@ -58,8 +60,7 @@ const ComponentDetailsPage = () => {
     async function assignDetails(appElement) {
         let elementId = appElement.data.elementId;
         let imgSource = appElement.data.imgSource;
-
-        let element = elements.find(
+        let element = updatedElementList.current.find(
             (obj) => obj.elementId === appElement.data.elementId
         );
 
@@ -102,6 +103,7 @@ const ComponentDetailsPage = () => {
                     component: selectedComponent,
                 },
             ];
+            updatedElementList.current = updatedElements;
             setElements(updatedElements);
         }
         await appElementClient.addOrUpdateElement({
@@ -116,12 +118,27 @@ const ComponentDetailsPage = () => {
         return elementId.current ? elementId.current : timestamp + random;
     }
 
+    function getScale(component) {
+        let scale = 1;
+        let width = parseInt(
+            component?.fields.filter((field) => field.name === 'Width')[0].value
+        );
+        if (width > 308) scale = 300 / width;
+        return scale.toString();
+    }
+
     return (
         <>
             {selectedComponent && (
                 <div className={styles.componenDetailPage}>
                     <LivePreview>
-                        <div ref={ref} style={{ pointerEvents: 'none' }}>
+                        <div
+                            ref={ref}
+                            style={{
+                                pointerEvents: 'none',
+                                scale: getScale(selectedComponent),
+                            }}
+                        >
                             <ComponentItem
                                 component={selectedComponent}
                                 isProperty={true}
