@@ -32,12 +32,14 @@ const appElementClient = initAppElement<UIData>({
     },
 });
 type RefValueType = string | null;
+type ElementListType = any;
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
     const { elements, setElements } = useElementStore();
     const initialLoad = useRef(true);
     const elementId = useRef<RefValueType>(null);
+    const updatedElementList = useRef<ElementListType>(null);
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -58,8 +60,7 @@ const ComponentDetailsPage = () => {
     async function assignDetails(appElement) {
         let elementId = appElement.data.elementId;
         let imgSource = appElement.data.imgSource;
-
-        let element = elements.find(
+        let element = updatedElementList.current.find(
             (obj) => obj.elementId === appElement.data.elementId
         );
 
@@ -102,6 +103,7 @@ const ComponentDetailsPage = () => {
                     component: selectedComponent,
                 },
             ];
+            updatedElementList.current = updatedElements;
             setElements(updatedElements);
         }
         await appElementClient.addOrUpdateElement({
