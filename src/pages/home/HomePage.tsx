@@ -78,11 +78,12 @@ const HomePage = () => {
     };
 
     const searchHandler = (searchQuery: string) => {
-        if (
-            'icons'.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            searchQuery.length < 1
-        ) {
-            setShowIcons(true);
+        if ('icons'.toLowerCase().includes(searchQuery.toLowerCase())) {
+            selectedCategories.forEach((item) => {
+                if (item.value === 'icons') {
+                    setShowIcons(true);
+                }
+            });
         } else {
             setShowIcons(false);
         }

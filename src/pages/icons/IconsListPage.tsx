@@ -51,7 +51,6 @@ const IconsListPage = () => {
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.label);
         const svgDocument = elementToSVG(element as HTMLElement);
-        console.log('Element', svgDocument);
         const pathElement = svgDocument.querySelector(
             '#mask-for-svg11 + g > path'
         );
@@ -78,7 +77,6 @@ const IconsListPage = () => {
             url: imgSource,
             thumbnailUrl: imgSource,
         });
-        console.log('🚀 ~ updateComponentHandler ~ result:', result);
 
         await addNativeElement({
             type: 'IMAGE',
