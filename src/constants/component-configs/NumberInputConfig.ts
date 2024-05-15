@@ -1,7 +1,7 @@
 import { ComponentType } from '../ComponentTypes';
 
 export enum NumberInputFieldNames {
-    VALUE = 'value',
+    VALUE = 'Value',
     SPIN_BUTTONS = 'Spin buttons',
     WIDTH = 'Width',
     WIDTH_OPTIONS = 'Width options',

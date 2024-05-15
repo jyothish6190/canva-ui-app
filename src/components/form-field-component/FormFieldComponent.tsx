@@ -44,7 +44,7 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
     return (
         <ExcessContainer dynamic={'300px'}>
             <FormField
-                label={component.name}
+                label={component.label as string}
                 description={component.description}
                 control={(props) => <TextInput {...props} />}
             />
