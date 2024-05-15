@@ -4,7 +4,7 @@ export enum RadioConfigFieldNames {
     HUG_CONTENT = 'Hug Content',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width options',
-    RADIO_OPTIONS = 'Radio Options',
+    RADIO_OPTIONS = 'Radio options',
 }
 
 export const RadioGroupConfig = [
