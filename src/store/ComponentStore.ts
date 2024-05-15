@@ -334,24 +334,24 @@ const updateField = (
                     if (field.name === SegmentedControlFieldNames.OPTIONS) {
                         field.options = [
                             {
-                                value: 'arrow-up-icon',
+                                value: 'Arrow up',
                                 label: ArrowUpIcon() as any,
                                 key: 1,
                                 description: 'option1',
                             },
                             {
-                                value: 'arrow-down-icon',
+                                value: 'Arrow down',
                                 label: ArrowDownIcon() as any,
                                 key: 2,
                                 description: 'option2',
                             },
                             {
-                                value: 'arrow-left-icon',
+                                value: 'Arrow left',
                                 label: ArrowLeftIcon() as any,
                                 key: 3,
                                 description: 'option3',
                             },
-                        ];
+                        ] as any;
                     }
                 });
             }
