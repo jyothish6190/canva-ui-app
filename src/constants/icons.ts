@@ -68,7 +68,7 @@ export const icons: Icon[] = [
     },
     {
         value: 'play-filled-icon',
-        label: 'Play Filled',
+        label: 'Play filled',
         Icon: PlayFilledIcon,
     },
     {

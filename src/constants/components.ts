@@ -43,7 +43,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.ICON_BUTTON,
-        name: 'Icon Button',
+        name: 'Icon button',
         'icon-data': 'InfoIcon',
         varient: 'primary',
         categoryId: 'action',
@@ -146,7 +146,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.TEXT_INPUT,
-        name: 'Text Input',
+        name: 'Text input',
         categoryId: 'form',
         placeholder: 'Placeholder',
         fields: TextInputConfig,
@@ -154,7 +154,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
-        name: 'Multiline Input',
+        name: 'Multiline input',
         categoryId: 'form',
         max: 50,
         placeholder: 'Placeholder',

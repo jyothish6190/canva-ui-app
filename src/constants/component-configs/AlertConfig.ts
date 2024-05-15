@@ -2,7 +2,7 @@ import { ComponentType } from '../ComponentTypes';
 
 export enum AlertFieldNames {
     TONE = 'Tone',
-    TITLE = 'Title (Optional)',
+    TITLE = 'Title (optional)',
     TEXT = 'Text',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width option',
