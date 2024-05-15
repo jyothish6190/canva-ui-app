@@ -64,10 +64,12 @@ export const FileInputConfig = [
         name: FileInputFieldNames.FILE_INPUT_OPTIONS,
         options: [
             {
+                key: 1,
                 label: 'examplefile1.png',
                 value: 'examplefile1.png',
             },
             {
+                key: 2,
                 label: 'examplefile2.png',
                 value: 'examplefile2.png',
             },

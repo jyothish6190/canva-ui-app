@@ -59,21 +59,25 @@ export const CheckBoxGroupConfig = [
             {
                 label: 'Small',
                 value: 'Small',
+                key: 1,
                 checked: true,
             },
             {
                 label: 'Medium',
                 value: 'Medium',
+                key: 2,
                 checked: false,
             },
             {
                 label: 'Large',
                 value: 'Large',
+                key: 3,
                 checked: false,
             },
             {
                 label: 'Custom',
                 value: 'Custom',
+                key: 4,
                 checked: false,
             },
         ],

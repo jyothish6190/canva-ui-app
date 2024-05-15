@@ -69,14 +69,17 @@ export const SegmentedControlConfig = [
         name: SegmentedControlFieldNames.OPTIONS,
         options: [
             {
+                key: 1,
                 label: 'S',
                 value: 's',
             },
             {
+                key: 2,
                 label: 'M',
                 value: 'm',
             },
             {
+                key: 3,
                 label: 'L',
                 value: 'l',
             },
