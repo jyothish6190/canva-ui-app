@@ -34,7 +34,6 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
                         swatchColor: field.value || initialState.swatchColor,
                     };
                 });
-                console.log('color', field.value);
             }
 
             if (field.name === SwatchFieldnames.SIZE) {
@@ -62,7 +61,6 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
                     };
                 });
             }
-            console.log('Fielda', field);
         });
     }, [component]);
 

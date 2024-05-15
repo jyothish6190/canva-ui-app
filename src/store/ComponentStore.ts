@@ -328,7 +328,6 @@ const updateField = (
                             },
                         ];
                     }
-                    console.log('text', field.options);
                 });
             } else if (value === 'icon') {
                 newComponent.fields?.forEach((field: Component) => {
@@ -351,7 +350,6 @@ const updateField = (
                             },
                         ];
                     }
-                    console.log('icon', field.options);
                 });
             }
             break;

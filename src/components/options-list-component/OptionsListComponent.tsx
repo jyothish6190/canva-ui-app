@@ -77,7 +77,6 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                   }
                 : option
         );
-        console.log('updated', updatedList);
         setOptionList(updatedList);
     };
 
