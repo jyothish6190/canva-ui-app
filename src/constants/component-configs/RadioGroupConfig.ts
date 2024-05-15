@@ -58,18 +58,22 @@ export const RadioGroupConfig = [
         name: RadioConfigFieldNames.RADIO_OPTIONS,
         options: [
             {
+                key: 1,
                 label: 'Small',
                 value: 'small',
             },
             {
+                key: 2,
                 label: 'Medium',
                 value: 'medium',
             },
             {
+                key: 3,
                 label: 'Large',
                 value: 'large',
             },
             {
+                key: 4,
                 label: 'Custom',
                 value: 'custom',
             },

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     Box,
     Checkbox,
     CheckboxOption,
+    FormField,
     RadioGroup,
     SelectOption,
     TextInput,
@@ -19,9 +20,10 @@ type PropType = {
         updatedOption: string,
         newValue: string,
         checked: boolean,
-        description: string | null
+        description: string | null,
+        keyValue: number | null
     ) => void;
-    onClick?: (optionValue: string) => void;
+    onClick?: (optionKey: number) => void;
     showDeleteIcon: boolean;
     radioChecked: string;
     setRadioChecked: React.Dispatch<any>;
@@ -36,15 +38,16 @@ const OptionsItemComponent = ({
     radioChecked,
     setRadioChecked,
 }: PropType) => {
+    const inputRef = useRef(null);
+    const [isOnFocus, setOnFocus] = useState<boolean>(false);
+
     const renderOptionComponent = () => {
         switch (OptionType) {
             case OptionTypes.RADIO:
                 return (
                     <RadioGroup
                         key={'radiogroup'}
-                        value={
-                            option.value === radioChecked ? option.value : ''
-                        }
+                        value={option.value === radioChecked && option.value}
                         onChange={(value) => {
                             setRadioChecked(value);
                         }}
@@ -63,7 +66,13 @@ const OptionsItemComponent = ({
                         value={option.value}
                         checked={option.checked}
                         onChange={(value, checked) =>
-                            onChange(option.value, value, checked, null)
+                            onChange(
+                                option.value,
+                                value,
+                                checked,
+                                null,
+                                option.key
+                            )
                         }
                     />
                 );
@@ -72,22 +81,50 @@ const OptionsItemComponent = ({
         }
     };
 
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
+
     return (
         <Box display="flex" flexDirection="row" className={styles.container}>
             <div style={{ flex: 0 }}>{renderOptionComponent()}</div>
 
-            <div style={{ flex: 1 }}>
-                <TextInput
+            <div
+                className={styles.inputContainer}
+                key={option?.value}
+                style={{
+                    borderColor: isOnFocus
+                        ? 'var(--ui-kit-color-border-active)'
+                        : '',
+                }}
+            >
+                <input
+                    ref={inputRef}
                     value={undefined}
                     defaultValue={option.label}
-                    onChange={(value) =>
-                        onChange(option.value, value, option.checked, null)
-                    }
+                    className={styles.inputField}
+                    onFocus={() => {
+                        setOnFocus(true);
+                    }}
+                    onBlur={() => {
+                        setOnFocus(false);
+                    }}
+                    onChange={(e) => {
+                        onChange(
+                            option.value,
+                            e.target.value,
+                            option.checked,
+                            null,
+                            option.key
+                        );
+                    }}
                 />
             </div>
             {showDeleteIcon && (
                 <div style={{ flex: 0, cursor: 'pointer' }}>
-                    <div onClick={() => onClick && onClick(option.value)}>
+                    <div onClick={() => onClick && onClick(option.key)}>
                         <TrashIcon />
                     </div>
                 </div>
