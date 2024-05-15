@@ -48,7 +48,6 @@ const HomePage = () => {
                 .toLowerCase()
                 .includes(searchQuery.toLowerCase());
         });
-        filteredComponents = JSON.parse(JSON.stringify(filteredComponents));
         return filteredComponents;
     }, [searchQuery, selectedCategories, components]);
 
@@ -79,11 +78,12 @@ const HomePage = () => {
     };
 
     const searchHandler = (searchQuery: string) => {
-        if (
-            'icons'.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            searchQuery.length < 1
-        ) {
-            setShowIcons(true);
+        if ('icons'.toLowerCase().includes(searchQuery.toLowerCase())) {
+            selectedCategories.forEach((item) => {
+                if (item.value === 'icons') {
+                    setShowIcons(true);
+                }
+            });
         } else {
             setShowIcons(false);
         }
@@ -91,7 +91,9 @@ const HomePage = () => {
     };
 
     const componentSelectHandler = (component: Component) => {
-        setSelectedComponent(component);
+        let newComponent = { ...component };
+        newComponent.fields = component.fields?.map((item) => ({ ...item }));
+        setSelectedComponent(newComponent);
         navigate(`/component-details`);
     };
 

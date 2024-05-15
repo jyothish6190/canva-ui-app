@@ -120,13 +120,15 @@ const ComponentDetailsPage = () => {
 
     function getScale(component) {
         let scale = 1;
-        let width = parseInt(
-            component?.fields.filter((field) => field.name === 'Width')[0].value
-        );
+        let width = 0;
+        console.log('components', component.fields);
+        let widthParam = component?.fields.filter(
+            (field) => field.name === 'Width'
+        )[0];
+        if (widthParam) width = widthParam.value;
         if (width > 308) scale = 300 / width;
         return scale.toString();
     }
-
     return (
         <>
             {selectedComponent && (

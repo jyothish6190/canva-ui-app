@@ -47,7 +47,6 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                         switchLabel: field.value || '  ',
                     };
                 });
-                console.log('Switchdata', switchData);
             }
             if (field.name === SwitchFieldNames.DESCRIPTION) {
                 setSwitchData((prevState) => {

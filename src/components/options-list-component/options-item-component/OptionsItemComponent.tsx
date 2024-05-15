@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     Box,
     Checkbox,
     CheckboxOption,
+    FormField,
     RadioGroup,
     SelectOption,
     TextInput,
@@ -11,6 +12,9 @@ import {
 
 import styles from './OptionsItemComponent.css';
 import { OptionTypes } from 'src/constants/ComponentTypes';
+import { useIconStore } from 'src/store/IconStore';
+import IconSelctionComponent from 'src/components/icon-selection-component/IconSelectionComponent';
+import { Component } from 'src/models/component.model';
 
 type PropType = {
     option: SelectOption<string> | any;
@@ -19,12 +23,18 @@ type PropType = {
         updatedOption: string,
         newValue: string,
         checked: boolean,
-        description: string | null
+        description: string | null,
+        keyValue: number | null
     ) => void;
-    onClick?: (optionValue: string) => void;
+    onClick?: (optionKey: number) => void;
     showDeleteIcon: boolean;
     radioChecked: string;
     setRadioChecked: React.Dispatch<any>;
+    component: Component;
+};
+type IconData = {
+    value: string;
+    Icon: () => JSX.Element;
 };
 
 const OptionsItemComponent = ({
@@ -35,16 +45,34 @@ const OptionsItemComponent = ({
     showDeleteIcon,
     radioChecked,
     setRadioChecked,
+    component,
 }: PropType) => {
+    const { setIconsList: setSelectedIcons } = useIconStore();
+    const inputRef = useRef(null);
+    const [isOnFocus, setOnFocus] = useState<boolean>(false);
+    const [iconData, setIconData] = useState<IconData>({
+        value: option.value as string,
+        Icon: option.label,
+    });
+    useEffect(() => {
+        option.description &&
+            setSelectedIcons({
+                icon: {
+                    value: option.value,
+                    label: option.value,
+                    Icon: option.label,
+                },
+                componentId: option.description,
+            });
+    }, []);
+
     const renderOptionComponent = () => {
         switch (OptionType) {
             case OptionTypes.RADIO:
                 return (
                     <RadioGroup
                         key={'radiogroup'}
-                        value={
-                            option.value === radioChecked ? option.value : ''
-                        }
+                        value={option.value === radioChecked && option.value}
                         onChange={(value) => {
                             setRadioChecked(value);
                         }}
@@ -63,7 +91,13 @@ const OptionsItemComponent = ({
                         value={option.value}
                         checked={option.checked}
                         onChange={(value, checked) =>
-                            onChange(option.value, value, checked, null)
+                            onChange(
+                                option.value,
+                                value,
+                                checked,
+                                null,
+                                option.key
+                            )
                         }
                     />
                 );
@@ -72,22 +106,56 @@ const OptionsItemComponent = ({
         }
     };
 
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
+
     return (
         <Box display="flex" flexDirection="row" className={styles.container}>
             <div style={{ flex: 0 }}>{renderOptionComponent()}</div>
-
-            <div style={{ flex: 1 }}>
-                <TextInput
-                    value={undefined}
-                    defaultValue={option.label}
-                    onChange={(value) =>
-                        onChange(option.value, value, option.checked, null)
-                    }
+            {option.description ? (
+                <IconSelctionComponent
+                    component={component}
+                    optionField={option}
                 />
-            </div>
+            ) : (
+                <div
+                    className={styles.inputContainer}
+                    key={option?.value}
+                    style={{
+                        borderColor: isOnFocus
+                            ? 'var(--ui-kit-color-border-active)'
+                            : '',
+                    }}
+                >
+                    <input
+                        ref={inputRef}
+                        value={undefined}
+                        defaultValue={option.label}
+                        className={styles.inputField}
+                        onFocus={() => {
+                            setOnFocus(true);
+                        }}
+                        onBlur={() => {
+                            setOnFocus(false);
+                        }}
+                        onChange={(e) => {
+                            onChange(
+                                option.value,
+                                e.target.value,
+                                option.checked,
+                                null,
+                                option.key
+                            );
+                        }}
+                    />
+                </div>
+            )}
             {showDeleteIcon && (
                 <div style={{ flex: 0, cursor: 'pointer' }}>
-                    <div onClick={() => onClick && onClick(option.value)}>
+                    <div onClick={() => onClick && onClick(option.key)}>
                         <TrashIcon />
                     </div>
                 </div>

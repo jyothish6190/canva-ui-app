@@ -29,8 +29,6 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
     const [checkboxDataState, setCheckboxDataState] =
         useState<CheckboxStateData>(initialState);
 
-    console.log('component', component);
-
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === CheckBoxFieldNames.CHECKED) {

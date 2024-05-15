@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Box, Column, Columns, PlusIcon, Rows } from '@canva/app-ui-kit';
+import { PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
 import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
@@ -41,9 +41,9 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         });
     }, [optionList, radioChecked]);
 
-    const deleteHandler = (optionValue: string) => {
+    const deleteHandler = (optionKey: number) => {
         const updatedOptions = optionList.filter(
-            (option) => option.value !== optionValue
+            (option) => option.key !== optionKey
         );
         setOptionList(updatedOptions);
     };
@@ -54,30 +54,38 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             newOption = {
                 value: 'Option' + (optionList.length + 1),
                 label: 'Option' + (optionList.length + 1),
+                key: optionList.length + 1,
                 checked: false,
             };
         } else {
             newOption = {
                 value: 'example file ' + (optionList.length + 1) + ' png',
                 label: 'example file ' + (optionList.length + 1) + ' png',
+                key: optionList.length + 1,
             };
         }
         setOptionList([...optionList, newOption]);
     };
 
-    const updateHandler = (updatedOption, newValue, checked, description) => {
+    const updateHandler = (
+        updatedOption,
+        newValue,
+        checked,
+        description,
+        keyValue
+    ) => {
         const updatedList = optionList.map((option) =>
-            option.value === updatedOption
+            option.key === keyValue
                 ? {
                       ...option,
                       label: newValue,
                       value: newValue,
+                      key: keyValue,
                       checked: checked,
                       description: description || null,
                   }
                 : option
         );
-        console.log('updated', updatedList);
         setOptionList(updatedList);
     };
 
@@ -99,6 +107,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     return (
                         <div key={option.value}>
                             <OptionsItemComponent
+                                component={component}
                                 setRadioChecked={setRadioChecked}
                                 radioChecked={radioChecked}
                                 showDeleteIcon={

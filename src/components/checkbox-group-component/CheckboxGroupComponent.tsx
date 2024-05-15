@@ -51,11 +51,13 @@ const CheckboxGroupComponent = ({
     if (isProperty) {
         return (
             <div
-                style={{
-                    width: checkboxData.checkBoxWidth
-                        ? checkboxData.checkBoxWidth
-                        : undefined,
-                }}
+                style={
+                    checkboxData.checkBoxWidth
+                        ? {
+                              width: checkboxData.checkBoxWidth + 'px',
+                          }
+                        : {}
+                }
             >
                 <CheckboxGroup
                     options={checkboxData?.checkBoxoption}
