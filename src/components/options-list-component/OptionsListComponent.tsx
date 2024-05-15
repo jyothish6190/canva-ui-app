@@ -107,6 +107,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     return (
                         <div key={option.value}>
                             <OptionsItemComponent
+                                component={component}
                                 setRadioChecked={setRadioChecked}
                                 radioChecked={radioChecked}
                                 showDeleteIcon={
