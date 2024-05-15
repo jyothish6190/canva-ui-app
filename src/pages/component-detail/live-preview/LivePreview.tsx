@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './LivePreview.css';
-import { DarkThemeIcon, LightThemeIcon } from 'assets/images/image.js';
+import DarkThemeIcon from 'assets/icons/dark.svg';
+import LightThemeIcon from 'assets/icons/light.svg';
 import { tokens } from '@canva/app-ui-kit';
 const LivePreview = ({ children }) => {
     const [bgcolor, setBgColor] = useState<string>(tokens.colorContrastFore);
@@ -25,14 +26,11 @@ const LivePreview = ({ children }) => {
                 }}
             >
                 <span className={styles['theme-btn']} onClick={HandleOnclick}>
-                    <img
-                        src={
-                            bgcolor == tokens.colorContrastFore
-                                ? LightThemeIcon
-                                : DarkThemeIcon
-                        }
-                        alt="themeicon"
-                    />
+                    {bgcolor == tokens.colorContrastFore ? (
+                        <LightThemeIcon className={styles.themeContainer} />
+                    ) : (
+                        <DarkThemeIcon className={styles.themeContainer} />
+                    )}
                 </span>
                 {children}
             </div>
