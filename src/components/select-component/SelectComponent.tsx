@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FormField, Select } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
-
+import styles from './SelectComponent.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { SelectFieldNames } from 'src/constants/component-configs/SelectConfig';
+import SelectIcon from '../../../assets/icons/select.svg';
 
 type PropType = {
     component: Component;
@@ -137,15 +138,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         >
             <Select options={[{ label: 'Option 1', value: '1' }]} />
 
-            <img
-                src={require('assets/images/select.png')}
-                alt="Image 2"
-                style={{
-                    position: 'absolute',
-                    bottom: -15,
-                    right: -25,
-                }}
-            />
+            <SelectIcon className={styles.selectIcon} />
         </div>
     );
 };

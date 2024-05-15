@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useStatered } from 'react';
 import { ColorSelector, Swatch, Text } from '@canva/app-ui-kit';
 import { Component } from 'src/models/component.model';
 import styles from './colorSelector.css';
 import { useComponentStore } from 'src/store/ComponentStore';
+import ColorPicker from '../../../assets/icons/color-picker.svg';
+import ColorPickerLarge from '../../../assets/icons/color-picker-large.svg';
 import { ColorFieldNames } from 'src/constants/component-configs/ColorPickerConfig';
 type PropType = {
     component: Component;
@@ -92,15 +94,15 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                     }
                     onChange={() => {}}
                 />
-                <img
-                    src={require('assets/images/ColorPicker.png')}
-                    alt="Image 2"
+                <span
                     style={{
-                        position: 'absolute',
-                        bottom: -15,
-                        right: -25,
+                        color: colorData.color
+                            ? colorData.color
+                            : (component.color as any),
                     }}
-                />
+                >
+                    <ColorPickerLarge className={styles.colorPicker} />
+                </span>
             </div>
         );
     }
@@ -113,15 +115,9 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
             }}
         >
             <ColorSelector color="#143F6B" onChange={() => {}} />
-            <img
-                src={require('assets/images/ColorPicker.png')}
-                alt="Image 2"
-                style={{
-                    position: 'absolute',
-                    bottom: -15,
-                    right: -25,
-                }}
-            />
+            <span style={{ color: '#2900CC' }}>
+                <ColorPicker className={styles.colorPicker} />
+            </span>
         </div>
     );
 };
