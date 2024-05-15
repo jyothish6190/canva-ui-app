@@ -39,6 +39,19 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
     const [multilineInputData, setMultilineInputData] =
         useState<MultilineInputStateData>(initialState);
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const textarea = event.target;
+            const cursorPos = textarea.selectionStart;
+            const text = textarea.value;
+            const newText =
+                text.substring(0, cursorPos) + '\n' + text.substring(cursorPos);
+            textarea.value = newText;
+            textarea.setSelectionRange(cursorPos + 1, cursorPos + 1);
+        }
+    };
+
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === MultilineInputFieldNames.TEXT) {
@@ -90,6 +103,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
             if (field.name === component.name) {
+                console.log('value', value);
                 field.value = value;
             }
             setSelectedComponent({ ...selectedComponent });
@@ -113,6 +127,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                                     ? true
                                     : false
                             }
+                            onKeyDown={handleKeyDown}
                             error={
                                 multilineInputData.inputState === 'error'
                                     ? true
@@ -123,6 +138,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                                     ? component.value
                                     : multilineInputData.inputValue
                             }
+                            autoGrow
                             footer={
                                 multilineInputData.maxCharacterCount ? (
                                     <WordCountDecorator

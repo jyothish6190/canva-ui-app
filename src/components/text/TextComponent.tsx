@@ -73,16 +73,22 @@ const TextComponent = ({ component, isProperty }: PropsType) => {
             }
         });
     }, [component]);
+    const inputText = textState.inputText.split('\n').map((line, index) => (
+        <span key={index}>
+            {line}
+            <br />
+        </span>
+    ));
 
     if (isProperty) {
         return (
             <Text
                 size={textState.textSize}
-                variant={textState.textVarient}
+                variant={textState.textVarient as any}
                 tone={textState.textTone}
                 alignment={textState.textAlignment}
             >
-                {textState.inputText}
+                {inputText}
             </Text>
         );
     } else {

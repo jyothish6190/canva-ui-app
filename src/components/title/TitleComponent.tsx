@@ -18,7 +18,7 @@ type TitleStateData = {
 };
 
 const initialState: TitleStateData = {
-    tilteText: 'Title',
+    tilteText: 'Example title',
     titleTone: 'primary',
     titleSize: 'medium',
     titleAlignment: 'center',
@@ -33,7 +33,7 @@ const TitleComponent = ({ component, isProperty }: TitleProps) => {
                 setTitleState((prevState) => {
                     return {
                         ...prevState,
-                        tilteText: field?.value || 'Title',
+                        tilteText: field?.value || 'Example title',
                     };
                 });
             }
@@ -64,7 +64,12 @@ const TitleComponent = ({ component, isProperty }: TitleProps) => {
             }
         });
     }, [component]);
-
+    const inputText = titleState.tilteText.split('\n').map((line, index) => (
+        <span key={index}>
+            {line}
+            <br />
+        </span>
+    ));
     if (isProperty) {
         return (
             <Title
@@ -72,7 +77,7 @@ const TitleComponent = ({ component, isProperty }: TitleProps) => {
                 tone={titleState.titleTone}
                 alignment={titleState.titleAlignment}
             >
-                {titleState.tilteText}
+                {inputText}
             </Title>
         );
     } else {
