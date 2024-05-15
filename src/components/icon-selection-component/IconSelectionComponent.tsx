@@ -51,7 +51,7 @@ const IconSelctionComponent = ({
         });
     }, [iconsList]);
     useEffect(() => {
-        changeHandler;
+        changeHandler();
     }, [selectedIcon?.icon]);
     const changeHandler = () => {
         selectedComponent?.fields?.forEach((field: Component) => {
