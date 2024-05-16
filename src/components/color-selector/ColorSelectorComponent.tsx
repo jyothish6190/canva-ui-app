@@ -81,17 +81,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                 />
             </div>
         ) : (
-            <div
-                style={{
-                    width: '310px',
-                    position: 'relative',
-                    right: '-10px',
-                    top: '20px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '5px',
-                }}
-            >
+            <div className={styles.colorContainer}>
                 <ColorSelector
                     color={
                         colorData.color
