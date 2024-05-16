@@ -81,9 +81,13 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
         ) : (
             <div
                 style={{
+                    width: '310px',
                     position: 'relative',
-                    width: 128,
-                    height: 128,
+                    right: '-10px',
+                    top: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '5px',
                 }}
             >
                 <ColorSelector
@@ -99,9 +103,13 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                         color: colorData.color
                             ? colorData.color
                             : (component.color as any),
+                        height: '200px',
                     }}
                 >
-                    <ColorPickerLarge className={styles.colorPicker} />
+                    <ColorPickerLarge
+                        className={styles.colorPicker}
+                        size="medium"
+                    />
                 </span>
             </div>
         );
