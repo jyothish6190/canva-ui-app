@@ -51,7 +51,7 @@ const IconsListPage = () => {
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.value);
         const clone = element?.cloneNode(true) as HTMLElement;
-        clone.style.color = 'red';
+        clone.style.color = 'black';
 
         const svgDocument = elementToSVG(clone as HTMLElement);
 
