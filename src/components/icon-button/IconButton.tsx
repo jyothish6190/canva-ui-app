@@ -7,6 +7,7 @@ import { Variant } from '@canva/app-ui-kit/dist/cjs/ui/apps/developing/ui_kit/co
 import styles from './IconButton.css';
 import { Icon } from 'src/models/icons.model';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
+import { useIconStore } from 'src/store/IconStore';
 
 type IconIconButtonComponentType = {
     component: Component;
@@ -28,9 +29,22 @@ const initialState: IconButtonStateData = {
 };
 
 const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
+    const { setIconsList } = useIconStore();
+
     const [IconButtonState, setIconButtonState] =
         useState<IconButtonStateData>(initialState);
 
+    useEffect(() => {
+        IconButtonState.buttonState === undefined;
+        setIconsList({
+            icon: {
+                value: 'info-icon',
+                label: 'Info',
+                Icon: InfoIcon,
+            },
+            componentId: 'Icon ',
+        });
+    }, []);
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === IconButtonFieldNames.VARIANT) {
