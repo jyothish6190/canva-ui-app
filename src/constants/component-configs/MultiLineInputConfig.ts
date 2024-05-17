@@ -2,7 +2,7 @@ import { ComponentType } from '../ComponentTypes';
 
 export enum MultilineInputFieldNames {
     TEXT = 'Text',
-    PLACEHOLDER = 'placeholder',
+    PLACEHOLDER = 'Placeholder',
     MAX_CHAR_COUNT = 'Maximum character count  (optional)',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width Options',
