@@ -93,7 +93,7 @@ const OptionsItemComponent = ({
                         onChange={(value, checked) =>
                             onChange(
                                 option.value,
-                                value,
+                                option.label,
                                 checked,
                                 null,
                                 option.key

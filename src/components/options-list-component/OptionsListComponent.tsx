@@ -79,13 +79,14 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 ? {
                       ...option,
                       label: newValue,
-                      value: newValue,
+                      value: option.value,
                       key: keyValue,
                       checked: checked,
                       description: description || null,
                   }
                 : option
         );
+
         setOptionList(updatedList);
     };
 
