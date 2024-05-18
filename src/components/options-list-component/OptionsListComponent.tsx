@@ -101,6 +101,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                         <CardTitle
                             title="Clear selection"
                             onClick={() => setRadioChecked('')}
+                            cursor="pointer"
                         ></CardTitle>
                     )}
                 </div>
