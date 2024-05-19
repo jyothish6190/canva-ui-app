@@ -49,13 +49,12 @@ const IconsListPage = () => {
         navigate(-1);
     };
     const updateComponentHandler = async (icon) => {
-        const element = document.getElementById(icon.label);
-        const svgDocument = elementToSVG(element as HTMLElement);
-        const pathElement = svgDocument.querySelector(
-            '#mask-for-svg11 + g > path'
-        );
+        const element = document.getElementById(icon.value);
+        const clone = element?.cloneNode(true) as HTMLElement;
+        clone.style.color = 'black';
 
-        pathElement?.setAttribute('fill', 'black');
+        const svgDocument = elementToSVG(clone as HTMLElement);
+
         await inlineResources(svgDocument.documentElement);
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
@@ -81,8 +80,8 @@ const IconsListPage = () => {
         await addNativeElement({
             type: 'IMAGE',
             ref: result.ref,
-            width: 100,
-            height: 100,
+            width: 'auto',
+            height: 40,
             top: 250,
             left: 350,
         });

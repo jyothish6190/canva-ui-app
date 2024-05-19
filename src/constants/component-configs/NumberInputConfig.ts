@@ -59,7 +59,7 @@ export const NumberInputConfig = [
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },

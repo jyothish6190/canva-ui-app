@@ -12,27 +12,32 @@ import PropertyList from './property-list/PropertyList';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { useElementStore } from 'src/store/elementStore';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { upload } from '@canva/asset';
 
-type UIData = {
-    imgSource: string;
+type AppElementData = {
     elementId: string;
 };
-const appElementClient = initAppElement<UIData>({
-    render: ({ imgSource, elementId }) => {
+
+const images = {};
+
+const appElementClient = initAppElement<AppElementData>({
+    render: (data) => {
         return [
             {
                 type: 'IMAGE',
-                dataUrl: imgSource,
                 width: 'auto',
                 height: 100,
                 top: 0,
                 left: 0,
+                ref: images[data.elementId],
+                ...data,
             },
         ];
     },
 });
 type RefValueType = string | null;
 type ElementListType = any;
+
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
@@ -59,7 +64,7 @@ const ComponentDetailsPage = () => {
 
     async function assignDetails(appElement) {
         let elementId = appElement.data.elementId;
-        let imgSource = appElement.data.imgSource;
+        let imageId = appElement.data.imageId;
         let element = updatedElementList.current.find(
             (obj) => obj.elementId === appElement.data.elementId
         );
@@ -68,7 +73,6 @@ const ComponentDetailsPage = () => {
             setSelectedComponent(element?.component);
         }
         await appElementClient.addOrUpdateElement({
-            imgSource,
             elementId,
         });
         navigate(`/component-details`);
@@ -106,8 +110,16 @@ const ComponentDetailsPage = () => {
             updatedElementList.current = updatedElements;
             setElements(updatedElements);
         }
+
+        const result = await upload({
+            id: elementId,
+            type: 'IMAGE',
+            mimeType: 'image/svg+xml',
+            url: imgSource,
+            thumbnailUrl: imgSource,
+        });
+        images[elementId] = result.ref;
         await appElementClient.addOrUpdateElement({
-            imgSource,
             elementId,
         });
     }, [ref]);
@@ -115,20 +127,30 @@ const ComponentDetailsPage = () => {
     function getElementId() {
         const timestamp = new Date().getTime().toString(16);
         const random = Math.random().toString(16).slice(2);
-        return elementId.current ? elementId.current : timestamp + random;
+        if (elementId.current) delete images[elementId.current];
+        return timestamp + random;
     }
 
     function getScale(component) {
         let scale = 1;
         let width = 0;
-        console.log('components', component.fields);
+        let max = 0;
         let widthParam = component?.fields.filter(
             (field) => field.name === 'Width'
         )[0];
-        if (widthParam) width = widthParam.value;
-        if (width > 308) scale = 300 / width;
+        if (widthParam) {
+            width = widthParam.value;
+            max = widthParam.max;
+        }
+        console.log('max----', max);
+        if (width > max) {
+            scale = 300 / max;
+        } else if (width > 308) {
+            scale = 300 / width;
+        }
         return scale.toString();
     }
+
     return (
         <>
             {selectedComponent && (

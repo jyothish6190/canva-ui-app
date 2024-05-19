@@ -16,6 +16,7 @@ const IconCard = ({ icon }: IconCardType) => {
     return (
         <Rows spacing="0.5u">
             <Box
+                id={icon.value}
                 display="flex"
                 background="neutralLow"
                 borderRadius="standard"

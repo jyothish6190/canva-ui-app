@@ -52,17 +52,11 @@ const HomePage = () => {
     }, [searchQuery, selectedCategories, components]);
 
     useEffect(() => {
-        {
+        setShowIcons(
             selectedCategories.length > 0
-                ? selectedCategories.forEach((item) => {
-                      if (item.value === 'icons') {
-                          setShowIcons(true);
-                      } else {
-                          setShowIcons(false);
-                      }
-                  })
-                : setShowIcons(true);
-        }
+                ? selectedCategories.some((item) => item.value === 'icons')
+                : true
+        );
     }, [selectedCategories]);
 
     const categorySelectHandler = (category: Category) => {
@@ -84,6 +78,7 @@ const HomePage = () => {
                     setShowIcons(true);
                 }
             });
+            selectedCategories.length === 0 && setShowIcons(true);
         } else {
             setShowIcons(false);
         }

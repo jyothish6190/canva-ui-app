@@ -1,5 +1,7 @@
-import React, { useEffect, useState, useStatered } from 'react';
-import { ColorSelector, Swatch, Text } from '@canva/app-ui-kit';
+import React, { useEffect, useState } from 'react';
+
+import { ColorSelector, Text } from '@canva/app-ui-kit';
+
 import { Component } from 'src/models/component.model';
 import styles from './colorSelector.css';
 import { useComponentStore } from 'src/store/ComponentStore';
@@ -79,13 +81,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                 />
             </div>
         ) : (
-            <div
-                style={{
-                    position: 'relative',
-                    width: 128,
-                    height: 128,
-                }}
-            >
+            <div className={styles.colorContainer}>
                 <ColorSelector
                     color={
                         colorData.color
@@ -99,9 +95,13 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                         color: colorData.color
                             ? colorData.color
                             : (component.color as any),
+                        height: '200px',
                     }}
                 >
-                    <ColorPickerLarge className={styles.colorPicker} />
+                    <ColorPickerLarge
+                        className={styles.colorPicker}
+                        size="medium"
+                    />
                 </span>
             </div>
         );

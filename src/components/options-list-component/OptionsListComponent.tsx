@@ -79,13 +79,14 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 ? {
                       ...option,
                       label: newValue,
-                      value: newValue,
+                      value: option.value,
                       key: keyValue,
                       checked: checked,
                       description: description || null,
                   }
                 : option
         );
+
         setOptionList(updatedList);
     };
 
@@ -96,16 +97,19 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     <CardTitle title={component.name}></CardTitle>
                 </div>
                 <div style={{ justifyContent: 'flex-end' }}>
-                    <CardTitle
-                        title="Clear selection"
-                        onClick={() => setRadioChecked('')}
-                    ></CardTitle>
+                    {component.optionType === 'radio' && (
+                        <CardTitle
+                            title="Clear selection"
+                            onClick={() => setRadioChecked('')}
+                            cursor="pointer"
+                        ></CardTitle>
+                    )}
                 </div>
             </div>
             <>
                 {optionList.map((option) => {
                     return (
-                        <div key={option.value}>
+                        <div key={option.key}>
                             <OptionsItemComponent
                                 component={component}
                                 setRadioChecked={setRadioChecked}

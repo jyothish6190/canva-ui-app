@@ -61,7 +61,7 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
                     width: fileInputData.fileInputwidth || undefined,
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '5px',
+                    justifyContent: 'space-between',
                 }}
             >
                 <FileInput
@@ -72,7 +72,7 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '5px',
+                        gap: fileInputData.fileOption ? '5px' : undefined,
                     }}
                 >
                     {fileInputData.fileOptionView === true &&

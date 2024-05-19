@@ -93,7 +93,7 @@ const OptionsItemComponent = ({
                         onChange={(value, checked) =>
                             onChange(
                                 option.value,
-                                value,
+                                option.label,
                                 checked,
                                 null,
                                 option.key
@@ -123,7 +123,7 @@ const OptionsItemComponent = ({
             ) : (
                 <div
                     className={styles.inputContainer}
-                    key={option?.value}
+                    key={option?.key}
                     style={{
                         borderColor: isOnFocus
                             ? 'var(--ui-kit-color-border-active)'

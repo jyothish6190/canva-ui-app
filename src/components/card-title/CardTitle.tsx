@@ -5,11 +5,16 @@ import styles from './CardTitle.css';
 type PropType = {
     title: string;
     onClick?: () => void;
+    cursor?: string;
 };
 
-const CardTitle = ({ title, onClick }: PropType) => {
+const CardTitle = ({ title, onClick, cursor }: PropType) => {
     return (
-        <label className={styles.title} onClick={onClick}>
+        <label
+            className={styles.title}
+            onClick={onClick}
+            style={{ cursor: cursor }}
+        >
             {title}
         </label>
     );
