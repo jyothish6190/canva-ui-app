@@ -61,6 +61,8 @@ export const AlertConfig = [
         label: 'Label',
         value: '328',
         description: 'Description text',
+        min: 240,
+        max: 1920,
     },
     {
         showComponent: true,

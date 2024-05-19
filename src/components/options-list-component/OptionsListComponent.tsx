@@ -79,13 +79,14 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 ? {
                       ...option,
                       label: newValue,
-                      value: newValue,
+                      value: option.value,
                       key: keyValue,
                       checked: checked,
                       description: description || null,
                   }
                 : option
         );
+
         setOptionList(updatedList);
     };
 
@@ -100,6 +101,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                         <CardTitle
                             title="Clear selection"
                             onClick={() => setRadioChecked('')}
+                            cursor="pointer"
                         ></CardTitle>
                     )}
                 </div>

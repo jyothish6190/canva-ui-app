@@ -72,17 +72,22 @@ const AlertComponent = ({ component, isProperty }: AlertType) => {
                 });
             }
         });
+        widthValue();
     }, [component]);
+
+    const widthValue = (): string => {
+        if (alertState.alertWidth > 1920) {
+            return '1920px';
+        } else if (alertState.alertWidth < 240) {
+            return '240px';
+        } else {
+            return `${alertState.alertWidth}px`;
+        }
+    };
 
     if (isProperty) {
         return (
-            <div
-                style={
-                    alertState.alertWidth
-                        ? { width: alertState.alertWidth + 'px' }
-                        : {}
-                }
-            >
+            <div style={{ width: widthValue() }}>
                 <Alert
                     tone={alertState.alertTone}
                     title={alertState.alertTitle}
