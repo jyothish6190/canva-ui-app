@@ -16,7 +16,7 @@ type PropsType = {
 type SegmentedControlStateData = {
     segmentedControlLabel: string | undefined;
     segmentedControlOptions: any[] | undefined;
-    segmentedControlWidth: number | undefined;
+    segmentedControlWidth: string | undefined;
     segmentedControlvalue: string | undefined;
 };
 
@@ -36,12 +36,32 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === SegmentedControlFieldNames.WIDTH) {
-                setSegmentedControlData((prevState) => {
-                    return {
-                        ...prevState,
-                        segmentedControlWidth: field.value,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setSegmentedControlData((prevState) => {
+                            return {
+                                ...prevState,
+                                segmentedControlWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setSegmentedControlData((prevState) => {
+                            return {
+                                ...prevState,
+                                segmentedControlWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setSegmentedControlData((prevState) => {
+                            return {
+                                ...prevState,
+                                segmentedControlWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === SegmentedControlFieldNames.OPTIONS) {
                 setSegmentedControlData((prevState) => {
@@ -71,9 +91,7 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
         return (
             <div
                 style={{
-                    width: segmentedControlData.segmentedControlWidth
-                        ? segmentedControlData.segmentedControlWidth + 'px'
-                        : undefined,
+                    width: segmentedControlData.segmentedControlWidth,
                 }}
             >
                 <FormField
