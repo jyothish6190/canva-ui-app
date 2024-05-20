@@ -11,7 +11,7 @@ type PropType = {
     onChange?: (changes: boolean) => void;
 };
 type FileInputStateData = {
-    fileInputwidth: number | undefined;
+    fileInputwidth: string | undefined;
     fileOptionView: boolean;
     fileOption: any[];
 };
@@ -28,12 +28,32 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === FileInputFieldNames.WIDTH) {
-                setFileInputData((prevState) => {
-                    return {
-                        ...prevState,
-                        fileInputwidth: field.value || undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setFileInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                fileInputwidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setFileInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                fileInputwidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setFileInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                fileInputwidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === FileInputFieldNames.FILE_INPUT_ITEM) {
                 setFileInputData((prevState) => {
