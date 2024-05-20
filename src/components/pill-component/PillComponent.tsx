@@ -16,7 +16,7 @@ type PillComponentStateData = {
     startDecorator: Icon | undefined;
     endDecorator: Icon | undefined;
     pillState: 'default' | 'hover' | 'active' | 'loading' | 'disabled';
-    pillWidth: number | undefined;
+    pillWidth: string | undefined;
 };
 
 const initialState: PillComponentStateData = {
@@ -66,12 +66,32 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 });
             }
             if (field.name === PillFieldNames.WIDTH) {
-                setPillComponentState((prevState) => {
-                    return {
-                        ...prevState,
-                        pillWidth: field.value ? field.value : undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setPillComponentState((prevState) => {
+                            return {
+                                ...prevState,
+                                pillWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setPillComponentState((prevState) => {
+                            return {
+                                ...prevState,
+                                pillWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setPillComponentState((prevState) => {
+                            return {
+                                ...prevState,
+                                pillWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
@@ -81,7 +101,7 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
             <div
                 style={
                     pillComponentState.pillWidth
-                        ? { width: pillComponentState.pillWidth + 'px' }
+                        ? { width: pillComponentState.pillWidth }
                         : {}
                 }
             >

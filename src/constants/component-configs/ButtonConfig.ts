@@ -89,6 +89,8 @@ export const ButtonConfig: Component[] = [
         name: ButtonFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
+        min: 80,
+        max: 1366,
     },
     {
         showComponent: false,

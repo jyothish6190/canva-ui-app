@@ -142,7 +142,6 @@ const ComponentDetailsPage = () => {
             width = widthParam.value;
             max = widthParam.max;
         }
-        console.log('max----', max);
         if (width > max) {
             scale = 300 / max;
         } else if (width > 308) {

@@ -20,8 +20,9 @@ export const FileInputConfig = [
         type: ComponentType.FORM_FIELD,
         name: FileInputFieldNames.WIDTH,
         label: 'Label',
-        value: '328',
         description: 'Description text',
+        min: 80,
+        max: 1366,
     },
     {
         showComponent: false,

@@ -38,8 +38,9 @@ export const CheckBoxConfig = [
         type: ComponentType.FORM_FIELD,
         name: CheckBoxFieldNames.WIDTH,
         label: 'Label',
-        value: '158',
         description: 'Description text',
+        min: 80,
+        max: 1366,
     },
     {
         showComponent: false,

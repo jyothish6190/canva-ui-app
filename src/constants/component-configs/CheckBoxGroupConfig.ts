@@ -19,6 +19,8 @@ export const CheckBoxGroupConfig = [
         name: CheckboxGroupFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
+        min: 80,
+        max: 1366,
     },
     {
         showComponent: false,
