@@ -18,7 +18,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
     const [buttonState, setButtonState] = useState<
         'default' | 'loading' | 'disabled'
     >('default');
-    const [width, setWidth] = useState<number>(158);
+    const [width, setWidth] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
@@ -35,14 +35,22 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
                 setButtonState(field.value);
             }
             if (field.name === ButtonFieldNames.WIDTH) {
-                setWidth(field.value);
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setWidth(`${field.max}px`);
+                    } else if ((field.value as any) < field.min) {
+                        setWidth(`${field.min}px`);
+                    } else {
+                        setWidth(field.value ? `${field.value}px` : undefined);
+                    }
+                }
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <div style={width ? { width: width + 'px' } : {}}>
+            <div style={width ? { width: width } : { width: undefined }}>
                 <Button
                     key={component.name}
                     alignment="center"
