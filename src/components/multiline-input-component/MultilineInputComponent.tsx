@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import {
+    CharacterCountDecorator,
     FormField,
     MultilineInput,
-    WordCountDecorator,
 } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
@@ -141,7 +141,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                             autoGrow
                             footer={
                                 multilineInputData.maxCharacterCount ? (
-                                    <WordCountDecorator
+                                    <CharacterCountDecorator
                                         max={
                                             multilineInputData.maxCharacterCount
                                         }
