@@ -35,6 +35,8 @@ export const SelectConfig = [
         label: 'Label',
         description: 'Description text',
         value: '328',
+        min: 158,
+        max: 1366,
         tabId: 'control',
     },
 
