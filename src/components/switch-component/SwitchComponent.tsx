@@ -16,7 +16,7 @@ type SwitchStateData = {
     switchLabel: string | undefined;
     switchDescription: string | undefined;
     switchState: 'default' | 'disabled' | 'hover';
-    switchWidth: number | undefined;
+    switchWidth: string | undefined;
 };
 
 const initialState: SwitchStateData = {
@@ -57,12 +57,32 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                 });
             }
             if (field.name === SwitchFieldNames.WIDTH) {
-                setSwitchData((prevState) => {
-                    return {
-                        ...prevState,
-                        switchWidth: field.value,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setSwitchData((prevState) => {
+                            return {
+                                ...prevState,
+                                switchWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setSwitchData((prevState) => {
+                            return {
+                                ...prevState,
+                                switchWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setSwitchData((prevState) => {
+                            return {
+                                ...prevState,
+                                switchWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === SwitchFieldNames.STATE) {
                 setSwitchData((prevState) => {
