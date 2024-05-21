@@ -102,10 +102,24 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
             }
         });
     }, [component]);
+    const classRendering = () => {
+        switch (IconButtonState.buttonState) {
+            case 'hover':
+                return styles.HoverButton;
+                break;
+            case 'active':
+                return styles.ActiveButton;
+                break;
+            default:
+                return '';
+                break;
+        }
+    };
 
     if (isProperty) {
         return (
             <div
+                className={classRendering()}
                 style={{
                     width: IconButtonState.buttonWidth,
                 }}
