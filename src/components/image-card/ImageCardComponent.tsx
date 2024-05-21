@@ -12,14 +12,14 @@ type ImagePropType = {
 
 type ImageStateData = {
     cardBoderRadius: 'none' | 'standard';
-    cardHeight: number;
-    cardWidth: number;
+    cardHeight: string;
+    cardWidth: string;
 };
 
 const initialState: ImageStateData = {
     cardBoderRadius: 'none',
-    cardHeight: 160,
-    cardWidth: 160,
+    cardHeight: '160 px',
+    cardWidth: '160 px',
 };
 
 const ImageCardComponent = ({ component, isProperty }: ImagePropType) => {
@@ -37,20 +37,56 @@ const ImageCardComponent = ({ component, isProperty }: ImagePropType) => {
                 });
             }
             if (field.name === ImageCardFieldNames.WIDTH) {
-                setImageCardState((prevState) => {
-                    return {
-                        ...prevState,
-                        cardWidth: field.value || 160,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setImageCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setImageCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setImageCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === ImageCardFieldNames.HEIGHT) {
-                setImageCardState((prevState) => {
-                    return {
-                        ...prevState,
-                        cardHeight: field.value || 160,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setImageCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardHeight: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setImageCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardHeight: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setImageCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardHeight: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
@@ -59,8 +95,8 @@ const ImageCardComponent = ({ component, isProperty }: ImagePropType) => {
         return (
             <div
                 style={{
-                    width: imageCardState.cardWidth + 'px',
-                    height: imageCardState.cardHeight + 'px',
+                    width: imageCardState.cardWidth,
+                    height: imageCardState.cardHeight,
                 }}
             >
                 <ImageCard
