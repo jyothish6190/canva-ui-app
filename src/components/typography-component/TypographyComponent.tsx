@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TypographyCard, Text } from '@canva/app-ui-kit';
 
+import styles from './TypographyComponent.css';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { Component } from 'src/models/component.model';
 import { TypographyFiledNames } from 'src/constants/component-configs/TypographyConfig';
@@ -56,9 +57,24 @@ const TypographyComponent = ({ component, isProperty, onChange }: PropType) => {
         });
     }, [component]);
 
+    const renderedClass = () => {
+        switch (typographyState.cardState) {
+            case 'hover':
+                return styles.HoverButton;
+                break;
+
+            default:
+                return '';
+                break;
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={{ width: typographyState.cardWidth + 'px' }}>
+            <div
+                className={renderedClass()}
+                style={{ width: typographyState.cardWidth + 'px' }}
+            >
                 <TypographyCard onClick={() => {}} ariaLabel="">
                     <Text lineClamp={1}>{typographyState.cardText}</Text>
                 </TypographyCard>

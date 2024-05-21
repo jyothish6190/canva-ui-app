@@ -1,0 +1,3 @@
+.HoverButton button div {
+    background-color: var(--ui-kit-color-secondary-hover);
+}
