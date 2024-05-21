@@ -56,7 +56,7 @@ export const AlertConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: AlertFieldNames.WIDTH,
         label: 'Label',
         value: '328',

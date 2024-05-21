@@ -90,7 +90,7 @@ export const PlaceholderComponentConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: PlaceHolderFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
@@ -100,7 +100,7 @@ export const PlaceholderComponentConfig = [
     },
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: PlaceHolderFieldNames.HEIGHT,
         label: 'Label',
         description: 'Description text',

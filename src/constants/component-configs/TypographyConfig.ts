@@ -37,7 +37,7 @@ export const TypographyConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: TypographyFiledNames.WIDTH,
         label: 'Label',
         description: 'Description text',

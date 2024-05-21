@@ -35,7 +35,7 @@ export const SwitchConfig = [
 
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: SwitchFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

@@ -24,7 +24,7 @@ export const ImageCardConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: ImageCardFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
@@ -35,7 +35,7 @@ export const ImageCardConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: ImageCardFieldNames.HEIGHT,
         label: 'Label',
         description: 'Description text',
