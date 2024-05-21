@@ -48,7 +48,7 @@ export const AudioCardConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: AudioCardFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

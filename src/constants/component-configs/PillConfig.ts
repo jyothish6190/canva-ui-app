@@ -66,7 +66,7 @@ export const PillConfig = [
     },
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: PillFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

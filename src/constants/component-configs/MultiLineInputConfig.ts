@@ -34,7 +34,7 @@ export const MultiLineInputConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: MultilineInputFieldNames.WIDTH,
         label: 'Label',
         value: 328,

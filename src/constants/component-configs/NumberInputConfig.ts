@@ -16,7 +16,7 @@ export const NumberInputConfig = [
         value: 0,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Enter description',
+        placeholder: 'Enter a number',
     },
     {
         showComponent: true,
@@ -28,7 +28,7 @@ export const NumberInputConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: NumberInputFieldNames.WIDTH,
         label: 'Label',
         value: 328,

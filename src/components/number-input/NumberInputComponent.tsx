@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-import { NumberInput } from '@canva/app-ui-kit';
+import { FormField, NumberInput } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { NumberInputFieldNames } from 'src/constants/component-configs/NumberInputConfig';
+import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
-    onChange?: (text: string) => void;
 };
 
 type NumberInputStateData = {
@@ -16,6 +16,7 @@ type NumberInputStateData = {
     spinButtonValue: boolean;
     numberInputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
     numberInputWidth: string;
+    numberInputLabel: string | undefined;
 };
 
 const initialState: NumberInputStateData = {
@@ -23,13 +24,13 @@ const initialState: NumberInputStateData = {
     spinButtonValue: false,
     numberInputState: 'default',
     numberInputWidth: '328px',
+    numberInputLabel: undefined,
 };
 
-const NumberInputComponent = ({
-    component,
-    isProperty,
-    onChange,
-}: PropType) => {
+const NumberInputComponent = ({ component, isProperty }: PropType) => {
+    const { selectedComponent, setSelectedComponent, setComponentField } =
+        useComponentStore();
+
     const [numberInputData, setNumberInputData] =
         useState<NumberInputStateData>(initialState);
 
@@ -40,6 +41,7 @@ const NumberInputComponent = ({
                     return {
                         ...prevState,
                         inputValue: field.value ? field.value : 0,
+                        numberInputLabel: ' ',
                     };
                 });
             }
@@ -88,6 +90,17 @@ const NumberInputComponent = ({
         });
     }, [component]);
 
+    const changeHandler = (value: number) => {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.value = value;
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
+        setComponentField(component, value);
+    };
+
     if (isProperty) {
         if (numberInputData.spinButtonValue === true) {
             return (
@@ -120,23 +133,39 @@ const NumberInputComponent = ({
             return (
                 <div
                     style={{
-                        padding: 16,
                         width: numberInputData.numberInputWidth,
                     }}
                 >
-                    <NumberInput
-                        defaultValue={0}
-                        value={numberInputData.inputValue}
-                        disabled={
-                            numberInputData.numberInputState === 'disabled'
-                                ? true
-                                : false
+                    <FormField
+                        label={
+                            numberInputData.numberInputLabel
+                                ? numberInputData.numberInputLabel
+                                : component.name
                         }
-                        error={
-                            numberInputData.numberInputState === 'error'
-                                ? true
-                                : false
-                        }
+                        control={(props) => (
+                            <NumberInput
+                                defaultValue={0}
+                                value={
+                                    component.value
+                                        ? component.value
+                                        : numberInputData.inputValue
+                                }
+                                disabled={
+                                    numberInputData.numberInputState ===
+                                    'disabled'
+                                        ? true
+                                        : false
+                                }
+                                onChange={changeHandler}
+                                error={
+                                    numberInputData.numberInputState === 'error'
+                                        ? true
+                                        : false
+                                }
+                                max={component.max && component.max}
+                                min={component.min && component.min}
+                            />
+                        )}
                     />
                 </div>
             );

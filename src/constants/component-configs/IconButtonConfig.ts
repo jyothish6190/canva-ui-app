@@ -73,7 +73,7 @@ export const IconButtonConfig = [
     },
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: IconButtonFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

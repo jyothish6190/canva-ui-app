@@ -85,7 +85,7 @@ export const ButtonConfig: Component[] = [
     },
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: ButtonFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

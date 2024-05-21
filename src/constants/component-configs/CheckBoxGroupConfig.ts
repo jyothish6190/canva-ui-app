@@ -15,7 +15,7 @@ export const CheckBoxGroupConfig = [
     },
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: CheckboxGroupFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

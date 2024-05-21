@@ -35,7 +35,7 @@ export const VideoCardConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: VideoFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
@@ -46,7 +46,7 @@ export const VideoCardConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: VideoFieldNames.HEIGHT,
         label: 'Label',
         description: 'Description text',

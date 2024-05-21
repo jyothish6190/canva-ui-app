@@ -27,7 +27,7 @@ export const EmbedConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: EmbedFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
