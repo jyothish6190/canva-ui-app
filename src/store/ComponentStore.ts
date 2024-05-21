@@ -253,6 +253,8 @@ const updateField = (
                     if (field.name === SwitchFieldNames.WIDTH) {
                         field.showComponent = true;
                         field.value = 328;
+                        field.min = 158;
+                        field.max = 1366;
                     }
                     if (field.name === SwitchFieldNames.WIDTH_OPTIONS) {
                         field.showComponent = true;
@@ -305,6 +307,10 @@ const updateField = (
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
                         field.showComponent = true;
+                    }
+                    if (field.name === FileInputFieldNames.WIDTH) {
+                        field.min = 158;
+                        field.max = 1366;
                     }
                 });
             }

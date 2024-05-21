@@ -19,7 +19,7 @@ type TextInputStateData = {
     endDecorator: any;
     endText: string;
     characterCount: number;
-    inputWidth: number;
+    inputWidth: string | undefined;
     textInputState: 'disabled' | 'error' | 'active' | 'hover' | 'default';
 };
 
@@ -30,7 +30,7 @@ const initialState: TextInputStateData = {
     endDecorator: null,
     endText: 'EndText',
     characterCount: 0,
-    inputWidth: 240,
+    inputWidth: '240 px',
     textInputState: 'default',
 };
 
@@ -89,12 +89,32 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                 });
             }
             if (field.name === TextInputSearchFieldNames.WIDTH) {
-                setTextInputData((prevState) => {
-                    return {
-                        ...prevState,
-                        inputWidth: field.value ? field.value : undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setTextInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                inputWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setTextInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                inputWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setTextInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                inputWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === TextInputSearchFieldNames.PLACEHOLDER) {
                 setTextInputData((prevState) => {
@@ -125,7 +145,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: textInputData.inputWidth + 'px' }}>
+            <div style={{ width: textInputData.inputWidth }}>
                 <TextInput
                     disabled={
                         textInputData.textInputState === 'disabled'

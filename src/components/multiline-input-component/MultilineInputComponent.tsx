@@ -19,7 +19,7 @@ type PropType = {
 type MultilineInputStateData = {
     inputValue: string | undefined;
     maxCharacterCount: number | undefined;
-    inputWidth: number | undefined;
+    inputWidth: string | undefined;
     inputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
     inputLabel: string | undefined;
     inputPlaceholder: string | undefined;
@@ -73,12 +73,32 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                 });
             }
             if (field.name === MultilineInputFieldNames.WIDTH) {
-                setMultilineInputData((prevState) => {
-                    return {
-                        ...prevState,
-                        inputWidth: field.value || undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setMultilineInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                inputWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setMultilineInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                inputWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setMultilineInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                inputWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === MultilineInputFieldNames.STATE) {
                 setMultilineInputData((prevState) => {
@@ -103,7 +123,6 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
     const changeHandler = (value: string) => {
         selectedComponent?.fields?.forEach((field: Component) => {
             if (field.name === component.name) {
-                console.log('value', value);
                 field.value = value;
             }
             setSelectedComponent({ ...selectedComponent });
@@ -113,7 +132,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: multilineInputData.inputWidth + 'px' }}>
+            <div style={{ width: multilineInputData.inputWidth }}>
                 <FormField
                     label={
                         multilineInputData.inputLabel

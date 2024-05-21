@@ -41,6 +41,8 @@ export const ProgressbarConfig = [
         name: ProgressBarFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
+        min: 158,
+        max: 1366,
         value: '158',
     },
     {
