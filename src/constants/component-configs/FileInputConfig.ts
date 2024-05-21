@@ -17,7 +17,7 @@ export const FileInputConfig = [
     },
     {
         showComponent: false,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: FileInputFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

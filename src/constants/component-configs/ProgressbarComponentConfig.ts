@@ -37,7 +37,7 @@ export const ProgressbarConfig = [
 
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: ProgressBarFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

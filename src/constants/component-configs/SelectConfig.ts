@@ -30,7 +30,7 @@ export const SelectConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: SelectFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',

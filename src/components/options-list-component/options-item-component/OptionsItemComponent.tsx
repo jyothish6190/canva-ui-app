@@ -113,8 +113,15 @@ const OptionsItemComponent = ({
     }, []);
 
     return (
-        <Box display="flex" flexDirection="row" className={styles.container}>
-            <div style={{ flex: 0 }}>{renderOptionComponent()}</div>
+        <Box
+            display="flex"
+            flexDirection="row"
+            className={styles.container}
+            justifyContent="start"
+        >
+            <div style={{ flex: 0, display: OptionType ? 'block' : 'none' }}>
+                {renderOptionComponent()}
+            </div>
             {option.description ? (
                 <IconSelctionComponent
                     component={component}

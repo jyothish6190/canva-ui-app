@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@canva/app-ui-kit';
 
+import styles from './Buttoncomponent.css';
 import { Component } from 'src/models/component.model';
 import { Variant } from '@canva/app-ui-kit/dist/cjs/ui/apps/developing/ui_kit/components/button/button';
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
@@ -16,7 +17,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
     const [buttonText, setButtonText] = useState('Button');
     const [icon, setIcon] = useState<Icon | undefined>(undefined);
     const [buttonState, setButtonState] = useState<
-        'default' | 'loading' | 'disabled'
+        'default' | 'loading' | 'disabled' | 'hover' | 'active'
     >('default');
     const [width, setWidth] = useState<string | undefined>(undefined);
 
@@ -48,9 +49,26 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
         });
     }, [component]);
 
+    const classRendering = () => {
+        switch (buttonState) {
+            case 'hover':
+                return styles.HoverButton;
+                break;
+            case 'active':
+                return styles.ActiveButton;
+                break;
+            default:
+                return '';
+                break;
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={width ? { width: width } : { width: undefined }}>
+            <div
+                className={classRendering()}
+                style={width ? { width: width } : { width: undefined }}
+            >
                 <Button
                     key={component.name}
                     alignment="center"

@@ -3,3 +3,6 @@
     gap: var(--ui-kit-space-1);
     justify-content: center;
 }
+.container button {
+    width: 100%;
+}
