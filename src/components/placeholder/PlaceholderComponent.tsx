@@ -17,16 +17,16 @@ type PlaceholderStateData = {
     placeholderStyle: 'text' | 'title' | 'shape';
     placeholderShape: 'circle' | 'square' | 'rectangle' | 'sharpRectangle';
     placeHolderSize: 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
-    placeholderWidth: number;
-    placeholderHeight: number;
+    placeholderWidth: string;
+    placeholderHeight: string;
 };
 
 const initialState: PlaceholderStateData = {
     placeholderStyle: 'text',
     placeholderShape: 'circle',
     placeHolderSize: 'medium',
-    placeholderWidth: 96,
-    placeholderHeight: 96,
+    placeholderWidth: ' 96 px',
+    placeholderHeight: '96 px',
 };
 
 const PlaceholderComponent = ({ component, isProperty }: PropType) => {
@@ -60,20 +60,56 @@ const PlaceholderComponent = ({ component, isProperty }: PropType) => {
                 });
             }
             if (field.name === PlaceHolderFieldNames.HEIGHT) {
-                setPlaceholderState((prevState) => {
-                    return {
-                        ...prevState,
-                        placeholderHeight: field.value,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setPlaceholderState((prevState) => {
+                            return {
+                                ...prevState,
+                                placeholderHeight: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setPlaceholderState((prevState) => {
+                            return {
+                                ...prevState,
+                                placeholderHeight: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setPlaceholderState((prevState) => {
+                            return {
+                                ...prevState,
+                                placeholderHeight: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === PlaceHolderFieldNames.WIDTH) {
-                setPlaceholderState((prevState) => {
-                    return {
-                        ...prevState,
-                        placeholderWidth: field.value,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setPlaceholderState((prevState) => {
+                            return {
+                                ...prevState,
+                                placeholderWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setPlaceholderState((prevState) => {
+                            return {
+                                ...prevState,
+                                placeholderWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setPlaceholderState((prevState) => {
+                            return {
+                                ...prevState,
+                                placeholderWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
@@ -104,10 +140,10 @@ const PlaceholderComponent = ({ component, isProperty }: PropType) => {
         return (
             <div
                 style={{
-                    width: placeholderState.placeholderWidth + 'px',
+                    width: placeholderState.placeholderWidth,
                     height:
                         placeholderState.placeholderStyle === 'shape'
-                            ? placeholderState.placeholderHeight + 'px'
+                            ? placeholderState.placeholderHeight
                             : undefined,
                 }}
             >
