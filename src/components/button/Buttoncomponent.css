@@ -1,0 +1,6 @@
+.ActiveButton button {
+    background-color: var(--ui-kit-color-primary-active);
+}
+.HoverButton button {
+    background-color: var(--ui-kit-color-primary-hover);
+}
