@@ -15,7 +15,7 @@ type AlertStateData = {
     alertTitle: string;
     alertText: string;
     alertDismiss: boolean;
-    alertWidth: number;
+    alertWidth: string;
 };
 
 const InitialState: AlertStateData = {
@@ -23,7 +23,7 @@ const InitialState: AlertStateData = {
     alertTitle: '',
     alertText: ' Alert',
     alertDismiss: false,
-    alertWidth: 328,
+    alertWidth: '328 px',
 };
 
 const AlertComponent = ({ component, isProperty }: AlertType) => {
@@ -64,30 +64,37 @@ const AlertComponent = ({ component, isProperty }: AlertType) => {
                 });
             }
             if (field.name === AlertFieldNames.WIDTH) {
-                setAlertState((prevState) => {
-                    return {
-                        ...prevState,
-                        alertWidth: field.value ? field.value : 328,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setAlertState((prevState) => {
+                            return {
+                                ...prevState,
+                                alertWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setAlertState((prevState) => {
+                            return {
+                                ...prevState,
+                                alertWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setAlertState((prevState) => {
+                            return {
+                                ...prevState,
+                                alertWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
-        widthValue();
     }, [component]);
-
-    const widthValue = (): string => {
-        if (alertState.alertWidth > 1920) {
-            return '1920px';
-        } else if (alertState.alertWidth < 240) {
-            return '240px';
-        } else {
-            return `${alertState.alertWidth}px`;
-        }
-    };
 
     if (isProperty) {
         return (
-            <div style={{ width: widthValue() }}>
+            <div style={{ width: alertState.alertWidth }}>
                 <Alert
                     tone={alertState.alertTone}
                     title={alertState.alertTitle}

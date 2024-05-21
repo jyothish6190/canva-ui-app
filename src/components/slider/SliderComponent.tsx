@@ -16,7 +16,7 @@ type SliderStateData = {
     maxValue: number;
     minValue: number;
     sliderLabel: string | undefined;
-    sliderWidth: number | undefined;
+    sliderWidth: string | undefined;
 };
 
 const initialState: SliderStateData = {
@@ -60,12 +60,32 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                 });
             }
             if (field.name === SliderFieldNames.WIDTH) {
-                setSliderState((prevState) => {
-                    return {
-                        ...prevState,
-                        sliderWidth: field.value,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setSliderState((prevState) => {
+                            return {
+                                ...prevState,
+                                sliderWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setSliderState((prevState) => {
+                            return {
+                                ...prevState,
+                                sliderWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setSliderState((prevState) => {
+                            return {
+                                ...prevState,
+                                sliderWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
@@ -84,7 +104,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
         return (
             <div
                 style={{
-                    width: sliderState.sliderWidth + 'px',
+                    width: sliderState.sliderWidth,
                 }}
             >
                 <FormField

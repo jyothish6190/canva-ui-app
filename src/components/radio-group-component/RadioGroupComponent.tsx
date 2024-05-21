@@ -11,7 +11,7 @@ type RadioPropType = {
 };
 
 type RadioStateData = {
-    radioWidth: number | undefined;
+    radioWidth: string | undefined;
     radioOptions: any[];
     radioValue: string;
 };
@@ -28,12 +28,32 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === RadioConfigFieldNames.WIDTH) {
-                setRadioData((prevState) => {
-                    return {
-                        ...prevState,
-                        radioWidth: field.value || undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setRadioData((prevState) => {
+                            return {
+                                ...prevState,
+                                radioWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setRadioData((prevState) => {
+                            return {
+                                ...prevState,
+                                radioWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setRadioData((prevState) => {
+                            return {
+                                ...prevState,
+                                radioWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === RadioConfigFieldNames.RADIO_OPTIONS) {
                 setRadioData((prevState) => {
@@ -52,7 +72,7 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
             <div
                 style={{
                     width: radioData.radioWidth
-                        ? radioData.radioWidth + 'px'
+                        ? radioData.radioWidth
                         : undefined,
                 }}
             >

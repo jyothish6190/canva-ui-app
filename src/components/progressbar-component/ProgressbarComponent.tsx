@@ -13,12 +13,12 @@ type PropType = {
 type ProgressBarStateData = {
     progressBarValue: number;
     progressBarSize: 'small' | 'medium';
-    progressBarWidth: number;
+    progressBarWidth: string | undefined;
 };
 const initialState: ProgressBarStateData = {
     progressBarValue: 50,
     progressBarSize: 'medium',
-    progressBarWidth: 158,
+    progressBarWidth: '158 px',
 };
 
 const ProgressbarComponent = ({ component, isProperty }: PropType) => {
@@ -44,19 +44,39 @@ const ProgressbarComponent = ({ component, isProperty }: PropType) => {
                 });
             }
             if (field.name === ProgressBarFieldNames.WIDTH) {
-                setProgressBarState((prevState) => {
-                    return {
-                        ...prevState,
-                        progressBarWidth: field.value || 158,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setProgressBarState((prevState) => {
+                            return {
+                                ...prevState,
+                                progressBarWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setProgressBarState((prevState) => {
+                            return {
+                                ...prevState,
+                                progressBarWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setProgressBarState((prevState) => {
+                            return {
+                                ...prevState,
+                                progressBarWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <div style={{ width: progressBarState.progressBarWidth + 'px' }}>
+            <div style={{ width: progressBarState.progressBarWidth }}>
                 <ProgressBar
                     size={progressBarState.progressBarSize}
                     tone="info"

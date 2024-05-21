@@ -14,13 +14,13 @@ type PropType = {
 type typographyStateData = {
     cardText: string;
     cardState: 'default' | 'hover';
-    cardWidth: number;
+    cardWidth: string;
 };
 
 const initialState: typographyStateData = {
     cardText: 'The quick brown fox',
     cardState: 'default',
-    cardWidth: 296,
+    cardWidth: '296 px',
 };
 
 const TypographyComponent = ({ component, isProperty, onChange }: PropType) => {
@@ -46,19 +46,37 @@ const TypographyComponent = ({ component, isProperty, onChange }: PropType) => {
                 });
             }
             if (field.name === TypographyFiledNames.WIDTH) {
-                setTypographyState((prevState) => {
-                    return {
-                        ...prevState,
-                        cardWidth: field.value || 296,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setTypographyState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setTypographyState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setTypographyState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <div style={{ width: typographyState.cardWidth + 'px' }}>
+            <div style={{ width: typographyState.cardWidth }}>
                 <TypographyCard onClick={() => {}} ariaLabel="">
                     <Text lineClamp={1}>{typographyState.cardText}</Text>
                 </TypographyCard>

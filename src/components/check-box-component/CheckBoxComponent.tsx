@@ -15,7 +15,7 @@ type CheckboxStateData = {
     checkedState: boolean;
     checkBoxLabel: string;
     checkBoxState: 'default' | 'hover' | 'pressed' | 'disabled' | 'error';
-    checkBoxWidth: number | undefined;
+    checkBoxWidth: string | undefined;
 };
 
 const initialState: CheckboxStateData = {
@@ -56,12 +56,32 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
                 });
             }
             if (field.name === CheckBoxFieldNames.WIDTH) {
-                setCheckboxDataState((prevState) => {
-                    return {
-                        ...prevState,
-                        checkBoxWidth: field.value,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setCheckboxDataState((prevState) => {
+                            return {
+                                ...prevState,
+                                checkBoxWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setCheckboxDataState((prevState) => {
+                            return {
+                                ...prevState,
+                                checkBoxWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setCheckboxDataState((prevState) => {
+                            return {
+                                ...prevState,
+                                checkBoxWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);

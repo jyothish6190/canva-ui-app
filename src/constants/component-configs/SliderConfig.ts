@@ -41,6 +41,8 @@ export const SliderConfig = [
         name: SliderFieldNames.WIDTH,
         label: 'Label',
         value: 328,
+        min: 158,
+        max: 1366,
         description: 'Description text',
     },
     {

@@ -50,12 +50,13 @@ const ComponentDetailsPage = () => {
     useEffect(() => {
         elementId.current = null;
         appElementClient.registerOnElementChange((appElement) => {
+            elementId.current = appElement?.data?.elementId as string;
             if (!appElement && !initialLoad.current) {
                 navigate('/home');
             } else if (appElement && !initialLoad.current) {
                 elementId.current = appElement.data.elementId;
                 assignDetails(appElement);
-            } else {
+            } else if (!appElement) {
                 onAddComponent();
             }
             initialLoad.current = false;
@@ -65,20 +66,18 @@ const ComponentDetailsPage = () => {
     async function assignDetails(appElement) {
         let elementId = appElement.data.elementId;
         let imageId = appElement.data.imageId;
-        let element = updatedElementList.current.find(
+        let element = elements?.find(
             (obj) => obj.elementId === appElement.data.elementId
         );
 
         if (element?.component) {
             setSelectedComponent(element?.component);
         }
-        await appElementClient.addOrUpdateElement({
-            elementId,
-        });
         navigate(`/component-details`);
     }
 
     const onAddComponent = useCallback(async () => {
+        let selectedElementId = elementId?.current?.toString();
         if (ref.current === null) {
             return;
         }
@@ -98,29 +97,40 @@ const ComponentDetailsPage = () => {
         var base64 = btoa(decoded);
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
-        let elementId = getElementId();
+
+        let element3 = document.getElementById('imageHTML');
+        if (element3)
+            element3.innerHTML = `<img src=${imgSource} alt="Description of image">`;
+        let elementIdNew = getElementId();
         if (selectedComponent) {
+            let updatedItems = elements;
+            if (selectedElementId) {
+                updatedItems = elements.filter(
+                    (element) =>
+                        element?.elementId.toString() !== selectedElementId
+                );
+            }
             let updatedElements = [
-                ...elements,
+                ...updatedItems,
                 {
-                    elementId: elementId,
+                    elementId: elementIdNew,
                     component: selectedComponent,
                 },
             ];
             updatedElementList.current = updatedElements;
-            setElements(updatedElements);
+            await setElements(updatedElements);
         }
 
         const result = await upload({
-            id: elementId,
+            id: elementIdNew,
             type: 'IMAGE',
             mimeType: 'image/svg+xml',
             url: imgSource,
             thumbnailUrl: imgSource,
         });
-        images[elementId] = result.ref;
+        images[elementIdNew] = result.ref;
         await appElementClient.addOrUpdateElement({
-            elementId,
+            elementId: elementIdNew,
         });
     }, [ref]);
 
@@ -142,7 +152,6 @@ const ComponentDetailsPage = () => {
             width = widthParam.value;
             max = widthParam.max;
         }
-        console.log('max----', max);
         if (width > max) {
             scale = 300 / max;
         } else if (width > 308) {
@@ -154,29 +163,35 @@ const ComponentDetailsPage = () => {
     return (
         <>
             {selectedComponent && (
-                <div className={styles.componenDetailPage}>
-                    <LivePreview>
-                        <div
-                            ref={ref}
-                            style={{
-                                pointerEvents: 'none',
-                                scale: getScale(selectedComponent),
-                            }}
-                        >
-                            <ComponentItem
-                                component={selectedComponent}
-                                isProperty={true}
-                            />
-                        </div>
-                    </LivePreview>
-                    <PropertyList component={selectedComponent} />
-                    <Button
-                        stretch={true}
-                        variant="primary"
-                        children="Update Component"
-                        onClick={onAddComponent}
-                    />
-                </div>
+                <>
+                    <div className={styles.componenDetailPage}>
+                        <LivePreview>
+                            <div
+                                ref={ref}
+                                style={{
+                                    pointerEvents: 'none',
+                                    scale: getScale(selectedComponent),
+                                }}
+                            >
+                                <ComponentItem
+                                    component={selectedComponent}
+                                    isProperty={true}
+                                />
+                            </div>
+                        </LivePreview>
+                        <PropertyList component={selectedComponent} />
+                        <Button
+                            stretch={true}
+                            variant="primary"
+                            children="Update Component"
+                            onClick={onAddComponent}
+                        />
+                    </div>
+                    <p>Live preview html</p>
+                    <div id="innerHTML"></div>{' '}
+                    <p>base64 image after DOMtoSVG conversion</p>
+                    <div id="imageHTML"></div>
+                </>
             )}
         </>
     );

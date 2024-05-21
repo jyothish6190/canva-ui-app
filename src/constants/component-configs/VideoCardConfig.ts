@@ -41,6 +41,8 @@ export const VideoCardConfig = [
         description: 'Description text',
         placeholder: 'Width',
         value: 256,
+        min: 24,
+        max: 1366,
     },
     {
         showComponent: true,
@@ -50,5 +52,7 @@ export const VideoCardConfig = [
         description: 'Description text',
         placeholder: 'Height',
         value: 168,
+        min: 24,
+        max: 1366,
     },
 ];

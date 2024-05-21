@@ -18,7 +18,7 @@ type IconButtonStateData = {
     buttonVariant: Variant;
     buttonIcon: Icon | undefined;
     buttonState: 'default' | 'hover' | 'active' | 'loading' | 'disabled';
-    buttonWidth: number | undefined;
+    buttonWidth: string | undefined;
 };
 
 const initialState: IconButtonStateData = {
@@ -73,12 +73,32 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
                 });
             }
             if (field.name === IconButtonFieldNames.WIDTH) {
-                setIconButtonState((prevState) => {
-                    return {
-                        ...prevState,
-                        buttonWidth: field.value || undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setIconButtonState((prevState) => {
+                            return {
+                                ...prevState,
+                                buttonWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setIconButtonState((prevState) => {
+                            return {
+                                ...prevState,
+                                buttonWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setIconButtonState((prevState) => {
+                            return {
+                                ...prevState,
+                                buttonWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
@@ -86,13 +106,9 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
     if (isProperty) {
         return (
             <div
-                style={
-                    IconButtonState.buttonWidth
-                        ? {
-                              width: IconButtonState.buttonWidth + 'px',
-                          }
-                        : {}
-                }
+                style={{
+                    width: IconButtonState.buttonWidth,
+                }}
             >
                 <Button
                     variant={IconButtonState.buttonVariant}

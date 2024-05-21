@@ -15,14 +15,14 @@ type NumberInputStateData = {
     inputValue: number;
     spinButtonValue: boolean;
     numberInputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
-    numberInputWidth: number;
+    numberInputWidth: string;
 };
 
 const initialState: NumberInputStateData = {
     inputValue: 0,
     spinButtonValue: false,
     numberInputState: 'default',
-    numberInputWidth: 328,
+    numberInputWidth: '328px',
 };
 
 const NumberInputComponent = ({
@@ -60,12 +60,30 @@ const NumberInputComponent = ({
                 });
             }
             if (field.name === NumberInputFieldNames.WIDTH) {
-                setNumberInputData((prevState) => {
-                    return {
-                        ...prevState,
-                        numberInputWidth: field.value ? field.value : 328,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setNumberInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                numberInputWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setNumberInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                numberInputWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setNumberInputData((prevState) => {
+                            return {
+                                ...prevState,
+                                numberInputWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
@@ -76,7 +94,7 @@ const NumberInputComponent = ({
                 <div
                     style={{
                         padding: 16,
-                        width: numberInputData.numberInputWidth + 'px',
+                        width: numberInputData.numberInputWidth,
                     }}
                 >
                     <NumberInput

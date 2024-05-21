@@ -30,6 +30,8 @@ export const SegmentedControlConfig = [
         name: SegmentedControlFieldNames.WIDTH,
         label: 'Label',
         value: 328,
+        min: 158,
+        max: 1366,
         description: 'Description text',
     },
     {

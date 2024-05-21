@@ -18,7 +18,7 @@ type SelectStateData = {
     selectOptions: any[] | null;
     selectValue: string | undefined;
     componentPlaceHolder: string | undefined;
-    componentWidth: number | undefined;
+    componentWidth: string | undefined;
     componentLabel: string | null;
     componentState: 'default' | 'hover' | 'error' | 'disabled';
 };
@@ -73,12 +73,32 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                 });
             }
             if (field.name === SelectFieldNames.WIDTH) {
-                setSelectData((prevState) => {
-                    return {
-                        ...prevState,
-                        componentWidth: field.value || undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setSelectData((prevState) => {
+                            return {
+                                ...prevState,
+                                componentWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setSelectData((prevState) => {
+                            return {
+                                ...prevState,
+                                componentWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setSelectData((prevState) => {
+                            return {
+                                ...prevState,
+                                componentWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === SelectFieldNames.SELECT_OPTIONS) {
                 setSelectData((prevState) => {
@@ -102,7 +122,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: selectData.componentWidth + 'px' }}>
+            <div style={{ width: selectData.componentWidth }}>
                 <FormField
                     label={
                         selectData.componentLabel

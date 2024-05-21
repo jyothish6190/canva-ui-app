@@ -11,7 +11,7 @@ type CheckBoxPropType = {
 };
 
 type CheckBoxStateData = {
-    checkBoxWidth: number | undefined;
+    checkBoxWidth: string | undefined;
     checkBoxoption: any[];
 };
 
@@ -30,12 +30,32 @@ const CheckboxGroupComponent = ({
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === CheckboxGroupFieldNames.WIDTH) {
-                setcheckboxData((prevState) => {
-                    return {
-                        ...prevState,
-                        checkBoxWidth: field.value || undefined,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setcheckboxData((prevState) => {
+                            return {
+                                ...prevState,
+                                checkBoxWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setcheckboxData((prevState) => {
+                            return {
+                                ...prevState,
+                                checkBoxWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setcheckboxData((prevState) => {
+                            return {
+                                ...prevState,
+                                checkBoxWidth: field.value
+                                    ? `${field.value}px`
+                                    : undefined,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === CheckboxGroupFieldNames.CHECKBOX_OPTIONS) {
                 setcheckboxData((prevState) => {
@@ -54,7 +74,7 @@ const CheckboxGroupComponent = ({
                 style={
                     checkboxData.checkBoxWidth
                         ? {
-                              width: checkboxData.checkBoxWidth + 'px',
+                              width: checkboxData.checkBoxWidth,
                           }
                         : {}
                 }
