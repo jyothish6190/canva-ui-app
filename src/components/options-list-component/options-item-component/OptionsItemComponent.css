@@ -10,7 +10,7 @@
     height: 40px;
     padding: 0 12px;
     align-items: stretch;
-    background-color: var(--ui-kit-color-canvas);
+    background-color: var(--ui-kit-color-page);
     border: 1px solid var(--ui-kit-color-border);
     border-radius: var(--ui-kit-border-radius);
     box-sizing: border-box;
