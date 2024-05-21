@@ -95,6 +95,8 @@ export const PlaceholderComponentConfig = [
         label: 'Label',
         description: 'Description text',
         value: '258',
+        min: 24,
+        max: 1366,
     },
     {
         showComponent: false,
@@ -103,5 +105,7 @@ export const PlaceholderComponentConfig = [
         label: 'Label',
         description: 'Description text',
         value: '258',
+        min: 24,
+        max: 1366,
     },
 ];

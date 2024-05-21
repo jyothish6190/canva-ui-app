@@ -12,13 +12,13 @@ type EmbedPropType = {
 type EmbedStatedata = {
     embedTitle: string;
     embedDescription: string;
-    embedWidth: number;
+    embedWidth: string;
 };
 
 const initialState: EmbedStatedata = {
     embedTitle: 'Heartwarming Chatter: Adorable Conversation with a puppy',
     embedDescription: 'Puppyhood',
-    embedWidth: 296,
+    embedWidth: '296 px',
 };
 
 const EmbedCardComponent = ({ component, isProperty }: EmbedPropType) => {
@@ -45,19 +45,37 @@ const EmbedCardComponent = ({ component, isProperty }: EmbedPropType) => {
                 });
             }
             if (field.name === EmbedFieldNames.WIDTH) {
-                setEmbedState((prevState) => {
-                    return {
-                        ...prevState,
-                        embedWidth: field.value || 296,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setEmbedState((prevState) => {
+                            return {
+                                ...prevState,
+                                embedWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setEmbedState((prevState) => {
+                            return {
+                                ...prevState,
+                                embedWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setEmbedState((prevState) => {
+                            return {
+                                ...prevState,
+                                embedWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
 
     if (isProperty) {
         return (
-            <div style={{ width: embedState.embedWidth + 'px' }}>
+            <div style={{ width: embedState.embedWidth }}>
                 <EmbedCard
                     ariaLabel="Add embed to design"
                     description={embedState.embedDescription}

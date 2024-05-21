@@ -12,15 +12,15 @@ type videoCardProp = {
 
 type videoCardStateData = {
     videoDuration: number;
-    cardHeight: number;
-    cardWidth: number;
+    cardHeight: string;
+    cardWidth: string;
     cardBorder: 'none' | 'standard';
 };
 
 const initialState: videoCardStateData = {
     videoDuration: 8,
-    cardHeight: 168,
-    cardWidth: 296,
+    cardHeight: '168 px',
+    cardWidth: '296 px',
     cardBorder: 'none',
 };
 
@@ -36,14 +36,56 @@ const VideoCardComponent = ({ component, isProperty }: videoCardProp) => {
                 });
             }
             if (field.name === VideoFieldNames.HEIGHT) {
-                setVideoCardState((prevState) => {
-                    return { ...prevState, cardHeight: field.value || 160 };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setVideoCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardHeight: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setVideoCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardHeight: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setVideoCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardHeight: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === VideoFieldNames.WIDTH) {
-                setVideoCardState((prevState) => {
-                    return { ...prevState, cardWidth: field.value || 325 };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setVideoCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setVideoCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setVideoCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
             if (field.name === VideoFieldNames.ROUNDED_CORNER) {
                 setVideoCardState((prevState) => {
@@ -57,8 +99,8 @@ const VideoCardComponent = ({ component, isProperty }: videoCardProp) => {
         return (
             <div
                 style={{
-                    width: videoCardState.cardWidth + 'px',
-                    height: videoCardState.cardHeight + 'px',
+                    width: videoCardState.cardWidth,
+                    height: videoCardState.cardHeight,
                 }}
             >
                 <VideoCard

@@ -14,14 +14,14 @@ type AudioCardStateData = {
     cardTitle: string;
     audioDuration: number;
     cardState: 'default' | 'hover';
-    cardWidth: number;
+    cardWidth: string;
 };
 
 const initialState: AudioCardStateData = {
     cardTitle: 'Card title',
     audioDuration: 86,
     cardState: 'default',
-    cardWidth: 296,
+    cardWidth: '296 px',
 };
 
 const AudioCardComponent = ({ component, isProperty }: AudioCardPropType) => {
@@ -55,18 +55,36 @@ const AudioCardComponent = ({ component, isProperty }: AudioCardPropType) => {
                 });
             }
             if (field.name === AudioCardFieldNames.WIDTH) {
-                setAudioCardState((prevState) => {
-                    return {
-                        ...prevState,
-                        cardWidth: field.value || 296,
-                    };
-                });
+                if (field.max !== undefined && field.min !== undefined) {
+                    if ((field.value as any) > field.max) {
+                        setAudioCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.max}px`,
+                            };
+                        });
+                    } else if ((field.value as any) < field.min) {
+                        setAudioCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.min}px`,
+                            };
+                        });
+                    } else {
+                        setAudioCardState((prevState) => {
+                            return {
+                                ...prevState,
+                                cardWidth: `${field.value}px`,
+                            };
+                        });
+                    }
+                }
             }
         });
     }, [component]);
     if (isProperty) {
         return (
-            <div style={{ width: audioCardState.cardWidth + 'px' }}>
+            <div style={{ width: audioCardState.cardWidth }}>
                 <AudioContextProvider>
                     <AudioCard
                         ariaLabel="Add audio to design"

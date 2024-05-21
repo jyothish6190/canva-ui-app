@@ -43,5 +43,7 @@ export const TypographyConfig = [
         description: 'Description text',
         placeholder: 'Width',
         value: 296,
+        min: 24,
+        max: 1366,
     },
 ];

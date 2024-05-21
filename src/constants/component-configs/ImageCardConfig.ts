@@ -30,6 +30,8 @@ export const ImageCardConfig = [
         description: 'Description text',
         placeholder: 'Width',
         value: 160,
+        min: 24,
+        max: 1366,
     },
     {
         showComponent: true,
@@ -39,5 +41,7 @@ export const ImageCardConfig = [
         description: 'Description text',
         placeholder: 'Height',
         value: 160,
+        min: 24,
+        max: 1366,
     },
 ];
