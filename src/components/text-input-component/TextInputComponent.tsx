@@ -145,10 +145,10 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
     const renderedClass = () => {
         switch (textInputData.textInputState) {
             case 'hover':
-                return styles.TextInputHover;
+                return styles['Input-hover'];
                 break;
             case 'active':
-                return styles.TextInputActive;
+                return styles['Input-active'];
                 break;
             default:
                 return '';

@@ -89,10 +89,10 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
     const renderedClass = () => {
         switch (checkboxDataState.checkBoxState) {
             case 'hover':
-                return styles.HoverCheckbox;
+                return styles['Hover-checkbox'];
                 break;
             case 'pressed':
-                return styles.ActiveCheckbox;
+                return styles['Pressed-checkbox'];
                 break;
             default:
                 return '';

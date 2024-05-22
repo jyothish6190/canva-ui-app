@@ -14,9 +14,9 @@
     line-height: 22px; /* 157.143% */
 }
 
-.TextInputActive div {
+.Input-active > div {
     border: 1px solid var(--ui-kit-color-border-active);
 }
-.TextInputHover div {
+.Input-hover > div {
     border: 1px solid var(--ui-kit-color-border-hover);
 }
