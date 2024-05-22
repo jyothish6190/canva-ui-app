@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { FormField, NumberInput } from '@canva/app-ui-kit';
 
+import styles from './NumberInputComponent.css';
 import { Component } from 'src/models/component.model';
 import { NumberInputFieldNames } from 'src/constants/component-configs/NumberInputConfig';
 import { useComponentStore } from 'src/store/ComponentStore';
@@ -101,10 +102,25 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
         setComponentField(component, value);
     };
 
+    const renderedClass = () => {
+        switch (numberInputData.numberInputState) {
+            case 'hover':
+                return styles['Number-input-hover'];
+                break;
+            case 'active':
+                return styles['Number-input-active'];
+                break;
+            default:
+                return '';
+                break;
+        }
+    };
+
     if (isProperty) {
         if (numberInputData.spinButtonValue === true) {
             return (
                 <div
+                    className={renderedClass()}
                     style={{
                         padding: 16,
                         width: numberInputData.numberInputWidth,
@@ -132,6 +148,7 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
         } else {
             return (
                 <div
+                    className={renderedClass()}
                     style={{
                         width: numberInputData.numberInputWidth
                             ? numberInputData.numberInputWidth
