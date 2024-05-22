@@ -1,0 +1,3 @@
+.Pill-hover > button {
+    background-color: var(--ui-kit-color-tertiary-hover);
+}
