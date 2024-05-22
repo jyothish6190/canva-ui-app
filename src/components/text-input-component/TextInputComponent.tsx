@@ -142,10 +142,26 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
             default:
         }
     };
+    const renderedClass = () => {
+        switch (textInputData.textInputState) {
+            case 'hover':
+                return styles.TextInputHover;
+                break;
+            case 'active':
+                return styles.TextInputActive;
+                break;
+            default:
+                return '';
+                break;
+        }
+    };
 
     if (isProperty) {
         return (
-            <div style={{ width: textInputData.inputWidth }}>
+            <div
+                className={renderedClass()}
+                style={{ width: textInputData.inputWidth }}
+            >
                 <TextInput
                     disabled={
                         textInputData.textInputState === 'disabled'
