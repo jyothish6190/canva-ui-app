@@ -15,7 +15,7 @@ type NumberInputStateData = {
     inputValue: number;
     spinButtonValue: boolean;
     numberInputState: 'default' | 'hover' | 'active' | 'error' | 'disabled';
-    numberInputWidth: string;
+    numberInputWidth: string | undefined;
     numberInputLabel: string | undefined;
 };
 
@@ -23,7 +23,7 @@ const initialState: NumberInputStateData = {
     inputValue: 0,
     spinButtonValue: false,
     numberInputState: 'default',
-    numberInputWidth: '328px',
+    numberInputWidth: undefined,
     numberInputLabel: undefined,
 };
 
@@ -133,7 +133,9 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
             return (
                 <div
                     style={{
-                        width: numberInputData.numberInputWidth,
+                        width: numberInputData.numberInputWidth
+                            ? numberInputData.numberInputWidth
+                            : undefined,
                     }}
                 >
                     <FormField
