@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Checkbox } from '@canva/app-ui-kit';
 
+import styles from './CheckBoxComponent.css';
 import { Component } from 'src/models/component.model';
 import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 
@@ -85,10 +86,26 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
             }
         });
     }, [component]);
+    const renderedClass = () => {
+        switch (checkboxDataState.checkBoxState) {
+            case 'hover':
+                return styles.HoverCheckbox;
+                break;
+            case 'pressed':
+                return styles.ActiveCheckbox;
+                break;
+            default:
+                return '';
+                break;
+        }
+    };
 
     if (isProperty) {
         return (
-            <div style={{ width: checkboxDataState.checkBoxWidth }}>
+            <div
+                className={renderedClass()}
+                style={{ width: checkboxDataState.checkBoxWidth }}
+            >
                 <Checkbox
                     checked={checkboxDataState.checkedState}
                     label={checkboxDataState.checkBoxLabel}

@@ -1,0 +1,8 @@
+.ActiveCheckbox svg {
+    background-color: var(--ui-kit-color-primary-active);
+    border-radius: 4px;
+}
+.HoverCheckbox svg {
+    background-color: var(--ui-kit-color-primary-hover);
+    border-radius: 4px;
+}
