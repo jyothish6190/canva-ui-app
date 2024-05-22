@@ -1,0 +1,14 @@
+.Number-input-active > div {
+    border: 1px solid var(--ui-kit-color-border-active);
+}
+.Number-input-active > div > div {
+    border: none;
+}
+
+.Number-input-hover > div {
+    border: 1px solid var(--ui-kit-color-border-hover);
+}
+
+.Number-input-hover > div > div {
+    border: none;
+}

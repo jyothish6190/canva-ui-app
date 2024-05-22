@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Pill } from '@canva/app-ui-kit';
 
+import styles from './PillComponent.css';
 import { Component } from 'src/models/component.model';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { Icon } from 'src/models/icons.model';
@@ -95,10 +96,22 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
             }
         });
     }, [component]);
+    const renderedClass = () => {
+        switch (pillComponentState.pillState) {
+            case 'hover':
+                return styles['Pill-hover'];
+                break;
+
+            default:
+                return '';
+                break;
+        }
+    };
 
     if (isProperty) {
         return (
             <div
+                className={renderedClass()}
                 style={
                     pillComponentState.pillWidth
                         ? { width: pillComponentState.pillWidth }

@@ -49,13 +49,13 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
         });
     }, [component]);
 
-    const classRendering = () => {
+    const renderedClass = () => {
         switch (buttonState) {
             case 'hover':
-                return styles.HoverButton;
+                return styles['Hover-button'];
                 break;
             case 'active':
-                return styles.ActiveButton;
+                return styles['Active-button'];
                 break;
             default:
                 return '';
@@ -66,7 +66,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
     if (isProperty) {
         return (
             <div
-                className={classRendering()}
+                className={renderedClass()}
                 style={width ? { width: width } : { width: undefined }}
             >
                 <Button

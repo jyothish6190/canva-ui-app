@@ -1,0 +1,12 @@
+.Multiline-active > div > div {
+    border: 1px solid var(--ui-kit-color-border-active);
+}
+.Multiline-hover > div > div {
+    border: 1px solid var(--ui-kit-color-border-hover);
+}
+.Multiline-active > div > div > div {
+    border: none;
+}
+.Multiline-hover > div > div > div {
+    border: none;
+}

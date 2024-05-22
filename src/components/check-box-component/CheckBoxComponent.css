@@ -1,6 +1,8 @@
-.Active-button > button {
+.Active-checkbox > svg {
     background-color: var(--ui-kit-color-primary-active);
+    border-radius: 4px;
 }
-.Hover-button > button {
+.Pressed-checkbox > svg {
     background-color: var(--ui-kit-color-primary-hover);
+    border-radius: 4px;
 }
