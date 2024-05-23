@@ -117,10 +117,20 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         });
     }, [component]);
 
+    const renderedClass = () => {
+        if (selectData.componentActive) {
+            return styles['Select'];
+        } else if (selectData.componentState === 'hover') {
+            return styles['Select-hover'];
+        } else {
+            return '';
+        }
+    };
+
     if (isProperty) {
         return (
             <div
-                className={styles['Select']}
+                className={renderedClass()}
                 style={{ width: selectData.componentWidth }}
             >
                 <FormField
