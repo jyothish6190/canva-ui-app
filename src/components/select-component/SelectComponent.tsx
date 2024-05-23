@@ -187,16 +187,11 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         );
     }
     return (
-        <div
-            style={{
-                position: 'relative',
-                width: 128,
-                height: 128,
-            }}
-        >
+        <div className={styles['Home-select-container']}>
             <Select options={[{ label: 'Option 1', value: '1' }]} />
-
-            <SelectIcon className={styles.selectIcon} />
+            <span>
+                <SelectIcon className={styles.selectIcon} />
+            </span>
         </div>
     );
 };
