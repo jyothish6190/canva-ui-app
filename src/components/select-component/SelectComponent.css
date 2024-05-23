@@ -8,3 +8,25 @@
     width: 156px;
     height: 98px;
 }
+.Select {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 200px;
+}
+.Dropdown {
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-direction: column;
+    background-color: var(--ui-kit-color-surface);
+    border-radius: var(--ui-kit-space-050);
+    box-shadow: var(--ui-kit-box-shadow-faint);
+}
+.Dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FormField, Select } from '@canva/app-ui-kit';
+import { CheckIcon, FormField, Select, Text } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import styles from './SelectComponent.css';
@@ -19,6 +19,7 @@ type SelectStateData = {
     componentWidth: string | undefined;
     componentLabel: string | null;
     componentState: 'default' | 'hover' | 'error' | 'disabled';
+    componentActive: boolean;
 };
 
 const initialState: SelectStateData = {
@@ -28,6 +29,7 @@ const initialState: SelectStateData = {
     componentWidth: undefined,
     componentLabel: null,
     componentState: 'default',
+    componentActive: false,
 };
 
 const SelectComponent = ({ component, isProperty }: PropType) => {
@@ -53,6 +55,14 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                         ...prevState,
                         componentPlaceHolder: field.value || ' ',
                         componentLabel: '  ',
+                    };
+                });
+            }
+            if (field.name === SelectFieldNames.ACTIVE) {
+                setSelectData((prevState) => {
+                    return {
+                        ...prevState,
+                        componentActive: field.value,
                     };
                 });
             }
@@ -106,7 +116,10 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: selectData.componentWidth }}>
+            <div
+                className={styles['Select']}
+                style={{ width: selectData.componentWidth }}
+            >
                 <FormField
                     label={
                         selectData.componentLabel
@@ -145,6 +158,22 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                         />
                     )}
                 />
+                {selectData.componentActive && (
+                    <div className={styles['Dropdown']}>
+                        {selectData.selectOptions?.map((item) => {
+                            return (
+                                <div className={styles['Dropdown-item']}>
+                                    <Text variant="regular" size="medium">
+                                        {item.label}
+                                    </Text>
+                                    {item.value == component.value && (
+                                        <CheckIcon />
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         );
     }
