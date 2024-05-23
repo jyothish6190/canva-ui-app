@@ -3,6 +3,7 @@ import { Switch } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 
+import styles from './SwitchComponent.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 
@@ -110,9 +111,24 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
         setComponentField(component, value);
     };
 
+    const renderedClass = () => {
+        switch (switchData.switchState) {
+            case 'hover':
+                return styles['Switch-active'];
+                break;
+
+            default:
+                return '';
+                break;
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={{ width: switchData.switchWidth }}>
+            <div
+                className={renderedClass()}
+                style={{ width: switchData.switchWidth }}
+            >
                 <Switch
                     defaultValue={component.defaultValue}
                     disabled={

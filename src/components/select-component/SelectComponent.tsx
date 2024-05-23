@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FormField, Select } from '@canva/app-ui-kit';
+import { CheckIcon, FormField, Select, Text } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import styles from './SelectComponent.css';
@@ -19,6 +19,8 @@ type SelectStateData = {
     componentWidth: string | undefined;
     componentLabel: string | null;
     componentState: 'default' | 'hover' | 'error' | 'disabled';
+    componentActive: boolean;
+    selectedValue: any;
 };
 
 const initialState: SelectStateData = {
@@ -28,6 +30,8 @@ const initialState: SelectStateData = {
     componentWidth: undefined,
     componentLabel: null,
     componentState: 'default',
+    componentActive: false,
+    selectedValue: undefined,
 };
 
 const SelectComponent = ({ component, isProperty }: PropType) => {
@@ -53,6 +57,15 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                         ...prevState,
                         componentPlaceHolder: field.value || ' ',
                         componentLabel: '  ',
+                        selectedValue: component.value,
+                    };
+                });
+            }
+            if (field.name === SelectFieldNames.ACTIVE) {
+                setSelectData((prevState) => {
+                    return {
+                        ...prevState,
+                        componentActive: field.value,
                     };
                 });
             }
@@ -104,9 +117,22 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         });
     }, [component]);
 
+    const renderedClass = () => {
+        if (selectData.componentActive) {
+            return styles['Select'];
+        } else if (selectData.componentState === 'hover') {
+            return styles['Select-hover'];
+        } else {
+            return '';
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={{ width: selectData.componentWidth }}>
+            <div
+                className={renderedClass()}
+                style={{ width: selectData.componentWidth }}
+            >
                 <FormField
                     label={
                         selectData.componentLabel
@@ -145,20 +171,37 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                         />
                     )}
                 />
+                {selectData.componentActive && (
+                    <div className={styles['Dropdown']}>
+                        {selectData.selectOptions?.map((item) => {
+                            return (
+                                <div
+                                    className={`${styles['Dropdown-item']} ${
+                                        item.value === selectData.selectValue
+                                            ? styles['Selected-item']
+                                            : ''
+                                    }`}
+                                >
+                                    <Text variant="regular" size="medium">
+                                        {item.label}
+                                    </Text>
+                                    <div className={styles['check']}>
+                                        <CheckIcon />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         );
     }
     return (
-        <div
-            style={{
-                position: 'relative',
-                width: 128,
-                height: 128,
-            }}
-        >
+        <div className={styles['Home-select-container']}>
             <Select options={[{ label: 'Option 1', value: '1' }]} />
-
-            <SelectIcon className={styles.selectIcon} />
+            <span>
+                <SelectIcon className={styles.selectIcon} />
+            </span>
         </div>
     );
 };

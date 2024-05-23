@@ -103,12 +103,26 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
         });
     }, [component]);
     const renderedClass = () => {
-        switch (IconButtonState.buttonState) {
-            case 'hover':
+        switch (
+            `${IconButtonState.buttonState}-${IconButtonState.buttonVariant}`
+        ) {
+            case 'hover-primary':
                 return styles['Hover-button'];
                 break;
-            case 'active':
+            case 'hover-secondary':
+                return styles['Hover-button-secondary'];
+                break;
+            case 'hover-tertiary':
+                return styles['Hover-button-tertiary'];
+                break;
+            case 'active-primary':
                 return styles['Active-button'];
+                break;
+            case 'active-secondary':
+                return styles['Active-button-secondary'];
+                break;
+            case 'active-tertiary':
+                return styles['Active-button-tertiary'];
                 break;
             default:
                 return '';
