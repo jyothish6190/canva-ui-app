@@ -3,17 +3,42 @@
     justify-content: space-between;
     align-items: center;
 }
-.colorPicker {
+.Color-picker {
     display: block;
     width: 100%;
     height: 100%;
 }
-.colorContainer {
-    width: 310px;
+.Color-preview-container {
+    width: 345px;
     position: relative;
     right: -10px;
     top: 20px;
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+.Color-preview-container > div {
+    width: fit-content;
+    padding-left: 20px;
+}
+
+.Color-preview-container > span {
+    height: 200px;
+}
+
+.Color-container {
+    width: 150px;
+    height: 118px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.Color-container > div {
+    width: fit-content;
+    padding-left: 16px;
+}
+.Color-container > span {
+    width: 160px;
+    height: 100px;
 }
