@@ -30,3 +30,13 @@
     justify-content: space-between;
     padding: 15px;
 }
+.Dropdown-item > .check {
+    display: none;
+}
+
+.Selected-item {
+    background-color: var(--ui-kit-color-secondary-hover);
+}
+.Selected-item > .check {
+    display: unset;
+}

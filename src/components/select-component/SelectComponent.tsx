@@ -20,6 +20,7 @@ type SelectStateData = {
     componentLabel: string | null;
     componentState: 'default' | 'hover' | 'error' | 'disabled';
     componentActive: boolean;
+    selectedValue: any;
 };
 
 const initialState: SelectStateData = {
@@ -30,6 +31,7 @@ const initialState: SelectStateData = {
     componentLabel: null,
     componentState: 'default',
     componentActive: false,
+    selectedValue: undefined,
 };
 
 const SelectComponent = ({ component, isProperty }: PropType) => {
@@ -55,6 +57,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                         ...prevState,
                         componentPlaceHolder: field.value || ' ',
                         componentLabel: '  ',
+                        selectedValue: component.value,
                     };
                 });
             }
@@ -162,13 +165,19 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                     <div className={styles['Dropdown']}>
                         {selectData.selectOptions?.map((item) => {
                             return (
-                                <div className={styles['Dropdown-item']}>
+                                <div
+                                    className={`${styles['Dropdown-item']} ${
+                                        item.value === selectData.selectValue
+                                            ? styles['Selected-item']
+                                            : ''
+                                    }`}
+                                >
                                     <Text variant="regular" size="medium">
                                         {item.label}
                                     </Text>
-                                    {item.value == component.value && (
+                                    <div className={styles['check']}>
                                         <CheckIcon />
-                                    )}
+                                    </div>
                                 </div>
                             );
                         })}
