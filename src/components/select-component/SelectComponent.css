@@ -40,6 +40,7 @@
 .Select-hover div > div > div {
     border: 1px solid var(--ui-kit-color-border-hover);
 }
+
 .Dropdown {
     display: flex;
     width: 100%;
@@ -65,4 +66,5 @@
 }
 .Selected-item > .check {
     display: unset;
+    border: none !important;
 }
