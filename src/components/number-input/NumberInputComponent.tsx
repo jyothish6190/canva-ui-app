@@ -105,10 +105,14 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
     const renderedClass = () => {
         switch (numberInputData.numberInputState) {
             case 'hover':
-                return styles['Number-input-hover'];
+                return numberInputData.spinButtonValue
+                    ? styles['Number-input-hover-has-spin']
+                    : styles['Number-input-hover'];
                 break;
             case 'active':
-                return styles['Number-input-active'];
+                return numberInputData.spinButtonValue
+                    ? styles['Number-input-active-has-spin']
+                    : styles['Number-input-active'];
                 break;
             default:
                 return '';
