@@ -1,8 +1,8 @@
 import { components } from 'src/constants/components';
+import { SelectOption } from '@canva/app-ui-kit';
 import { Component, OptionItem } from 'src/models/component.model';
 import { FormFieldNames } from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from './SelectConfig';
-import { SelectOption } from '@canva/app-ui-kit';
 import { SelectState } from './SelectComponent';
 
 export const getValue = (component: Component) => {
@@ -57,7 +57,7 @@ export const getOptions = (component: Component) => {
 };
 
 export const getActive = (component: Component) => {
-    let state: SelectState = 'default';
+    let state: boolean = false;
     component.fields?.forEach((field: Component) => {
         if (field.name === SelectFieldNames.ACTIVE) {
             state = field.value;
