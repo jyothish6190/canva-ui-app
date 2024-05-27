@@ -94,6 +94,9 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
             case 'pressed':
                 return styles['Pressed-checkbox'];
                 break;
+            case 'error':
+                return styles['Error-checkbox'];
+                break;
             default:
                 return '';
                 break;
