@@ -102,13 +102,27 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
             }
         });
     }, [component]);
-    const classRendering = () => {
-        switch (IconButtonState.buttonState) {
-            case 'hover':
-                return styles.HoverButton;
+    const renderedClass = () => {
+        switch (
+            `${IconButtonState.buttonState}-${IconButtonState.buttonVariant}`
+        ) {
+            case 'hover-primary':
+                return styles['Hover-button'];
                 break;
-            case 'active':
-                return styles.ActiveButton;
+            case 'hover-secondary':
+                return styles['Hover-button-secondary'];
+                break;
+            case 'hover-tertiary':
+                return styles['Hover-button-tertiary'];
+                break;
+            case 'active-primary':
+                return styles['Active-button'];
+                break;
+            case 'active-secondary':
+                return styles['Active-button-secondary'];
+                break;
+            case 'active-tertiary':
+                return styles['Active-button-tertiary'];
                 break;
             default:
                 return '';
@@ -119,7 +133,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
     if (isProperty) {
         return (
             <div
-                className={classRendering()}
+                className={renderedClass()}
                 style={{
                     width: IconButtonState.buttonWidth,
                 }}

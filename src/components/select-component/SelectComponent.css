@@ -8,3 +8,63 @@
     width: 156px;
     height: 98px;
 }
+
+.Home-select-container {
+    width: 150px;
+    height: 118px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.Home-select-container > div {
+    width: fit-content;
+    padding-left: 13px;
+}
+.Home-select-container > div > div {
+    border: 1px solid var(--ui-kit-color-border-active);
+}
+.Home-select-container > span {
+    width: 160px;
+    height: 100px;
+}
+
+.Select {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 200px;
+}
+.Select div > div > div {
+    border: 1px solid var(--ui-kit-color-border-active);
+}
+.Select-hover div > div > div {
+    border: 1px solid var(--ui-kit-color-border-hover);
+}
+
+.Dropdown {
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-direction: column;
+    background-color: var(--ui-kit-color-surface);
+    border-radius: var(--ui-kit-space-050);
+    box-shadow: var(--ui-kit-box-shadow-faint);
+}
+.Dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+.Dropdown-item > .check {
+    display: none;
+}
+
+.Selected-item {
+    background-color: var(--ui-kit-color-secondary-hover);
+}
+.Selected-item > .check {
+    display: unset;
+    border: none !important;
+}

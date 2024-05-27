@@ -1,6 +1,21 @@
-.ActiveButton button {
+.Active-button > button {
     background-color: var(--ui-kit-color-primary-active);
 }
-.HoverButton button {
+.Active-button-secondary > button {
+    background-color: var(--ui-kit-color-secondary-active);
+}
+.Active-button-tertiary > button {
+    background-color: var(--ui-kit-color-tertiary-active);
+}
+
+.Hover-button > button {
     background-color: var(--ui-kit-color-primary-hover);
+}
+
+.Hover-button-secondary > button {
+    background-color: var(--ui-kit-color-secondary-hover);
+}
+
+.Hover-button-tertiary > button {
+    background-color: var(--ui-kit-color-tertiary-hover);
 }

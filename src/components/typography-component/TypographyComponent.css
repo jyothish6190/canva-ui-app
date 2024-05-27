@@ -1,0 +1,3 @@
+.Typography-active > button > div {
+    background-color: var(--ui-kit-color-tertiary-active);
+}

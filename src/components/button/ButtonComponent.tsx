@@ -49,13 +49,25 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
         });
     }, [component]);
 
-    const classRendering = () => {
-        switch (buttonState) {
-            case 'hover':
-                return styles.HoverButton;
+    const renderedClass = () => {
+        switch (`${buttonState}-${variant}`) {
+            case 'hover-primary':
+                return styles['Hover-button'];
                 break;
-            case 'active':
-                return styles.ActiveButton;
+            case 'hover-secondary':
+                return styles['Hover-button-secondary'];
+                break;
+            case 'hover-tertiary':
+                return styles['Hover-button-tertiary'];
+                break;
+            case 'active-primary':
+                return styles['Active-button'];
+                break;
+            case 'active-secondary':
+                return styles['Active-button-secondary'];
+                break;
+            case 'active-tertiary':
+                return styles['Active-button-tertiary'];
                 break;
             default:
                 return '';
@@ -66,7 +78,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
     if (isProperty) {
         return (
             <div
-                className={classRendering()}
+                className={renderedClass()}
                 style={width ? { width: width } : { width: undefined }}
             >
                 <Button

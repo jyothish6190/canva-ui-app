@@ -1,0 +1,3 @@
+.Switch-active > div > button {
+    background-color: var(--ui-kit-color-primary-hover) !important;
+}

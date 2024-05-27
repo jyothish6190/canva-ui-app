@@ -24,6 +24,17 @@ export const getValue = (component: Component) => {
     }
 };
 
+export const getSelectedValue = (component: Component) => {
+    let value = '';
+    component.fields?.forEach((field: Component) => {
+        if (field.name === SelectFieldNames.PLACEHOLDER) {
+            value = field.value;
+        }
+    });
+
+    return value;
+};
+
 export const getOptions = (component: Component) => {
     let options: SelectOption<string>[] = [];
     if (component.fields) {
@@ -43,6 +54,17 @@ export const getOptions = (component: Component) => {
     }
 
     return options;
+};
+
+export const getActive = (component: Component) => {
+    let state: SelectState = 'default';
+    component.fields?.forEach((field: Component) => {
+        if (field.name === SelectFieldNames.ACTIVE) {
+            state = field.value;
+        }
+    });
+
+    return state;
 };
 
 export const getState = (component: Component) => {

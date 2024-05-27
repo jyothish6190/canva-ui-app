@@ -6,6 +6,7 @@ import {
     MultilineInput,
 } from '@canva/app-ui-kit';
 
+import styles from './MultilineInputComponent.css';
 import { Component } from 'src/models/component.model';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { useComponentStore } from 'src/store/ComponentStore';
@@ -130,9 +131,26 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
         });
     };
 
+    const renderedClass = () => {
+        switch (multilineInputData.inputState) {
+            case 'hover':
+                return styles['Multiline-hover'];
+                break;
+            case 'active':
+                return styles['Multiline-active'];
+                break;
+            default:
+                return '';
+                break;
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={{ width: multilineInputData.inputWidth }}>
+            <div
+                className={renderedClass()}
+                style={{ width: multilineInputData.inputWidth }}
+            >
                 <FormField
                     label={
                         multilineInputData.inputLabel

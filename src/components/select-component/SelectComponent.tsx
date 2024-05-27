@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { FormField, Select, SelectOption } from '@canva/app-ui-kit';
+import {
+    FormField,
+    Select,
+    SelectOption,
+    CheckIcon,
+    Text,
+} from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import styles from './SelectComponent.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import SelectIcon from '../../../assets/icons/select.svg';
 import {
+    getActive,
     getLabel,
     getOptions,
     getPlaceholder,
@@ -30,7 +37,9 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
     const [label, setLabel] = useState('');
     const [placeholder, setPlaceholder] = useState('');
     const [selectState, setSlecteState] = useState<SelectState>('default');
+    const [active, setActive] = useState<SelectState>('default');
     const [width, setWidth] = useState<string | undefined>(undefined);
+    const [selectedvValue, setSelectedValue] = useState('');
 
     const changeHandler = (value: string) => {
         const updatedComponent = selectOptionChangeHandler(
@@ -50,12 +59,23 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
             setLabel(getLabel(component));
             setPlaceholder(getPlaceholder(component));
             setWidth(getWidth(component));
+            setActive(getActive(component));
         }
     }, [component, component.value]);
 
+    const renderedClass = () => {
+        if (active) {
+            return styles['Select'];
+        } else if (selectState === 'hover') {
+            return styles['Select-hover'];
+        } else {
+            return '';
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={{ width: width }}>
+            <div className={renderedClass()} style={{ width: width }}>
                 <FormField
                     label={label ? label : component.name}
                     control={(props) => (
@@ -74,20 +94,38 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                         />
                     )}
                 />
+                {active && (
+                    <div className={styles['Dropdown']}>
+                        {options?.map((item, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className={`${styles['Dropdown-item']} ${
+                                        item.value === value
+                                            ? styles['Selected-item']
+                                            : ''
+                                    }`}
+                                >
+                                    <Text variant="regular" size="medium">
+                                        {item.label}
+                                    </Text>
+                                    <div className={styles['check']}>
+                                        <CheckIcon />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         );
     }
     return (
-        <div
-            style={{
-                position: 'relative',
-                width: 128,
-                height: 128,
-            }}
-        >
+        <div className={styles['Home-select-container']}>
             <Select options={[{ label: 'Option 1', value: '1' }]} />
-
-            <SelectIcon className={styles.selectIcon} />
+            <span>
+                <SelectIcon className={styles.selectIcon} />
+            </span>
         </div>
     );
 };

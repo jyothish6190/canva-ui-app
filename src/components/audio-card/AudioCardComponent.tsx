@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { AudioCard, AudioContextProvider } from '@canva/app-ui-kit';
 
+import styles from './AudioCardComponent.css';
 import { Component } from 'src/models/component.model';
 import { AudioCardFieldNames } from 'src/constants/component-configs/AudioCardConfig';
 
@@ -82,9 +83,25 @@ const AudioCardComponent = ({ component, isProperty }: AudioCardPropType) => {
             }
         });
     }, [component]);
+
+    const renderedClass = () => {
+        switch (audioCardState.cardState) {
+            case 'hover':
+                return styles['Audio-card-active'];
+                break;
+
+            default:
+                return '';
+                break;
+        }
+    };
+
     if (isProperty) {
         return (
-            <div style={{ width: audioCardState.cardWidth }}>
+            <div
+                className={renderedClass()}
+                style={{ width: audioCardState.cardWidth }}
+            >
                 <AudioContextProvider>
                     <AudioCard
                         ariaLabel="Add audio to design"
