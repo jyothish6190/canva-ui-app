@@ -21,7 +21,7 @@
     width: 100%;
 }
 
-.inputField {
+.input-field {
     appearance: none;
     background: inherit;
     border: 0;
@@ -40,4 +40,8 @@
     resize: none;
     overflow: hidden;
     white-space: pre-wrap;
+}
+
+.trash-container {
+    cursor: pointer;
 }

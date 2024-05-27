@@ -23,13 +23,16 @@ import { MultiLineInputConfig } from './component-configs/MultiLineInputConfig';
 import { RadioGroupConfig } from './component-configs/RadioGroupConfig';
 import { NumberInputConfig } from './component-configs/NumberInputConfig';
 import { SliderConfig } from './component-configs/SliderConfig';
-import { SegmentedControlConfig } from './component-configs/SegmentedControlConfig';
+import { SegmentedControlConfig } from '../components/segmented-control/SegmentedControlConfig';
 import { FileInputConfig } from './component-configs/FileInputConfig';
 import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
 import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupConfig';
-import { SelectConfig } from './component-configs/SelectConfig';
 import { TextInputConfig } from './component-configs/TextInputConfig';
-import { FormFieldConfig } from './component-configs/FormFieldConfig';
+import { SelectConfig } from 'src/components/select-component/SelectConfig';
+import {
+    FormControlNames,
+    FormFieldConfig,
+} from 'src/components/form-field-component/FormFieldConfig';
 
 export const components: Component[] = [
     {
@@ -96,7 +99,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.CHECKBOX,
-        name: 'Checkbox',
+        name: FormControlNames.CHECKBOX_FIELD,
         defaultValue: true,
         categoryId: 'form',
         fields: CheckBoxConfig,
@@ -104,7 +107,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.CHECKBOX_GROUP,
-        name: 'Checkbox group',
+        name: FormControlNames.CHECKBOX_GROUP,
         categoryId: 'form',
         options: [
             {
@@ -125,7 +128,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.RADIO,
-        name: 'Radio',
+        name: FormControlNames.RADIO,
         categoryId: 'form',
         options: [
             {
@@ -146,7 +149,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.TEXT_INPUT,
-        name: 'Text input',
+        name: FormControlNames.TEXT_INPUT,
         categoryId: 'form',
         placeholder: 'Placeholder',
         fields: TextInputConfig,
@@ -154,7 +157,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.MULTILINE_INPUT,
-        name: 'Multiline input',
+        name: FormControlNames.MULTILINE_INPUT,
         categoryId: 'form',
         max: 50,
         placeholder: 'Placeholder',
@@ -163,19 +166,24 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,
-        name: 'Segmented control',
+        name: FormControlNames.SEGMENTED_CONTROL,
         categoryId: 'form',
         options: [
             {
+                key: 's',
                 value: 's',
                 label: 'S',
+                selected: true,
             },
             {
+                key: 'm',
                 value: 'm',
                 label: 'M',
+                selected: false,
             },
         ],
         defaultValue: 's',
+        optionContentType: 'text',
         fields: SegmentedControlConfig,
     },
     {
@@ -192,7 +200,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.NUMBER_INPUT,
-        name: 'Number input',
+        name: FormControlNames.NUMBER_INPUT,
         defaultValue: 0,
         hasSpinButtons: true,
         step: 1,
@@ -212,7 +220,7 @@ export const components: Component[] = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Select',
+        name: FormControlNames.SELECT,
         stretch: true,
         categoryId: 'form',
         tabs: [

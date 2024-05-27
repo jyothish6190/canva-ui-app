@@ -1,163 +1,76 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FormField, Select } from '@canva/app-ui-kit';
+import React, { useEffect, useState } from 'react';
+import { FormField, Select, SelectOption } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import styles from './SelectComponent.css';
 import { useComponentStore } from 'src/store/ComponentStore';
-import { SelectFieldNames } from 'src/constants/component-configs/SelectConfig';
-import { FormFieldNames } from 'src/constants/component-configs/FormFieldConfig';
-import { components } from 'src/constants/components';
 import SelectIcon from '../../../assets/icons/select.svg';
+import {
+    getLabel,
+    getOptions,
+    getPlaceholder,
+    getState,
+    getValue,
+    getWidth,
+    selectOptionChangeHandler,
+} from './SelectComponentUtils';
 
 type PropType = {
     component: Component;
     isProperty: boolean;
 };
 
-type SelectStateData = {
-    selectOptions: any[] | null;
-    selectValue: string | undefined;
-    componentPlaceHolder: string | undefined;
-    componentWidth: string | undefined;
-    componentLabel: string | null;
-    componentState: 'default' | 'hover' | 'error' | 'disabled';
-};
-
-const initialState: SelectStateData = {
-    selectOptions: null,
-    selectValue: undefined,
-    componentPlaceHolder: undefined,
-    componentWidth: undefined,
-    componentLabel: null,
-    componentState: 'default',
-};
+export type SelectState = 'default' | 'hover' | 'error' | 'disabled';
 
 const SelectComponent = ({ component, isProperty }: PropType) => {
     const { selectedComponent, setSelectedComponent } = useComponentStore();
 
-    const [selectData, setSelectData] = useState<SelectStateData>(initialState);
+    const [options, setOptions] = useState<SelectOption<string>[]>([]);
+    const [value, setValue] = useState('');
+    const [label, setLabel] = useState('');
+    const [placeholder, setPlaceholder] = useState('');
+    const [selectState, setSlecteState] = useState<SelectState>('default');
+    const [width, setWidth] = useState<string | undefined>(undefined);
 
     const changeHandler = (value: string) => {
-        selectedComponent?.fields?.forEach((field: Component) => {
-            if (field.name === FormFieldNames.CONTROL) {
-                updateComponent(value);
-            }
-            if (field.name === component.name) {
-                field.value = value;
-            }
-            setSelectedComponent({ ...selectedComponent });
-            return;
-        });
-    };
+        const updatedComponent = selectOptionChangeHandler(
+            selectedComponent as Component,
+            component,
+            value
+        );
 
-    const updateComponent = (value: string) => {
-        components.forEach((component) => {
-            if (component.name === value) {
-                let newComponent = { ...component };
-                console.log('🚀 ~ components.forEach ~ component:', component);
-
-                setSelectedComponent(newComponent);
-            }
-        });
+        setSelectedComponent({ ...(updatedComponent as unknown as Component) });
     };
 
     useEffect(() => {
-        component.fields?.forEach((field: Component) => {
-            if (field.name === SelectFieldNames.PLACEHOLDER) {
-                setSelectData((prevState) => {
-                    return {
-                        ...prevState,
-                        componentPlaceHolder: field.value || ' ',
-                        componentLabel: '  ',
-                    };
-                });
-            }
-            if (field.name === SelectFieldNames.WIDTH) {
-                if (field.max !== undefined && field.min !== undefined) {
-                    if ((field.value as any) > field.max) {
-                        setSelectData((prevState) => {
-                            return {
-                                ...prevState,
-                                componentWidth: `${field.max}px`,
-                            };
-                        });
-                    } else if ((field.value as any) < field.min) {
-                        setSelectData((prevState) => {
-                            return {
-                                ...prevState,
-                                componentWidth: `${field.min}px`,
-                            };
-                        });
-                    } else {
-                        setSelectData((prevState) => {
-                            return {
-                                ...prevState,
-                                componentWidth: field.value
-                                    ? `${field.value}px`
-                                    : undefined,
-                            };
-                        });
-                    }
-                }
-            }
-            if (field.name === SelectFieldNames.SELECT_OPTIONS) {
-                setSelectData((prevState) => {
-                    return {
-                        ...prevState,
-                        selectOptions: field.options as any[],
-                        selectValue: field.value,
-                    };
-                });
-            }
-            if (field.name === SelectFieldNames.STATE) {
-                setSelectData((prevState) => {
-                    return {
-                        ...prevState,
-                        componentState: field.value,
-                    };
-                });
-            }
-        });
-    }, [component]);
+        if (component) {
+            setValue(getValue(component));
+            setOptions(getOptions(component));
+            setSlecteState(getState(component));
+            setLabel(getLabel(component));
+            setPlaceholder(getPlaceholder(component));
+            setWidth(getWidth(component));
+        }
+    }, [component, component.value]);
 
     if (isProperty) {
         return (
-            <div style={{ width: selectData.componentWidth }}>
+            <div style={{ width: width }}>
                 <FormField
-                    label={
-                        selectData.componentLabel
-                            ? selectData.componentLabel
-                            : component.name
-                    }
+                    label={label ? label : component.name}
                     control={(props) => (
                         <Select
-                            disabled={
-                                selectData.componentState === 'disabled'
-                                    ? true
-                                    : false
-                            }
-                            error={
-                                selectData.componentState === 'error'
-                                    ? true
-                                    : false
-                            }
-                            options={
-                                selectData.selectOptions
-                                    ? selectData.selectOptions
-                                    : (component.options as any[])
-                            }
+                            disabled={selectState === 'disabled' ? true : false}
+                            error={selectState === 'error' ? true : false}
+                            options={options}
                             stretch={true}
                             placeholder={
-                                selectData.componentPlaceHolder
-                                    ? selectData.componentPlaceHolder
+                                placeholder
+                                    ? placeholder
                                     : component.placeholder
                             }
                             onChange={changeHandler}
-                            value={
-                                component.value
-                                    ? component.value
-                                    : selectData.selectValue
-                            }
+                            value={value}
                         />
                     )}
                 />

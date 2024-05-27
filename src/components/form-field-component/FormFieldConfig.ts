@@ -1,8 +1,19 @@
 import { ClearIcon } from '@canva/app-ui-kit';
-import { ComponentType, OptionTypes } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../../constants/ComponentTypes';
 
 export enum FormFieldNames {
     CONTROL = 'control',
+}
+
+export enum FormControlNames {
+    TEXT_INPUT = 'Text input',
+    MULTILINE_INPUT = 'Multiline input',
+    NUMBER_INPUT = 'Number input',
+    SELECT = 'Select',
+    CHECKBOX_FIELD = 'Checkbox',
+    CHECKBOX_GROUP = 'Checkbox group',
+    RADIO = 'Radio',
+    SEGMENTED_CONTROL = 'Segmented control',
 }
 
 export const FormFieldConfig = [
@@ -14,38 +25,38 @@ export const FormFieldConfig = [
         options: [
             {
                 label: 'Text input',
-                value: 'text input',
+                value: FormControlNames.TEXT_INPUT,
             },
             {
                 label: 'Multiline input',
-                value: 'Multiline Input',
+                value: FormControlNames.MULTILINE_INPUT,
             },
             {
                 label: 'Number input',
-                value: 'number input',
+                value: FormControlNames.NUMBER_INPUT,
             },
             {
                 label: 'Select',
-                value: 'Select',
+                value: FormControlNames.SELECT,
             },
             {
                 label: 'Checkbox Field',
-                value: 'Checkbox',
+                value: FormControlNames.CHECKBOX_FIELD,
             },
             {
                 label: 'Checkbox Group',
-                value: 'Checkbox group',
+                value: FormControlNames.CHECKBOX_GROUP,
             },
             {
                 label: 'Radio Group',
-                value: 'Radio',
+                value: FormControlNames.RADIO,
             },
             {
                 label: 'Segmented control',
-                value: 'Segmented control',
+                value: FormControlNames.SEGMENTED_CONTROL,
             },
         ],
-        defaultValue: 'text input',
+        defaultValue: FormControlNames.TEXT_INPUT,
     },
 
     {

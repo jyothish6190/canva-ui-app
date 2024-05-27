@@ -6,7 +6,6 @@ import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
-import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
@@ -14,8 +13,6 @@ import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 import { FileInputFieldNames } from 'src/constants/component-configs/FileInputConfig';
-import { ArrowDownIcon, ArrowLeftIcon, ArrowUpIcon } from '@canva/app-ui-kit';
-import { SegmentedControlFieldNames } from 'src/constants/component-configs/SegmentedControlConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -315,55 +312,11 @@ const updateField = (
                 });
             }
             break;
-        case SegmentedControlFieldNames.TYPE:
-            if (value === 'text') {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
-                        field.options = [
-                            {
-                                label: 'S',
-                                value: 's',
-                            },
-                            {
-                                label: 'M',
-                                value: 'm',
-                            },
-                            {
-                                label: 'L',
-                                value: 'l',
-                            },
-                        ];
-                    }
-                });
-            } else if (value === 'icon') {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
-                        field.options = [
-                            {
-                                value: 'Arrow up',
-                                label: ArrowUpIcon() as any,
-                                key: 1,
-                                description: 'option1',
-                            },
-                            {
-                                value: 'Arrow down',
-                                label: ArrowDownIcon() as any,
-                                key: 2,
-                                description: 'option2',
-                            },
-                            {
-                                value: 'Arrow left',
-                                label: ArrowLeftIcon() as any,
-                                key: 3,
-                                description: 'option3',
-                            },
-                        ] as any;
-                    }
-                });
-            }
-            break;
+
         default:
             break;
     }
+
+    console.log('🚀 ~  newComponent:', newComponent);
     return newComponent;
 };
