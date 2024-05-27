@@ -362,6 +362,21 @@ const updateField = (
                 });
             }
             break;
+        case SliderFieldNames.MAXIMUM:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.VALUE) {
+                    field.max = value as number;
+                }
+            });
+            break;
+        case SliderFieldNames.MINIMUM:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.VALUE) {
+                    field.min = value as number;
+                    field.value = value;
+                }
+            });
+            break;
         default:
             break;
     }
