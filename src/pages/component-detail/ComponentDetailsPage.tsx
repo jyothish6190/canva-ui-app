@@ -50,6 +50,7 @@ const ComponentDetailsPage = () => {
     useEffect(() => {
         elementId.current = null;
         appElementClient.registerOnElementChange((appElement) => {
+            document.getElementById('container')?.scrollTo(0, 0);
             elementId.current = appElement?.data?.elementId as string;
             if (!appElement && !initialLoad.current) {
                 navigate('/home');

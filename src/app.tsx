@@ -14,7 +14,7 @@ import styles from 'styles/components.css';
 
 export const App = () => {
     return (
-        <div className={styles.scrollContainer}>
+        <div className={styles.scrollContainer} id="container">
             <Router>
                 <Routes>
                     <Route path="/home" element={<HomePage />} />
