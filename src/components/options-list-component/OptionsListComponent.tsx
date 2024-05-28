@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
 import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
 
-import { Component } from 'src/models/component.model';
+import { Component, OptionItem } from 'src/models/component.model';
 
 import styles from './OptionsListComponent.css';
 import CardTitle from '../card-title/CardTitle';
@@ -18,77 +18,83 @@ type PropType = {
 const OptionsListComponent = ({ component, isProprty }: PropType) => {
     const { selectedComponent, setSelectedComponent } = useComponentStore();
 
-    const [optionList, setOptionList] = useState<any[]>([]);
-    const [radioChecked, setRadioChecked] = useState<any>(component.value);
-
-    useMemo(() => {
-        if (component && component.options) {
-            setOptionList(component.options);
-            return component.options;
-        } else {
-            return [];
-        }
-    }, [component, component.options]);
+    const [showTrashIcon, setShowTrashIcon] = useState(false);
+    const [optionList, setOptionList] = useState<OptionItem[]>(
+        component.options as OptionItem[]
+    );
 
     useEffect(() => {
-        selectedComponent?.fields?.forEach((field: Component) => {
-            if (field.name === component.name) {
-                field.options = optionList;
-                field.value = radioChecked;
-            }
-            setSelectedComponent({ ...selectedComponent });
-            return;
-        });
-    }, [optionList, radioChecked]);
+        if (component && component.options) {
+            setOptionList(component.options);
+        }
+    }, [, component.options]);
 
-    const deleteHandler = (optionKey: number) => {
+    useEffect(() => {
+        if (isProprty) {
+            setShowTrashIcon(optionList.length > 1 ? true : false);
+
+            const newComponent = {
+                ...selectedComponent,
+            } as Component;
+
+            newComponent.fields?.forEach((field) => {
+                if (field.name === component.name) {
+                    field.options = optionList;
+                }
+            });
+            setSelectedComponent({ ...newComponent });
+        }
+    }, [optionList, isProprty]);
+
+    const deleteOptionHandler = (deletedOption: OptionItem) => {
         const updatedOptions = optionList.filter(
-            (option) => option.key !== optionKey
+            (option) => option.key !== deletedOption.key
         );
+
         setOptionList(updatedOptions);
     };
 
-    const addNewItemHandler = () => {
-        let newOption;
-        if (component.optionType) {
-            newOption = {
-                value: 'Option' + (optionList.length + 1),
-                label: 'Option' + (optionList.length + 1),
-                key: optionList.length + 1,
-                checked: false,
-            };
-        } else {
-            newOption = {
-                value: 'example file ' + (optionList.length + 1) + ' png',
-                label: 'example file ' + (optionList.length + 1) + ' png',
-                key: optionList.length + 1,
-            };
-        }
+    const addOptionHandler = () => {
+        let newOption: OptionItem = {
+            value: 'Option' + (optionList.length + 1),
+            label: 'Option' + (optionList.length + 1),
+            key: optionList.length + 1 + '',
+            selected: false,
+        };
         setOptionList([...optionList, newOption]);
     };
 
-    const updateHandler = (
-        updatedOption,
-        newValue,
-        checked,
-        description,
-        keyValue
-    ) => {
-        const updatedList = optionList.map((option) =>
-            option.key === keyValue
-                ? {
-                      ...option,
-                      label: newValue,
-                      value: option.value,
-                      key: keyValue,
-                      checked: checked,
-                      description: description || null,
-                  }
-                : option
+    const updateOptionHandler = (updatedOption: OptionItem) => {
+        const options = [...optionList];
+        if (component.optionType === 'radio' && updatedOption.selected) {
+            component.value = updatedOption.value;
+            options.forEach((option) => {
+                if (option.key !== updatedOption.key) {
+                    option.selected = false;
+                }
+            });
+        }
+        const index = options.findIndex(
+            (option) => option.key === updatedOption.key
         );
 
-        setOptionList(updatedList);
+        if (index >= 0) {
+            options[index] = { ...updatedOption };
+        }
+        setOptionList(options);
     };
+
+    const clearSelectionHandler = () => {
+        const options = [...optionList];
+        options.forEach((option) => {
+            option.selected = false;
+        });
+        setOptionList(options);
+    };
+
+    if (!component.options) {
+        return <></>;
+    }
 
     return (
         <Rows spacing="2u">
@@ -100,7 +106,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     {component.optionType === 'radio' && (
                         <CardTitle
                             title="Clear selection"
-                            onClick={() => setRadioChecked('')}
+                            onClick={clearSelectionHandler}
                             cursor="pointer"
                         ></CardTitle>
                     )}
@@ -112,15 +118,10 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                         <div key={option.key}>
                             <OptionsItemComponent
                                 component={component}
-                                setRadioChecked={setRadioChecked}
-                                radioChecked={radioChecked}
-                                showDeleteIcon={
-                                    optionList.length > 1 ? true : false
-                                }
-                                onChange={updateHandler}
-                                onClick={deleteHandler}
                                 option={option}
-                                OptionType={component.optionType}
+                                showDeleteIcon={showTrashIcon}
+                                onOptionChange={updateOptionHandler}
+                                onDelete={deleteOptionHandler}
                             />
                         </div>
                     );
@@ -129,7 +130,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
             <ButtonWithIcon
                 title="Add an option"
                 icon={PlusIcon}
-                onClick={addNewItemHandler}
+                onClick={addOptionHandler}
             />
         </Rows>
     );

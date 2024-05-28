@@ -1,49 +1,66 @@
 import { ClearIcon } from '@canva/app-ui-kit';
-import { ComponentType, OptionTypes } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../../constants/ComponentTypes';
+
+export enum FormFieldNames {
+    CONTROL = 'control',
+}
+
+export enum FormControlNames {
+    TEXT_INPUT = 'Text input',
+    MULTILINE_INPUT = 'Multiline input',
+    NUMBER_INPUT = 'Number input',
+    SELECT = 'Select',
+    CHECKBOX_FIELD = 'Checkbox',
+    CHECKBOX_GROUP = 'Checkbox group',
+    RADIO = 'Radio',
+    SEGMENTED_CONTROL = 'Segmented control',
+}
 
 export const FormFieldConfig = [
     {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: 'Control',
+        name: FormFieldNames.CONTROL,
         tabId: 'form field',
         options: [
             {
                 label: 'Text input',
-                value: 'text input',
+                value: FormControlNames.TEXT_INPUT,
             },
             {
                 label: 'Multiline input',
-                value: 'multiline input',
+                value: FormControlNames.MULTILINE_INPUT,
             },
             {
-                label: 'Numberinput',
-                value: 'number input',
+                label: 'Number input',
+                value: FormControlNames.NUMBER_INPUT,
             },
             {
                 label: 'Select',
-                value: 'select',
+                value: FormControlNames.SELECT,
             },
             {
-                label: 'Checkbox field',
-                value: 'checkbox field',
+                label: 'Checkbox Field',
+                value: FormControlNames.CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox group',
-                value: 'checkbox group',
+                label: 'Checkbox Group',
+                value: FormControlNames.CHECKBOX_GROUP,
             },
             {
-                label: 'Radio group',
-                value: 'radio group',
+                label: 'Radio Group',
+                value: FormControlNames.RADIO,
             },
             {
                 label: 'Segmented control',
-                value: 'segmented control',
+                value: FormControlNames.SEGMENTED_CONTROL,
             },
         ],
-        defaultValue: 'text input',
+        defaultValue: FormControlNames.TEXT_INPUT,
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: 'Label',
         label: 'Label',
@@ -52,6 +69,7 @@ export const FormFieldConfig = [
         tabId: 'form field',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: 'Description (optional)',
         label: 'Label',
@@ -60,6 +78,7 @@ export const FormFieldConfig = [
         tabId: 'form field',
     },
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: 'Width',
         label: 'Label',
@@ -69,6 +88,7 @@ export const FormFieldConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.CATEGORY,
         tabId: 'form field',
         options: [
@@ -97,6 +117,7 @@ export const FormFieldConfig = [
         ],
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: 'Error',
         defaultValue: false,
@@ -104,6 +125,7 @@ export const FormFieldConfig = [
     },
 
     {
+        showComponent: true,
         type: ComponentType.FORM_FIELD,
         name: 'Text',
         label: 'Label',
@@ -112,17 +134,20 @@ export const FormFieldConfig = [
         tabId: 'control',
     },
     {
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: 'With text',
         defaultValue: false,
         tabId: 'control',
     },
     {
+        showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: 'Start decorator  (optional)',
         tabId: 'control',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: 'End decorator',
         tabId: 'control',
@@ -147,6 +172,7 @@ export const FormFieldConfig = [
         defaultValue: 'none',
     },
     {
+        showComponent: true,
         type: ComponentType.SELECT,
         name: 'State',
         tabId: 'control',

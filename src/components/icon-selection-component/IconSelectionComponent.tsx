@@ -6,79 +6,74 @@ import {
     Button,
     ClearIcon,
     ChevronDownIcon,
-    SelectOption,
 } from '@canva/app-ui-kit';
-import { useIconStore } from 'src/store/IconStore';
-import { Component } from 'src/models/component.model';
+
+import { IconType, useIconStore } from 'src/store/IconStore';
+import { Component, OptionItem } from 'src/models/component.model';
 import { useComponentStore } from 'src/store/ComponentStore';
+import { iconChangeHandler } from './IconSelectionComponentUtils';
+import { Icon } from 'src/models/icons.model';
+
 type PropType = {
     component: Component;
-    optionField?: SelectOption<string>;
-    setIconData?: React.Dispatch<React.SetStateAction<any>>;
+    optionField?: OptionItem;
 };
-const IconSelctionComponent = ({
-    component,
-    optionField,
-    setIconData,
-}: PropType) => {
+
+const IconSelectionComponent = ({ component, optionField }: PropType) => {
     const navigate = useNavigate();
-    const { iconsList, deleteIcon } = useIconStore();
+    const { iconsList, setIconsList, deleteIcon } = useIconStore();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
+
+    useEffect(() => {
+        if (optionField) {
+            const icon: Icon = {
+                label: optionField.value,
+                value: optionField.value,
+                Icon: optionField.Icon as any,
+            };
+
+            setIconsList({
+                icon: icon,
+                componentId: component.name,
+                optionId: optionField.key as string,
+            });
+        }
+    }, [optionField]);
+
     const selectedIcon = useMemo(() => {
         return iconsList.find((iconObj) => {
             if (optionField) {
-                if (iconObj.componentId == optionField.description) {
-                    selectedComponent?.fields?.forEach((field: Component) => {
-                        if (field.name === component.name) {
-                            field.value = iconObj.icon;
-                        }
-                        return;
-                    });
+                if (iconObj.optionId == optionField.key) {
                     return true;
                 }
             } else {
                 if (iconObj.componentId == component.name) {
-                    selectedComponent?.fields?.forEach((field: Component) => {
-                        if (field.name === component.name) {
-                            field.value = iconObj.icon;
-                        }
-                        setSelectedComponent({ ...selectedComponent });
-                        return;
-                    });
                     return true;
                 }
             }
         });
     }, [iconsList]);
-    useEffect(() => {
-        changeHandler();
-    }, [selectedIcon?.icon]);
-    const changeHandler = () => {
-        selectedComponent?.fields?.forEach((field: Component) => {
-            if (optionField) {
-                if (optionField.description === selectedIcon?.componentId) {
-                    if (field.name === component.name) {
-                        field.value = selectedIcon?.icon;
-                    }
-                    return;
-                }
-            } else {
-                if (field.name === component.name) {
-                    field.value = selectedIcon?.icon;
-                }
-                setSelectedComponent({ ...selectedComponent });
-                return;
-            }
-        });
-    };
+    console.log('🚀 ~ selectedIcon ~ selectedIcon:', selectedIcon, iconsList);
+
+    // useEffect(() => {
+    //     if (selectedIcon && selectedIcon.icon) {
+    //         const updatedComponent = iconChangeHandler(
+    //             selectedComponent as Component,
+    //             component,
+    //             selectedIcon as IconType,
+    //             optionField
+    //         );
+    //         setSelectedComponent({ ...updatedComponent });
+    //     }
+    // }, [selectedIcon?.icon]);
+
     const onFocusHandler = (event) => {
         selectedIcon?.icon && deleteIcon(selectedIcon.componentId);
         navigate('/icons', {
             state: {
                 path: 'iconSelector',
-                componentId: optionField
-                    ? optionField.description
-                    : component.name,
+                componentId: component.name,
+                optionId: optionField ? optionField.key : undefined,
             },
         });
     };
@@ -99,15 +94,15 @@ const IconSelctionComponent = ({
                     navigate('/icons', {
                         state: {
                             path: 'iconSelector',
-                            componentId: optionField
-                                ? optionField.label
-                                : component.name,
+                            componentId: component.name,
+                            optionId: optionField ? optionField.key : undefined,
                         },
                     });
                 }}
             />
         );
     };
+
     return (
         <FormField
             label={optionField?.label ? '' : component.name}
@@ -125,4 +120,4 @@ const IconSelctionComponent = ({
         />
     );
 };
-export default IconSelctionComponent;
+export default IconSelectionComponent;

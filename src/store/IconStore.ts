@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import { Icon } from 'src/models/icons.model';
 
-type IconType = {
+export type IconType = {
     icon: Icon;
     componentId: string;
+    optionId?: string;
 };
 
 type PropType = {
@@ -18,10 +19,26 @@ export const useIconStore = create<PropType>((set) => ({
         set((state) => ({
             iconsList: [...state.iconsList, iconType],
         })),
-    deleteIcon: (componentId: string) =>
+    deleteIcon: (componentId: string, optionId?: string) =>
         set((state) => ({
-            iconsList: state.iconsList.filter(
-                (obj) => obj.componentId !== componentId
-            ),
+            iconsList: deleteIcon(state.iconsList, componentId, optionId),
         })),
 }));
+
+const deleteIcon = (
+    icons: IconType[],
+    componentId: string,
+    optionId?: string
+) => {
+    return icons.filter((icon) => {
+        if (icon.componentId !== componentId) {
+            if (!optionId) {
+                return icon;
+            } else {
+                if (optionId !== icon.optionId) {
+                    return icon;
+                }
+            }
+        }
+    });
+};

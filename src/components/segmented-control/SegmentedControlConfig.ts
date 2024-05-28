@@ -1,4 +1,4 @@
-import { ComponentType, OptionTypes } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from '../../constants/ComponentTypes';
 
 export enum SegmentedControlFieldNames {
     TYPE = 'Type',
@@ -23,6 +23,7 @@ export const SegmentedControlConfig = [
             },
         ],
         defaultValue: 'text',
+        value: 'text',
     },
     {
         showComponent: true,
@@ -74,16 +75,19 @@ export const SegmentedControlConfig = [
                 key: 1,
                 label: 'S',
                 value: 's',
+                selected: true,
             },
             {
                 key: 2,
                 label: 'M',
                 value: 'm',
+                selected: false,
             },
             {
                 key: 3,
                 label: 'L',
                 value: 'l',
+                selected: false,
             },
         ],
         value: 's',

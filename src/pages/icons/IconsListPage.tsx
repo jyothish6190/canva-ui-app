@@ -21,6 +21,7 @@ const IconsListPage = () => {
 
     const previousPath = location?.state?.path;
     const componentId = location?.state?.componentId;
+    const optionId = location?.state?.optionId;
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -34,7 +35,11 @@ const IconsListPage = () => {
 
     const iconSelectionHandler = (icon: Icon) => {
         if (previousPath !== 'home') {
-            setSelectedIcons({ icon: icon, componentId: componentId });
+            setSelectedIcons({
+                icon: icon,
+                componentId: componentId,
+                optionId: optionId,
+            });
             navigate(-1);
         } else {
             updateComponentHandler(icon);

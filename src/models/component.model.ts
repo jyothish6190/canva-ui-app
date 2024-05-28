@@ -14,7 +14,7 @@ export interface Component {
     text?: string;
     label?: string;
     description?: string;
-    options?: SelectOption<string | number>[];
+    options?: OptionItem[];
     defaultValue?: any;
     min?: number;
     max?: number;
@@ -39,7 +39,9 @@ export interface Component {
     tabs?: Category[];
     tabId?: string;
     defaultTabValue?: string;
-    optionType?: OptionTypes;
+    optionType?: 'radio' | 'checkbox';
+    icon?: () => JSX.Element;
+    optionContentType?: 'text' | 'icon';
 }
 
 interface Option2 {
@@ -48,8 +50,11 @@ interface Option2 {
     default?: boolean;
 }
 
-interface Option {
+export interface OptionItem {
+    key: string | number;
+    label?: string | (() => JSX.Element);
     value: string;
-    label: string;
-    selected?: boolean;
+    description?: string;
+    Icon?: () => JSX.Element;
+    selected: boolean;
 }

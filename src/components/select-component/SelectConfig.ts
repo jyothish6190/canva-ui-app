@@ -1,4 +1,4 @@
-import { ComponentType, OptionTypes } from '../ComponentTypes';
+import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
 
 export const enum SelectFieldNames {
     PLACEHOLDER = 'Placeholder',
@@ -108,21 +108,25 @@ export const SelectConfig = [
                 key: 1,
                 label: 'Small',
                 value: 'small',
+                selected: true,
             },
             {
                 key: 2,
                 label: 'Medium',
                 value: 'medium',
+                selected: false,
             },
             {
                 key: 3,
                 label: 'Large',
                 value: 'large',
+                selected: false,
             },
             {
                 key: 4,
                 label: 'Custom',
                 value: 'custom',
+                selected: false,
             },
         ],
     },

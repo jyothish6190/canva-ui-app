@@ -24,12 +24,12 @@ const TabsList = ({ component }: PropType) => {
             className={styles.TabsRoot}
         >
             <Tabs.List className={styles.TabsList} aria-label="tabs">
-                {component.tabs.map((tab) => {
+                {component.tabs.map((tab, index) => {
                     return (
                         <Tabs.Trigger
-                            key={tab.value}
+                            key={`${tab.value}${index}`}
                             className={styles.TabsTrigger}
-                            value={tab.value}
+                            value={tab.value as any}
                         >
                             {tab.label}
                         </Tabs.Trigger>
@@ -37,8 +37,14 @@ const TabsList = ({ component }: PropType) => {
                 })}
             </Tabs.List>
 
-            {component.tabs.map((tab) => {
-                return <TabItemComponent component={component} tab={tab} />;
+            {component.tabs.map((tab, index) => {
+                return (
+                    <TabItemComponent
+                        component={component}
+                        tab={tab}
+                        key={index}
+                    />
+                );
             })}
         </Tabs.Root>
     );
