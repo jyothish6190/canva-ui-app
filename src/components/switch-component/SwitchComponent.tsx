@@ -139,7 +139,11 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                             ? switchData.switchLabel
                             : component.name
                     }
-                    value={switchData.switchValue}
+                    value={
+                        typeof component.value === 'boolean'
+                            ? component.value
+                            : switchData.switchValue
+                    }
                     description={
                         switchData.switchDescription
                             ? switchData.switchDescription
