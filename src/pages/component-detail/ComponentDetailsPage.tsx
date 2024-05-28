@@ -57,6 +57,7 @@ const ComponentDetailsPage = () => {
                 elementId.current = appElement.data.elementId;
                 assignDetails(appElement);
             } else if (!appElement) {
+                document.getElementById('container')?.scrollTo(0, 0);
                 onAddComponent();
             }
             initialLoad.current = false;
