@@ -5,7 +5,7 @@ export enum SliderFieldNames {
     MAXIMUM = 'Maximum',
     VALUE = 'Value',
     WIDTH = 'Width',
-    WIDTH_OPTIONS = 'Width Options',
+    WIDTH_OPTIONS = 'Width options',
 }
 
 export const SliderConfig = [
