@@ -20,7 +20,7 @@
     width: fit-content;
     padding-left: 13px;
 }
-.Home-select-container > div > div {
+.Home-select-container > div > div > button {
     border: 1px solid var(--ui-kit-color-border-active);
 }
 .Home-select-container > span {
@@ -34,10 +34,10 @@
     gap: 20px;
     max-height: 200px;
 }
-.Select div > div > div {
+.Select div > div > div > button {
     border: 1px solid var(--ui-kit-color-border-active);
 }
-.Select-hover div > div > div {
+.Select-hover div > div > div > button {
     border: 1px solid var(--ui-kit-color-border-hover);
 }
 

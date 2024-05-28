@@ -13,16 +13,16 @@ type PropType = {
 
 type SliderStateData = {
     sliderValue: number | undefined;
-    maxValue: number;
-    minValue: number;
+    maxValue: number | undefined;
+    minValue: number | undefined;
     sliderLabel: string | undefined;
     sliderWidth: string | undefined;
 };
 
 const initialState: SliderStateData = {
     sliderValue: undefined,
-    maxValue: 100,
-    minValue: 0,
+    maxValue: undefined,
+    minValue: undefined,
     sliderLabel: undefined,
     sliderWidth: undefined,
 };
@@ -47,7 +47,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                 setSliderState((prevState) => {
                     return {
                         ...prevState,
-                        minValue: field.value ? field.value : 0,
+                        minValue: field.value,
                     };
                 });
             }
@@ -55,7 +55,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                 setSliderState((prevState) => {
                     return {
                         ...prevState,
-                        maxValue: field.value ? field.value : 100,
+                        maxValue: field.value,
                     };
                 });
             }
@@ -115,11 +115,22 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                     }
                     control={(props) => (
                         <Slider
-                            defaultValue={component.defaultValue}
-                            value={sliderState.sliderValue}
-                            max={sliderState.maxValue}
-                            min={sliderState.minValue}
-                            step={1}
+                            defaultValue={sliderState.minValue}
+                            value={
+                                sliderState.sliderValue
+                                    ? sliderState.sliderValue
+                                    : component.value
+                            }
+                            max={
+                                sliderState.maxValue
+                                    ? sliderState.maxValue
+                                    : (component.max as number)
+                            }
+                            min={
+                                sliderState.minValue
+                                    ? sliderState.minValue
+                                    : (component.min as number)
+                            }
                             onChange={changeHandler}
                         />
                     )}

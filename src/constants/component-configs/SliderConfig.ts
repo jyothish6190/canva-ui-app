@@ -32,6 +32,8 @@ export const SliderConfig = [
         type: ComponentType.SLIDER,
         name: SliderFieldNames.VALUE,
         value: 25,
+        min: 0,
+        max: 100,
         defaultValue: 25,
     },
 

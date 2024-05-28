@@ -46,10 +46,7 @@ export const PillConfig = [
                 label: 'Active',
                 value: 'active',
             },
-            {
-                label: 'Loading',
-                value: 'loading',
-            },
+
             {
                 label: 'Disabled',
                 value: 'disabled',

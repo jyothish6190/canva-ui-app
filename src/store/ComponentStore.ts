@@ -312,6 +312,68 @@ const updateField = (
                 });
             }
             break;
+        case SegmentedControlFieldNames.TYPE:
+            if (value === 'text') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                        field.options = [
+                            {
+                                label: 'S',
+                                value: 's',
+                            },
+                            {
+                                label: 'M',
+                                value: 'm',
+                            },
+                            {
+                                label: 'L',
+                                value: 'l',
+                            },
+                        ];
+                    }
+                });
+            } else if (value === 'icon') {
+                newComponent.fields?.forEach((field: Component) => {
+                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
+                        field.options = [
+                            {
+                                value: 'Arrow up',
+                                label: ArrowUpIcon() as any,
+                                key: 1,
+                                description: 'option1',
+                            },
+                            {
+                                value: 'Arrow down',
+                                label: ArrowDownIcon() as any,
+                                key: 2,
+                                description: 'option2',
+                            },
+                            {
+                                value: 'Arrow left',
+                                label: ArrowLeftIcon() as any,
+                                key: 3,
+                                description: 'option3',
+                            },
+                        ] as any;
+                    }
+                });
+            }
+            break;
+        case SliderFieldNames.MAXIMUM:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.VALUE) {
+                    field.max = value as number;
+                }
+            });
+            break;
+        case SliderFieldNames.MINIMUM:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === SliderFieldNames.VALUE) {
+                    field.min = value as number;
+                    field.value = value;
+                }
+            });
+            break;
 
         default:
             break;
