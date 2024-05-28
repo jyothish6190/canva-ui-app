@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { FormField, NumberInput } from '@canva/app-ui-kit';
+import { FormField, NumberInput, Title } from '@canva/app-ui-kit';
 
 import styles from './NumberInputComponent.css';
 import { Component } from 'src/models/component.model';
@@ -161,9 +161,16 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
                 >
                     <FormField
                         label={
-                            numberInputData.numberInputLabel
-                                ? numberInputData.numberInputLabel
-                                : component.name
+                            (
+                                <Title
+                                    children={
+                                        numberInputData.numberInputLabel
+                                            ? numberInputData.numberInputLabel
+                                            : component.name
+                                    }
+                                    size="xsmall"
+                                />
+                            ) as any
                         }
                         control={(props) => (
                             <NumberInput

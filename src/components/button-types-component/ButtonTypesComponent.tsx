@@ -12,12 +12,21 @@ type PropType = {
 };
 
 const ButtonTypesComponent = ({ component }: PropType) => {
-    const { selectedComponent, setComponentField } = useComponentStore();
+    const { selectedComponent, setComponentField, setSelectedComponent } =
+        useComponentStore();
 
     const [selectedCategory, setSelectedCategory] = useState<Category>();
 
     const selectHandler = (category: Category) => {
-        setSelectedCategory(category);
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === component.name) {
+                field.selectedCategories = [
+                    { label: category.label, value: category.value },
+                ];
+            }
+            setSelectedComponent({ ...selectedComponent });
+            return;
+        });
         setComponentField(component, category.value);
     };
 
@@ -32,9 +41,7 @@ const ButtonTypesComponent = ({ component }: PropType) => {
                                 key={index}
                                 category={category as any}
                                 selectedCategories={
-                                    selectedCategory
-                                        ? [selectedCategory]
-                                        : (component.selectedCategories as Category[])
+                                    component.selectedCategories as Category[]
                                 }
                                 onClick={selectHandler}
                             />

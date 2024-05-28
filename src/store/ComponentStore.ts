@@ -67,10 +67,43 @@ const updateField = (
                 });
             }
             break;
+        case ButtonFieldNames.WIDTH:
+            newComponent.fields?.forEach((field: Component) => {
+                if (field.name === ButtonFieldNames.WIDTH_OPTIONS) {
+                    let valueExists = false;
+                    field.options?.forEach((item) => {
+                        if (item.value === value) {
+                            valueExists = true;
+                            field.selectedCategories = [
+                                {
+                                    label: item.label as string,
+                                    value: item.value,
+                                },
+                            ];
+                        }
+                    });
+                    if (!valueExists) {
+                        field.options?.forEach((item) => {
+                            if (item.label === 'Custom') {
+                                item.value = value as any;
+
+                                field.selectedCategories = [
+                                    {
+                                        label: item.label as string,
+                                        value: item.value,
+                                    },
+                                ];
+                            }
+                        });
+                    }
+                }
+            });
+            break;
+
         case ButtonFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ButtonFieldNames.WIDTH) {
-                    field.value = value;
+                    field.value = value as number;
                 }
             });
             break;
@@ -204,10 +237,14 @@ const updateField = (
                         ];
                     }
                 });
-            } else if (value === 'bold') {
+            } else {
                 newComponent.fields?.forEach((field: Component) => {
                     if (field.name === TextFieldNames.SIZE) {
                         field.options = [
+                            {
+                                label: 'X large',
+                                value: 'xlarge',
+                            },
                             {
                                 label: 'Large',
                                 value: 'large',
@@ -220,6 +257,10 @@ const updateField = (
                             {
                                 label: 'Small',
                                 value: 'small',
+                            },
+                            {
+                                label: 'X small',
+                                value: 'xsmall',
                             },
                         ];
                     }

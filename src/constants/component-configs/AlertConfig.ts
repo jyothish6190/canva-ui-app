@@ -5,7 +5,7 @@ export enum AlertFieldNames {
     TITLE = 'Title (optional)',
     TEXT = 'Text',
     WIDTH = 'Width',
-    WIDTH_OPTION = 'Width option',
+    WIDTH_OPTION = 'Width options',
     DISMISSIBLE = 'Dismissible',
 }
 
