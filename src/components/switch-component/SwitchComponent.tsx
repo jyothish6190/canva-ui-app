@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Switch } from '@canva/app-ui-kit';
+import { Switch, Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 
@@ -135,9 +135,16 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                         switchData.switchState === 'disabled' ? true : false
                     }
                     label={
-                        switchData.switchLabel
-                            ? switchData.switchLabel
-                            : component.name
+                        (
+                            <Title
+                                children={
+                                    switchData.switchLabel
+                                        ? switchData.switchLabel
+                                        : component.name
+                                }
+                                size="xsmall"
+                            />
+                        ) as any
                     }
                     value={switchData.switchValue}
                     description={

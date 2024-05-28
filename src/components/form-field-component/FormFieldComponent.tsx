@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormField, TextInput } from '@canva/app-ui-kit';
+import { FormField, TextInput, Title } from '@canva/app-ui-kit';
 
 import ExcessContainer from '../CommonComponents/excessContainer';
 
@@ -30,7 +30,9 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
     if (isProperty) {
         return (
             <FormField
-                label={component.name}
+                label={
+                    (<Title children={component.name} size="xsmall" />) as any
+                }
                 control={(props) => (
                     <TextInput
                         placeholder={component.placeholder}

@@ -3,6 +3,7 @@ import {
     FormField,
     SegmentedControl,
     SegmentedControlOption,
+    Title,
 } from '@canva/app-ui-kit';
 
 import ExcessContainer from '../CommonComponents/excessContainer';
@@ -66,7 +67,7 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
                 }}
             >
                 <FormField
-                    label={label}
+                    label={(<Title children={label} size="xsmall" />) as any}
                     description=""
                     control={(props) => (
                         <SegmentedControl
