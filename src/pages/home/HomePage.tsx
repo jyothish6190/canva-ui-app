@@ -15,11 +15,19 @@ import { Category } from '../../models/category.model';
 import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
+import { initAppElement } from '@canva/design';
+
+const appElementClient = initAppElement<any>({
+    render: (data) => {
+        return [];
+    },
+});
 
 const HomePage = () => {
     const navigate = useNavigate();
     const { setSelectedComponent } = useComponentStore();
     const [showIcons, setShowIcons] = useState(true);
+    const [isAppElement, setIsAppElement] = useState(true);
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
@@ -50,6 +58,17 @@ const HomePage = () => {
         });
         return filteredComponents;
     }, [searchQuery, selectedCategories, components]);
+
+    useEffect(() => {
+        appElementClient.registerOnElementChange((appElement) => {
+            if (appElement?.data?.selectedComponent) {
+                setIsAppElement(true);
+                setSelectedComponent(appElement?.data?.selectedComponent);
+                navigate('/component-details');
+            }
+            setIsAppElement(false);
+        });
+    }, []);
 
     useEffect(() => {
         setShowIcons(

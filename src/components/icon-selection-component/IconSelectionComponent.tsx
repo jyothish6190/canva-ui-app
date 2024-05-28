@@ -53,7 +53,6 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
             }
         });
     }, [iconsList]);
-    console.log('🚀 ~ selectedIcon ~ selectedIcon:', selectedIcon, iconsList);
 
     // useEffect(() => {
     //     if (selectedIcon && selectedIcon.icon) {

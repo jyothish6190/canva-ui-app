@@ -27,12 +27,13 @@ import { SegmentedControlConfig } from '../components/segmented-control/Segmente
 import { FileInputConfig } from './component-configs/FileInputConfig';
 import { CheckBoxConfig } from './component-configs/CheckBoxConfig';
 import { CheckBoxGroupConfig } from './component-configs/CheckBoxGroupConfig';
-import { TextInputConfig } from './component-configs/TextInputConfig';
+import { TextInputConfig } from '../components/text-input-component/TextInputConfig';
 import { SelectConfig } from 'src/components/select-component/SelectConfig';
 import {
     FormControlNames,
     FormFieldConfig,
 } from 'src/components/form-field-component/FormFieldConfig';
+import { FormTextInputConfig } from 'src/components/text-input-component/FormTextInputConfig';
 
 export const components: Component[] = [
     {

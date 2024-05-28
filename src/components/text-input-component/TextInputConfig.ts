@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ClearIcon, SearchIcon } from '@canva/app-ui-kit';
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType } from '../../constants/ComponentTypes';
 
 export enum TextInputSearchFieldNames {
     TEXT = 'Text',

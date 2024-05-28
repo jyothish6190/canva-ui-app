@@ -5,7 +5,7 @@ import { Component } from 'src/models/component.model';
 
 import styles from './TextInput.css';
 import { Icon } from 'src/models/icons.model';
-import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
+import { TextInputSearchFieldNames } from './TextInputConfig';
 
 type PropType = {
     component: Component;

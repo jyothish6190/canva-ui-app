@@ -8,11 +8,12 @@ import { PlaceHolderFieldNames } from 'src/constants/component-configs/Placehold
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
-import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 import { FileInputFieldNames } from 'src/constants/component-configs/FileInputConfig';
+import { SegmentedControlFieldNames } from 'src/components/segmented-control/SegmentedControlConfig';
+import { TextInputSearchFieldNames } from 'src/components/text-input-component/TextInputConfig';
 
 type PropType = {
     selectedComponent: Component | undefined;
@@ -420,6 +421,5 @@ const updateField = (
             break;
     }
 
-    console.log('🚀 ~  newComponent:', newComponent);
     return newComponent;
 };

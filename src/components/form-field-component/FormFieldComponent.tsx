@@ -6,6 +6,9 @@ import ExcessContainer from '../CommonComponents/excessContainer';
 import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
+import { FormControlNames, FormFieldNames } from './FormFieldConfig';
+import MultilineInputComponent from '../multiline-input-component/MultilineInputComponent';
+import ComponentItem from 'src/pages/home/component-list/component-item/ComponentItem';
 
 type PropType = {
     component: Component;
@@ -27,19 +30,40 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
         setComponentField(component, value);
     };
 
+    const getComponent = () => {
+        let componentType = '';
+
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === FormFieldNames.CONTROL) {
+                componentType = field.value;
+            }
+        });
+
+        // if (componentType === FormControlNames.FORM_MULTILINE_INPUT) {
+        //     return (
+        //         <ComponentItem
+        //             component={selectedComponent as Component}
+        //             isProperty={true}
+        //         />
+        //     );
+        // } else {
+        return (
+            <TextInput
+                placeholder={component.placeholder}
+                value={component.value as string}
+                onChange={changeHandler}
+            />
+        );
+        // }
+    };
+
     if (isProperty) {
         return (
             <FormField
                 label={
                     (<Title children={component.name} size="xsmall" />) as any
                 }
-                control={(props) => (
-                    <TextInput
-                        placeholder={component.placeholder}
-                        value={component.value as string}
-                        onChange={changeHandler}
-                    />
-                )}
+                control={(props) => getComponent()}
             />
         );
     }

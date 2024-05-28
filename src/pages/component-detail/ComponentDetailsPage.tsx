@@ -1,8 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import { Button, Rows } from '@canva/app-ui-kit';
+import { Button } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
 import { initAppElement } from '@canva/design';
+import { upload } from '@canva/asset';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './ComponentDetailsPage.css';
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
@@ -10,9 +12,7 @@ import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
 
 import { useComponentStore } from 'src/store/ComponentStore';
-import { useElementStore } from 'src/store/elementStore';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { upload } from '@canva/asset';
+import { Component } from 'src/models/component.model';
 
 type AppElementData = {
     elementId: string;
@@ -36,15 +36,13 @@ const appElementClient = initAppElement<AppElementData>({
     },
 });
 type RefValueType = string | null;
-type ElementListType = any;
 
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
-    const { elements, setElements } = useElementStore();
+
     const initialLoad = useRef(true);
     const elementId = useRef<RefValueType>(null);
-    const updatedElementList = useRef<ElementListType>(null);
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -65,19 +63,16 @@ const ComponentDetailsPage = () => {
     }, []);
 
     async function assignDetails(appElement) {
-        let elementId = appElement.data.elementId;
-        let imageId = appElement.data.imageId;
-        let element = elements?.find(
-            (obj) => obj.elementId === appElement.data.elementId
-        );
+        const oldComponent = {
+            ...(appElement?.data?.selectedComponent as Component),
+        };
 
-        if (element?.component) {
-            setSelectedComponent(element?.component);
+        if (oldComponent) {
+            setSelectedComponent(oldComponent);
         }
-        navigate(`/component-details`);
     }
 
-    const onAddComponent = useCallback(async () => {
+    const onAddComponent = async () => {
         let selectedElementId = elementId?.current?.toString();
         if (ref.current === null) {
             return;
@@ -99,28 +94,9 @@ const ComponentDetailsPage = () => {
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
 
-        let element3 = document.getElementById('imageHTML');
-        if (element3)
-            element3.innerHTML = `<img src=${imgSource} alt="Description of image">`;
-        let elementIdNew = getElementId();
-        if (selectedComponent) {
-            let updatedItems = elements;
-            if (selectedElementId) {
-                updatedItems = elements.filter(
-                    (element) =>
-                        element?.elementId.toString() !== selectedElementId
-                );
-            }
-            let updatedElements = [
-                ...updatedItems,
-                {
-                    elementId: elementIdNew,
-                    component: selectedComponent,
-                },
-            ];
-            updatedElementList.current = updatedElements;
-            await setElements(updatedElements);
-        }
+        let elementIdNew = selectedElementId
+            ? selectedElementId
+            : getElementId();
 
         const result = await upload({
             id: elementIdNew,
@@ -130,10 +106,20 @@ const ComponentDetailsPage = () => {
             thumbnailUrl: imgSource,
         });
         images[elementIdNew] = result.ref;
-        await appElementClient.addOrUpdateElement({
-            elementId: elementIdNew,
-        });
-    }, [ref]);
+
+        let data = { elementId: elementIdNew, selectedComponent };
+
+        let appElementData = {
+            type: 'IMAGE',
+            width: 'auto',
+            height: 100,
+            top: 0,
+            left: 0,
+            ref: images[elementIdNew],
+            ...data,
+        };
+        await appElementClient.addOrUpdateElement(appElementData);
+    };
 
     function getElementId() {
         const timestamp = new Date().getTime().toString(16);
@@ -188,10 +174,6 @@ const ComponentDetailsPage = () => {
                             onClick={onAddComponent}
                         />
                     </div>
-                    <p>Live preview html</p>
-                    <div id="innerHTML"></div>{' '}
-                    <p>base64 image after DOMtoSVG conversion</p>
-                    <div id="imageHTML"></div>
                 </>
             )}
         </>
