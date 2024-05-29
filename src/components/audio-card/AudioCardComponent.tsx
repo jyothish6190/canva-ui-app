@@ -43,7 +43,7 @@ const AudioCardComponent = ({ component, isProperty }: AudioCardPropType) => {
                 setAudioCardState((prevState) => {
                     return {
                         ...prevState,
-                        audioDuration: field.value || 86,
+                        audioDuration: field.value || 0,
                     };
                 });
             }
