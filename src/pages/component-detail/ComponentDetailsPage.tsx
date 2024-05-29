@@ -13,6 +13,7 @@ import PropertyList from './property-list/PropertyList';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { Component } from 'src/models/component.model';
+import { ComponentType } from 'src/constants/ComponentTypes';
 
 type AppElementData = {
     elementId: string;
@@ -20,16 +21,10 @@ type AppElementData = {
 
 const images = {};
 
-const appElementClient = initAppElement<AppElementData>({
+const appElementClient = initAppElement<any>({
     render: (data) => {
         return [
             {
-                type: 'IMAGE',
-                width: 'auto',
-                height: 100,
-                top: 0,
-                left: 0,
-                ref: images[data.elementId],
                 ...data,
             },
         ];
@@ -94,30 +89,65 @@ const ComponentDetailsPage = () => {
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
 
-        let elementIdNew = selectedElementId
-            ? selectedElementId
-            : getElementId();
+        let elementIdNew = getElementId();
 
-        const result = await upload({
-            id: elementIdNew,
-            type: 'IMAGE',
-            mimeType: 'image/svg+xml',
-            url: imgSource,
-            thumbnailUrl: imgSource,
-        });
-        images[elementIdNew] = result.ref;
-
+        let appElementData = {} as any;
+        let width = 'auto' as any,
+            height = 100 as any;
         let data = { elementId: elementIdNew, selectedComponent };
+        selectedComponent?.fields?.map((field) => {
+            if (field.type === ComponentType.NUMBER_INPUT) {
+                if (field?.name.includes('Width')) {
+                    width = Number(field?.value) || 'auto';
+                }
+                if (field?.name.includes('Height')) {
+                    height = Number(field?.value) || 'auto';
+                }
+            }
+        });
+        if (
+            selectedComponent?.type === ComponentType.IMAGE_CARD ||
+            selectedComponent?.type === ComponentType.VIDEO_CARD
+        ) {
+            const image = await upload({
+                type: 'IMAGE',
+                mimeType: 'image/jpeg',
+                url:
+                    (selectedComponent?.previewUrl as string) ||
+                    (selectedComponent?.thumbnailUrl as string),
+                thumbnailUrl:
+                    (selectedComponent.previewUrl as string) ||
+                    (selectedComponent?.thumbnailUrl as string),
+            });
+            appElementData = {
+                type: 'IMAGE',
+                top: 0,
+                left: 0,
+                width: width,
+                height: height,
+                ref: image.ref,
+                ...data,
+            };
+        } else {
+            const result = await upload({
+                id: elementIdNew,
+                type: 'IMAGE',
+                mimeType: 'image/svg+xml',
+                url: imgSource,
+                thumbnailUrl: imgSource,
+            });
+            images[elementIdNew] = result.ref;
 
-        let appElementData = {
-            type: 'IMAGE',
-            width: 'auto',
-            height: 100,
-            top: 0,
-            left: 0,
-            ref: images[elementIdNew],
-            ...data,
-        };
+            appElementData = {
+                type: 'IMAGE',
+                width: 'auto',
+                height: 100,
+                top: 0,
+                left: 0,
+                ref: images[elementIdNew],
+                ...data,
+            };
+        }
         await appElementClient.addOrUpdateElement(appElementData);
     };
 
@@ -132,7 +162,7 @@ const ComponentDetailsPage = () => {
         let scale = 1;
         let width = 0;
         let max = 0;
-        let widthParam = component?.fields.filter(
+        let widthParam = component?.fields?.filter(
             (field) => field.name === 'Width'
         )[0];
         if (widthParam) {
