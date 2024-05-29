@@ -61,7 +61,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
             setWidth(getWidth(component));
             setActive(getActive(component));
         }
-    }, [component, component.value]);
+    }, [component, component.value, component.options]);
 
     const renderedClass = () => {
         if (active) {

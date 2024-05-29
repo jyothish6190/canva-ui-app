@@ -6,6 +6,7 @@ import {
 } from '@canva/app-ui-kit';
 import { Component, OptionItem } from 'src/models/component.model';
 import { SegmentedControlFieldNames } from './SegmentedControlConfig';
+import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 const iconOptions: OptionItem[] = [
     {
@@ -48,6 +49,46 @@ const textOptions = [
         label: 'L',
         value: 'l',
         selected: false,
+    },
+];
+
+const regularTextSize = [
+    {
+        label: 'X large',
+        value: 'xlarge',
+    },
+    {
+        label: 'Large',
+        value: 'large',
+    },
+
+    {
+        label: 'Medium',
+        value: 'medium',
+    },
+    {
+        label: 'Small',
+        value: 'small',
+    },
+    {
+        label: 'X small',
+        value: 'xsmall',
+    },
+];
+
+const boldTextSize = [
+    {
+        label: 'Large',
+        value: 'large',
+    },
+
+    {
+        label: 'Medium',
+        value: 'medium',
+    },
+    {
+        label: 'Small',
+        value: 'small',
     },
 ];
 
@@ -128,7 +169,10 @@ export const processSegementedFieldChange = (
         return;
     });
 
-    if (updatedComponent.name === SegmentedControlFieldNames.TYPE) {
+    if (
+        updatedComponent.name === SegmentedControlFieldNames.TYPE ||
+        TextFieldNames.VARIANT
+    ) {
         newComponent = switchSegmentType(selectedComponent, newValue);
     }
 
@@ -150,6 +194,16 @@ const switchSegmentType = (selectedComponent: Component, value: any) => {
                 newComponent.optionContentType = 'icon';
                 field.options = iconOptions as any[];
                 field.value = 'Arrow up';
+            }
+        }
+        if (field.name === TextFieldNames.SIZE) {
+            if (value === 'bold') {
+                newComponent.options = boldTextSize as any[];
+                field.options = boldTextSize as any[];
+                field.value = 'medium';
+            } else if (value === 'regular') {
+                newComponent.options = regularTextSize as any[];
+                field.options = regularTextSize as any[];
             }
         }
     });

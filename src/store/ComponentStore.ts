@@ -216,57 +216,6 @@ const updateField = (
                 }
             });
             break;
-        case TextFieldNames.VARIANT:
-            if (value === 'bold') {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === TextFieldNames.SIZE) {
-                        field.options = [
-                            {
-                                label: 'large',
-                                value: 'large',
-                            },
-
-                            {
-                                label: 'Medium',
-                                value: 'medium',
-                            },
-                            {
-                                label: 'Small',
-                                value: 'small',
-                            },
-                        ];
-                    }
-                });
-            } else {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === TextFieldNames.SIZE) {
-                        field.options = [
-                            {
-                                label: 'X large',
-                                value: 'xlarge',
-                            },
-                            {
-                                label: 'Large',
-                                value: 'large',
-                            },
-
-                            {
-                                label: 'Medium',
-                                value: 'medium',
-                            },
-                            {
-                                label: 'Small',
-                                value: 'small',
-                            },
-                            {
-                                label: 'X small',
-                                value: 'xsmall',
-                            },
-                        ];
-                    }
-                });
-            }
-            break;
 
         case SliderFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
@@ -353,53 +302,7 @@ const updateField = (
                 });
             }
             break;
-        case SegmentedControlFieldNames.TYPE:
-            if (value === 'text') {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
-                        field.options = [
-                            {
-                                label: 'S',
-                                value: 's',
-                            },
-                            {
-                                label: 'M',
-                                value: 'm',
-                            },
-                            {
-                                label: 'L',
-                                value: 'l',
-                            },
-                        ];
-                    }
-                });
-            } else if (value === 'icon') {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === SegmentedControlFieldNames.OPTIONS) {
-                        field.options = [
-                            {
-                                value: 'Arrow up',
-                                label: ArrowUpIcon() as any,
-                                key: 1,
-                                description: 'option1',
-                            },
-                            {
-                                value: 'Arrow down',
-                                label: ArrowDownIcon() as any,
-                                key: 2,
-                                description: 'option2',
-                            },
-                            {
-                                value: 'Arrow left',
-                                label: ArrowLeftIcon() as any,
-                                key: 3,
-                                description: 'option3',
-                            },
-                        ] as any;
-                    }
-                });
-            }
-            break;
+
         case SliderFieldNames.MAXIMUM:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === SliderFieldNames.VALUE) {

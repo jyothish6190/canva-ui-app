@@ -4,6 +4,7 @@ import { Component, OptionItem } from 'src/models/component.model';
 import { FormFieldNames } from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from './SelectConfig';
 import { SelectState } from './SelectComponent';
+import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 export const getValue = (component: Component) => {
     let value = '';
@@ -52,7 +53,6 @@ export const getOptions = (component: Component) => {
     } else {
         options = component.options as SelectOption<string>[];
     }
-
     return options;
 };
 
