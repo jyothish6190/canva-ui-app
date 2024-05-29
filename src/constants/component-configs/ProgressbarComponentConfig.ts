@@ -4,7 +4,7 @@ export enum ProgressBarFieldNames {
     PERCENTAGE = 'Percentage',
     SIZE = 'Size',
     WIDTH = 'Width',
-    WIDTH_OPTIONS = 'Width Options',
+    WIDTH_OPTIONS = 'Width options',
 }
 
 export const ProgressbarConfig = [

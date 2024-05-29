@@ -115,7 +115,9 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                     }
                     control={(props) => (
                         <Slider
-                            defaultValue={sliderState.minValue}
+                            defaultValue={
+                                sliderState.minValue || component.defaultValue
+                            }
                             value={
                                 sliderState.sliderValue
                                     ? sliderState.sliderValue
