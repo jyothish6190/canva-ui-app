@@ -12,7 +12,7 @@ export const ProgressbarConfig = [
         showComponent: true,
         type: ComponentType.SLIDER,
         name: ProgressBarFieldNames.PERCENTAGE,
-        defaultValue: 50,
+        value: 50,
         min: 0,
         max: 100,
         disabled: true,

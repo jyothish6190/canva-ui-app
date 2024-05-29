@@ -103,7 +103,7 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 break;
 
             default:
-                return '';
+                return styles['Pill'];
                 break;
         }
     };

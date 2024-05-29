@@ -1,3 +1,8 @@
 .Pill-hover > button {
     background-color: var(--ui-kit-color-tertiary-hover);
+    width: 100%;
+}
+
+.Pill > button {
+    width: 100%;
 }
