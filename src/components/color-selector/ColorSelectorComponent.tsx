@@ -44,6 +44,13 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                 });
             }
         });
+        if (!component.fields)
+            setColorData((prevState) => {
+                return {
+                    ...prevState,
+                    color: component.value ? component.value : component.color,
+                };
+            });
     }, [component]);
     const { selectedComponent, setComponentField, setSelectedComponent } =
         useComponentStore();
