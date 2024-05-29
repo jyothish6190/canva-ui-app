@@ -4,7 +4,7 @@ export enum ProgressBarFieldNames {
     PERCENTAGE = 'Percentage',
     SIZE = 'Size',
     WIDTH = 'Width',
-    WIDTH_OPTIONS = 'Width Options',
+    WIDTH_OPTIONS = 'Width options',
 }
 
 export const ProgressbarConfig = [
@@ -12,7 +12,7 @@ export const ProgressbarConfig = [
         showComponent: true,
         type: ComponentType.SLIDER,
         name: ProgressBarFieldNames.PERCENTAGE,
-        defaultValue: 50,
+        value: 50,
         min: 0,
         max: 100,
         disabled: true,

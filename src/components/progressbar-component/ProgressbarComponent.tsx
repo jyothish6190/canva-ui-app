@@ -31,7 +31,7 @@ const ProgressbarComponent = ({ component, isProperty }: PropType) => {
                 setProgressBarState((prevState) => {
                     return {
                         ...prevState,
-                        progressBarValue: field.value || 50,
+                        progressBarValue: field.value || 0,
                     };
                 });
             }
