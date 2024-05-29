@@ -134,6 +134,12 @@ export const selectOptionChangeHandler = (
     selectedComponent?.fields?.forEach((field: Component) => {
         if (field.name === FormFieldNames.CONTROL) {
             updatedComponent = switchFormComponent(selectedComponent, value);
+        } else {
+            updatedComponent = updateSelectComponent(
+                selectedComponent,
+                component,
+                value
+            );
         }
     });
 
