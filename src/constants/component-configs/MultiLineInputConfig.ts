@@ -5,7 +5,7 @@ export enum MultilineInputFieldNames {
     PLACEHOLDER = 'Placeholder',
     MAX_CHAR_COUNT = 'Maximum character count  (optional)',
     WIDTH = 'Width',
-    WIDTH_OPTION = 'Width Options',
+    WIDTH_OPTION = 'Width options',
     STATE = 'State',
 }
 

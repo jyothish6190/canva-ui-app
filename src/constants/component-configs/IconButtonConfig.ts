@@ -3,7 +3,7 @@ export enum IconButtonFieldNames {
     VARIANT = 'Variant',
     ICON_SELECTION = 'Icon ',
     STATE = 'State',
-    HUG_CONTENT = 'Hug Content',
+    HUG_CONTENT = 'Hug content',
     WIDTH = 'Width',
     WIDTH_OPTIONS = 'Width options',
 }

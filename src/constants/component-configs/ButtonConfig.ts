@@ -7,7 +7,7 @@ export enum ButtonFieldNames {
     TEXT = 'Text',
     ICON_SELECTION = 'Icon (optional)',
     STATE = 'State',
-    HUG_CONTENT = 'Hug Content',
+    HUG_CONTENT = 'Hug content',
     WIDTH = 'Width',
     WIDTH_OPTIONS = 'Width options',
 }

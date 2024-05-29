@@ -1,7 +1,7 @@
 import { ComponentType, OptionTypes } from '../ComponentTypes';
 
 export enum RadioConfigFieldNames {
-    HUG_CONTENT = 'Hug Content',
+    HUG_CONTENT = 'Hug content',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width options',
     RADIO_OPTIONS = 'Radio options',

@@ -3,7 +3,7 @@ import { ComponentType } from '../ComponentTypes';
 export enum CheckBoxFieldNames {
     CHECKED = 'Checked',
     CHECKBOX_LABEL = 'Label (optional)',
-    HUG_CONTENT = 'Hug Content',
+    HUG_CONTENT = 'Hug content',
     WIDTH = 'Width',
     WIDTH_OPTIONS = 'Width options',
     STATE = 'State',

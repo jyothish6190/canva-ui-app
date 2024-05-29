@@ -9,7 +9,7 @@ export enum TextInputSearchFieldNames {
     END_TEXT = 'End text',
     MAX_CHAR_COUNT = 'Maximum character count',
     WIDTH = 'Width',
-    WIDTH_OPTIONS = 'Width option',
+    WIDTH_OPTIONS = 'Width options',
     STATE = 'State',
 }
 

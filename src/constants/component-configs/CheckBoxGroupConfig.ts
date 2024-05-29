@@ -1,6 +1,6 @@
 import { ComponentType, OptionTypes } from '../ComponentTypes';
 export enum CheckboxGroupFieldNames {
-    HUG_CONTENT = 'Hug Content',
+    HUG_CONTENT = 'Hug content',
     WIDTH = 'Width',
     WIDTH_OPTION = 'Width options',
     CHECKBOX_OPTIONS = ' Options',
