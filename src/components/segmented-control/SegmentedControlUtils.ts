@@ -127,8 +127,13 @@ export const getOptions = (component: Component) => {
             if (field.name === SegmentedControlFieldNames.OPTIONS) {
                 const optionsList: any[] = [];
                 field.options?.forEach((option) => {
+                    console.log(
+                        '🚀 ~ field.options?.forEach ~ option:',
+                        option
+                    );
+
                     if (!option.label && option.Icon) {
-                        option.label = option.Icon;
+                        option.label = option.Icon() as any;
                     }
 
                     optionsList.push({
@@ -143,6 +148,7 @@ export const getOptions = (component: Component) => {
         options = component.options as SegmentedControlOption<string>[];
     }
 
+    console.log('🚀 ~ getOptions ~ options:', options);
     return options;
 };
 

@@ -1,92 +1,41 @@
 import React, { useEffect, useState } from 'react';
 
-import { CheckboxGroup } from '@canva/app-ui-kit';
+import { CheckboxGroup, CheckboxOption } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
-import { CheckboxGroupFieldNames } from 'src/constants/component-configs/CheckBoxGroupConfig';
+import { getOptions, getSelectedOptions, getWidth } from './CheckboxGroupUtils';
 
 type CheckBoxPropType = {
     component: Component;
     isProperty: boolean;
 };
 
-type CheckBoxStateData = {
-    checkBoxWidth: string | undefined;
-    checkBoxoption: any[];
-};
-
-const initialState: CheckBoxStateData = {
-    checkBoxWidth: undefined,
-    checkBoxoption: [],
-};
-
 const CheckboxGroupComponent = ({
     component,
     isProperty,
 }: CheckBoxPropType) => {
-    const [checkboxData, setcheckboxData] =
-        useState<CheckBoxStateData>(initialState);
+    const [width, setWidth] = useState<string | undefined>(undefined);
+    const [options, setOptions] = useState<CheckboxOption<string>[]>([]);
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
     useEffect(() => {
-        component.fields?.forEach((field: Component) => {
-            if (field.name === CheckboxGroupFieldNames.WIDTH) {
-                if (field.max !== undefined && field.min !== undefined) {
-                    if ((field.value as any) > field.max) {
-                        setcheckboxData((prevState) => {
-                            return {
-                                ...prevState,
-                                checkBoxWidth: `${field.max}px`,
-                            };
-                        });
-                    } else if ((field.value as any) < field.min) {
-                        setcheckboxData((prevState) => {
-                            return {
-                                ...prevState,
-                                checkBoxWidth: `${field.min}px`,
-                            };
-                        });
-                    } else {
-                        setcheckboxData((prevState) => {
-                            return {
-                                ...prevState,
-                                checkBoxWidth: field.value
-                                    ? `${field.value}px`
-                                    : undefined,
-                            };
-                        });
-                    }
-                }
-            }
-            if (field.name === CheckboxGroupFieldNames.CHECKBOX_OPTIONS) {
-                setcheckboxData((prevState) => {
-                    return {
-                        ...prevState,
-                        checkBoxoption: field.options as any[],
-                    };
-                });
-            }
-        });
-    }, [component]);
+        setWidth(getWidth(component));
+        setOptions(getOptions(component));
+        setSelectedOptions(getSelectedOptions(component));
+    }, [component, component.fields, component.value]);
 
     if (isProperty) {
         return (
             <div
                 style={
-                    checkboxData.checkBoxWidth
+                    width
                         ? {
-                              width: checkboxData.checkBoxWidth,
+                              width: width,
                           }
                         : {}
                 }
             >
-                <CheckboxGroup
-                    options={checkboxData?.checkBoxoption}
-                    value={[
-                        ...checkboxData?.checkBoxoption
-                            .filter((option) => option.checked !== false)
-                            .map((option) => option.value),
-                    ]}
-                />
+                <CheckboxGroup options={options} value={selectedOptions} />
             </div>
         );
     } else {

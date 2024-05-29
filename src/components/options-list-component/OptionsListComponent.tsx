@@ -65,12 +65,23 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
     };
 
     const updateOptionHandler = (updatedOption: OptionItem) => {
+        console.log(
+            '🚀 ~ updateOptionHandler ~ updatedOption:',
+            updatedOption,
+            component
+        );
         const options = [...optionList];
         if (component.optionType === 'radio' && updatedOption.selected) {
             component.value = updatedOption.value;
             options.forEach((option) => {
                 if (option.key !== updatedOption.key) {
                     option.selected = false;
+                }
+            });
+        } else if (component.optionType === 'checkbox') {
+            options.forEach((option) => {
+                if (option.key === updatedOption.key) {
+                    option.selected = updatedOption.selected;
                 }
             });
         }

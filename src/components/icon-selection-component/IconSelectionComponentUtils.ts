@@ -1,10 +1,11 @@
 import { Component, OptionItem } from 'src/models/component.model';
+import { Icon } from 'src/models/icons.model';
 import { IconType } from 'src/store/IconStore';
 
 export const iconChangeHandler = (
     selectedComponent: Component,
     component: Component,
-    icon: IconType,
+    icon: Icon,
     option?: OptionItem
 ): Component => {
     if (option) {
@@ -23,33 +24,38 @@ const optionIconChangeHandler = (
     selectedComponent: Component,
     component: Component,
     selectedOption: OptionItem,
-    icon: IconType
+    icon: Icon
 ): Component => {
     let newComponent = { ...selectedComponent };
 
     newComponent.fields?.forEach((field: Component) => {
         if (field.name === component.name) {
+            console.log('🚀 ~ newComponent.fields?.forEach ~ field:', field);
+
             field.options?.forEach((option) => {
                 if (option.key === selectedOption.key) {
-                    option.label = icon.icon as any;
+                    option.Icon = icon.Icon as any;
+                    option.label = undefined;
+                    option.value = icon.value;
                 }
             });
         }
     });
 
+    console.log('🚀 optionIconChangeHandler ~ newComponent:', newComponent);
     return newComponent;
 };
 
 const componentIconChangeHandler = (
     selectedComponent: Component,
     component: Component,
-    icon: IconType
+    icon: Icon
 ): Component => {
     let newComponent = { ...selectedComponent };
 
     newComponent.fields?.forEach((field) => {
         if (field.name === component.name) {
-            field.value = icon?.icon;
+            field.value = icon;
         }
     });
     return newComponent;

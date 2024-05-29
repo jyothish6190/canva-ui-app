@@ -41,8 +41,9 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
             const value = getSelectedValue(component);
             setValue(value);
 
-            const options = getOptions(component);
-            setOptions(options);
+            const optionsList = getOptions(component);
+            console.log('🚀 ~ useEffect ~ optionsList:', optionsList);
+            setOptions(optionsList);
 
             const title = getLabel(component);
             setLabel(title);
@@ -60,6 +61,12 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
     };
 
     if (isProperty) {
+        console.log(
+            '🚀 ~ SegmentedControlComponent ~ isProperty:',
+            isProperty,
+            options
+        );
+
         return (
             <div
                 style={{
@@ -82,6 +89,10 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
         );
     }
 
+    console.log(
+        '🚀 ~ SegmentedControlComponent ~ component.options:',
+        component.options
+    );
     return (
         <ExcessContainer dynamic="140px">
             <SegmentedControl

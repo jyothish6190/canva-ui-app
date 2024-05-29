@@ -8,7 +8,7 @@ import {
     ChevronDownIcon,
 } from '@canva/app-ui-kit';
 
-import { IconType, useIconStore } from 'src/store/IconStore';
+import { useIconStore } from 'src/store/IconStore';
 import { Component, OptionItem } from 'src/models/component.model';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { iconChangeHandler } from './IconSelectionComponentUtils';
@@ -54,17 +54,17 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
         });
     }, [iconsList]);
 
-    // useEffect(() => {
-    //     if (selectedIcon && selectedIcon.icon) {
-    //         const updatedComponent = iconChangeHandler(
-    //             selectedComponent as Component,
-    //             component,
-    //             selectedIcon as IconType,
-    //             optionField
-    //         );
-    //         setSelectedComponent({ ...updatedComponent });
-    //     }
-    // }, [selectedIcon?.icon]);
+    useEffect(() => {
+        if (selectedIcon && selectedIcon.icon) {
+            const updatedComponent = iconChangeHandler(
+                selectedComponent as Component,
+                component,
+                selectedIcon.icon,
+                optionField
+            );
+            setSelectedComponent({ ...updatedComponent });
+        }
+    }, [selectedIcon?.icon]);
 
     const onFocusHandler = (event) => {
         selectedIcon?.icon && deleteIcon(selectedIcon.componentId);
@@ -104,7 +104,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
 
     return (
         <FormField
-            label={optionField?.label ? '' : component.name}
+            label={''}
             control={(props) => (
                 <TextInput
                     key={selectedIcon?.icon?.label || ''}

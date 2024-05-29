@@ -43,8 +43,8 @@ export const PillConfig = [
                 value: 'hover',
             },
             {
-                label: 'Active',
-                value: 'active',
+                label: 'Selected',
+                value: 'selected',
             },
 
             {

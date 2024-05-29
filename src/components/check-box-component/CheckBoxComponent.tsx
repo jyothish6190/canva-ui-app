@@ -5,6 +5,12 @@ import { Checkbox } from '@canva/app-ui-kit';
 import styles from './CheckBoxComponent.css';
 import { Component } from 'src/models/component.model';
 import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
+import {
+    getLabel,
+    getSelectedState,
+    getState,
+    getWidth,
+} from './CheckboxUtils';
 
 type PropType = {
     component: Component;
@@ -12,82 +18,23 @@ type PropType = {
     onChange?: (text: string) => void;
 };
 
-type CheckboxStateData = {
-    checkedState: boolean;
-    checkBoxLabel: string;
-    checkBoxState: 'default' | 'hover' | 'pressed' | 'disabled' | 'error';
-    checkBoxWidth: string | undefined;
-};
-
-const initialState: CheckboxStateData = {
-    checkedState: true,
-    checkBoxLabel: 'Checkbox',
-    checkBoxState: 'default',
-    checkBoxWidth: undefined,
-};
-
 const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
-    const [checkboxDataState, setCheckboxDataState] =
-        useState<CheckboxStateData>(initialState);
+    const [label, setLabel] = useState('Checkbox');
+    const [state, setState] = useState<
+        'default' | 'hover' | 'pressed' | 'disabled' | 'error'
+    >('default');
+    const [selected, setSelected] = useState(false);
+    const [width, setWidth] = useState<string | undefined>(undefined);
 
     useEffect(() => {
-        component.fields?.forEach((field: Component) => {
-            if (field.name === CheckBoxFieldNames.CHECKED) {
-                setCheckboxDataState((prevState) => {
-                    return {
-                        ...prevState,
-                        checkedState: field.value,
-                    };
-                });
-            }
-            if (field.name === CheckBoxFieldNames.CHECKBOX_LABEL) {
-                setCheckboxDataState((prevState) => {
-                    return {
-                        ...prevState,
-                        checkBoxLabel: field.value ? field.value : 'Checkbox',
-                    };
-                });
-            }
-            if (field.name === CheckBoxFieldNames.STATE) {
-                setCheckboxDataState((prevState) => {
-                    return {
-                        ...prevState,
-                        checkBoxState: field.value ? field.value : 'default',
-                    };
-                });
-            }
-            if (field.name === CheckBoxFieldNames.WIDTH) {
-                if (field.max !== undefined && field.min !== undefined) {
-                    if ((field.value as any) > field.max) {
-                        setCheckboxDataState((prevState) => {
-                            return {
-                                ...prevState,
-                                checkBoxWidth: `${field.max}px`,
-                            };
-                        });
-                    } else if ((field.value as any) < field.min) {
-                        setCheckboxDataState((prevState) => {
-                            return {
-                                ...prevState,
-                                checkBoxWidth: `${field.min}px`,
-                            };
-                        });
-                    } else {
-                        setCheckboxDataState((prevState) => {
-                            return {
-                                ...prevState,
-                                checkBoxWidth: field.value
-                                    ? `${field.value}px`
-                                    : undefined,
-                            };
-                        });
-                    }
-                }
-            }
-        });
+        setLabel(getLabel(component));
+        setState(getState(component));
+        setSelected(getSelectedState(component));
+        setWidth(getWidth(component));
     }, [component]);
+
     const renderedClass = () => {
-        switch (checkboxDataState.checkBoxState) {
+        switch (state) {
             case 'hover':
                 return styles['Hover-checkbox'];
                 break;
@@ -105,18 +52,11 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
 
     if (isProperty) {
         return (
-            <div
-                className={renderedClass()}
-                style={{ width: checkboxDataState.checkBoxWidth }}
-            >
+            <div className={renderedClass()} style={{ width: width }}>
                 <Checkbox
-                    checked={checkboxDataState.checkedState}
-                    label={checkboxDataState.checkBoxLabel}
-                    disabled={
-                        checkboxDataState.checkBoxState === 'disabled'
-                            ? true
-                            : false
-                    }
+                    checked={selected}
+                    label={label}
+                    disabled={state === 'disabled' ? true : false}
                 />
             </div>
         );

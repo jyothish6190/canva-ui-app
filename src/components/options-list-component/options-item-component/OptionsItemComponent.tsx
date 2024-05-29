@@ -49,7 +49,10 @@ const OptionsItemComponent = ({
                         key={'checkbox'}
                         value={option.value}
                         checked={option.selected}
-                        onChange={(value, checked) => onOptionChange(option)}
+                        onChange={(value, checked) => {
+                            option.selected = checked;
+                            onOptionChange(option);
+                        }}
                     />
                 );
             default:

@@ -108,7 +108,7 @@ export const SelectConfig = [
                 key: 1,
                 label: 'Small',
                 value: 'small',
-                selected: false,
+                selected: true,
             },
             {
                 key: 2,
