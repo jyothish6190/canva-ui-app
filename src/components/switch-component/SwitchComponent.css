@@ -1,3 +1,9 @@
 .Switch-active > div > button {
     background-color: var(--ui-kit-color-primary-hover) !important;
 }
+.Switch-active > div > label {
+    cursor: default;
+}
+.Switch > div > label > h5 {
+    cursor: default;
+}

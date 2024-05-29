@@ -118,7 +118,7 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
                 break;
 
             default:
-                return '';
+                return styles['Switch'];
                 break;
         }
     };
