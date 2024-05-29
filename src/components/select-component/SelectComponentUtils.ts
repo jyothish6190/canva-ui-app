@@ -1,10 +1,21 @@
-import { components } from 'src/constants/components';
 import { SelectOption } from '@canva/app-ui-kit';
 import { Component, OptionItem } from 'src/models/component.model';
-import { FormFieldNames } from '../form-field-component/FormFieldConfig';
+import {
+    FormControlNames,
+    FormFieldNames,
+    FormTabs,
+} from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from './SelectConfig';
 import { SelectState } from './SelectComponent';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
+
+import { FormMultilineConfig } from '../form-field-component/FormMultilineConfig';
+import { FormNumberInputConfig } from '../form-field-component/FormNumberInputConfig';
+import { FormSelectTabs } from '../form-field-component/FormSelectConfig';
+import { FormCheckboxConfig } from '../form-field-component/FormCheckboxConfig';
+import { FormCheckboxGroupConfig } from '../form-field-component/FormCheckboxGroupConfig';
+import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConfig';
+import { FormSegmentedConfig } from '../form-field-component/FormSegementedConfig';
 
 export const getValue = (component: Component) => {
     let value = '';
@@ -122,7 +133,7 @@ export const selectOptionChangeHandler = (
     let updatedComponent;
     selectedComponent?.fields?.forEach((field: Component) => {
         if (field.name === FormFieldNames.CONTROL) {
-            updatedComponent = switchFormComponent(value);
+            updatedComponent = switchFormComponent(selectedComponent, value);
         } else {
             updatedComponent = updateSelectComponent(
                 selectedComponent,
@@ -135,14 +146,53 @@ export const selectOptionChangeHandler = (
     return updatedComponent;
 };
 
-const switchFormComponent = (value: string): Component => {
-    let newComponent;
-    components.forEach((component) => {
-        if (component.name === value) {
-            newComponent = { ...component };
-        }
-    });
+const switchFormComponent = (
+    selectedComponent: Component,
+    value: string
+): Component => {
+    console.log('🚀 switchFormComponent~ value:', value);
 
+    let newComponent = { ...selectedComponent };
+    let fields = newComponent.fields;
+    let tabs = FormTabs;
+    switch (value) {
+        case FormControlNames.FORM_MULTILINE_INPUT:
+            fields = [...FormMultilineConfig];
+            break;
+
+        case FormControlNames.FORM_NUMBER_INPUT:
+            fields = [...FormNumberInputConfig];
+            break;
+
+        case FormControlNames.FORM_NUMBER_INPUT:
+            fields = [...FormNumberInputConfig];
+            break;
+
+        case FormControlNames.FORM_SELECT:
+            fields = [...FormNumberInputConfig];
+            tabs = [...FormSelectTabs];
+            break;
+
+        case FormControlNames.FORM_CHECKBOX_FIELD:
+            fields = [...FormCheckboxConfig];
+            break;
+
+        case FormControlNames.FORM_CHECKBOX_GROUP:
+            fields = [...FormCheckboxGroupConfig];
+            break;
+        case FormControlNames.FORM_RADIO:
+            fields = [...FormRadioGroupConfig];
+            break;
+
+        case FormControlNames.FORM_SEGMENTED_CONTROL:
+            fields = [...FormSegmentedConfig];
+            break;
+
+        default:
+            break;
+    }
+    newComponent.fields = fields;
+    newComponent.tabs = tabs;
     return newComponent;
 };
 const updateSelectComponent = (

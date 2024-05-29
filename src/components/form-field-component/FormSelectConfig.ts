@@ -1,11 +1,8 @@
-import { ClearIcon } from '@canva/app-ui-kit';
-import { ComponentType } from '../../constants/ComponentTypes';
+import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
+import { FormControlNames, FormFieldNames } from './FormFieldConfig';
+import { SelectFieldNames } from '../select-component/SelectConfig';
 
-export enum FormFieldNames {
-    CONTROL = 'control',
-}
-
-export const FormTabs = [
+export const FormSelectTabs = [
     {
         label: 'Form field',
         value: 'form field',
@@ -14,26 +11,11 @@ export const FormTabs = [
         label: 'Control',
         value: 'control',
     },
+    {
+        label: 'Options',
+        value: 'options',
+    },
 ];
-
-export enum FormControlNames {
-    TEXT_INPUT = 'Text input',
-    MULTILINE_INPUT = 'Multiline input',
-    NUMBER_INPUT = 'Number input',
-    SELECT = 'Select',
-    CHECKBOX_FIELD = 'Checkbox',
-    CHECKBOX_GROUP = 'Checkbox group',
-    RADIO = 'Radio',
-    SEGMENTED_CONTROL = 'Segmented control',
-    FORM_TEXT_INPUT = 'Form Text input',
-    FORM_MULTILINE_INPUT = 'Form Multiline input',
-    FORM_NUMBER_INPUT = 'Form Number input',
-    FORM_SELECT = 'Form Select',
-    FORM_CHECKBOX_FIELD = 'Form Checkbox',
-    FORM_CHECKBOX_GROUP = 'Form Checkbox group',
-    FORM_RADIO = 'Form Radio',
-    FORM_SEGMENTED_CONTROL = 'Form Segmented control',
-}
 
 export const FormFieldConfig = [
     {
@@ -75,7 +57,7 @@ export const FormFieldConfig = [
                 value: FormControlNames.FORM_SEGMENTED_CONTROL,
             },
         ],
-        value: FormControlNames.FORM_TEXT_INPUT,
+        value: FormControlNames.FORM_SELECT,
     },
 
     {
@@ -146,67 +128,121 @@ export const FormFieldConfig = [
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: SelectFieldNames.PLACEHOLDER,
         label: 'Label',
         description: 'Description text',
         placeholder: 'Placeholder',
+        value: 'Select',
         tabId: 'control',
     },
+
     {
         showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'With text',
+        name: SelectFieldNames.ACTIVE,
         defaultValue: false,
         tabId: 'control',
     },
     {
         showComponent: true,
-        type: ComponentType.ICON_SELECTOR,
-        name: 'Start decorator  (optional)',
+        type: ComponentType.NUMBER_INPUT,
+        name: SelectFieldNames.WIDTH,
+        label: 'Label',
+        description: 'Description text',
+        value: '328',
+        min: 158,
+        max: 1366,
         tabId: 'control',
     },
+
     {
         showComponent: true,
-        type: ComponentType.SELECT,
-        name: 'End decorator',
+        type: ComponentType.CATEGORY,
+        name: SelectFieldNames.WIDTH_OPTIONS,
         tabId: 'control',
         options: [
             {
-                label: 'None',
-                value: 'none',
+                label: 'Small',
+                value: 158,
             },
             {
-                label: 'Clear',
-                value: ClearIcon,
+                label: 'Medium',
+                value: 328,
             },
             {
-                label: 'Text',
-                value: 'text',
+                label: 'Large',
+                value: 600,
             },
             {
-                label: 'Character count',
-                value: 'Character count',
+                label: 'Custom',
+                value: 240,
             },
         ],
-        defaultValue: 'none',
+        selectedCategories: [
+            {
+                label: 'Medium',
+                value: 328,
+            },
+        ],
     },
     {
         showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
+        name: SelectFieldNames.STATE,
         tabId: 'control',
-
         options: [
             {
                 label: 'Default',
                 value: 'default',
             },
             {
+                label: 'Hover',
+                value: 'hover',
+            },
+            {
+                label: 'Error',
+                value: 'error',
+            },
+            {
                 label: 'Disabled',
                 value: 'disabled',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
+    },
+
+    {
+        showComponent: true,
+        type: ComponentType.OPTIONS_LIST,
+        tabId: 'options',
+        name: SelectFieldNames.SELECT_OPTIONS,
+        optionType: OptionTypes.RADIO,
+        options: [
+            {
+                key: 1,
+                label: 'Small',
+                value: 'small',
+                selected: true,
+            },
+            {
+                key: 2,
+                label: 'Medium',
+                value: 'medium',
+                selected: false,
+            },
+            {
+                key: 3,
+                label: 'Large',
+                value: 'large',
+                selected: false,
+            },
+            {
+                key: 4,
+                label: 'Custom',
+                value: 'custom',
+                selected: false,
+            },
+        ],
     },
 ];

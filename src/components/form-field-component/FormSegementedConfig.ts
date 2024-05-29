@@ -1,41 +1,8 @@
-import { ClearIcon } from '@canva/app-ui-kit';
-import { ComponentType } from '../../constants/ComponentTypes';
+import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
+import { FormControlNames, FormFieldNames } from './FormFieldConfig';
+import { SegmentedControlFieldNames } from '../segmented-control/SegmentedControlConfig';
 
-export enum FormFieldNames {
-    CONTROL = 'control',
-}
-
-export const FormTabs = [
-    {
-        label: 'Form field',
-        value: 'form field',
-    },
-    {
-        label: 'Control',
-        value: 'control',
-    },
-];
-
-export enum FormControlNames {
-    TEXT_INPUT = 'Text input',
-    MULTILINE_INPUT = 'Multiline input',
-    NUMBER_INPUT = 'Number input',
-    SELECT = 'Select',
-    CHECKBOX_FIELD = 'Checkbox',
-    CHECKBOX_GROUP = 'Checkbox group',
-    RADIO = 'Radio',
-    SEGMENTED_CONTROL = 'Segmented control',
-    FORM_TEXT_INPUT = 'Form Text input',
-    FORM_MULTILINE_INPUT = 'Form Multiline input',
-    FORM_NUMBER_INPUT = 'Form Number input',
-    FORM_SELECT = 'Form Select',
-    FORM_CHECKBOX_FIELD = 'Form Checkbox',
-    FORM_CHECKBOX_GROUP = 'Form Checkbox group',
-    FORM_RADIO = 'Form Radio',
-    FORM_SEGMENTED_CONTROL = 'Form Segmented control',
-}
-
-export const FormFieldConfig = [
+export const FormSegmentedConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
@@ -75,7 +42,7 @@ export const FormFieldConfig = [
                 value: FormControlNames.FORM_SEGMENTED_CONTROL,
             },
         ],
-        value: FormControlNames.FORM_TEXT_INPUT,
+        value: FormControlNames.FORM_SEGMENTED_CONTROL,
     },
 
     {
@@ -142,71 +109,92 @@ export const FormFieldConfig = [
         defaultValue: false,
         tabId: 'form field',
     },
-
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Text',
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Placeholder',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'With text',
-        defaultValue: false,
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.ICON_SELECTOR,
-        name: 'Start decorator  (optional)',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SELECT,
-        name: 'End decorator',
-        tabId: 'control',
+        type: ComponentType.SEGMENTED_CONTROL,
+        name: SegmentedControlFieldNames.TYPE,
         options: [
-            {
-                label: 'None',
-                value: 'none',
-            },
-            {
-                label: 'Clear',
-                value: ClearIcon,
-            },
             {
                 label: 'Text',
                 value: 'text',
             },
             {
-                label: 'Character count',
-                value: 'Character count',
+                label: 'Icon',
+                value: 'icon',
             },
         ],
-        defaultValue: 'none',
+        defaultValue: 'text',
+        value: 'text',
+        tabId: 'control',
     },
     {
         showComponent: true,
-        type: ComponentType.SELECT,
-        name: 'State',
+        type: ComponentType.NUMBER_INPUT,
+        name: SegmentedControlFieldNames.WIDTH,
+        label: 'Label',
+        value: 328,
+        min: 158,
+        max: 1366,
+        description: 'Description text',
         tabId: 'control',
-
+    },
+    {
+        showComponent: true,
+        type: ComponentType.CATEGORY,
+        name: SegmentedControlFieldNames.WIDTH_OPTION,
         options: [
             {
-                label: 'Default',
-                value: 'default',
+                label: 'Small',
+                value: 158,
             },
             {
-                label: 'Disabled',
-                value: 'disabled',
+                label: 'Medium',
+                value: 328,
+            },
+            {
+                label: 'Large',
+                value: 600,
+            },
+            {
+                label: 'Custom',
+                value: 240,
             },
         ],
-        defaultValue: 'default',
-        placeholder: 'Choose a State',
+        selectedCategories: [
+            {
+                label: 'Medium',
+                value: 328,
+            },
+        ],
+        tabId: 'control',
+    },
+
+    {
+        showComponent: true,
+        type: ComponentType.OPTIONS_LIST,
+        optionType: OptionTypes.RADIO,
+        name: SegmentedControlFieldNames.OPTIONS,
+        options: [
+            {
+                key: 1,
+                label: 'S',
+                value: 's',
+                selected: true,
+            },
+            {
+                key: 2,
+                label: 'M',
+                value: 'm',
+                selected: false,
+            },
+            {
+                key: 3,
+                label: 'L',
+                value: 'l',
+                selected: false,
+            },
+        ],
+        value: 's',
+        tabId: 'control',
     },
 ];

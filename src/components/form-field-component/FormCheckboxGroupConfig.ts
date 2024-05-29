@@ -1,41 +1,8 @@
-import { ClearIcon } from '@canva/app-ui-kit';
-import { ComponentType } from '../../constants/ComponentTypes';
+import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
+import { FormControlNames, FormFieldNames } from './FormFieldConfig';
+import { CheckboxGroupFieldNames } from 'src/constants/component-configs/CheckBoxGroupConfig';
 
-export enum FormFieldNames {
-    CONTROL = 'control',
-}
-
-export const FormTabs = [
-    {
-        label: 'Form field',
-        value: 'form field',
-    },
-    {
-        label: 'Control',
-        value: 'control',
-    },
-];
-
-export enum FormControlNames {
-    TEXT_INPUT = 'Text input',
-    MULTILINE_INPUT = 'Multiline input',
-    NUMBER_INPUT = 'Number input',
-    SELECT = 'Select',
-    CHECKBOX_FIELD = 'Checkbox',
-    CHECKBOX_GROUP = 'Checkbox group',
-    RADIO = 'Radio',
-    SEGMENTED_CONTROL = 'Segmented control',
-    FORM_TEXT_INPUT = 'Form Text input',
-    FORM_MULTILINE_INPUT = 'Form Multiline input',
-    FORM_NUMBER_INPUT = 'Form Number input',
-    FORM_SELECT = 'Form Select',
-    FORM_CHECKBOX_FIELD = 'Form Checkbox',
-    FORM_CHECKBOX_GROUP = 'Form Checkbox group',
-    FORM_RADIO = 'Form Radio',
-    FORM_SEGMENTED_CONTROL = 'Form Segmented control',
-}
-
-export const FormFieldConfig = [
+export const FormCheckboxGroupConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
@@ -75,7 +42,7 @@ export const FormFieldConfig = [
                 value: FormControlNames.FORM_SEGMENTED_CONTROL,
             },
         ],
-        value: FormControlNames.FORM_TEXT_INPUT,
+        value: FormControlNames.FORM_CHECKBOX_GROUP,
     },
 
     {
@@ -142,71 +109,85 @@ export const FormFieldConfig = [
         defaultValue: false,
         tabId: 'form field',
     },
-
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Text',
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Placeholder',
-        tabId: 'control',
-    },
     {
         showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'With text',
-        defaultValue: false,
+        name: CheckboxGroupFieldNames.HUG_CONTENT,
+        defaultValue: true,
         tabId: 'control',
     },
     {
-        showComponent: true,
-        type: ComponentType.ICON_SELECTOR,
-        name: 'Start decorator  (optional)',
+        showComponent: false,
+        type: ComponentType.NUMBER_INPUT,
+        name: CheckboxGroupFieldNames.WIDTH,
+        label: 'Label',
+        description: 'Description text',
+        min: 80,
+        max: 1366,
         tabId: 'control',
     },
     {
-        showComponent: true,
-        type: ComponentType.SELECT,
-        name: 'End decorator',
-        tabId: 'control',
+        showComponent: false,
+        type: ComponentType.CATEGORY,
+        name: CheckboxGroupFieldNames.WIDTH_OPTION,
         options: [
             {
-                label: 'None',
-                value: 'none',
+                label: 'Small',
+                value: 158,
             },
             {
-                label: 'Clear',
-                value: ClearIcon,
+                label: 'Medium',
+                value: 328,
             },
             {
-                label: 'Text',
-                value: 'text',
+                label: 'Large',
+                value: 600,
             },
             {
-                label: 'Character count',
-                value: 'Character count',
+                label: 'Custom',
+                value: 240,
             },
         ],
-        defaultValue: 'none',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SELECT,
-        name: 'State',
+        selectedCategories: [
+            {
+                label: 'Small',
+                value: 158,
+            },
+        ],
         tabId: 'control',
+    },
 
+    {
+        showComponent: true,
+        type: ComponentType.OPTIONS_LIST,
+        optionType: OptionTypes.CHECKBOX,
+        name: CheckboxGroupFieldNames.CHECKBOX_OPTIONS,
         options: [
             {
-                label: 'Default',
-                value: 'default',
+                label: 'Small',
+                value: 'Small',
+                key: 1,
+                checked: true,
             },
             {
-                label: 'Disabled',
-                value: 'disabled',
+                label: 'Medium',
+                value: 'Medium',
+                key: 2,
+                checked: false,
+            },
+            {
+                label: 'Large',
+                value: 'Large',
+                key: 3,
+                checked: false,
+            },
+            {
+                label: 'Custom',
+                value: 'Custom',
+                key: 4,
+                checked: false,
             },
         ],
-        defaultValue: 'default',
-        placeholder: 'Choose a State',
+        tabId: 'control',
     },
 ];

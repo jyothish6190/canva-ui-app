@@ -1,41 +1,13 @@
 import { ClearIcon } from '@canva/app-ui-kit';
 import { ComponentType } from '../../constants/ComponentTypes';
+import { FormControlNames } from './FormFieldConfig';
+import { NumberInputFieldNames } from 'src/constants/component-configs/NumberInputConfig';
 
 export enum FormFieldNames {
     CONTROL = 'control',
 }
 
-export const FormTabs = [
-    {
-        label: 'Form field',
-        value: 'form field',
-    },
-    {
-        label: 'Control',
-        value: 'control',
-    },
-];
-
-export enum FormControlNames {
-    TEXT_INPUT = 'Text input',
-    MULTILINE_INPUT = 'Multiline input',
-    NUMBER_INPUT = 'Number input',
-    SELECT = 'Select',
-    CHECKBOX_FIELD = 'Checkbox',
-    CHECKBOX_GROUP = 'Checkbox group',
-    RADIO = 'Radio',
-    SEGMENTED_CONTROL = 'Segmented control',
-    FORM_TEXT_INPUT = 'Form Text input',
-    FORM_MULTILINE_INPUT = 'Form Multiline input',
-    FORM_NUMBER_INPUT = 'Form Number input',
-    FORM_SELECT = 'Form Select',
-    FORM_CHECKBOX_FIELD = 'Form Checkbox',
-    FORM_CHECKBOX_GROUP = 'Form Checkbox group',
-    FORM_RADIO = 'Form Radio',
-    FORM_SEGMENTED_CONTROL = 'Form Segmented control',
-}
-
-export const FormFieldConfig = [
+export const FormNumberInputConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
@@ -75,7 +47,7 @@ export const FormFieldConfig = [
                 value: FormControlNames.FORM_SEGMENTED_CONTROL,
             },
         ],
-        value: FormControlNames.FORM_TEXT_INPUT,
+        value: FormControlNames.FORM_NUMBER_INPUT,
     },
 
     {
@@ -146,67 +118,91 @@ export const FormFieldConfig = [
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: 'Text',
+        name: NumberInputFieldNames.VALUE,
+        value: 0,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Placeholder',
+        placeholder: 'Enter a number',
         tabId: 'control',
     },
     {
         showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'With text',
-        defaultValue: false,
+        name: NumberInputFieldNames.SPIN_BUTTONS,
+        value: true,
+        defaultValue: true,
+        tabId: 'control',
+    },
+
+    {
+        showComponent: true,
+        type: ComponentType.NUMBER_INPUT,
+        name: NumberInputFieldNames.WIDTH,
+        label: 'Label',
+        value: 328,
+        min: 158,
+        max: 1366,
+        description: 'Description text',
         tabId: 'control',
     },
     {
         showComponent: true,
-        type: ComponentType.ICON_SELECTOR,
-        name: 'Start decorator  (optional)',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SELECT,
-        name: 'End decorator',
-        tabId: 'control',
+        type: ComponentType.CATEGORY,
+        name: NumberInputFieldNames.WIDTH_OPTIONS,
         options: [
             {
-                label: 'None',
-                value: 'none',
+                label: 'Small',
+                value: 158,
             },
             {
-                label: 'Clear',
-                value: ClearIcon,
+                label: 'Medium',
+                value: 328,
             },
             {
-                label: 'Text',
-                value: 'text',
+                label: 'Large',
+                value: 600,
             },
             {
-                label: 'Character count',
-                value: 'Character count',
+                label: 'Custom',
+                value: 240,
             },
         ],
-        defaultValue: 'none',
+        selectedCategories: [
+            {
+                label: 'Medium',
+                value: 328,
+            },
+        ],
+        tabId: 'control',
     },
     {
         showComponent: true,
         type: ComponentType.SELECT,
-        name: 'State',
-        tabId: 'control',
-
+        name: NumberInputFieldNames.STATE,
         options: [
             {
                 label: 'Default',
                 value: 'default',
             },
             {
+                label: 'Hover',
+                value: 'hover',
+            },
+            {
+                label: 'Active',
+                value: 'active',
+            },
+            {
+                label: 'Error',
+                value: 'error',
+            },
+            {
                 label: 'Disabled',
                 value: 'disabled',
             },
         ],
-        defaultValue: 'default',
+        value: 'default',
         placeholder: 'Choose a State',
+        tabId: 'control',
     },
 ];
