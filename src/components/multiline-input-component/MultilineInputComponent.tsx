@@ -4,6 +4,7 @@ import {
     CharacterCountDecorator,
     FormField,
     MultilineInput,
+    Title,
 } from '@canva/app-ui-kit';
 
 import styles from './MultilineInputComponent.css';
@@ -153,9 +154,11 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
             >
                 <FormField
                     label={
-                        multilineInputData.inputLabel
-                            ? multilineInputData.inputLabel
-                            : component.name
+                        (multilineInputData.inputLabel ? (
+                            (undefined as any)
+                        ) : (
+                            <Title children={component.name} size="xsmall" />
+                        )) as any
                     }
                     control={(props) => (
                         <MultilineInput

@@ -67,7 +67,13 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
                 }}
             >
                 <FormField
-                    label={(<Title children={label} size="xsmall" />) as any}
+                    label={
+                        label == ''
+                            ? (undefined as any)
+                            : ((
+                                  <Title children={label} size="xsmall" />
+                              ) as any)
+                    }
                     description=""
                     control={(props) => (
                         <SegmentedControl

@@ -77,7 +77,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         return (
             <div className={renderedClass()} style={{ width: width }}>
                 <FormField
-                    label={label ? label : component.name}
+                    label={label === ' ' ? (undefined as any) : label}
                     control={(props) => (
                         <Select
                             disabled={selectState === 'disabled' ? true : false}

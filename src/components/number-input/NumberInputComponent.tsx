@@ -126,7 +126,6 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
                 <div
                     className={renderedClass()}
                     style={{
-                        padding: 16,
                         width: numberInputData.numberInputWidth,
                     }}
                 >
@@ -161,16 +160,14 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
                 >
                     <FormField
                         label={
-                            (
+                            (numberInputData.numberInputLabel ? (
+                                (undefined as any)
+                            ) : (
                                 <Title
-                                    children={
-                                        numberInputData.numberInputLabel
-                                            ? numberInputData.numberInputLabel
-                                            : component.name
-                                    }
+                                    children={component.name}
                                     size="xsmall"
                                 />
-                            ) as any
+                            )) as any
                         }
                         control={(props) => (
                             <NumberInput
