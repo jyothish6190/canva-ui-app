@@ -20,3 +20,9 @@
 .Input-hover > div {
     border: 1px solid var(--ui-kit-color-border-hover);
 }
+.End-text {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    width: 50px;
+}

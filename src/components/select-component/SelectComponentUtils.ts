@@ -5,6 +5,7 @@ import { FormFieldNames } from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from './SelectConfig';
 import { SelectState } from './SelectComponent';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
+import { TextInputFieldNames } from 'src/constants/component-configs/TextInputConfig';
 
 export const getValue = (component: Component) => {
     let value = '';
@@ -154,6 +155,22 @@ const updateSelectComponent = (
     newComponent?.fields?.forEach((field: Component) => {
         if (field.name === component.name) {
             field.value = value;
+        }
+        if (field.name === TextInputFieldNames.END_TEXT) {
+            if (value == 'text') {
+                field.showComponent = true;
+                field.value = 'End Text';
+            } else {
+                field.showComponent = false;
+            }
+        }
+        if (field.name === TextInputFieldNames.MAX_CHAR_COUNT) {
+            if (value == 'character count') {
+                field.showComponent = true;
+                field.value = 50;
+            } else {
+                field.showComponent = false;
+            }
         }
     });
     return newComponent;

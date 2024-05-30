@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { ClearIcon, TextInput, WordCountDecorator } from '@canva/app-ui-kit';
+import {
+    CharacterCountDecorator,
+    ClearDecorator,
+    Text,
+    TextInput,
+} from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 
 import styles from './TextInput.css';
 import { Icon } from 'src/models/icons.model';
-import { TextInputSearchFieldNames } from 'src/constants/component-configs/TextInputConfig';
+import { TextInputFieldNames } from 'src/constants/component-configs/TextInputConfig';
 
 type PropType = {
     component: Component;
@@ -40,7 +45,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
 
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
-            if (field.name === TextInputSearchFieldNames.TEXT) {
+            if (field.name === TextInputFieldNames.TEXT) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -48,7 +53,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
-            if (field.name === TextInputSearchFieldNames.START_DECORATOR) {
+            if (field.name === TextInputFieldNames.START_DECORATOR) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -56,7 +61,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
-            if (field.name === TextInputSearchFieldNames.END_DECORATOR) {
+            if (field.name === TextInputFieldNames.END_DECORATOR) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -64,7 +69,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
-            if (field.name === TextInputSearchFieldNames.END_TEXT) {
+            if (field.name === TextInputFieldNames.END_TEXT) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -72,7 +77,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
-            if (field.name === TextInputSearchFieldNames.MAX_CHAR_COUNT) {
+            if (field.name === TextInputFieldNames.MAX_CHAR_COUNT) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -80,7 +85,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
-            if (field.name === TextInputSearchFieldNames.STATE) {
+            if (field.name === TextInputFieldNames.STATE) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -88,7 +93,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     };
                 });
             }
-            if (field.name === TextInputSearchFieldNames.WIDTH) {
+            if (field.name === TextInputFieldNames.WIDTH) {
                 if (field.max !== undefined && field.min !== undefined) {
                     if ((field.value as any) > field.max) {
                         setTextInputData((prevState) => {
@@ -116,7 +121,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     }
                 }
             }
-            if (field.name === TextInputSearchFieldNames.PLACEHOLDER) {
+            if (field.name === TextInputFieldNames.PLACEHOLDER) {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
@@ -132,12 +137,22 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
             case 'none':
                 return null;
             case 'clear':
-                return ClearIcon;
+                return <ClearDecorator />;
             case 'text':
-                return textInputData.endText;
+                return (
+                    <div className={styles['End-text']}>
+                        <Text
+                            tone="tertiary"
+                            size="xsmall"
+                            children={textInputData.endText}
+                        />
+                    </div>
+                );
             case 'character count':
                 return (
-                    <WordCountDecorator max={textInputData.characterCount} />
+                    <CharacterCountDecorator
+                        max={textInputData.characterCount}
+                    />
                 );
             default:
         }
