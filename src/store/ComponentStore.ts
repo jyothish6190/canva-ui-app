@@ -290,6 +290,19 @@ const updateField = (
                     if (field.name === FileInputFieldNames.FILE_INPUT_OPTIONS) {
                         field.showComponent = false;
                     }
+                    if (field.name === FileInputFieldNames.HUG_CONTENT) {
+                        field.showComponent = true;
+                    }
+                    if (field.name === FileInputFieldNames.WIDTH) {
+                        field.showComponent = false;
+                        field.min = 80;
+                    }
+                    if (field.name === FileInputFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = false;
+                        field.selectedCategories = [
+                            { label: 'Small', value: 158 },
+                        ];
+                    }
                 });
             } else {
                 newComponent.fields?.forEach((field: Component) => {
@@ -297,8 +310,19 @@ const updateField = (
                         field.showComponent = true;
                     }
                     if (field.name === FileInputFieldNames.WIDTH) {
+                        field.showComponent = true;
+                        field.value = 328;
                         field.min = 158;
                         field.max = 1366;
+                    }
+                    if (field.name === FileInputFieldNames.WIDTH_OPTIONS) {
+                        field.showComponent = true;
+                        field.selectedCategories = [
+                            { label: 'Medium', value: 328 },
+                        ];
+                    }
+                    if (field.name === FileInputFieldNames.HUG_CONTENT) {
+                        field.showComponent = false;
                     }
                 });
             }
