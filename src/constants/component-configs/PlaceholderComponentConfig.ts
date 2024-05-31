@@ -37,11 +37,11 @@ export const PlaceholderComponentConfig = [
         name: PlaceHolderFieldNames.SIZE,
         options: [
             {
-                label: 'xlarge',
+                label: 'Xlarge',
                 value: 'xlarge',
             },
             {
-                label: 'large',
+                label: 'Large',
                 value: 'large',
             },
 

@@ -40,6 +40,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
     const [active, setActive] = useState<boolean>(false);
     const [width, setWidth] = useState<string | undefined>(undefined);
     const [selectedvValue, setSelectedValue] = useState('');
+    const [elementHeight, setElementHeight] = useState<number>();
 
     const changeHandler = (value: string) => {
         const updatedComponent = selectOptionChangeHandler(
@@ -63,6 +64,16 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         }
     }, [component, component.value, component.options]);
 
+    useEffect(() => {
+        Height();
+    }, [options, active]);
+    const Height = () => {
+        const divelement = document.querySelector(`#active`);
+
+        if (divelement) {
+            setElementHeight((divelement as HTMLElement).offsetHeight);
+        }
+    };
     const renderedClass = () => {
         if (active) {
             return styles['Select'];
@@ -73,9 +84,23 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         }
     };
 
+    const getScale = () => {
+        let scale = 1;
+        if (elementHeight && elementHeight > 220) {
+            scale = 220 / elementHeight;
+        } else {
+            scale = 1;
+        }
+        return scale.toString();
+    };
+
     if (isProperty) {
         return (
-            <div className={renderedClass()} style={{ width: width }}>
+            <div
+                id={label === ' ' ? 'active' : ''}
+                className={renderedClass()}
+                style={{ width: width, scale: active ? getScale() : '' }}
+            >
                 <FormField
                     label={label === ' ' ? (undefined as any) : label}
                     control={(props) => (
