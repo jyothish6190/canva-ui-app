@@ -10,23 +10,22 @@ export enum FileInputFieldNames {
 
 export const FileInputConfig = [
     {
-        showComponent: false,
+        showComponent: true,
         type: ComponentType.SWITCH,
         name: FileInputFieldNames.HUG_CONTENT,
-        defaultValue: false,
+        defaultValue: true,
     },
     {
-        showComponent: true,
+        showComponent: false,
         type: ComponentType.NUMBER_INPUT,
         name: FileInputFieldNames.WIDTH,
         label: 'Label',
         description: 'Description text',
         min: 80,
         max: 1366,
-        value: 328,
     },
     {
-        showComponent: true,
+        showComponent: false,
         type: ComponentType.CATEGORY,
         name: FileInputFieldNames.WIDTH_OPTIONS,
         options: [
@@ -49,8 +48,8 @@ export const FileInputConfig = [
         ],
         selectedCategories: [
             {
-                label: 'Medium',
-                value: 328,
+                label: 'Small',
+                value: 158,
             },
         ],
     },
