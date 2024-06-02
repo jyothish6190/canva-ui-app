@@ -13,11 +13,13 @@ type CheckBoxPropType = {
 type CheckBoxStateData = {
     checkBoxWidth: string | undefined;
     checkBoxoption: any[];
+    height: number;
 };
 
 const initialState: CheckBoxStateData = {
     checkBoxWidth: undefined,
     checkBoxoption: [],
+    height: 0,
 };
 
 const CheckboxGroupComponent = ({
@@ -68,16 +70,43 @@ const CheckboxGroupComponent = ({
         });
     }, [component]);
 
+    useEffect(() => {
+        Height();
+    }, [checkboxData.checkBoxoption]);
+
+    const Height = () => {
+        const divelement = document.querySelector('#checkboxGroup');
+
+        if (divelement) {
+            setcheckboxData((prevState) => {
+                return {
+                    ...prevState,
+                    height: (divelement as HTMLElement).offsetHeight,
+                };
+            });
+        }
+    };
+
+    const getScale = () => {
+        let scale = 1;
+        if (checkboxData.height && checkboxData.height > 220) {
+            scale = 220 / checkboxData.height;
+        } else {
+            scale = 1;
+        }
+        return scale.toString();
+    };
+
     if (isProperty) {
         return (
             <div
-                style={
-                    checkboxData.checkBoxWidth
-                        ? {
-                              width: checkboxData.checkBoxWidth,
-                          }
-                        : {}
-                }
+                id={checkboxData.checkBoxoption ? 'checkboxGroup' : ''}
+                style={{
+                    width: checkboxData.checkBoxWidth
+                        ? checkboxData.checkBoxWidth
+                        : undefined,
+                    scale: checkboxData.checkBoxoption ? getScale() : '',
+                }}
             >
                 <CheckboxGroup
                     options={checkboxData?.checkBoxoption}
