@@ -200,7 +200,7 @@ const ComponentDetailsPage = () => {
                         <Button
                             stretch={true}
                             variant="primary"
-                            children="Update Component"
+                            children="Update component"
                             onClick={onAddComponent}
                         />
                     </div>
