@@ -4,7 +4,6 @@ import { Component } from 'src/models/component.model';
 
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
-import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
@@ -135,41 +134,6 @@ const updateField = (
             });
             break;
 
-        case PlaceHolderFieldNames.STYLE:
-            if (value === 'shape') {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === PlaceHolderFieldNames.HEIGHT) {
-                        field.showComponent = true;
-                        field.value = 96;
-                    }
-                    if (field.name === PlaceHolderFieldNames.SHAPE) {
-                        field.showComponent = true;
-                    }
-                    if (field.name === PlaceHolderFieldNames.SIZE) {
-                        field.showComponent = false;
-                    }
-                    if (field.name === PlaceHolderFieldNames.WIDTH) {
-                        field.value = 96;
-                    }
-                });
-            } else {
-                newComponent.fields?.forEach((field: Component) => {
-                    if (field.name === PlaceHolderFieldNames.HEIGHT) {
-                        field.showComponent = false;
-                    }
-                    if (field.name === PlaceHolderFieldNames.SHAPE) {
-                        field.showComponent = false;
-                    }
-                    if (field.name === PlaceHolderFieldNames.SIZE) {
-                        field.showComponent = true;
-                        field.value = 'medium';
-                    }
-                    if (field.name === PlaceHolderFieldNames.WIDTH) {
-                        field.value = 296;
-                    }
-                });
-            }
-            break;
         case ProgressBarFieldNames.WIDTH_OPTIONS:
             newComponent.fields?.forEach((field: Component) => {
                 if (field.name === ProgressBarFieldNames.WIDTH) {

@@ -17,6 +17,7 @@ import { FormCheckboxGroupConfig } from '../form-field-component/FormCheckboxGro
 import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConfig';
 import { FormSegmentedConfig } from '../form-field-component/FormSegementedConfig';
 import { TextInputFieldNames } from '../text-input-component/TextInputConfig';
+import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 
 export const getValue = (component: Component) => {
     let value = '';
@@ -221,6 +222,9 @@ const updateSelectComponent = (
             } else {
                 field.showComponent = false;
             }
+        }
+        if (field.name == PlaceHolderFieldNames.WIDTH) {
+            if (value === 'rectangle' || 'sharpRectangle') field.value = 140;
         }
     });
     return newComponent;
