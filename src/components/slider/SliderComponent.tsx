@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FormField, Slider } from '@canva/app-ui-kit';
+import { FormField, Slider, Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
@@ -109,9 +109,11 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
             >
                 <FormField
                     label={
-                        sliderState.sliderLabel
-                            ? sliderState.sliderLabel
-                            : component.name
+                        (sliderState.sliderLabel ? (
+                            (undefined as any)
+                        ) : (
+                            <Title children={component.name} size="xsmall" />
+                        )) as any
                     }
                     control={(props) => (
                         <Slider

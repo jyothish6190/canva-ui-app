@@ -5,6 +5,7 @@ import {
     SelectOption,
     CheckIcon,
     Text,
+    Title,
 } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
@@ -77,7 +78,13 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         return (
             <div className={renderedClass()} style={{ width: width }}>
                 <FormField
-                    label={label ? label : component.name}
+                    label={
+                        label === ' ' ? (
+                            (undefined as any)
+                        ) : (
+                            <Title children={label} size="xsmall" />
+                        )
+                    }
                     control={(props) => (
                         <Select
                             disabled={selectState === 'disabled' ? true : false}
