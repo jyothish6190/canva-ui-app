@@ -14,12 +14,14 @@ type RadioStateData = {
     radioWidth: string | undefined;
     radioOptions: any[];
     radioValue: string;
+    height: number;
 };
 
 const initialState: RadioStateData = {
     radioWidth: undefined,
     radioOptions: [],
     radioValue: '',
+    height: 0,
 };
 
 const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
@@ -67,13 +69,42 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
         });
     }, [component]);
 
+    useEffect(() => {
+        Height();
+    }, [radioData.radioOptions]);
+
+    const Height = () => {
+        const divelement = document.querySelector('#radioGroup');
+
+        if (divelement) {
+            setRadioData((prevState) => {
+                return {
+                    ...prevState,
+                    height: (divelement as HTMLElement).offsetHeight,
+                };
+            });
+        }
+    };
+
+    const getScale = () => {
+        let scale = 1;
+        if (radioData.height && radioData.height > 220) {
+            scale = 220 / radioData.height;
+        } else {
+            scale = 1;
+        }
+        return scale.toString();
+    };
+
     if (isProperty) {
         return (
             <div
+                id={radioData.radioOptions ? 'radioGroup' : ''}
                 style={{
                     width: radioData.radioWidth
                         ? radioData.radioWidth
                         : undefined,
+                    scale: radioData.radioOptions ? getScale() : '',
                 }}
             >
                 <RadioGroup
