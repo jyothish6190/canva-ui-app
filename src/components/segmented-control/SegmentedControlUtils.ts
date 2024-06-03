@@ -225,7 +225,9 @@ const switchSegmentType = (selectedComponent: Component, value: any) => {
         if (field.name === PlaceHolderFieldNames.WIDTH) {
             if (value === 'shape') {
                 field.value = 96;
-            } else {
+            } else if (value === 'text') {
+                field.value = 258;
+            } else if (value === 'title') {
                 field.value = 258;
             }
         }
