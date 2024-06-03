@@ -99,15 +99,18 @@ export const TextConfig = [
         name: TextFieldNames.ALIGNMENT,
         options: [
             {
-                label: TextAlignLeftIcon(),
+                Icon: TextAlignLeftIcon,
+                label: undefined,
                 value: 'start',
             },
             {
-                label: TextAlignCenterIcon(),
+                Icon: TextAlignCenterIcon,
+                label: undefined,
                 value: 'center',
             },
             {
-                label: TextAlignRightIcon(),
+                Icon: TextAlignRightIcon,
+                label: undefined,
                 value: 'end',
             },
         ],
