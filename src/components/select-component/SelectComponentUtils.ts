@@ -16,6 +16,7 @@ import { FormCheckboxConfig } from '../form-field-component/FormCheckboxConfig';
 import { FormCheckboxGroupConfig } from '../form-field-component/FormCheckboxGroupConfig';
 import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConfig';
 import { FormSegmentedConfig } from '../form-field-component/FormSegementedConfig';
+import { TextInputFieldNames } from '../text-input-component/TextInputConfig';
 
 export const getValue = (component: Component) => {
     let value = '';
@@ -204,6 +205,22 @@ const updateSelectComponent = (
     newComponent?.fields?.forEach((field: Component) => {
         if (field.name === component.name) {
             field.value = value;
+        }
+        if (field.name === TextInputFieldNames.END_TEXT) {
+            if (value == 'text') {
+                field.showComponent = true;
+                field.value = 'End Text';
+            } else {
+                field.showComponent = false;
+            }
+        }
+        if (field.name === TextInputFieldNames.MAX_CHAR_COUNT) {
+            if (value == 'character count') {
+                field.showComponent = true;
+                field.value = 50;
+            } else {
+                field.showComponent = false;
+            }
         }
     });
     return newComponent;

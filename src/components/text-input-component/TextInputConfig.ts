@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ClearIcon, SearchIcon } from '@canva/app-ui-kit';
 import { ComponentType } from '../../constants/ComponentTypes';
 
-export enum TextInputSearchFieldNames {
+export enum TextInputFieldNames {
     TEXT = 'Text',
     PLACEHOLDER = 'Placeholder',
     START_DECORATOR = 'Start decorator (optional)',
@@ -17,26 +17,26 @@ export const TextInputConfig = [
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: TextInputSearchFieldNames.TEXT,
+        name: TextInputFieldNames.TEXT,
         value: 'Hello world',
         placeholder: 'Enter your text',
     },
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: TextInputSearchFieldNames.PLACEHOLDER,
+        name: TextInputFieldNames.PLACEHOLDER,
         placeholder: 'Placeholder',
         value: 'Placeholder',
     },
     {
         showComponent: true,
         type: ComponentType.ICON_SELECTOR,
-        name: TextInputSearchFieldNames.START_DECORATOR,
+        name: TextInputFieldNames.START_DECORATOR,
     },
     {
         showComponent: true,
         type: ComponentType.SELECT,
-        name: TextInputSearchFieldNames.END_DECORATOR,
+        name: TextInputFieldNames.END_DECORATOR,
         options: [
             {
                 label: 'None',
@@ -60,7 +60,7 @@ export const TextInputConfig = [
     {
         showComponent: false,
         type: ComponentType.FORM_FIELD,
-        name: TextInputSearchFieldNames.END_TEXT,
+        name: TextInputFieldNames.END_TEXT,
         label: 'Label',
         value: 'End Text',
         description: 'Description text',
@@ -68,7 +68,7 @@ export const TextInputConfig = [
     {
         showComponent: false,
         type: ComponentType.FORM_FIELD,
-        name: TextInputSearchFieldNames.MAX_CHAR_COUNT,
+        name: TextInputFieldNames.MAX_CHAR_COUNT,
         label: 'Label',
         description: 'Description text',
     },
@@ -76,7 +76,7 @@ export const TextInputConfig = [
     {
         showComponent: true,
         type: ComponentType.NUMBER_INPUT,
-        name: TextInputSearchFieldNames.WIDTH,
+        name: TextInputFieldNames.WIDTH,
         label: 'Label',
         value: '328',
         min: 158,
@@ -86,7 +86,7 @@ export const TextInputConfig = [
     {
         showComponent: true,
         type: ComponentType.CATEGORY,
-        name: TextInputSearchFieldNames.WIDTH_OPTIONS,
+        name: TextInputFieldNames.WIDTH_OPTIONS,
         options: [
             {
                 label: 'Small',
@@ -115,7 +115,7 @@ export const TextInputConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
-        name: TextInputSearchFieldNames.STATE,
+        name: TextInputFieldNames.STATE,
         options: [
             {
                 label: 'Default',
