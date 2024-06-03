@@ -224,7 +224,11 @@ const updateSelectComponent = (
             }
         }
         if (field.name == PlaceHolderFieldNames.WIDTH) {
-            if (value === 'rectangle' || 'sharpRectangle') field.value = 140;
+            if (value === 'rectangle') {
+                field.value = 140;
+            } else if (value === 'sharpRectangle') {
+                field.value = 140;
+            }
         }
     });
     return newComponent;
