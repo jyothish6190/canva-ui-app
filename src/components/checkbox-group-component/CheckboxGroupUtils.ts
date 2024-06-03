@@ -44,3 +44,22 @@ export const getWidth = (component: Component) => {
     });
     return width;
 };
+export const getHeight = () => {
+    const divelement = document.querySelector('#checkboxGroup');
+    let height: number = 0;
+
+    if (divelement) {
+        height = (divelement as HTMLElement).offsetHeight;
+    }
+    return height;
+};
+
+export const getScale = (checkboxHeight: number) => {
+    let scale = 1;
+    if (checkboxHeight && checkboxHeight > 220) {
+        scale = 220 / checkboxHeight;
+    } else {
+        scale = 1;
+    }
+    return scale.toString();
+};

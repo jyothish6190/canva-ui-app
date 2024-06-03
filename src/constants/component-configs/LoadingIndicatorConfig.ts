@@ -23,6 +23,6 @@ export const LoadingIndicatorConfig = [
                 value: 'large',
             },
         ],
-        defaultValue: 'small',
+        value: 'small',
     },
 ];

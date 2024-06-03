@@ -7,6 +7,7 @@ import {
 import { Component, OptionItem } from 'src/models/component.model';
 import { SegmentedControlFieldNames } from './SegmentedControlConfig';
 import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
+import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
 
 const iconOptions: OptionItem[] = [
     {
@@ -177,7 +178,8 @@ export const processSegementedFieldChange = (
 
     if (
         updatedComponent.name === SegmentedControlFieldNames.TYPE ||
-        TextFieldNames.VARIANT
+        TextFieldNames.VARIANT ||
+        PlaceHolderFieldNames.SHAPE
     ) {
         newComponent = switchSegmentType(selectedComponent, newValue);
     }
@@ -210,6 +212,38 @@ const switchSegmentType = (selectedComponent: Component, value: any) => {
             } else if (value === 'regular') {
                 newComponent.options = regularTextSize as any[];
                 field.options = regularTextSize as any[];
+            }
+        }
+        if (field.name === PlaceHolderFieldNames.HEIGHT) {
+            if (value === 'shape') {
+                field.showComponent = true;
+                field.value = 96;
+            } else {
+                field.showComponent = false;
+            }
+        }
+        if (field.name === PlaceHolderFieldNames.WIDTH) {
+            if (value === 'shape') {
+                field.value = 96;
+            } else if (value === 'text') {
+                field.value = 258;
+            } else if (value === 'title') {
+                field.value = 258;
+            }
+        }
+        if (field.name === PlaceHolderFieldNames.SIZE) {
+            if (value === 'shape') {
+                field.showComponent = false;
+            } else {
+                field.showComponent = true;
+            }
+        }
+        if (field.name === PlaceHolderFieldNames.SHAPE) {
+            if (value === 'shape') {
+                field.showComponent = true;
+                field.value = 'circle';
+            } else {
+                field.showComponent = false;
             }
         }
     });

@@ -5,6 +5,7 @@ import {
     SelectOption,
     CheckIcon,
     Text,
+    Title,
 } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
@@ -39,6 +40,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
     const [selectState, setSlecteState] = useState<SelectState>('default');
     const [active, setActive] = useState<boolean>(false);
     const [width, setWidth] = useState<string | undefined>(undefined);
+    const [elementHeight, setElementHeight] = useState<number>();
     const [selectedvValue, setSelectedValue] = useState('');
 
     const changeHandler = (value: string) => {
@@ -63,6 +65,28 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         }
     }, [component, component.value, component.options]);
 
+    useEffect(() => {
+        Height();
+    }, [options, active]);
+
+    const Height = () => {
+        const divelement = document.querySelector(`#active`);
+
+        if (divelement) {
+            setElementHeight((divelement as HTMLElement).offsetHeight);
+        }
+    };
+
+    const getScale = () => {
+        let scale = 1;
+        if (elementHeight && elementHeight > 220) {
+            scale = 220 / elementHeight;
+        } else {
+            scale = 1;
+        }
+        return scale.toString();
+    };
+
     const renderedClass = () => {
         if (active) {
             return styles['Select'];
@@ -75,9 +99,19 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div className={renderedClass()} style={{ width: width }}>
+            <div
+                id={label === ' ' ? 'active' : ''}
+                className={renderedClass()}
+                style={{ width: width, scale: active ? getScale() : '' }}
+            >
                 <FormField
-                    label={label ? label : component.name}
+                    label={
+                        label === ' ' ? (
+                            (undefined as any)
+                        ) : (
+                            <Title children={label} size="xsmall" />
+                        )
+                    }
                     control={(props) => (
                         <Select
                             disabled={selectState === 'disabled' ? true : false}
