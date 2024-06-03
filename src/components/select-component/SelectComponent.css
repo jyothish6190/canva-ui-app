@@ -32,7 +32,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-height: 200px;
 }
 .Select div > div > div > button {
     border: 1px solid var(--ui-kit-color-border-active);
