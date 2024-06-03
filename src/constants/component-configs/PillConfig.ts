@@ -44,7 +44,7 @@ export const PillConfig = [
             },
             {
                 label: 'Active',
-                value: 'selected',
+                value: 'active',
             },
 
             {

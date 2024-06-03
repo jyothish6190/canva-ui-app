@@ -62,7 +62,7 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 setPillComponentState((prevState) => {
                     return {
                         ...prevState,
-                        pillState: field.value ? field.value : 'default',
+                        pillState: field.value,
                     };
                 });
             }
