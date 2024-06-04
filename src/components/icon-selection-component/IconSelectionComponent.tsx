@@ -11,7 +11,10 @@ import {
 import { useIconStore } from 'src/store/IconStore';
 import { Component, OptionItem } from 'src/models/component.model';
 import { useComponentStore } from 'src/store/ComponentStore';
-import { iconChangeHandler } from './IconSelectionComponentUtils';
+import {
+    componentIconChangeHandler,
+    iconChangeHandler,
+} from './IconSelectionComponentUtils';
 import { Icon } from 'src/models/icons.model';
 
 type PropType = {
@@ -63,6 +66,13 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
                 optionField
             );
             setSelectedComponent({ ...updatedComponent });
+        } else if (!optionField) {
+            const updatedComponent = componentIconChangeHandler(
+                selectedComponent as Component,
+                component,
+                selectedIcon?.icon
+            );
+            setSelectedComponent({ ...updatedComponent });
         }
     }, [selectedIcon?.icon]);
 
@@ -104,7 +114,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
 
     return (
         <FormField
-            label={''}
+            label={optionField ? (undefined as any) : component.name}
             control={(props) => (
                 <TextInput
                     key={selectedIcon?.icon?.label || ''}

@@ -46,10 +46,10 @@ const optionIconChangeHandler = (
     return newComponent;
 };
 
-const componentIconChangeHandler = (
+export const componentIconChangeHandler = (
     selectedComponent: Component,
     component: Component,
-    icon: Icon
+    icon: Icon | undefined
 ): Component => {
     let newComponent = { ...selectedComponent };
 
