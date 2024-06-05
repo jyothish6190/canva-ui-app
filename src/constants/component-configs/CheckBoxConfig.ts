@@ -92,10 +92,6 @@ export const CheckBoxConfig = [
                 label: 'Disabled',
                 value: 'disabled',
             },
-            {
-                label: 'Error',
-                value: 'error',
-            },
         ],
         value: 'default',
         placeholder: 'Choose a State',
