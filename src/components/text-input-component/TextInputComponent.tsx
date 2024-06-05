@@ -145,7 +145,8 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                     <div className={styles['End-text']}>
                         <Text
                             tone="tertiary"
-                            size="xsmall"
+                            size="small"
+                            variant="regular"
                             children={textInputData.endText}
                         />
                     </div>
