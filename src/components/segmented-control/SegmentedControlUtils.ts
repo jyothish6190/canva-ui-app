@@ -242,8 +242,12 @@ const switchSegmentType = (selectedComponent: Component, value: any) => {
             if (value === 'shape') {
                 field.showComponent = true;
                 field.value = 'circle';
-            } else {
+            } else if (value == 'text') {
                 field.showComponent = false;
+            } else if (value == 'title') {
+                field.showComponent = false;
+            } else {
+                field.showComponent = true;
             }
         }
     });
