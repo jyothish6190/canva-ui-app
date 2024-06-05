@@ -26,11 +26,11 @@ export const TitleConfig = [
         name: TitleFieldNames.SIZE,
         options: [
             {
-                label: 'xlarge',
+                label: 'X large',
                 value: 'xlarge',
             },
             {
-                label: 'large',
+                label: 'Large',
                 value: 'large',
             },
 
@@ -43,7 +43,7 @@ export const TitleConfig = [
                 value: 'small',
             },
             {
-                label: 'xsmall',
+                label: 'X small',
                 value: 'xsmall',
             },
         ],
