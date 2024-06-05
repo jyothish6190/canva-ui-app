@@ -21,7 +21,7 @@ type PropType = {
 const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
     const [label, setLabel] = useState('Checkbox');
     const [state, setState] = useState<
-        'default' | 'hover' | 'pressed' | 'disabled' | 'error'
+        'default' | 'hover' | 'pressed' | 'disabled'
     >('default');
     const [selected, setSelected] = useState(false);
     const [width, setWidth] = useState<string | undefined>(undefined);
@@ -40,9 +40,6 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
                 break;
             case 'pressed':
                 return styles['Pressed-checkbox'];
-                break;
-            case 'error':
-                return styles['Error-checkbox'];
                 break;
             default:
                 return '';
