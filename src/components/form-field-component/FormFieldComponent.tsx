@@ -24,7 +24,10 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
             if (field.name === component.name) {
                 field.value = value;
             }
-            setSelectedComponent({ ...selectedComponent });
+            setSelectedComponent(
+                { ...selectedComponent },
+                'FormFieldComponent'
+            );
             return;
         });
         setComponentField(component, value);

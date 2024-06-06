@@ -32,7 +32,13 @@ const OptionsItemComponent = ({
                         key={'radiogroup'}
                         value={option.selected ? option.value : ''}
                         onChange={(value) => {
+                            option.value = value;
                             option.selected = true;
+                            console.log(
+                                '🚀 ~ renderOptionComponent ~ option:',
+                                option
+                            );
+
                             onOptionChange(option);
                         }}
                         options={[
@@ -50,6 +56,7 @@ const OptionsItemComponent = ({
                         value={option.value}
                         checked={option.selected}
                         onChange={(value, checked) => {
+                            option.value = value;
                             option.selected = checked;
                             onOptionChange(option);
                         }}
@@ -82,6 +89,7 @@ const OptionsItemComponent = ({
                         className={styles['input-field']}
                         onChange={(e) => {
                             e.preventDefault();
+                            option.value = e.target.value;
                             onOptionChange(option);
                         }}
                     />

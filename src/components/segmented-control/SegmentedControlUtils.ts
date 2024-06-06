@@ -126,31 +126,34 @@ export const getOptions = (component: Component) => {
     if (component?.fields) {
         component?.fields?.forEach((field: Component) => {
             if (field.name === SegmentedControlFieldNames.OPTIONS) {
-                const optionsList: any[] = [];
-                field.options?.forEach((option) => {
-                    console.log(
-                        '🚀 ~ field.options?.forEach ~ option:',
-                        option
-                    );
-
-                    if (!option.label && option.Icon) {
-                        option.label = option.Icon() as any;
-                    }
-
-                    optionsList.push({
-                        label: option.label,
-                        value: option.value,
-                    });
-                });
-                options = optionsList as SegmentedControlOption<string>[];
+                options = getOptionList(
+                    field.options as any[]
+                ) as SegmentedControlOption<string>[];
             }
         });
     } else {
-        options = component.options as SegmentedControlOption<string>[];
+        options = getOptionList(
+            component.options as any[]
+        ) as SegmentedControlOption<string>[];
     }
 
-    console.log('🚀 ~ getOptions ~ options:', options);
     return options;
+};
+
+export const getOptionList = (options: any[]) => {
+    const optionsList: any[] = [];
+    options?.forEach((option) => {
+        if (!option.label && option.Icon) {
+            option.label = option.Icon() as any;
+        }
+
+        optionsList.push({
+            label: option.label,
+            value: option.value,
+        });
+    });
+
+    return optionsList;
 };
 
 export const getLabel = (component: Component) => {

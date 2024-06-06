@@ -14,6 +14,7 @@ import PropertyList from './property-list/PropertyList';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
+import { ElementType, useElementStore } from 'src/store/elementStore';
 
 type AppElementData = {
     elementId: string;
@@ -35,6 +36,7 @@ type RefValueType = string | null;
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const { elements, setElements } = useElementStore();
 
     const initialLoad = useRef(true);
     const elementId = useRef<RefValueType>(null);
@@ -58,12 +60,21 @@ const ComponentDetailsPage = () => {
     }, []);
 
     async function assignDetails(appElement) {
-        const oldComponent = {
-            ...(appElement?.data?.selectedComponent as Component),
-        };
+        if (elements && elements.length > 0) {
+            elements.forEach((element: ElementType) => {
+                if (element.elementId === appElement?.data?.elementId) {
+                    const oldComponent = {
+                        ...element.component,
+                    };
 
-        if (oldComponent) {
-            setSelectedComponent(oldComponent);
+                    if (oldComponent) {
+                        setSelectedComponent(
+                            oldComponent,
+                            'ComponentDetailsPage'
+                        );
+                    }
+                }
+            });
         }
     }
 
@@ -105,6 +116,7 @@ const ComponentDetailsPage = () => {
                 }
             }
         });
+
         if (
             selectedComponent?.type === ComponentType.IMAGE_CARD ||
             selectedComponent?.type === ComponentType.VIDEO_CARD
@@ -148,6 +160,15 @@ const ComponentDetailsPage = () => {
                 ...data,
             };
         }
+
+        const updatedElements = [
+            ...elements,
+            {
+                elementId: elementIdNew,
+                component: selectedComponent,
+            },
+        ];
+        setElements(updatedElements as ElementType[]);
         await appElementClient.addOrUpdateElement(appElementData);
     };
 

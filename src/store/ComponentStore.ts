@@ -10,10 +10,11 @@ import { AlertFieldNames } from 'src/constants/component-configs/AlertConfig';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { SwitchFieldNames } from 'src/constants/component-configs/SwitchConfig';
 import { FileInputFieldNames } from 'src/constants/component-configs/FileInputConfig';
+import { components } from 'src/constants/components';
 
 type PropType = {
     selectedComponent: Component | undefined;
-    setSelectedComponent: (component: Component) => void;
+    setSelectedComponent: (component: Component, page: string) => void;
     setComponentField: (
         field: Component,
         value: string | number | boolean
@@ -22,8 +23,10 @@ type PropType = {
 
 export const useComponentStore = create<PropType>((set) => ({
     selectedComponent: undefined,
-    setSelectedComponent: (component: Component) =>
-        set({ selectedComponent: component }),
+    setSelectedComponent: (component: Component, page: string) =>
+        set((state) => ({
+            selectedComponent: setComponent(component, page),
+        })),
     setComponentField: (field: Component, value: string | number | boolean) =>
         set((state) => ({
             selectedComponent: updateField(
@@ -33,6 +36,10 @@ export const useComponentStore = create<PropType>((set) => ({
             ),
         })),
 }));
+
+const setComponent = (component: Component, page: string) => {
+    return component;
+};
 
 const updateField = (
     component: Component,

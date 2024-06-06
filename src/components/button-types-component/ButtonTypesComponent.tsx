@@ -24,7 +24,10 @@ const ButtonTypesComponent = ({ component }: PropType) => {
                     { label: category.label, value: category.value },
                 ];
             }
-            setSelectedComponent({ ...selectedComponent });
+            setSelectedComponent(
+                { ...selectedComponent },
+                'ButtonTypesComponent'
+            );
             return;
         });
         setComponentField(component, category.value);
