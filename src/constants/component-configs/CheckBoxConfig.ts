@@ -2,7 +2,7 @@ import { ComponentType } from '../ComponentTypes';
 
 export enum CheckBoxFieldNames {
     CHECKED = 'Checked',
-    CHECKBOX_LABEL = 'Label (optional)',
+    CHECKBOX_LABEL = 'Label  (optional)',
     HUG_CONTENT = 'Hug content',
     WIDTH = 'Width',
     WIDTH_OPTIONS = 'Width options',
@@ -91,10 +91,6 @@ export const CheckBoxConfig = [
             {
                 label: 'Disabled',
                 value: 'disabled',
-            },
-            {
-                label: 'Error',
-                value: 'error',
             },
         ],
         value: 'default',

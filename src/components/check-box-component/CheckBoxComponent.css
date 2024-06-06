@@ -6,8 +6,3 @@
     background-color: var(--ui-kit-color-primary-hover) !important;
     border-radius: 4px;
 }
-.Error-checkbox > label > div > span > span {
-    border: 1px solid red;
-    background-color: var(--ui-kit-color-primary-hover) !important;
-    border-radius: 4px;
-}

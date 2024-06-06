@@ -136,7 +136,7 @@ export const icons: Icon[] = [
     },
     {
         value: 'grvalue-icon',
-        label: 'Grvalue',
+        label: 'Grid icon',
         Icon: GridIcon,
     },
     {
