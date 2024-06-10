@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Checkbox, RadioGroup, TrashIcon } from '@canva/app-ui-kit';
+import {
+    Box,
+    Checkbox,
+    RadioGroup,
+    TextInput,
+    TrashIcon,
+} from '@canva/app-ui-kit';
 
 import styles from './OptionsItemComponent.css';
 import IconSelectionComponent from 'src/components/icon-selection-component/IconSelectionComponent';
@@ -78,18 +84,12 @@ const OptionsItemComponent = ({
                     optionField={option}
                 />
             ) : (
-                <div className={styles.inputContainer} key={option?.value}>
-                    <input
-                        value={undefined}
-                        defaultValue={option.label as string}
-                        className={styles['input-field']}
-                        onChange={(e) => {
-                            e.preventDefault();
-                            option.value = e.target.value;
-                            onOptionChange(option);
-                        }}
-                    />
-                </div>
+                <TextInput
+                    value={option.label as string}
+                    onChange={(value) => {
+                        (option.label = value), onOptionChange(option);
+                    }}
+                />
             )}
             {showDeleteIcon && (
                 <div
