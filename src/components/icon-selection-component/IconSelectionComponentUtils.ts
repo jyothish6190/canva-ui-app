@@ -30,8 +30,6 @@ const optionIconChangeHandler = (
 
     newComponent.fields?.forEach((field: Component) => {
         if (field.name === component.name) {
-            console.log('🚀 ~ newComponent.fields?.forEach ~ field:', field);
-
             field.options?.forEach((option) => {
                 if (option.key === selectedOption.key) {
                     option.Icon = icon ? (icon.Icon as any) : undefined;
@@ -42,7 +40,6 @@ const optionIconChangeHandler = (
         }
     });
 
-    console.log('🚀 optionIconChangeHandler ~ newComponent:', newComponent);
     return newComponent;
 };
 

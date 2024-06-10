@@ -47,6 +47,7 @@ export const ButtonConfig: Component[] = [
         showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: ButtonFieldNames.ICON_SELECTION,
+        icon: undefined,
     },
     {
         showComponent: true,

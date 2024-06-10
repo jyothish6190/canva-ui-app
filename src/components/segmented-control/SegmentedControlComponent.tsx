@@ -39,6 +39,11 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
             setWidth(width);
 
             const value = getSelectedValue(component);
+            console.log(
+                '🚀 SegmentedControlComponent~ useEffect ~ value:',
+                value
+            );
+
             setValue(value);
 
             const optionsList = getOptions(component);
@@ -48,6 +53,10 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
             setLabel(title);
         }
     }, [component, component.options, component.value]);
+    console.log(
+        '🚀 ~ SegmentedControlComponent ~ component.options:',
+        component.options
+    );
 
     const changeHandler = (value: string) => {
         const updatedComponent = processSegementedFieldChange(

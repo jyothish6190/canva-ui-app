@@ -18,6 +18,8 @@ import { useComponentStore } from 'src/store/ComponentStore';
 import { initAppElement } from '@canva/design';
 import { ElementType, useElementStore } from 'src/store/elementStore';
 import { useIconStore } from 'src/store/IconStore';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
+import { ELEMENTS } from 'src/constants/common-constants';
 
 const appElementClient = initAppElement<any>({
     render: (data) => {
@@ -31,13 +33,16 @@ const HomePage = () => {
     const { elements, setElements } = useElementStore();
     const { clearIcons } = useIconStore();
 
+    const { getItem } = useLocalStorage(ELEMENTS);
+
     const [showIcons, setShowIcons] = useState(true);
-    const [isAppElement, setIsAppElement] = useState(true);
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
     );
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedAppElement, setSelectedAppElement] =
+        useState<any>(undefined);
 
     const filteredComponentList = useMemo(() => {
         let componentsByCategory: Component[] = [];
@@ -66,32 +71,36 @@ const HomePage = () => {
 
     useEffect(() => {
         clearIcons();
+
         appElementClient.registerOnElementChange((appElement) => {
-            console.log(
-                '🚀 ~ appElementClient.registerOnElementChange ~ appElement:',
-                appElement
-            );
+            const elementsList = getItem();
+
+            if (elementsList) {
+                setElements(elementsList);
+            }
 
             if (appElement?.data?.selectedComponent) {
-                setIsAppElement(true);
-                if (elements && elements.length > 0) {
-                    elements.forEach((element: ElementType) => {
-                        if (element.elementId === appElement?.data?.elementId) {
-                            const oldComponent = {
-                                ...element.component,
-                            };
-
-                            if (oldComponent) {
-                                setSelectedComponent(oldComponent, 'HomePage');
-                                navigate('/component-details');
-                            }
-                        }
-                    });
-                }
+                setSelectedAppElement(appElement);
             }
-            setIsAppElement(false);
         });
     }, []);
+
+    useEffect(() => {
+        if (elements && elements.length > 0) {
+            elements.forEach((element: ElementType) => {
+                if (element.elementId === selectedAppElement?.data?.elementId) {
+                    const oldComponent = {
+                        ...element.component,
+                    };
+
+                    if (oldComponent) {
+                        setSelectedComponent(oldComponent, 'HomePage');
+                        navigate('/component-details');
+                    }
+                }
+            });
+        }
+    }, [elements, selectedAppElement]);
 
     useEffect(() => {
         setShowIcons(

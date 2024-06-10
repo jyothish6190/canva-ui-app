@@ -34,10 +34,6 @@ const OptionsItemComponent = ({
                         onChange={(value) => {
                             option.value = value;
                             option.selected = true;
-                            console.log(
-                                '🚀 ~ renderOptionComponent ~ option:',
-                                option
-                            );
 
                             onOptionChange(option);
                         }}

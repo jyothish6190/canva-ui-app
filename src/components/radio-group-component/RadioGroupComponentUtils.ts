@@ -24,6 +24,7 @@ export const getValue = (component: Component) => {
             });
         }
     });
+    console.log('🚀 ~ getValue ~ value:', value);
     return value;
 };
 

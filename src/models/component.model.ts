@@ -3,6 +3,7 @@ import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
 import { Category } from './category.model';
 
 export interface Component {
+    uuid?: string;
     showComponent: boolean;
     type: ComponentType;
     name: string;

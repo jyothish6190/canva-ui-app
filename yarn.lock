@@ -1052,17 +1052,17 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@canva/app-ui-kit@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.npmjs.org/@canva/app-ui-kit/-/app-ui-kit-3.4.0.tgz"
-  integrity sha512-m+1DRijt5fAPIjgv32QXvMPeQ3cVM4UCqzDOFkIXpLeHDih+edbULb1+1/Esmla8vnc5dgUBQHEw5XRLKxg0OQ==
+"@canva/app-ui-kit@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.npmjs.org/@canva/app-ui-kit/-/app-ui-kit-3.5.1.tgz"
+  integrity sha512-01/xTMOLyUBkex0auG+HX2iL64o3AC2Iy8aW2sJmFb2bUX6WUM3EKW0+Y2fn5+5pXdrrJ7DSOKNFUADNDphrIQ==
   dependencies:
     "@seznam/compose-react-refs" "^1.0.4"
     classnames "^2.2.5"
     intl-messageformat "^10.5.4"
     intl-pluralrules "^2.0.1"
     make-plural "^7.3.0"
-    mobx "6.8.0"
+    mobx "6.12.3"
     mobx-react "^7.5.2"
     mobx-utils "^6.0.5"
     normalize-scroll-left "^0.2.1"
@@ -1072,6 +1072,7 @@
     react-measure "^2.5.2"
     react-transition-group "^4.4.1"
     resize-observer-polyfill "^1.5.1"
+    seedrandom "^3.0.5"
     smoothscroll-polyfill "^0.4.4"
     tslib "^2.5.0"
 
@@ -4753,10 +4754,10 @@ mobx-utils@^6.0.5:
   resolved "https://registry.npmjs.org/mobx-utils/-/mobx-utils-6.0.8.tgz"
   integrity sha512-fPNt0vJnHwbQx9MojJFEnJLfM3EMGTtpy4/qOOW6xueh1mPofMajrbYAUvByMYAvCJnpy1A5L0t+ZVB5niKO4g==
 
-mobx@^6.0.0, mobx@^6.1.0, mobx@6.8.0:
-  version "6.8.0"
-  resolved "https://registry.npmjs.org/mobx/-/mobx-6.8.0.tgz"
-  integrity sha512-+o/DrHa4zykFMSKfS8Z+CPSEg5LW9tSNGTuN8o6MF1GKxlfkSHSeJn5UtgxvPkGgaouplnrLXCF+duAsmm6FHQ==
+mobx@^6.0.0, mobx@^6.1.0, mobx@6.12.3:
+  version "6.12.3"
+  resolved "https://registry.npmjs.org/mobx/-/mobx-6.12.3.tgz"
+  integrity sha512-c8NKkO4R2lShkSXZ2Ongj1ycjugjzFFo/UswHBnS62y07DMcTc9Rvo03/3nRyszIvwPNljlkd4S828zIBv/piw==
 
 ms@^2.1.1, ms@2.1.2:
   version "2.1.2"
@@ -5684,6 +5685,11 @@ schema-utils@^4.0.0:
     ajv "^8.9.0"
     ajv-formats "^2.1.1"
     ajv-keywords "^5.1.0"
+
+seedrandom@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/seedrandom/-/seedrandom-3.0.5.tgz"
+  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
 
 select-hose@^2.0.0:
   version "2.0.0"

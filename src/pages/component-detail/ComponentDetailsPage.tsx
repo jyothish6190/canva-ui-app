@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
@@ -12,9 +12,10 @@ import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
 
 import { useComponentStore } from 'src/store/ComponentStore';
-import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
 import { ElementType, useElementStore } from 'src/store/elementStore';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
+import { ELEMENTS } from 'src/constants/common-constants';
 
 type AppElementData = {
     elementId: string;
@@ -37,6 +38,10 @@ const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
     const { elements, setElements } = useElementStore();
+
+    const [imageUrl, setImageUrl] = useState();
+
+    const { setItem } = useLocalStorage(ELEMENTS);
 
     const initialLoad = useRef(true);
     const elementId = useRef<RefValueType>(null);
@@ -169,6 +174,7 @@ const ComponentDetailsPage = () => {
             },
         ];
         setElements(updatedElements as ElementType[]);
+        setItem(updatedElements);
         await appElementClient.addOrUpdateElement(appElementData);
     };
 
@@ -204,7 +210,10 @@ const ComponentDetailsPage = () => {
                 <>
                     <div className={styles.componenDetailPage}>
                         <LivePreview>
+                            {imageUrl && <img src={imageUrl} />}
+
                             <div
+                                id="preview-id"
                                 ref={ref}
                                 style={{
                                     pointerEvents: 'none',

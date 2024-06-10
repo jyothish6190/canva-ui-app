@@ -27,7 +27,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         if (component && component.options) {
             setOptionList(component.options);
         }
-    }, [, component.options]);
+    }, [component, component.options]);
 
     useEffect(() => {
         if (isProprty) {
@@ -74,23 +74,16 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
     };
 
     const updateOptionHandler = (updatedOption: OptionItem) => {
-        console.log(
-            '🚀 ~ updateOptionHandler ~ updatedOption:',
-            updatedOption,
-            component
-        );
         const options = [...optionList];
+        component.value = updatedOption.value;
         if (component.optionType === 'radio' && updatedOption.selected) {
-            component.value = updatedOption.value;
             options.forEach((option) => {
-                option.value = updatedOption.value;
                 if (option.key !== updatedOption.key) {
                     option.selected = false;
                 }
             });
         } else if (component.optionType === 'checkbox') {
             options.forEach((option) => {
-                option.value = updatedOption.value;
                 if (option.key === updatedOption.key) {
                     option.selected = updatedOption.selected;
                 }
@@ -103,6 +96,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         if (index >= 0) {
             options[index] = { ...updatedOption };
         }
+        console.log('🚀 ~ updateOptionHandler ~ options:', options);
         setOptionList(options);
     };
 

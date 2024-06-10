@@ -111,6 +111,14 @@ export const getSelectedValue = (component: Component) => {
         component?.fields?.forEach((field: Component) => {
             if (field.name === SegmentedControlFieldNames.OPTIONS) {
                 value = field.value;
+
+                if (value === '') {
+                    field.options?.forEach((option) => {
+                        if (option.selected) {
+                            value = option.value;
+                        }
+                    });
+                }
             }
         });
     } else {
