@@ -14,6 +14,7 @@ import PropertyList from './property-list/PropertyList';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { Component } from 'src/models/component.model';
 import { ComponentType } from 'src/constants/ComponentTypes';
+import Session from 'svg-text-to-path';
 import { ElementType, useElementStore } from 'src/store/elementStore';
 
 type AppElementData = {
@@ -89,7 +90,32 @@ const ComponentDetailsPage = () => {
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
-        var decoded = unescape(encodeURIComponent(svgString));
+        let session = new Session(svgString, {
+            useFontFace: true,
+            fonts: {
+                'Canva Sans': [
+                    {
+                        wght: 400,
+                        ital: 0,
+                        source: require('assets/fonts/CanvaSans-Regular.woff'),
+                    },
+                    {
+                        wght: 500,
+                        ital: 0,
+                        source: require('assets/fonts/CanvaSans-Medium.woff'),
+                    },
+                    {
+                        wght: 700,
+                        ital: 0,
+                        source: require('assets/fonts/CanvaSans-Bold.woff'),
+                    },
+                ],
+            },
+        });
+        await session.replaceAll();
+        let out = session.getSvgString();
+
+        var decoded = unescape(encodeURIComponent(out));
 
         decoded = decoded.replace(
             /data-stacking-context="true"|<g data-stacking-layer[^/<]*\/>|<!--[^>]*><style\/>|aria-[^"]*"[^"]*"|[^\x20-\x7E]+/g,
