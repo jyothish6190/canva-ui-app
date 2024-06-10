@@ -96,7 +96,10 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
             if (field.name === component.name) {
                 field.value = value;
             }
-            setSelectedComponent({ ...selectedComponent });
+            setSelectedComponent(
+                { ...selectedComponent },
+                'NumberInputComponent'
+            );
             return;
         });
         setComponentField(component, value);

@@ -59,7 +59,10 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
             if (field.name === component.name) {
                 field.value = color;
             }
-            setSelectedComponent({ ...selectedComponent });
+            setSelectedComponent(
+                { ...selectedComponent },
+                'ColorSelectorComponent'
+            );
             setColorData((prevState) => {
                 return {
                     ...prevState,

@@ -95,7 +95,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
             if (field.name === component.name) {
                 field.value = value;
             }
-            setSelectedComponent({ ...selectedComponent });
+            setSelectedComponent({ ...selectedComponent }, 'SliderComponent');
             return;
         });
     };

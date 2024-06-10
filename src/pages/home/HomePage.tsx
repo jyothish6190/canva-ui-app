@@ -16,6 +16,8 @@ import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { initAppElement } from '@canva/design';
+import { ElementType, useElementStore } from 'src/store/elementStore';
+import { useIconStore } from 'src/store/IconStore';
 
 const appElementClient = initAppElement<any>({
     render: (data) => {
@@ -26,6 +28,9 @@ const appElementClient = initAppElement<any>({
 const HomePage = () => {
     const navigate = useNavigate();
     const { setSelectedComponent } = useComponentStore();
+    const { elements, setElements } = useElementStore();
+    const { clearIcons } = useIconStore();
+
     const [showIcons, setShowIcons] = useState(true);
     const [isAppElement, setIsAppElement] = useState(true);
 
@@ -60,11 +65,29 @@ const HomePage = () => {
     }, [searchQuery, selectedCategories, components]);
 
     useEffect(() => {
+        clearIcons();
         appElementClient.registerOnElementChange((appElement) => {
+            console.log(
+                '🚀 ~ appElementClient.registerOnElementChange ~ appElement:',
+                appElement
+            );
+
             if (appElement?.data?.selectedComponent) {
                 setIsAppElement(true);
-                setSelectedComponent(appElement?.data?.selectedComponent);
-                navigate('/component-details');
+                if (elements && elements.length > 0) {
+                    elements.forEach((element: ElementType) => {
+                        if (element.elementId === appElement?.data?.elementId) {
+                            const oldComponent = {
+                                ...element.component,
+                            };
+
+                            if (oldComponent) {
+                                setSelectedComponent(oldComponent, 'HomePage');
+                                navigate('/component-details');
+                            }
+                        }
+                    });
+                }
             }
             setIsAppElement(false);
         });
@@ -107,7 +130,7 @@ const HomePage = () => {
     const componentSelectHandler = (component: Component) => {
         let newComponent = { ...component };
         newComponent.fields = component.fields?.map((item) => ({ ...item }));
-        setSelectedComponent(newComponent);
+        setSelectedComponent(newComponent, 'HomePage');
         navigate(`/component-details`);
     };
 

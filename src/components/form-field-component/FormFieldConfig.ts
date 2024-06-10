@@ -2,7 +2,7 @@ import { ClearIcon } from '@canva/app-ui-kit';
 import { ComponentType } from '../../constants/ComponentTypes';
 
 export enum FormFieldNames {
-    CONTROL = 'control',
+    CONTROL = 'Control',
 }
 
 export const FormTabs = [

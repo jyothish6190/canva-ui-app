@@ -58,26 +58,34 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
     }, [iconsList]);
 
     useEffect(() => {
-        if (selectedIcon && selectedIcon.icon) {
+        const iconFound = { ...selectedIcon };
+        if (optionField) {
             const updatedComponent = iconChangeHandler(
                 selectedComponent as Component,
                 component,
-                selectedIcon.icon,
+                iconFound ? iconFound.icon : undefined,
                 optionField
             );
-            setSelectedComponent({ ...updatedComponent });
-        } else if (!optionField) {
+            setSelectedComponent(
+                { ...updatedComponent },
+                'IconSelectionComponent'
+            );
+        } else {
             const updatedComponent = componentIconChangeHandler(
                 selectedComponent as Component,
                 component,
-                selectedIcon?.icon
+                iconFound ? iconFound.icon : undefined
             );
-            setSelectedComponent({ ...updatedComponent });
+            setSelectedComponent(
+                { ...updatedComponent },
+                'IconSelectionComponent'
+            );
         }
-    }, [selectedIcon?.icon]);
+    }, [selectedIcon]);
 
     const onFocusHandler = (event) => {
-        selectedIcon?.icon && deleteIcon(selectedIcon.componentId);
+        selectedIcon?.icon &&
+            deleteIcon(selectedIcon.componentId, optionField?.key as any);
         navigate('/icons', {
             state: {
                 path: 'iconSelector',
@@ -92,7 +100,10 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
                 variant="tertiary"
                 icon={ClearIcon}
                 onClick={() => {
-                    deleteIcon(selectedIcon?.componentId);
+                    deleteIcon(
+                        selectedIcon?.componentId,
+                        optionField?.key as any
+                    );
                 }}
             />
         ) : (

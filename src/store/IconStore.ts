@@ -10,7 +10,8 @@ export type IconType = {
 type PropType = {
     iconsList: IconType[];
     setIconsList: (iconType: IconType) => void;
-    deleteIcon: (componentId: string) => void;
+    deleteIcon: (componentId: string, optionId?: string) => void;
+    clearIcons: () => void;
 };
 
 export const useIconStore = create<PropType>((set) => ({
@@ -23,6 +24,7 @@ export const useIconStore = create<PropType>((set) => ({
         set((state) => ({
             iconsList: deleteIcon(state.iconsList, componentId, optionId),
         })),
+    clearIcons: () => set((state) => ({ iconsList: [] })),
 }));
 
 const deleteIcon = (
@@ -30,15 +32,15 @@ const deleteIcon = (
     componentId: string,
     optionId?: string
 ) => {
+    console.log('🚀deleteIcon ~ icons:', icons, componentId, optionId);
+
     return icons.filter((icon) => {
-        if (icon.componentId !== componentId) {
-            if (!optionId) {
+        if (icon.componentId === componentId) {
+            if (icon.optionId !== optionId) {
                 return icon;
-            } else {
-                if (optionId !== icon.optionId) {
-                    return icon;
-                }
             }
+        } else {
+            return icon;
         }
     });
 };

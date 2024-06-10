@@ -103,7 +103,10 @@ const SwitchComponent = ({ component, isProperty }: PropType) => {
         selectedComponent?.fields?.forEach((field: Component) => {
             if (field.name === component.name) {
                 field.value = value;
-                setSelectedComponent({ ...selectedComponent });
+                setSelectedComponent(
+                    { ...selectedComponent },
+                    'SwitchComponent'
+                );
                 return;
             }
         });

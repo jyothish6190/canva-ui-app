@@ -37,12 +37,21 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 ...selectedComponent,
             } as Component;
 
+            let value: string | undefined = undefined;
+            optionList.forEach((option) => {
+                if (option.selected) {
+                    value = option.value;
+                }
+            });
+
             newComponent.fields?.forEach((field) => {
                 if (field.name === component.name) {
                     field.options = optionList;
+                    field.value = value;
+                    field.defaultValue = value;
                 }
             });
-            setSelectedComponent({ ...newComponent });
+            setSelectedComponent({ ...newComponent }, 'OptionsListComponent');
         }
     }, [optionList, isProprty]);
 
@@ -74,12 +83,14 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         if (component.optionType === 'radio' && updatedOption.selected) {
             component.value = updatedOption.value;
             options.forEach((option) => {
+                option.value = updatedOption.value;
                 if (option.key !== updatedOption.key) {
                     option.selected = false;
                 }
             });
         } else if (component.optionType === 'checkbox') {
             options.forEach((option) => {
+                option.value = updatedOption.value;
                 if (option.key === updatedOption.key) {
                     option.selected = updatedOption.selected;
                 }

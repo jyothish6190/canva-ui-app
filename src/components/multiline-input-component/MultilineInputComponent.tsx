@@ -127,7 +127,10 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
             if (field.name === component.name) {
                 field.value = value;
             }
-            setSelectedComponent({ ...selectedComponent });
+            setSelectedComponent(
+                { ...selectedComponent },
+                'MultilineInputComponent'
+            );
             return;
         });
     };

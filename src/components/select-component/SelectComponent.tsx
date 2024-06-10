@@ -50,7 +50,10 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
             value
         );
 
-        setSelectedComponent({ ...(updatedComponent as unknown as Component) });
+        setSelectedComponent(
+            { ...(updatedComponent as unknown as Component) },
+            'SelectComponent'
+        );
     };
 
     useEffect(() => {

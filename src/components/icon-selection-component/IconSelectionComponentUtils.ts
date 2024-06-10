@@ -5,7 +5,7 @@ import { IconType } from 'src/store/IconStore';
 export const iconChangeHandler = (
     selectedComponent: Component,
     component: Component,
-    icon: Icon,
+    icon: Icon | undefined,
     option?: OptionItem
 ): Component => {
     if (option) {
@@ -24,7 +24,7 @@ const optionIconChangeHandler = (
     selectedComponent: Component,
     component: Component,
     selectedOption: OptionItem,
-    icon: Icon
+    icon: Icon | undefined
 ): Component => {
     let newComponent = { ...selectedComponent };
 
@@ -34,9 +34,9 @@ const optionIconChangeHandler = (
 
             field.options?.forEach((option) => {
                 if (option.key === selectedOption.key) {
-                    option.Icon = icon.Icon as any;
+                    option.Icon = icon ? (icon.Icon as any) : undefined;
                     option.label = undefined;
-                    option.value = icon.value;
+                    option.value = icon ? icon.value : '';
                 }
             });
         }
@@ -55,7 +55,7 @@ export const componentIconChangeHandler = (
 
     newComponent.fields?.forEach((field) => {
         if (field.name === component.name) {
-            field.value = icon;
+            field.value = icon ? icon : undefined;
         }
     });
     return newComponent;
