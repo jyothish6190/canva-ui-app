@@ -13,11 +13,16 @@ import { icons } from 'src/constants/icons';
 import { Icon } from 'src/models/icons.model';
 import { useIconStore } from 'src/store/IconStore';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
+import { ICONS } from 'src/constants/common-constants';
 
 const IconsListPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { setIconsList: setSelectedIcons } = useIconStore();
+    const { setItem } = useLocalStorage(ICONS);
+    const { getItem } = useLocalStorage(ICONS);
+    setItem([]);
 
     const previousPath = location?.state?.path;
     const componentId = location?.state?.componentId;
@@ -74,22 +79,47 @@ const IconsListPage = () => {
         var base64 = btoa(decoded);
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
-        const result = await upload({
-            type: 'IMAGE',
-            mimeType: 'image/svg+xml',
 
-            url: imgSource,
-            thumbnailUrl: imgSource,
+        const iconLists = getItem();
+        const iconReference = iconLists.find((element) => {
+            return element.iconKey === icon.value;
         });
 
-        await addNativeElement({
-            type: 'IMAGE',
-            ref: result.ref,
-            width: 'auto',
-            height: 40,
-            top: 250,
-            left: 350,
-        });
+        if (!iconReference) {
+            const result = await upload({
+                type: 'IMAGE',
+                mimeType: 'image/svg+xml',
+
+                url: imgSource,
+                thumbnailUrl: imgSource,
+            });
+
+            await addNativeElement({
+                type: 'IMAGE',
+                ref: result.ref,
+                width: 'auto',
+                height: 40,
+                top: 250,
+                left: 350,
+            });
+            const newIcon = [
+                ...iconLists,
+                {
+                    iconKey: icon.value,
+                    iconRef: result.ref,
+                },
+            ];
+            setItem(newIcon);
+        } else {
+            await addNativeElement({
+                type: 'IMAGE',
+                ref: iconReference.iconRef,
+                width: 'auto',
+                height: 40,
+                top: 250,
+                left: 350,
+            });
+        }
     };
 
     return (
