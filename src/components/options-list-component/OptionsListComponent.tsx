@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PlusIcon, Rows } from '@canva/app-ui-kit';
+import { ArrowUpIcon, PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
 import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
@@ -64,12 +64,32 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
     };
 
     const addOptionHandler = () => {
-        let newOption: OptionItem = {
-            value: 'Option' + (optionList.length + 1),
-            label: 'Option' + (optionList.length + 1),
-            key: optionList.length + 1 + '',
-            selected: false,
-        };
+        let newOption: OptionItem;
+        if (component.optionType) {
+            if (optionList.some((option) => option.Icon)) {
+                newOption = {
+                    value: 'Arrow up',
+                    key: optionList.length + 1 + '',
+                    description: 'option1',
+                    selected: false,
+                    Icon: ArrowUpIcon,
+                };
+            } else {
+                newOption = {
+                    value: 'Option' + (optionList.length + 1),
+                    label: 'Option' + (optionList.length + 1),
+                    key: optionList.length + 1 + '',
+                    selected: false,
+                };
+            }
+        } else {
+            newOption = {
+                value: 'example file ' + (optionList.length + 1) + ' png',
+                label: 'example file ' + (optionList.length + 1) + ' png',
+                key: optionList.length + 1 + '',
+                selected: false,
+            };
+        }
         setOptionList([...optionList, newOption]);
     };
 
