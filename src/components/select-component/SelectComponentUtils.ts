@@ -55,7 +55,7 @@ export const getOptions = (component: Component) => {
         component.fields?.forEach((field: Component) => {
             if (field.name === SelectFieldNames.SELECT_OPTIONS) {
                 field.options?.forEach((option: OptionItem) => {
-                    if (option.selected) {
+                    if (option) {
                         options = [
                             ...(field.options as SelectOption<string>[]),
                         ];

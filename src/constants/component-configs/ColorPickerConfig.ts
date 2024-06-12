@@ -2,14 +2,14 @@ import { ComponentType } from '../ComponentTypes';
 
 export enum ColorFieldNames {
     COLOR_PICKER = 'Color',
-    ACTIVE = 'Active',
+    ACTIVE = 'Show color picker flyout',
 }
 export const ColorPickerConfig = [
     {
-        showComponent: true,
+        showComponent: false,
         type: ComponentType.COLOR_PICKER,
         name: ColorFieldNames.COLOR_PICKER,
-        color: '#5BA1E7',
+        color: '#E0D9FC',
         categoryId: 'color',
     },
     {

@@ -77,7 +77,7 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
     } else {
         return (
             <Swatch
-                fill={['#E0D9FC']}
+                fill={['#cfb9fa']}
                 onClick={() => {}}
                 size="small"
                 variant="solid"

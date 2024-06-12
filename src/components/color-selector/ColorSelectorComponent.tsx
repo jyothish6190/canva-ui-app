@@ -30,7 +30,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                 setColorData((prevState) => {
                     return {
                         ...prevState,
-                        color: field.value || '#5BA1E7',
+                        color: field.value || ' #E0D9FC',
                         colorlabel: '  ',
                     };
                 });
@@ -117,7 +117,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
     }
     return (
         <div className={styles['Color-container']}>
-            <ColorSelector color="#BFBFBF" onChange={() => {}} />
+            <ColorSelector color="#cfb9fa" onChange={() => {}} />
             <span style={{ color: '#3b00b3' }}>
                 <ColorPicker className={styles['Color-picker']} size="large" />
             </span>
