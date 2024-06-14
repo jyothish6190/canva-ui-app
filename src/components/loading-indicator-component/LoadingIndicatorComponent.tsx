@@ -4,6 +4,7 @@ import { LoadingIndicator } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { LoadingIndicatorFieldNames } from 'src/constants/component-configs/LoadingIndicatorConfig';
+import styles from './LoadingIndicatorComponent.css';
 
 type LoadingIndicatorType = {
     component: Component;
@@ -25,7 +26,11 @@ const LoadingIndicatorComponent = ({
         });
     }, [component]);
     if (isProperty) {
-        return <LoadingIndicator size={indicatorSize} />;
+        return (
+            <div className={styles['loading-indicator-component']}>
+                <LoadingIndicator size={indicatorSize} />
+            </div>
+        );
     } else {
         return <LoadingIndicator size="large" />;
     }
