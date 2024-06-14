@@ -84,14 +84,104 @@ const ComponentDetailsPage = () => {
         }
     }
 
+    function assignBorderCorner(svgDocument) {
+        // Check if defs already exists
+        let defs = svgDocument.querySelector('defs');
+        if (!defs) {
+            // Create defs if it doesn't exist
+            defs = document.createElementNS(
+                'http://www.w3.org/2000/svg',
+                'defs'
+            );
+            svgDocument.documentElement.appendChild(defs);
+        }
+
+        // Create a clipPath element
+        const clipPath = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'clipPath'
+        );
+        clipPath.setAttribute('id', 'rounded-corner-clip');
+
+        // Create a rounded rectangle
+        const rect = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'rect'
+        );
+        const image = svgDocument.querySelector('image');
+
+        if (image) {
+            image.setAttribute('preserveAspectRatio', 'none'); // Set the preserveAspectRatio none
+
+            rect.setAttribute('x', image?.getAttribute('x')?.toString() || '0');
+            rect.setAttribute('y', image?.getAttribute('y')?.toString() || '0');
+            rect.setAttribute(
+                'width',
+                image?.getAttribute('width')?.toString() || '256'
+            );
+            rect.setAttribute(
+                'height',
+                image?.getAttribute('height')?.toString() || '168'
+            );
+            rect.setAttribute('rx', '10'); // Set the border radius
+            rect.setAttribute('ry', '10'); // Set the border radius
+
+            // Append the rectangle to the clipPath
+            clipPath.appendChild(rect);
+
+            // Append the clipPath to the defs
+            defs.appendChild(clipPath);
+
+            // Select the first <image> element within the SVG
+            // Apply the clipPath to the image
+            image.setAttribute('clip-path', 'url(#rounded-corner-clip)');
+        } else {
+            console.error('No <image> element found in the SVG');
+        }
+    }
+
     const onAddComponent = async () => {
         let selectedElementId = elementId?.current?.toString();
         if (ref.current === null) {
             return;
         }
-        const svgDocument = elementToSVG(ref.current);
 
+        let imgWithCorner = false;
+
+        let svgDocument = elementToSVG(ref.current);
         await inlineResources(svgDocument.documentElement);
+        let elementIdNew = getElementId();
+
+        let appElementData = {} as any;
+        let width = 'auto' as any,
+            height = 100 as any;
+        let data = { elementId: elementIdNew, selectedComponent };
+        selectedComponent?.fields?.map((field) => {
+            if (field.type === ComponentType.NUMBER_INPUT) {
+                if (field?.name.includes('Width')) {
+                    width = Number(field?.value) || 'auto';
+                }
+                if (field?.name.includes('Height')) {
+                    height = Number(field?.value) || 'auto';
+                }
+            }
+        });
+        if (
+            selectedComponent?.type === ComponentType.IMAGE_CARD ||
+            selectedComponent?.type === ComponentType.VIDEO_CARD
+        ) {
+            let isRounderCorner =
+                selectedComponent.fields?.find(
+                    (item) => item.name === 'Rounded Corners'
+                ).value === 'standard';
+
+            if (isRounderCorner) {
+                assignBorderCorner(svgDocument);
+                imgWithCorner = true;
+            }
+        } else {
+            (width = 'auto' as any), (height = 100 as any);
+        }
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
@@ -131,26 +221,10 @@ const ComponentDetailsPage = () => {
 
         var imgSource = `data:image/svg+xml;base64,${base64}`;
 
-        let elementIdNew = getElementId();
-
-        let appElementData = {} as any;
-        let width = 'auto' as any,
-            height = 100 as any;
-        let data = { elementId: elementIdNew, selectedComponent };
-        selectedComponent?.fields?.map((field) => {
-            if (field.type === ComponentType.NUMBER_INPUT) {
-                if (field?.name.includes('Width')) {
-                    width = Number(field?.value) || 'auto';
-                }
-                if (field?.name.includes('Height')) {
-                    height = Number(field?.value) || 'auto';
-                }
-            }
-        });
-
         if (
-            selectedComponent?.type === ComponentType.IMAGE_CARD ||
-            selectedComponent?.type === ComponentType.VIDEO_CARD
+            !imgWithCorner &&
+            (selectedComponent?.type === ComponentType.IMAGE_CARD ||
+                selectedComponent?.type === ComponentType.VIDEO_CARD)
         ) {
             const image = await upload({
                 type: 'IMAGE',
@@ -183,8 +257,8 @@ const ComponentDetailsPage = () => {
 
             appElementData = {
                 type: 'IMAGE',
-                width: 'auto',
-                height: 100,
+                width: width,
+                height: height,
                 top: 0,
                 left: 0,
                 ref: images[elementIdNew],

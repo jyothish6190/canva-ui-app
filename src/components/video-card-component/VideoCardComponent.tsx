@@ -110,8 +110,8 @@ const VideoCardComponent = ({ component, isProperty }: videoCardProp) => {
                     mimeType="video/mp4"
                     onClick={() => {}}
                     onDragStart={() => {}}
-                    thumbnailUrl={require('assets/images/default.png')}
-                    videoPreviewUrl={require('assets/images/default.png')}
+                    thumbnailUrl={require('assets/images/video-card.jpg')}
+                    videoPreviewUrl={require('assets/images/video-card.jpg')}
                 />
             </div>
         );
@@ -125,8 +125,8 @@ const VideoCardComponent = ({ component, isProperty }: videoCardProp) => {
                     mimeType="video/mp4"
                     onClick={() => {}}
                     onDragStart={() => {}}
-                    thumbnailUrl={require('assets/images/default.png')}
-                    videoPreviewUrl={require('assets/images/default.png')}
+                    thumbnailUrl={require('assets/images/video-card.jpg')}
+                    videoPreviewUrl={require('assets/images/video-card.jpg')}
                 />
             </div>
         );
