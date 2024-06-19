@@ -17,6 +17,7 @@ import Session from 'svg-text-to-path';
 import { ElementType, useElementStore } from 'src/store/elementStore';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { ELEMENTS } from 'src/constants/common-constants';
+import { SvgtoBase64 } from 'src/components/color-selector/ColorSelectorUtils';
 
 type AppElementData = {
     elementId: string;
@@ -89,6 +90,9 @@ const ComponentDetailsPage = () => {
         if (ref.current === null) {
             return;
         }
+        const colorSvg = document.getElementById('colorSvg');
+        console.log(colorSvg);
+
         const svgDocument = elementToSVG(ref.current);
 
         await inlineResources(svgDocument.documentElement);
@@ -169,6 +173,38 @@ const ComponentDetailsPage = () => {
                 width: width,
                 height: height,
                 ref: image.ref,
+                ...data,
+            };
+        } else if (selectedComponent?.type === ComponentType.COLOR_PICKER) {
+            let colorPickerSvg;
+
+            if (selectedComponent.fields) {
+                const hasColorPickerField = selectedComponent.fields.some(
+                    (field) =>
+                        field.value &&
+                        field.name.includes('Show color picker flyout')
+                );
+                colorPickerSvg = hasColorPickerField
+                    ? await SvgtoBase64()
+                    : imgSource;
+            }
+
+            const result = await upload({
+                id: elementIdNew,
+                type: 'IMAGE',
+                mimeType: 'image/svg+xml',
+                url: colorPickerSvg,
+                thumbnailUrl: colorPickerSvg,
+            });
+            images[elementIdNew] = result.ref;
+
+            appElementData = {
+                type: 'IMAGE',
+                width: 'auto',
+                height: 100,
+                top: 0,
+                left: 0,
+                ref: images[elementIdNew],
                 ...data,
             };
         } else {

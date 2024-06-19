@@ -7,7 +7,9 @@ import styles from './colorSelector.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import ColorPicker from '../../../assets/icons/color-picker.svg';
 import ColorPickerLarge from '../../../assets/icons/color-picker-large.svg';
+import ColorPickerFull from '../../../assets/icons/color-picker-full.svg';
 import { ColorFieldNames } from 'src/constants/component-configs/ColorPickerConfig';
+import { SvgtoBase64 } from './ColorSelectorUtils';
 type PropType = {
     component: Component;
     isProperty: boolean;
@@ -24,13 +26,14 @@ const initialState: ColorStateData = {
 };
 const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
     const [colorData, setColorData] = useState<ColorStateData>(initialState);
+
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === ColorFieldNames.COLOR_PICKER) {
                 setColorData((prevState) => {
                     return {
                         ...prevState,
-                        color: field.value || ' #E0D9FC',
+                        color: field.value || ' #c4b5fd',
                         colorlabel: '  ',
                     };
                 });
@@ -44,6 +47,8 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                 });
             }
         });
+        const Base64 = SvgtoBase64();
+        console.log('Base64', Base64);
         if (!component.fields)
             setColorData((prevState) => {
                 return {
@@ -89,30 +94,41 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                     }
                     onChange={changeHandler}
                 />
-            </div>
-        ) : (
-            <div className={styles['Color-preview-container']}>
-                <ColorSelector
-                    color={
-                        colorData.color
-                            ? colorData.color
-                            : (component.color as any)
-                    }
-                    onChange={() => {}}
-                />
-                <span
-                    style={{
-                        color: colorData.color
-                            ? colorData.color
-                            : (component.color as any),
-                    }}
-                >
-                    <ColorPickerLarge
-                        className={styles['Color-picker']}
-                        size="large"
-                    />
+                <span id="colorSvg" style={{ display: 'none' }}>
+                    <ColorPickerFull />
                 </span>
             </div>
+        ) : (
+            <>
+                <div className={styles['Color-preview-container']}>
+                    <ColorSelector
+                        color={
+                            colorData.color
+                                ? colorData.color
+                                : (component.color as any)
+                        }
+                        onChange={() => {}}
+                    />
+                    <span
+                        style={{
+                            color: colorData.color
+                                ? colorData.color
+                                : (component.color as any),
+                        }}
+                    >
+                        <ColorPickerLarge
+                            className={styles['Color-picker']}
+                            size="large"
+                        />
+                    </span>
+                </div>
+                <div
+                    id="colorSvg"
+                    style={{ width: 'fit-content', display: 'none' }}
+                >
+                    <ColorPickerFull />
+                </div>
+            </>
         );
     }
     return (
