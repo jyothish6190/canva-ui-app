@@ -146,7 +146,7 @@ export const icons: Icon[] = [
     },
     {
         value: 'light-bulb-icon',
-        label: 'LightBulb',
+        label: 'Lightbulb',
         Icon: LightBulbIcon,
     },
     {

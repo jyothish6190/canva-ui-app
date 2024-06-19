@@ -98,7 +98,7 @@ const IconsListPage = () => {
                 type: 'IMAGE',
                 ref: result.ref,
                 width: 'auto',
-                height: 40,
+                height: icon.value == 'minus-icon' ? 5 : 40,
                 top: 250,
                 left: 350,
             });
