@@ -316,7 +316,7 @@ export const components: Component[] = [
         name: 'Image card',
         borderRadius: 'standard',
         previewUrl:
-            'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
+            'https://www.canva.dev/example-assets/image-import/grass-image.jpg',
         categoryId: 'card',
         fields: ImageCardConfig,
     },
@@ -333,7 +333,7 @@ export const components: Component[] = [
         type: ComponentType.VIDEO_CARD,
         name: 'Video card',
         thumbnailUrl:
-            'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
+            'https://www.canva.dev/example-assets/video-import/beach-thumbnail-image.jpg',
         durationInSeconds: 11,
         categoryId: 'card',
         fields: VideoCardConfig,
@@ -343,7 +343,7 @@ export const components: Component[] = [
         type: ComponentType.EMBED_CARD,
         name: 'Embed card',
         thumbnailUrl:
-            'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
+            'https://www.canva.dev/example-assets/images/puppyhood.jpg',
         title: 'This is a title',
         description: 'This is a subtitle',
         categoryId: 'card',

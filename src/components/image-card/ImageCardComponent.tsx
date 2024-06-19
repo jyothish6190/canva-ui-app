@@ -105,7 +105,7 @@ const ImageCardComponent = ({ component, isProperty }: ImagePropType) => {
                     borderRadius={imageCardState.cardBoderRadius}
                     onClick={() => {}}
                     onDragStart={() => {}}
-                    thumbnailUrl={require('assets/images/default.png')}
+                    thumbnailUrl={require('assets/images/image-card.jpg')}
                 />
             </div>
         );
@@ -118,7 +118,7 @@ const ImageCardComponent = ({ component, isProperty }: ImagePropType) => {
                     borderRadius="standard"
                     onClick={() => {}}
                     onDragStart={() => {}}
-                    thumbnailUrl={require('assets/images/default.png')}
+                    thumbnailUrl={require('assets/images/image-card.jpg')}
                 />
             </div>
         );
