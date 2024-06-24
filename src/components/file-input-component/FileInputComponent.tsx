@@ -93,16 +93,6 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
         }
     };
 
-    const getScale = () => {
-        let scale = 1;
-        if (fileInputData.height && fileInputData.height > 220) {
-            scale = 220 / fileInputData.height;
-        } else {
-            scale = 1;
-        }
-        return scale.toString();
-    };
-
     if (isProperty) {
         return (
             <div
@@ -112,7 +102,6 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    scale: fileInputData.fileOptionView ? getScale() : '',
                 }}
             >
                 <FileInput

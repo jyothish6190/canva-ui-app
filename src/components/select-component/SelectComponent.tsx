@@ -80,16 +80,6 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         }
     };
 
-    const getScale = () => {
-        let scale = 1;
-        if (elementHeight && elementHeight > 220) {
-            scale = 220 / elementHeight;
-        } else {
-            scale = 1;
-        }
-        return scale.toString();
-    };
-
     const renderedClass = () => {
         if (active) {
             return styles['Select'];
@@ -105,7 +95,9 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
             <div
                 id={label === ' ' ? 'active' : ''}
                 className={renderedClass()}
-                style={{ width: width, scale: active ? getScale() : '' }}
+                style={{
+                    width: width,
+                }}
             >
                 <FormField
                     label={

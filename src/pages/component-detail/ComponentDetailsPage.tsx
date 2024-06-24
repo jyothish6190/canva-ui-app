@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Button } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
@@ -10,6 +10,7 @@ import styles from './ComponentDetailsPage.css';
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
+import { getScale } from './ComponentDetailsPageUtils';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { ComponentType } from 'src/constants/ComponentTypes';
@@ -41,6 +42,7 @@ const ComponentDetailsPage = () => {
     const { elements, setElements } = useElementStore();
 
     const [imageUrl, setImageUrl] = useState();
+    const [scale, setScale] = useState('1');
 
     const { setItem } = useLocalStorage(ELEMENTS);
 
@@ -145,10 +147,22 @@ const ComponentDetailsPage = () => {
         if (ref.current === null) {
             return;
         }
-
+        const previewDiv = document.getElementById('preview-id');
+        let scale;
         let imgWithCorner = false;
+        let svgDocument;
+        if (previewDiv) {
+            // Get the computed style of the element
+            let computedStyle = window.getComputedStyle(previewDiv);
 
-        let svgDocument = elementToSVG(ref.current);
+            // Get the transform property
+            scale = computedStyle.scale;
+            previewDiv.style.scale = '1';
+        }
+
+        svgDocument = elementToSVG(ref.current as HTMLElement);
+        if (previewDiv) previewDiv.style.scale = scale;
+
         await inlineResources(svgDocument.documentElement);
         let elementIdNew = getElementId();
 
@@ -285,24 +299,11 @@ const ComponentDetailsPage = () => {
         return timestamp + random;
     }
 
-    function getScale(component) {
-        let scale = 1;
-        let width = 0;
-        let max = 0;
-        let widthParam = component?.fields?.filter(
-            (field) => field.name === 'Width'
-        )[0];
-        if (widthParam) {
-            width = widthParam.value;
-            max = widthParam.max;
-        }
-        if (width > max) {
-            scale = 300 / max;
-        } else if (width > 308) {
-            scale = 300 / width;
-        }
-        return scale.toString();
-    }
+    useEffect(() => {
+        setTimeout(() => {
+            setScale(getScale(selectedComponent));
+        });
+    }, [selectedComponent]);
 
     return (
         <>
@@ -317,7 +318,7 @@ const ComponentDetailsPage = () => {
                                 ref={ref}
                                 style={{
                                     pointerEvents: 'none',
-                                    scale: getScale(selectedComponent),
+                                    scale: scale,
                                 }}
                             >
                                 <ComponentItem
