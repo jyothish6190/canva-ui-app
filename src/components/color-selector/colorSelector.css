@@ -3,12 +3,12 @@
     justify-content: space-between;
     align-items: center;
 }
-.Color-picker {
+.color-picker {
     display: block;
     width: 100%;
     height: 100%;
 }
-.Color-preview-container {
+.color-preview-container {
     width: 345px;
     position: relative;
     right: -10px;
@@ -17,16 +17,16 @@
     flex-direction: column;
     gap: 5px;
 }
-.Color-preview-container > div {
+.color-preview-container > div {
     width: fit-content;
     padding-left: 20px;
 }
 
-.Color-preview-container > span {
+.color-preview-container > span {
     height: 200px;
 }
 
-.Color-container {
+.color-container {
     width: 150px;
     height: 118px;
     display: flex;
@@ -34,11 +34,16 @@
     gap: 0;
 }
 
-.Color-container > div {
+.color-container > div {
     width: fit-content;
     padding-left: 16px;
 }
-.Color-container > span {
+.color-container > span {
     width: 160px;
     height: 100px;
+}
+
+.color-preview-container > div > div > button {
+    border: 2px solid var(--ui-kit-color-border-active);
+    padding: 2px;
 }

@@ -97,7 +97,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
             </div>
         ) : (
             <>
-                <div className={styles['Color-preview-container']}>
+                <div className={styles['color-preview-container']}>
                     <ColorSelector
                         color={
                             colorData.color
@@ -114,7 +114,7 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
                         }}
                     >
                         <ColorPickerLarge
-                            className={styles['Color-picker']}
+                            className={styles['color-picker']}
                             size="large"
                         />
                     </span>
@@ -129,10 +129,10 @@ const ColorSelectorComponent = ({ component, isProperty }: PropType) => {
         );
     }
     return (
-        <div className={styles['Color-container']}>
+        <div className={styles['color-container']}>
             <ColorSelector color="#cfb9fa" onChange={() => {}} />
             <span style={{ color: '#3b00b3' }}>
-                <ColorPicker className={styles['Color-picker']} size="large" />
+                <ColorPicker className={styles['color-picker']} size="large" />
             </span>
         </div>
     );
