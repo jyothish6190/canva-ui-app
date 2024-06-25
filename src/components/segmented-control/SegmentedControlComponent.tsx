@@ -76,6 +76,7 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
             <div
                 style={{
                     width: width,
+                    padding: '0.5px',
                 }}
             >
                 <FormField

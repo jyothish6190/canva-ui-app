@@ -114,8 +114,13 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 className={renderedClass()}
                 style={
                     pillComponentState.pillWidth
-                        ? { width: pillComponentState.pillWidth }
-                        : {}
+                        ? {
+                              width: pillComponentState.pillWidth,
+                              padding: '0.5px',
+                          }
+                        : {
+                              padding: '0.5px',
+                          }
                 }
             >
                 <Pill

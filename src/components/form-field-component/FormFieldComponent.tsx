@@ -62,12 +62,20 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <FormField
-                label={
-                    (<Title children={component.name} size="xsmall" />) as any
-                }
-                control={(props) => getComponent()}
-            />
+            <div
+                style={{
+                    padding: '0.5px',
+                }}
+            >
+                <FormField
+                    label={
+                        (
+                            <Title children={component.name} size="xsmall" />
+                        ) as any
+                    }
+                    control={(props) => getComponent()}
+                />
+            </div>
         );
     }
     return (

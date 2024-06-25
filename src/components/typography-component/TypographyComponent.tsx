@@ -91,7 +91,7 @@ const TypographyComponent = ({ component, isProperty, onChange }: PropType) => {
         return (
             <div
                 className={renderedClass()}
-                style={{ width: typographyState.cardWidth }}
+                style={{ width: typographyState.cardWidth, padding: '0.5px' }}
             >
                 <TypographyCard onClick={() => {}} ariaLabel="">
                     <Text lineClamp={1}>{typographyState.cardText}</Text>

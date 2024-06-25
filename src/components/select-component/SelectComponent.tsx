@@ -97,6 +97,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                 className={renderedClass()}
                 style={{
                     width: width,
+                    padding: '0.5px',
                 }}
             >
                 <FormField

@@ -102,6 +102,7 @@ const FileInputComponent = ({ component, isProperty, onChange }: PropType) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
+                    padding: '0.5px',
                 }}
             >
                 <FileInput
