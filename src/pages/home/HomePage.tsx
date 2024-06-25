@@ -64,7 +64,7 @@ const HomePage = () => {
         let filteredComponents = componentsByCategory.filter((component) => {
             return component.name
                 .toLowerCase()
-                .includes(searchQuery.toLowerCase());
+                .includes(searchQuery.replace(/\s+/g, '').toLowerCase());
         });
         return filteredComponents;
     }, [searchQuery, selectedCategories, components]);
@@ -123,7 +123,11 @@ const HomePage = () => {
     };
 
     const searchHandler = (searchQuery: string) => {
-        if ('icons'.toLowerCase().includes(searchQuery.toLowerCase())) {
+        if (
+            'icons'
+                .toLowerCase()
+                .includes(searchQuery.replace(/\s+/g, '').toLowerCase())
+        ) {
             selectedCategories.forEach((item) => {
                 if (item.value === 'icons') {
                     setShowIcons(true);
