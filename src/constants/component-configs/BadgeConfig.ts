@@ -34,8 +34,8 @@ export const BadgeConfig = [
                 value: 'info',
             },
             {
-                label: 'Nuetral',
-                value: 'nuetral',
+                label: 'Neutral',
+                value: 'neutral',
             },
             {
                 label: 'Positive',

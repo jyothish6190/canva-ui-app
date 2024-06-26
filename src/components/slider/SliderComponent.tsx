@@ -122,7 +122,12 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                             }
                             value={
                                 sliderState.sliderValue
-                                    ? sliderState.sliderValue
+                                    ? sliderState.sliderValue >
+                                      sliderState.maxValue
+                                        ? sliderState.maxValue
+                                        : sliderState.sliderValue
+                                    : component.value > component.max
+                                    ? component.max
                                     : component.value
                             }
                             max={
