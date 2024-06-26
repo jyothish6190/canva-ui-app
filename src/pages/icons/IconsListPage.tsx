@@ -64,11 +64,16 @@ const IconsListPage = () => {
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.value);
         const iconElement = element?.querySelector('span');
-        const clone = iconElement?.cloneNode(true) as HTMLElement;
+        if (iconElement) {
+            iconElement.style.color = 'black';
+        }
 
-        const svgDocument = elementToSVG(clone as HTMLElement);
+        const svgDocument = elementToSVG(iconElement as HTMLElement);
 
         await inlineResources(svgDocument.documentElement);
+        if (iconElement) {
+            iconElement.style.color = 'currentColor';
+        }
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
