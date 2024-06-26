@@ -40,6 +40,7 @@ const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
     const { elements, setElements } = useElementStore();
+    const [onUpdate, setOnUpdate] = useState(false);
 
     const [imageUrl, setImageUrl] = useState();
 
@@ -141,6 +142,18 @@ const ComponentDetailsPage = () => {
         }
     }
 
+    useEffect(() => {
+        console.log('refupdated');
+
+        if (
+            selectedComponent?.type === ComponentType.EMBED_CARD &&
+            ref.current?.querySelector('img') &&
+            onUpdate
+        ) {
+            onAddComponent();
+        }
+    }, [ref.current]);
+
     const onAddComponent = async () => {
         let selectedElementId = elementId?.current?.toString();
         if (ref.current === null) {
@@ -149,7 +162,19 @@ const ComponentDetailsPage = () => {
 
         let imgWithCorner = false;
 
-        let svgDocument = elementToSVG(ref.current);
+        let svgDocument;
+
+        if (selectedComponent?.type === ComponentType.EMBED_CARD) {
+            setOnUpdate(true);
+            if (ref.current && ref.current.querySelector('img')) {
+                svgDocument = elementToSVG(ref.current);
+            } else {
+                svgDocument = elementToSVG('' as any);
+            }
+        } else {
+            svgDocument = elementToSVG(ref.current);
+        }
+
         await inlineResources(svgDocument.documentElement);
         let elementIdNew = getElementId();
 
@@ -157,6 +182,7 @@ const ComponentDetailsPage = () => {
         let width = 'auto' as any,
             height = 100 as any;
         let data = { elementId: elementIdNew, selectedComponent };
+
         selectedComponent?.fields?.map((field) => {
             if (field.type === ComponentType.NUMBER_INPUT) {
                 if (field?.name.includes('Width')) {
@@ -167,6 +193,7 @@ const ComponentDetailsPage = () => {
                 }
             }
         });
+
         if (
             selectedComponent?.type === ComponentType.IMAGE_CARD ||
             selectedComponent?.type === ComponentType.VIDEO_CARD
@@ -180,6 +207,10 @@ const ComponentDetailsPage = () => {
                 assignBorderCorner(svgDocument);
                 imgWithCorner = true;
             }
+        } else if (selectedComponent?.type === ComponentType.EMBED_CARD) {
+            assignBorderCorner(svgDocument);
+            width = 'auto';
+            imgWithCorner = true;
         } else {
             (width = 'auto' as any), (height = 100 as any);
         }
@@ -306,6 +337,16 @@ const ComponentDetailsPage = () => {
                 component: selectedComponent,
             },
         ];
+
+        if (selectedComponent?.type === ComponentType.EMBED_CARD) {
+            if (ref.current && ref.current.querySelector('img')) {
+                setOnUpdate(false);
+            } else {
+                setOnUpdate(true);
+            }
+        } else {
+            setOnUpdate(false);
+        }
         setElements(updatedElements as ElementType[]);
         setItem(updatedElements);
         await appElementClient.addOrUpdateElement(appElementData);
@@ -364,7 +405,10 @@ const ComponentDetailsPage = () => {
                             stretch={true}
                             variant="primary"
                             children="Update component"
-                            onClick={onAddComponent}
+                            onClick={() => {
+                                onAddComponent();
+                                setOnUpdate(true);
+                            }}
                         />
                     </div>
                 </>
