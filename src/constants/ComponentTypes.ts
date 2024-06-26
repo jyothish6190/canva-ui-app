@@ -32,6 +32,7 @@ export enum ComponentType {
     CATEGORY = 'category',
     OPTIONS_LIST = 'options-list',
     ICON_SELECTOR = 'icon-selector',
+    FORM_SELECT = 'form-select',
 }
 
 export enum OptionTypes {

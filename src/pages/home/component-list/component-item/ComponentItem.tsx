@@ -36,6 +36,7 @@ import BadgeComponent from 'src/components/badge-component/BadgeComponent';
 import PillComponent from 'src/components/pill-component/PillComponent';
 import LoadingIndicatorComponent from 'src/components/loading-indicator-component/LoadingIndicatorComponent';
 import TitleComponent from 'src/components/title/TitleComponent';
+import FormSelectComponent from 'src/components/form-select-component/FormSelectComponent';
 
 type PropType = {
     component: Component;
@@ -245,6 +246,14 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
             );
         case ComponentType.ICON_SELECTOR:
             return <IconSelectionComponent component={component} />;
+
+        case ComponentType.FORM_SELECT:
+            return (
+                <FormSelectComponent
+                    component={component}
+                    isProprty={isProperty}
+                />
+            );
 
         default:
             return <></>;
