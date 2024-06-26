@@ -115,16 +115,22 @@ export const components: Component[] = [
         categoryId: 'form',
         options: [
             {
+                key: 1,
                 value: 'blueberry',
                 label: 'Blueberry',
+                selected: false,
             },
             {
+                key: 2,
                 value: 'apple',
                 label: 'Apple',
+                selected: false,
             },
             {
+                key: 3,
                 value: 'strawberry',
                 label: 'Strawberry',
+                selected: false,
             },
         ],
         fields: CheckBoxGroupConfig,
@@ -136,16 +142,22 @@ export const components: Component[] = [
         categoryId: 'form',
         options: [
             {
+                key: 1,
                 value: 'blueberry',
                 label: 'Blueberry',
+                selected: false,
             },
             {
+                key: 2,
                 value: 'apple',
                 label: 'Apple',
+                selected: false,
             },
             {
+                key: 3,
                 value: 'strawberry',
                 label: 'Strawberry',
+                selected: false,
             },
         ],
         fields: RadioGroupConfig,
@@ -240,12 +252,16 @@ export const components: Component[] = [
         defaultTabValue: 'control',
         options: [
             {
+                key: 1,
                 value: 'blueberry',
                 label: 'Blueberry',
+                selected: false,
             },
             {
+                key: 2,
                 value: 'apple',
                 label: 'Apple',
+                selected: false,
             },
         ],
         fields: SelectConfig,

@@ -8,7 +8,7 @@ export enum VideoFieldNames {
 
 export const VideoCardConfig = [
     {
-        showComponent: true,
+        showComponent: false,
         type: ComponentType.FORM_FIELD,
         name: VideoFieldNames.DURATION,
         label: 'Label',
