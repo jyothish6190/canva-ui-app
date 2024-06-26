@@ -68,7 +68,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         if (component.optionType) {
             if (optionList.some((option) => option.Icon)) {
                 newOption = {
-                    value: 'Arrow up',
+                    value: 'Arrow up' + '-' + (optionList.length + 1),
                     key: optionList.length + 1 + '',
                     description: 'option1',
                     selected: false,

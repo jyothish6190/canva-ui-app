@@ -11,21 +11,21 @@ import { PlaceHolderFieldNames } from 'src/constants/component-configs/Placehold
 
 const iconOptions: OptionItem[] = [
     {
-        value: 'Arrow up',
+        value: 'Arrow up-1',
         key: 1,
         description: 'option1',
         selected: true,
         Icon: ArrowUpIcon,
     },
     {
-        value: 'Arrow down',
+        value: 'Arrow down-2',
         key: 2,
         description: 'option2',
         Icon: ArrowDownIcon,
         selected: false,
     },
     {
-        value: 'Arrow left',
+        value: 'Arrow left-3',
         key: 3,
         description: 'option3',
         Icon: ArrowLeftIcon,
