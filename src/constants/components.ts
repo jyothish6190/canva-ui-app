@@ -407,16 +407,4 @@ export const components: Component[] = [
     //     categoryId: 'typography',
     //     fields: LinkConfig,
     // },**Temporarily Removed Link component**
-    {
-        showComponent: true,
-        type: ComponentType.FORM_SELECT,
-        name: 'Form field',
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Placeholder',
-        categoryId: 'form',
-        tabs: FormSelectTabs,
-        defaultTabValue: 'form field',
-        fields: FormFieldSelectConfig,
-    },
 ];
