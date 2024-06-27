@@ -153,7 +153,10 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
         return (
             <div
                 className={renderedClass()}
-                style={{ width: multilineInputData.inputWidth }}
+                style={{
+                    width: multilineInputData.inputWidth,
+                    padding: '0.5px',
+                }}
             >
                 <FormField
                     label={
