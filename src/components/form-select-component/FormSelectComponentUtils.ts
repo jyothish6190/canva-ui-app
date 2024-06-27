@@ -14,7 +14,7 @@ import {
     FormFieldSelectFieldNames,
     FormSelectTabs,
 } from '../form-select-component/FormSelectConfig';
-import { FormCheckboxConfig } from '../form-checkbox-component/FormCheckboxConfig';
+import { FormCheckboxConfig } from '../form-field-component/FormCheckboxConfig';
 import { FormCheckboxGroupConfig } from '../form-field-component/FormCheckboxGroupConfig';
 import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConfig';
 import { FormSegmentedConfig } from '../form-field-component/FormSegementedConfig';
