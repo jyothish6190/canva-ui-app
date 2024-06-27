@@ -384,14 +384,14 @@ export const components: Component[] = [
         categoryId: 'typography',
         fields: TextConfig,
     },
-    {
-        showComponent: true,
-        type: ComponentType.LINK,
-        name: 'Link',
-        children: 'Go to Canva',
-        categoryId: 'typography',
-        fields: LinkConfig,
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.LINK,
+    //     name: 'Link',
+    //     children: 'Go to Canva',
+    //     categoryId: 'typography',
+    //     fields: LinkConfig,
+    // },**Temporarily Removed Link component**
     {
         showComponent: true,
         type: ComponentType.FORM_SELECT,
