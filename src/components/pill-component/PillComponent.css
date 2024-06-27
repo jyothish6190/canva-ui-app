@@ -1,8 +1,16 @@
-.Pill-hover > button {
-    background-color: var(--ui-kit-color-tertiary-hover);
+.pill-hover > button {
     width: 100%;
+    box-shadow: none;
+    border: 1px solid var(--ui-kit-color-border);
+    background-color: var(--ui-kit-color-tertiary-hover);
+}
+.pill-active > button {
+    box-shadow: none;
+    border: 1px solid var(--ui-kit-color-border-active);
 }
 
-.Pill > button {
+.pill > button {
     width: 100%;
+    box-shadow: none;
+    border: 1px solid var(--ui-kit-color-border);
 }
