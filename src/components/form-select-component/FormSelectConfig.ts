@@ -56,15 +56,15 @@ export const FormFieldSelectConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {

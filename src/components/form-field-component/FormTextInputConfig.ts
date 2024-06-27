@@ -1,18 +1,7 @@
 import { ChevronDownIcon, ClearIcon, SearchIcon } from '@canva/app-ui-kit';
 import { ComponentType } from '../../constants/ComponentTypes';
 import { FormControlNames, FormFieldNames } from './FormFieldConfig';
-
-export enum TextInputFieldNames {
-    TEXT = 'Text',
-    PLACEHOLDER = 'Placeholder',
-    START_DECORATOR = 'Start decorator (optional)',
-    END_DECORATOR = 'End decorator',
-    END_TEXT = 'End text',
-    MAX_CHAR_COUNT = 'Maximum character count',
-    WIDTH = 'Width',
-    WIDTH_OPTIONS = 'Width options',
-    STATE = 'State',
-}
+import { TextInputFieldNames } from '../text-input-component/TextInputConfig';
 
 export const FormTextInputConfig = [
     {
@@ -38,15 +27,15 @@ export const FormTextInputConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {
@@ -77,40 +66,42 @@ export const FormTextInputConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
+        type: ComponentType.NUMBER_INPUT,
+        name: TextInputFieldNames.WIDTH,
         label: 'Label',
-        description: 'Description text',
         value: '328',
+        min: 158,
+        max: 1366,
+        description: 'Description text',
         tabId: 'form field',
     },
-
     {
         showComponent: true,
         type: ComponentType.CATEGORY,
+        name: TextInputFieldNames.WIDTH_OPTIONS,
         tabId: 'form field',
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
     },
