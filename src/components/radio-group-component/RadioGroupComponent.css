@@ -1,0 +1,4 @@
+.radio-group > div > label > span:first-of-type {
+    border: 1px solid var(--ui-kit-color-border) !important;
+    box-sizing: none;
+}
