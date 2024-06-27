@@ -22,6 +22,7 @@ import {
     getWidth,
     selectOptionChangeHandler,
 } from './SelectComponentUtils';
+import { getErrorState } from '../form-select-component/FormSelectComponentUtils';
 
 type PropType = {
     component: Component;
@@ -111,7 +112,12 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                     control={(props) => (
                         <Select
                             disabled={selectState === 'disabled' ? true : false}
-                            error={selectState === 'error' ? true : false}
+                            error={
+                                selectState === 'error' ||
+                                getErrorState(component)
+                                    ? true
+                                    : false
+                            }
                             options={options}
                             stretch={true}
                             placeholder={

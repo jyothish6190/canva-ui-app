@@ -13,6 +13,7 @@ import { Component } from 'src/models/component.model';
 import styles from './TextInput.css';
 import { Icon } from 'src/models/icons.model';
 import { TextInputFieldNames } from './TextInputConfig';
+import { getErrorState } from '../form-select-component/FormSelectComponentUtils';
 
 type PropType = {
     component: Component;
@@ -187,7 +188,10 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                             : false
                     }
                     error={
-                        textInputData.textInputState === 'error' ? true : false
+                        textInputData.textInputState === 'error' ||
+                        getErrorState(component)
+                            ? true
+                            : false
                     }
                     placeholder={
                         textInputData.inputPlaceHolder
