@@ -189,6 +189,13 @@ const ComponentDetailsPage = () => {
         if (previewDiv) previewDiv.style.scale = scale;
 
         await inlineResources(svgDocument.documentElement);
+        if (selectedComponent?.type === ComponentType.PROGRESS_BAR) {
+            if (ref.current) {
+                svgDocument
+                    .querySelector('linearGradient')
+                    ?.removeAttribute('gradientTransform');
+            }
+        }
         let elementIdNew = getElementId();
 
         let appElementData = {} as any;
