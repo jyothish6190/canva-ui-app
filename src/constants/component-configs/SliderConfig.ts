@@ -11,7 +11,7 @@ export enum SliderFieldNames {
 export const SliderConfig = [
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: SliderFieldNames.MINIMUM,
         value: 0,
         label: 'Label',
@@ -20,7 +20,7 @@ export const SliderConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: SliderFieldNames.MAXIMUM,
         value: 100,
         label: 'Label',

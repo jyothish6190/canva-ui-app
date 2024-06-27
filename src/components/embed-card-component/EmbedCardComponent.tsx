@@ -3,6 +3,7 @@ import { EmbedCard } from '@canva/app-ui-kit';
 import { Component } from 'src/models/component.model';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { EmbedFieldNames } from 'src/constants/component-configs/EmbedConfig';
+import thumbnailImage from '../../../assets/images/embed-card.png';
 
 type EmbedPropType = {
     component: Component;
@@ -81,7 +82,7 @@ const EmbedCardComponent = ({ component, isProperty }: EmbedPropType) => {
                     description={embedState.embedDescription}
                     onClick={() => {}}
                     onDragStart={() => {}}
-                    thumbnailUrl={component.thumbnailUrl as string}
+                    thumbnailUrl={thumbnailImage}
                     title={embedState.embedTitle}
                 />
             </div>

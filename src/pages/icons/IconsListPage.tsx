@@ -32,7 +32,10 @@ const IconsListPage = () => {
 
     const iconList = useMemo(() => {
         const iconsFiltered: Icon[] = icons.filter((icon) =>
-            icon.label.toLowerCase().includes(searchQuery.toLowerCase())
+            icon.label
+                .replace(/\s+/g, '')
+                .toLowerCase()
+                .includes(searchQuery.replace(/\s+/g, '').toLowerCase())
         );
 
         return iconsFiltered;
@@ -60,12 +63,17 @@ const IconsListPage = () => {
     };
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.value);
-        const clone = element?.cloneNode(true) as HTMLElement;
-        clone.style.color = 'black';
+        const iconElement = element?.querySelector('span');
+        if (iconElement) {
+            iconElement.style.color = 'black';
+        }
 
-        const svgDocument = elementToSVG(clone as HTMLElement);
+        const svgDocument = elementToSVG(iconElement as HTMLElement);
 
         await inlineResources(svgDocument.documentElement);
+        if (iconElement) {
+            iconElement.style.color = 'currentColor';
+        }
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
