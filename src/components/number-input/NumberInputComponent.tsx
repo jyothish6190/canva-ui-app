@@ -6,6 +6,7 @@ import styles from './NumberInputComponent.css';
 import { Component } from 'src/models/component.model';
 import { NumberInputFieldNames } from 'src/constants/component-configs/NumberInputConfig';
 import { useComponentStore } from 'src/store/ComponentStore';
+import { getErrorState } from '../form-select-component/FormSelectComponentUtils';
 
 type PropType = {
     component: Component;
@@ -141,7 +142,8 @@ const NumberInputComponent = ({ component, isProperty }: PropType) => {
                                 : false
                         }
                         error={
-                            numberInputData.numberInputState === 'error'
+                            numberInputData.numberInputState === 'error' ||
+                            getErrorState(component)
                                 ? true
                                 : false
                         }

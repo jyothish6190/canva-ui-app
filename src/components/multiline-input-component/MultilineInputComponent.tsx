@@ -12,6 +12,7 @@ import { Component } from 'src/models/component.model';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { MultilineInputFieldNames } from 'src/constants/component-configs/MultiLineInputConfig';
+import { getErrorState } from '../form-select-component/FormSelectComponentUtils';
 
 type PropType = {
     component: Component;
@@ -175,7 +176,8 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                             }
                             onKeyDown={handleKeyDown}
                             error={
-                                multilineInputData.inputState === 'error'
+                                multilineInputData.inputState === 'error' ||
+                                getErrorState(component)
                                     ? true
                                     : false
                             }

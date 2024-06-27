@@ -6,9 +6,7 @@ import ExcessContainer from '../CommonComponents/excessContainer';
 import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
-import { FormControlNames, FormFieldNames } from './FormFieldConfig';
-import MultilineInputComponent from '../multiline-input-component/MultilineInputComponent';
-import ComponentItem from 'src/pages/home/component-list/component-item/ComponentItem';
+import { FormFieldNames } from './FormFieldConfig';
 
 type PropType = {
     component: Component;
@@ -41,15 +39,6 @@ const FormFieldComponent = ({ component, isProperty }: PropType) => {
                 componentType = field.value;
             }
         });
-
-        // if (componentType === FormControlNames.FORM_MULTILINE_INPUT) {
-        //     return (
-        //         <ComponentItem
-        //             component={selectedComponent as Component}
-        //             isProperty={true}
-        //         />
-        //     );
-        // } else {
         return (
             <TextInput
                 placeholder={component.placeholder}

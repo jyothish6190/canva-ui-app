@@ -26,15 +26,15 @@ export const FormMultilineConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {
@@ -63,44 +63,47 @@ export const FormMultilineConfig = [
         placeholder: 'Description text',
         tabId: 'form field',
     },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        value: '328',
-        tabId: 'form field',
-    },
 
     {
         showComponent: true,
-        type: ComponentType.CATEGORY,
+        type: ComponentType.NUMBER_INPUT,
+        name: MultilineInputFieldNames.WIDTH,
+        label: 'Label',
+        value: 328,
+        min: 158,
+        max: 1366,
+        description: 'Description text',
         tabId: 'form field',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.CATEGORY,
+        name: MultilineInputFieldNames.WIDTH_OPTION,
         options: [
             {
                 label: 'Small',
-                value: 'small',
+                value: 158,
             },
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
             {
                 label: 'Large',
-                value: 'large',
+                value: 600,
             },
             {
                 label: 'Custom',
-                value: 'custom',
+                value: 240,
             },
         ],
         selectedCategories: [
             {
                 label: 'Medium',
-                value: 'medium',
+                value: 328,
             },
         ],
+        tabId: 'form field',
     },
     {
         showComponent: true,
@@ -135,47 +138,6 @@ export const FormMultilineConfig = [
         tabId: 'control',
     },
 
-    {
-        showComponent: true,
-        type: ComponentType.NUMBER_INPUT,
-        name: MultilineInputFieldNames.WIDTH,
-        label: 'Label',
-        value: 328,
-        min: 158,
-        max: 1366,
-        description: 'Description text',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.CATEGORY,
-        name: MultilineInputFieldNames.WIDTH_OPTION,
-        options: [
-            {
-                label: 'Small',
-                value: 158,
-            },
-            {
-                label: 'Medium',
-                value: 328,
-            },
-            {
-                label: 'Large',
-                value: 600,
-            },
-            {
-                label: 'Custom',
-                value: 240,
-            },
-        ],
-        selectedCategories: [
-            {
-                label: 'Medium',
-                value: 328,
-            },
-        ],
-        tabId: 'control',
-    },
     {
         showComponent: true,
         type: ComponentType.SELECT,

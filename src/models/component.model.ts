@@ -43,6 +43,7 @@ export interface Component {
     optionType?: 'radio' | 'checkbox';
     icon?: () => JSX.Element;
     optionContentType?: 'text' | 'icon';
+    errorState?: boolean;
 }
 
 interface Option2 {

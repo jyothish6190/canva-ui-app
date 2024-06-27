@@ -11,13 +11,19 @@ import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 import { FormMultilineConfig } from '../form-field-component/FormMultilineConfig';
 import { FormNumberInputConfig } from '../form-field-component/FormNumberInputConfig';
-import { FormSelectTabs } from '../form-select-component/FormSelectConfig';
+import {
+    FormFieldSelectFieldNames,
+    FormSelectTabs,
+} from '../form-select-component/FormSelectConfig';
+import { FormFieldSelectConfig } from '../form-select-component/FormSelectConfig';
 import { FormCheckboxConfig } from '../form-field-component/FormCheckboxConfig';
 import { FormCheckboxGroupConfig } from '../form-field-component/FormCheckboxGroupConfig';
 import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConfig';
 import { FormSegmentedConfig } from '../form-field-component/FormSegementedConfig';
 import { TextInputFieldNames } from '../text-input-component/TextInputConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
+import { FormTextInputConfig } from '../form-field-component/FormTextInputConfig';
+import { ComponentType } from 'src/constants/ComponentTypes';
 
 export const getValue = (component: Component) => {
     let value = '';
@@ -133,17 +139,49 @@ export const selectOptionChangeHandler = (
     value: string
 ) => {
     let updatedComponent;
-    selectedComponent?.fields?.forEach((field: Component) => {
-        if (field.name === FormFieldNames.CONTROL) {
-            updatedComponent = switchFormComponent(selectedComponent, value);
-        } else {
+    if (selectedComponent.type === ComponentType.FORM_SELECT) {
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === FormFieldSelectFieldNames.LABEL) {
+                selectedComponent.label = field.value || '';
+            }
+            if (field.name === FormFieldSelectFieldNames.DESCRIPTION) {
+                selectedComponent.description = field.value || '';
+            }
+            if (field.name === FormFieldSelectFieldNames.ERROR) {
+                selectedComponent.errorState = field.value || false;
+            }
+        });
+        selectedComponent?.fields?.forEach((field: Component) => {
+            if (field.name === FormFieldNames.CONTROL) {
+                updatedComponent = switchFormComponent(
+                    selectedComponent,
+                    value
+                );
+                console.log(
+                    'updatedComponent 1111111111111---------------------------',
+                    updatedComponent
+                );
+            }
+        });
+        if (updatedComponent) {
+            updatedComponent?.fields?.forEach((field: Component) => {
+                if (field.name !== FormFieldNames.CONTROL) {
+                    updatedComponent = updateSelectComponent(
+                        updatedComponent,
+                        component,
+                        value
+                    );
+                }
+            });
+        }
+    } else
+        selectedComponent?.fields?.forEach((field: Component) => {
             updatedComponent = updateSelectComponent(
                 selectedComponent,
                 component,
                 value
             );
-        }
-    });
+        });
 
     return updatedComponent;
 };
@@ -162,8 +200,8 @@ const switchFormComponent = (
             fields = [...FormMultilineConfig];
             break;
 
-        case FormControlNames.FORM_NUMBER_INPUT:
-            fields = [...FormNumberInputConfig];
+        case FormControlNames.FORM_TEXT_INPUT:
+            fields = [...FormTextInputConfig];
             break;
 
         case FormControlNames.FORM_NUMBER_INPUT:
@@ -171,7 +209,7 @@ const switchFormComponent = (
             break;
 
         case FormControlNames.FORM_SELECT:
-            fields = [...FormNumberInputConfig];
+            fields = [...FormFieldSelectConfig];
             tabs = [...FormSelectTabs];
             break;
 
@@ -228,6 +266,21 @@ const updateSelectComponent = (
                 field.value = 140;
             } else if (value === 'sharpRectangle') {
                 field.value = 140;
+            }
+        }
+        if (field.name === FormFieldSelectFieldNames.LABEL) {
+            if (!field.value) {
+                field.value = selectedComponent.label;
+            }
+        }
+        if (field.name === FormFieldSelectFieldNames.DESCRIPTION) {
+            if (!field.value) {
+                field.value = selectedComponent.description;
+            }
+        }
+        if (field.name === FormFieldSelectFieldNames.ERROR) {
+            if (!field.value) {
+                field.value = selectedComponent.errorState;
             }
         }
     });

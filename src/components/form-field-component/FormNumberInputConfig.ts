@@ -4,7 +4,7 @@ import { FormControlNames } from './FormFieldConfig';
 import { NumberInputFieldNames } from 'src/constants/component-configs/NumberInputConfig';
 
 export enum FormFieldNames {
-    CONTROL = 'control',
+    CONTROL = 'Control',
 }
 
 export const FormNumberInputConfig = [
@@ -31,15 +31,15 @@ export const FormNumberInputConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {
@@ -68,71 +68,6 @@ export const FormNumberInputConfig = [
         placeholder: 'Description text',
         tabId: 'form field',
     },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        value: '328',
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.CATEGORY,
-        tabId: 'form field',
-        options: [
-            {
-                label: 'Small',
-                value: 'small',
-            },
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-            {
-                label: 'Large',
-                value: 'large',
-            },
-            {
-                label: 'Custom',
-                value: 'custom',
-            },
-        ],
-        selectedCategories: [
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-        ],
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: NumberInputFieldNames.VALUE,
-        value: 0,
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Enter a number',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: NumberInputFieldNames.SPIN_BUTTONS,
-        value: true,
-        defaultValue: true,
-        tabId: 'control',
-    },
 
     {
         showComponent: true,
@@ -143,7 +78,7 @@ export const FormNumberInputConfig = [
         min: 158,
         max: 1366,
         description: 'Description text',
-        tabId: 'control',
+        tabId: 'form field',
     },
     {
         showComponent: true,
@@ -173,6 +108,32 @@ export const FormNumberInputConfig = [
                 value: 328,
             },
         ],
+        tabId: 'form field',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: 'Error',
+        defaultValue: false,
+        tabId: 'form field',
+    },
+
+    {
+        showComponent: true,
+        type: ComponentType.FORM_FIELD,
+        name: NumberInputFieldNames.VALUE,
+        value: 0,
+        label: 'Label',
+        description: 'Description text',
+        placeholder: 'Enter a number',
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: NumberInputFieldNames.SPIN_BUTTONS,
+        value: true,
+        defaultValue: true,
         tabId: 'control',
     },
     {

@@ -33,6 +33,7 @@ export enum FormControlNames {
     FORM_CHECKBOX_GROUP = 'Form Checkbox group',
     FORM_RADIO = 'Form Radio',
     FORM_SEGMENTED_CONTROL = 'Form Segmented control',
+    FORM_FIELD = 'Form Field',
 }
 
 export const FormFieldConfig = [
@@ -59,15 +60,15 @@ export const FormFieldConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {
