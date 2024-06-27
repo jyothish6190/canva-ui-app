@@ -32,11 +32,13 @@ import { SelectConfig } from 'src/components/select-component/SelectConfig';
 import {
     FormControlNames,
     FormFieldConfig,
+    FormTabs,
 } from 'src/components/form-field-component/FormFieldConfig';
 import {
     FormFieldSelectConfig,
     FormSelectTabs,
 } from 'src/components/form-select-component/FormSelectConfig';
+import { FormTextInputConfig } from 'src/components/form-field-component/FormTextInputConfig';
 
 export const components: Component[] = [
     {
@@ -79,26 +81,39 @@ export const components: Component[] = [
         categoryId: 'informational',
         fields: BadgeConfig,
     },
+    // {
+    //     showComponent: false,
+    //     type: ComponentType.FORM_FIELD,
+    //     name: 'Form field',
+    //     label: 'Label',
+    //     description: 'Description text',
+    //     placeholder: 'Placeholder',
+    //     categoryId: 'form',
+    //     tabs: [
+    //         {
+    //             label: 'Form field',
+    //             value: 'form field',
+    //         },
+    //         {
+    //             label: 'Control',
+    //             value: 'control',
+    //         },
+    //     ],
+    //     defaultTabValue: 'form field',
+    //     fields: FormFieldConfig,
+    // },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Form field',
+        type: ComponentType.FORM_SELECT,
+        name: FormControlNames.FORM_FIELD,
         label: 'Label',
         description: 'Description text',
+        errorState: false,
         placeholder: 'Placeholder',
         categoryId: 'form',
-        tabs: [
-            {
-                label: 'Form field',
-                value: 'form field',
-            },
-            {
-                label: 'Control',
-                value: 'control',
-            },
-        ],
+        tabs: FormTabs,
         defaultTabValue: 'form field',
-        fields: FormFieldConfig,
+        fields: FormTextInputConfig,
     },
     {
         showComponent: true,
