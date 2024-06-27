@@ -1,8 +1,28 @@
-.Pressed-checkbox > label > div > span > span > svg {
+.checkbox > label > div > span {
+    border: 1px solid var(--ui-kit-color-border) !important;
+    box-sizing: none;
+}
+.checkbox > label > div > span > span > svg {
+    background-color: var(--ui-kit-color-primary);
+    border-radius: 4px;
+}
+.pressed-checkbox > label > div > span {
+    border: 1px solid var(--ui-kit-color-border) !important;
+    box-sizing: none;
+}
+.pressed-checkbox > label > div > span > span > svg {
     background-color: var(--ui-kit-color-primary-active);
     border-radius: 4px;
 }
-.Hover-checkbox > label > div > span > span > svg {
+.hover-checkbox > label > div > span {
+    border: 1px solid var(--ui-kit-color-border) !important;
+    box-sizing: none;
+}
+.hover-checkbox > label > div > span > span > svg {
     background-color: var(--ui-kit-color-primary-hover) !important;
     border-radius: 4px;
+}
+.disabled-checkbox > label > div > span {
+    border: 1px solid var(--ui-kit-color-border-disabled);
+    box-sizing: none;
 }
