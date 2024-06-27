@@ -6,7 +6,6 @@ import { Component } from 'src/models/component.model';
 import {
     getHeight,
     getOptions,
-    getScale,
     getSelectedOptions,
     getWidth,
 } from './CheckboxGroupUtils';
@@ -42,7 +41,6 @@ const CheckboxGroupComponent = ({
                 id={options ? 'checkboxGroup' : ''}
                 style={{
                     width: width ? width : undefined,
-                    scale: options ? getScale(height as number) : '',
                 }}
             >
                 <CheckboxGroup options={options} value={selectedOptions} />

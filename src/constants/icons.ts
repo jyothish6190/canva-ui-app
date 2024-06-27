@@ -70,6 +70,7 @@ import {
     LockClosedIcon,
     LockOpenIcon,
 } from '@canva/app-ui-kit';
+import CrossIcon from './cross-icon';
 
 import { Icon } from 'src/models/icons.model';
 
@@ -82,7 +83,7 @@ export const icons: Icon[] = [
     {
         value: 'x-icon',
         label: 'X',
-        Icon: XIcon,
+        Icon: CrossIcon,
     },
     {
         value: 'music-icon',

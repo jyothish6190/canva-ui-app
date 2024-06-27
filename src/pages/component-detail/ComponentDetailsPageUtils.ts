@@ -81,3 +81,28 @@ const uploadImage = async (imageUrl: string, mimeType: any) => {
     });
     return image;
 };
+
+export const getScale = (component) => {
+    const divelement = document.querySelector(`#preview-id`);
+    let width = 290;
+    let height = 220;
+
+    let widthParam = component?.fields?.filter(
+        (field) => field.name === 'Width'
+    )[0];
+    let heightParam = component?.fields?.filter(
+        (field) => field.name === 'Height'
+    )[0];
+    if (widthParam && widthParam.value) {
+        width = widthParam.value;
+    }
+
+    if (heightParam) {
+        height = heightParam.value;
+    } else if ((divelement as HTMLElement)?.offsetHeight) {
+        height = (divelement as HTMLElement).offsetHeight;
+    }
+    if (width > 290 || height > 220) {
+        return Math.min(290 / width, 220 / height).toString();
+    } else return '1';
+};

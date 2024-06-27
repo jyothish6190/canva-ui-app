@@ -3,12 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { RadioGroup, RadioOption } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
-import {
-    getOptions,
-    getScale,
-    getValue,
-    getWidth,
-} from './RadioGroupComponentUtils';
+import { getOptions, getValue, getWidth } from './RadioGroupComponentUtils';
 
 type RadioPropType = {
     component: Component;
@@ -44,7 +39,6 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
                 id={options ? 'radioGroup' : ''}
                 style={{
                     width: width,
-                    scale: options ? getScale(height) : '',
                 }}
             >
                 <RadioGroup

@@ -33,7 +33,10 @@ import {
     FormControlNames,
     FormFieldConfig,
 } from 'src/components/form-field-component/FormFieldConfig';
-import { FormTextInputConfig } from 'src/components/text-input-component/FormTextInputConfig';
+import {
+    FormFieldSelectConfig,
+    FormSelectTabs,
+} from 'src/components/form-select-component/FormSelectConfig';
 
 export const components: Component[] = [
     {
@@ -381,12 +384,24 @@ export const components: Component[] = [
         categoryId: 'typography',
         fields: TextConfig,
     },
-    // {
-    //     showComponent: true,
-    //     type: ComponentType.LINK,
-    //     name: 'Link',
-    //     children: 'Go to Canva',
-    //     categoryId: 'typography',
-    //     fields: LinkConfig,
-    // },**Temporarily Removed Link component**,
+    {
+        showComponent: true,
+        type: ComponentType.LINK,
+        name: 'Link',
+        children: 'Go to Canva',
+        categoryId: 'typography',
+        fields: LinkConfig,
+    },
+    {
+        showComponent: true,
+        type: ComponentType.FORM_SELECT,
+        name: 'Form field',
+        label: 'Label',
+        description: 'Description text',
+        placeholder: 'Placeholder',
+        categoryId: 'form',
+        tabs: FormSelectTabs,
+        defaultTabValue: 'form field',
+        fields: FormFieldSelectConfig,
+    },
 ];

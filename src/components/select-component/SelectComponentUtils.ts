@@ -11,7 +11,7 @@ import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 import { FormMultilineConfig } from '../form-field-component/FormMultilineConfig';
 import { FormNumberInputConfig } from '../form-field-component/FormNumberInputConfig';
-import { FormSelectTabs } from '../form-field-component/FormSelectConfig';
+import { FormSelectTabs } from '../form-select-component/FormSelectConfig';
 import { FormCheckboxConfig } from '../form-field-component/FormCheckboxConfig';
 import { FormCheckboxGroupConfig } from '../form-field-component/FormCheckboxGroupConfig';
 import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConfig';

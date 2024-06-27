@@ -1,5 +1,8 @@
 import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
-import { FormControlNames, FormFieldNames } from './FormFieldConfig';
+import {
+    FormControlNames,
+    FormFieldNames,
+} from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from '../select-component/SelectConfig';
 
 export const FormSelectTabs = [
@@ -17,7 +20,7 @@ export const FormSelectTabs = [
     },
 ];
 
-export const FormFieldConfig = [
+export const FormFieldSelectConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
