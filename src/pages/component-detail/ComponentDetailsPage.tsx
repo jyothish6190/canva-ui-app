@@ -175,8 +175,6 @@ const ComponentDetailsPage = () => {
         }
 
         svgDocument = elementToSVG(ref.current as HTMLElement);
-        if (previewDiv) previewDiv.style.scale = scale;
-
         if (selectedComponent?.type === ComponentType.EMBED_CARD) {
             setOnUpdate(true);
             if (ref.current && ref.current.querySelector('img')) {
@@ -187,6 +185,8 @@ const ComponentDetailsPage = () => {
         } else {
             svgDocument = elementToSVG(ref.current);
         }
+
+        if (previewDiv) previewDiv.style.scale = scale;
 
         await inlineResources(svgDocument.documentElement);
         let elementIdNew = getElementId();
