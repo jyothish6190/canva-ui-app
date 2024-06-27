@@ -36,7 +36,13 @@ const OptionsItemComponent = ({
                 return (
                     <RadioGroup
                         key={'radiogroup'}
-                        value={option.selected ? option.value : ''}
+                        value={
+                            option.selected &&
+                            (component.value == '' ||
+                                option.value == component.value)
+                                ? option.value
+                                : ''
+                        }
                         onChange={(value) => {
                             option.value = value;
                             option.selected = true;
