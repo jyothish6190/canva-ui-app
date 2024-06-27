@@ -44,6 +44,7 @@ const ComponentList = ({
                         key={component.name}
                         onClick={(e) => {
                             e.preventDefault();
+
                             onClick(component);
                         }}
                     >

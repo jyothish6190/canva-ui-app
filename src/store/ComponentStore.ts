@@ -38,6 +38,11 @@ export const useComponentStore = create<PropType>((set) => ({
 }));
 
 const setComponent = (component: Component, page: string) => {
+    console.log(
+        '🚀 componentstore ~ setComponent ~ component:',
+        component,
+        page
+    );
     return component;
 };
 

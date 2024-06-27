@@ -1,9 +1,4 @@
-import {
-    TextAlignCenterIcon,
-    TextAlignLeftIcon,
-    TextAlignRightIcon,
-} from '@canva/app-ui-kit';
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType } from '../../constants/ComponentTypes';
 
 export enum TitleFieldNames {
     TEXT = 'Text',
@@ -80,17 +75,17 @@ export const TitleConfig = [
         name: TitleFieldNames.ALIGNMENT,
         options: [
             {
-                Icon: TextAlignLeftIcon,
+                Icon: 'text-align-left-icon',
                 label: undefined,
                 value: 'start',
             },
             {
-                Icon: TextAlignCenterIcon,
+                Icon: 'text-align-center-icon',
                 label: undefined,
                 value: 'center',
             },
             {
-                Icon: TextAlignRightIcon,
+                Icon: 'text-align-right-icon',
                 label: undefined,
                 value: 'end',
             },

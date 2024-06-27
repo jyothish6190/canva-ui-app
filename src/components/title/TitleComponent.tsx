@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Title } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
-import { TitleFieldNames } from 'src/constants/component-configs/TitleConfig';
+import { TitleFieldNames } from './TitleConfig';
 
 type TitleProps = {
     component: Component;

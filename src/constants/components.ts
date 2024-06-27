@@ -6,8 +6,7 @@ import { PillConfig } from './component-configs/PillConfig';
 import { AlertConfig } from './component-configs/AlertConfig';
 import { BadgeConfig } from './component-configs/BadgeConfig';
 import { LinkConfig } from './component-configs/LinkConfig';
-import { TextConfig } from './component-configs/TextConfig';
-import { TitleConfig } from './component-configs/TitleConfig';
+import { TitleConfig } from '../components/title/TitleConfig';
 import { EmbedConfig } from './component-configs/EmbedConfig';
 import { VideoCardConfig } from './component-configs/VideoCardConfig';
 import { TypographyConfig } from './component-configs/TypographyConfig';
@@ -37,6 +36,7 @@ import {
     FormFieldSelectConfig,
     FormSelectTabs,
 } from 'src/components/form-select-component/FormSelectConfig';
+import { TextConfig } from 'src/components/text/TextConfig';
 
 export const components: Component[] = [
     {
@@ -392,16 +392,16 @@ export const components: Component[] = [
     //     categoryId: 'typography',
     //     fields: LinkConfig,
     // },**Temporarily Removed Link component**
-    {
-        showComponent: true,
-        type: ComponentType.FORM_SELECT,
-        name: 'Form field',
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Placeholder',
-        categoryId: 'form',
-        tabs: FormSelectTabs,
-        defaultTabValue: 'form field',
-        fields: FormFieldSelectConfig,
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.FORM_SELECT,
+    //     name: 'Form field',
+    //     label: 'Label',
+    //     description: 'Description text',
+    //     placeholder: 'Placeholder',
+    //     categoryId: 'form',
+    //     tabs: FormSelectTabs,
+    //     defaultTabValue: 'form field',
+    //     fields: FormFieldSelectConfig,
+    // },
 ];

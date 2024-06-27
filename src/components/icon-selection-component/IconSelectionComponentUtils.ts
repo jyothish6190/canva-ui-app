@@ -31,7 +31,7 @@ const optionIconChangeHandler = (
         if (field.name === component.name) {
             field.options?.forEach((option) => {
                 if (option.key === selectedOption.key) {
-                    option.Icon = icon ? (icon.Icon as any) : undefined;
+                    option.Icon = icon ? icon.value : undefined;
                     option.label = undefined;
                     option.value = icon ? icon.label + '-' + option.key : '';
                 }
@@ -51,7 +51,7 @@ export const componentIconChangeHandler = (
 
     newComponent.fields?.forEach((field) => {
         if (field.name === component.name) {
-            field.value = icon ? icon : undefined;
+            field.value = icon ? icon.value : undefined;
         }
     });
     return newComponent;

@@ -56,6 +56,6 @@ export interface OptionItem {
     label?: string | (() => JSX.Element);
     value: string;
     description?: string;
-    Icon?: () => JSX.Element;
+    Icon?: string;
     selected: boolean;
 }

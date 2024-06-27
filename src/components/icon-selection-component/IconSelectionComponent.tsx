@@ -16,6 +16,7 @@ import {
     iconChangeHandler,
 } from './IconSelectionComponentUtils';
 import { Icon } from 'src/models/icons.model';
+import { getIcon } from 'src/component-utils/ComponentUtils';
 
 type PropType = {
     component: Component;
@@ -23,33 +24,34 @@ type PropType = {
 };
 
 const IconSelectionComponent = ({ component, optionField }: PropType) => {
+    console.log(
+        '🚀 ~ IconSelectionComponent ~ component, optionField:',
+        component,
+        optionField
+    );
     const navigate = useNavigate();
     const { iconsList, setIconsList, deleteIcon } = useIconStore();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
 
     useEffect(() => {
         if (optionField) {
-            const icon: Icon = {
-                label: removeAfterLastDash(optionField.value),
-                value: optionField.value,
-                Icon: optionField.Icon as any,
-            };
+            const icon = getIcon(optionField.Icon as string);
 
             setIconsList({
-                icon: icon,
+                icon: icon as Icon,
                 componentId: component.name,
                 optionId: optionField.key as string,
             });
+        } else if (component.value) {
+            const icon = getIcon(component.value as string);
+
+            setIconsList({
+                icon: icon as Icon,
+                componentId: component.name,
+                optionId: undefined,
+            });
         }
     }, [optionField]);
-
-    function removeAfterLastDash(str) {
-        var lastDashIndex = str.lastIndexOf('-');
-        if (lastDashIndex === -1) {
-            return str; // No dash found, return the original string
-        }
-        return str.substring(0, lastDashIndex); // Return the substring up to the last dash
-    }
 
     const selectedIcon = useMemo(() => {
         return iconsList.find((iconObj) => {

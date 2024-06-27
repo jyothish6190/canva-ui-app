@@ -1,9 +1,4 @@
-import {
-    TextAlignCenterIcon,
-    TextAlignLeftIcon,
-    TextAlignRightIcon,
-} from '@canva/app-ui-kit';
-import { ComponentType } from '../ComponentTypes';
+import { ComponentType } from 'src/constants/ComponentTypes';
 
 export enum TextFieldNames {
     TEXT = 'Text',
@@ -99,17 +94,17 @@ export const TextConfig = [
         name: TextFieldNames.ALIGNMENT,
         options: [
             {
-                Icon: TextAlignLeftIcon,
+                Icon: 'text-align-left-icon',
                 label: undefined,
                 value: 'start',
             },
             {
-                Icon: TextAlignCenterIcon,
+                Icon: 'text-align-center-icon',
                 label: undefined,
                 value: 'center',
             },
             {
-                Icon: TextAlignRightIcon,
+                Icon: 'text-align-right-icon',
                 label: undefined,
                 value: 'end',
             },

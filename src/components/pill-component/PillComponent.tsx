@@ -6,6 +6,7 @@ import styles from './PillComponent.css';
 import { Component } from 'src/models/component.model';
 import { PillFieldNames } from 'src/constants/component-configs/PillConfig';
 import { Icon } from 'src/models/icons.model';
+import { getIcon } from 'src/component-utils/ComponentUtils';
 
 type PillComponentType = {
     component: Component;
@@ -46,7 +47,9 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 setPillComponentState((prevState) => {
                     return {
                         ...prevState,
-                        startDecorator: field.value ? field.value : undefined,
+                        startDecorator: field.value
+                            ? getIcon(field.value)
+                            : undefined,
                     };
                 });
             }
@@ -54,7 +57,9 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
                 setPillComponentState((prevState) => {
                     return {
                         ...prevState,
-                        endDecorator: field.value ? field.value : undefined,
+                        endDecorator: field.value
+                            ? getIcon(field.value)
+                            : undefined,
                     };
                 });
             }

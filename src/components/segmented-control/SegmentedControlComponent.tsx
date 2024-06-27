@@ -39,10 +39,6 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
             setWidth(width);
 
             const value = getSelectedValue(component);
-            console.log(
-                '🚀 SegmentedControlComponent~ useEffect ~ value:',
-                value
-            );
 
             setValue(value);
 

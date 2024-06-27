@@ -13,6 +13,7 @@ import { Component } from 'src/models/component.model';
 import styles from './TextInput.css';
 import { Icon } from 'src/models/icons.model';
 import { TextInputFieldNames } from './TextInputConfig';
+import { getIcon } from 'src/component-utils/ComponentUtils';
 
 type PropType = {
     component: Component;
@@ -59,7 +60,9 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                 setTextInputData((prevState) => {
                     return {
                         ...prevState,
-                        startDecorator: field.value ? field.value : undefined,
+                        startDecorator: field.value
+                            ? getIcon(field.value)
+                            : undefined,
                     };
                 });
             }

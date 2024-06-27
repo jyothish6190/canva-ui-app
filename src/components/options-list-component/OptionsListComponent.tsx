@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowUpIcon, PlusIcon, Rows } from '@canva/app-ui-kit';
+import { PlusIcon, Rows } from '@canva/app-ui-kit';
 
 import OptionsItemComponent from './options-item-component/OptionsItemComponent';
 import ButtonWithIcon from '../button-with-icon/ButtonWithIcon';
@@ -72,7 +72,7 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     key: optionList.length + 1 + '',
                     description: 'option1',
                     selected: false,
-                    Icon: ArrowUpIcon,
+                    Icon: 'arrow-up-icon',
                 };
             } else {
                 newOption = {
@@ -116,7 +116,6 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
         if (index >= 0) {
             options[index] = { ...updatedOption };
         }
-        console.log('🚀 ~ updateOptionHandler ~ options:', options);
         setOptionList(options);
     };
 

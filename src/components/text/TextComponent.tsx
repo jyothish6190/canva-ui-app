@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FormField, Text } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
-import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { TypographySize } from '@canva/app-ui-kit/dist/cjs/ui/apps/developing/ui_kit/components/typography/typography';
+import { TextFieldNames } from './TextConfig';
 
 type PropsType = {
     component: Component;

@@ -6,6 +6,7 @@ import { Component } from 'src/models/component.model';
 import { Variant } from '@canva/app-ui-kit/dist/cjs/ui/apps/developing/ui_kit/components/button/button';
 import { ButtonFieldNames } from 'src/constants/component-configs/ButtonConfig';
 import { Icon } from 'src/models/icons.model';
+import { getIcon } from 'src/component-utils/ComponentUtils';
 
 type PropType = {
     component: Component;
@@ -30,7 +31,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
                 setButtonText(field.value ? field.value : 'Button');
             }
             if (field.name === ButtonFieldNames.ICON_SELECTION) {
-                setIcon(field.value);
+                setIcon(getIcon(field.value));
             }
             if (field.name === ButtonFieldNames.STATE) {
                 setButtonState(field.value);

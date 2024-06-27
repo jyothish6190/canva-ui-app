@@ -18,10 +18,6 @@ type PropType = {
     onDelete: (option: OptionItem) => void;
     showDeleteIcon: boolean;
 };
-type IconData = {
-    value: string;
-    Icon: () => JSX.Element;
-};
 
 const OptionsItemComponent = ({
     component,

@@ -141,6 +141,7 @@ const HomePage = () => {
     };
 
     const componentSelectHandler = (component: Component) => {
+        console.log('🚀 ~ componentSelectHandler ~ component:', component);
         let newComponent = { ...component };
         newComponent.fields = component.fields?.map((item) => ({ ...item }));
         setSelectedComponent(newComponent, 'HomePage');

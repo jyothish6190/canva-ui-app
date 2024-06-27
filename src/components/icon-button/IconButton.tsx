@@ -8,6 +8,7 @@ import styles from './IconButton.css';
 import { Icon } from 'src/models/icons.model';
 import { IconButtonFieldNames } from 'src/constants/component-configs/IconButtonConfig';
 import { useIconStore } from 'src/store/IconStore';
+import { getIcon } from 'src/component-utils/ComponentUtils';
 
 type IconIconButtonComponentType = {
     component: Component;
@@ -16,35 +17,29 @@ type IconIconButtonComponentType = {
 
 type IconButtonStateData = {
     buttonVariant: Variant;
-    buttonIcon: Icon | undefined;
     buttonState: 'default' | 'hover' | 'active' | 'loading' | 'disabled';
     buttonWidth: string | undefined;
 };
 
 const initialState: IconButtonStateData = {
     buttonVariant: 'primary',
-    buttonIcon: undefined,
     buttonState: 'default',
     buttonWidth: undefined,
 };
 
 const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
+    console.log('🚀 ~ IconButton ~ component:', component);
     const { setIconsList } = useIconStore();
 
     const [IconButtonState, setIconButtonState] =
         useState<IconButtonStateData>(initialState);
 
+    const [icon, setIcon] = useState<Icon | undefined>(undefined);
+
     useEffect(() => {
         IconButtonState.buttonState === undefined;
-        setIconsList({
-            icon: {
-                value: 'info-icon',
-                label: 'Info',
-                Icon: InfoIcon,
-            },
-            componentId: 'Icon ',
-        });
     }, []);
+
     useEffect(() => {
         component.fields?.forEach((field: Component) => {
             if (field.name === IconButtonFieldNames.VARIANT) {
@@ -57,12 +52,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
             }
 
             if (field.name === IconButtonFieldNames.ICON_SELECTION) {
-                setIconButtonState((prevState) => {
-                    return {
-                        ...prevState,
-                        buttonIcon: field.value ? field.value : InfoIcon,
-                    };
-                });
+                setIcon(getIcon(field.value));
             }
             if (field.name === IconButtonFieldNames.STATE) {
                 setIconButtonState((prevState) => {
@@ -141,7 +131,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
                 <Button
                     variant={IconButtonState.buttonVariant}
                     stretch={IconButtonState.buttonWidth ? true : false}
-                    icon={IconButtonState.buttonIcon?.Icon || InfoIcon}
+                    icon={icon ? icon?.Icon : InfoIcon}
                     key={component.name}
                     alignment="center"
                     loading={

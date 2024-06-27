@@ -1,13 +1,9 @@
-import {
-    ArrowDownIcon,
-    ArrowLeftIcon,
-    ArrowUpIcon,
-    SegmentedControlOption,
-} from '@canva/app-ui-kit';
+import { SegmentedControlOption } from '@canva/app-ui-kit';
 import { Component, OptionItem } from 'src/models/component.model';
 import { SegmentedControlFieldNames } from './SegmentedControlConfig';
-import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
+import { getIcon } from 'src/component-utils/ComponentUtils';
+import { TextFieldNames } from '../text/TextConfig';
 
 const iconOptions: OptionItem[] = [
     {
@@ -15,20 +11,20 @@ const iconOptions: OptionItem[] = [
         key: 1,
         description: 'option1',
         selected: true,
-        Icon: ArrowUpIcon,
+        Icon: 'arrow-up-icon',
     },
     {
         value: 'Arrow down-2',
         key: 2,
         description: 'option2',
-        Icon: ArrowDownIcon,
+        Icon: 'arrow-down-icon',
         selected: false,
     },
     {
         value: 'Arrow left-3',
         key: 3,
         description: 'option3',
-        Icon: ArrowLeftIcon,
+        Icon: 'arrow-left-icon',
         selected: false,
     },
 ];
@@ -150,14 +146,22 @@ export const getOptions = (component: Component) => {
 
 export const getOptionList = (options: any[]) => {
     const optionsList: any[] = [];
-    options?.forEach((option) => {
+    const optionsCopy = [...options];
+    optionsCopy?.forEach((option) => {
+        let label = option.label;
+        const value = option.value;
+
         if (!option.label && option.Icon) {
-            option.label = option.Icon() as any;
+            const icon = getIcon(option.Icon);
+
+            if (icon) {
+                label = icon.Icon() as any;
+            }
         }
 
         optionsList.push({
-            label: option.label,
-            value: option.value,
+            label: label,
+            value: value,
         });
     });
 

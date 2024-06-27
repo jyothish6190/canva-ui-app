@@ -1,3 +1,6 @@
+import { icons } from 'src/constants/icons';
+import { Icon } from 'src/models/icons.model';
+
 export const getElementId = () => {
     const timestamp = new Date().getTime().toString(16);
     const random = Math.random().toString(16).slice(2);
@@ -22,4 +25,15 @@ export const getScale = (component) => {
         scale = 300 / width;
     }
     return scale.toString();
+};
+
+export const getIcon = (iconName: string): Icon | undefined => {
+    let iconFound: Icon | undefined = undefined;
+    icons.forEach((icon) => {
+        if (icon.value === iconName) {
+            iconFound = icon;
+        }
+    });
+
+    return iconFound;
 };

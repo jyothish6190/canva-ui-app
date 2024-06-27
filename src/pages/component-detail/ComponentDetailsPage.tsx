@@ -40,6 +40,10 @@ type RefValueType = string | null;
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
+    console.log(
+        '🚀 ~ ComponentDetailsPage ~ selectedComponent:',
+        selectedComponent
+    );
     const { elements, setElements } = useElementStore();
     const [onUpdate, setOnUpdate] = useState(false);
 
@@ -73,6 +77,8 @@ const ComponentDetailsPage = () => {
         if (elements && elements.length > 0) {
             elements.forEach((element: ElementType) => {
                 if (element.elementId === appElement?.data?.elementId) {
+                    console.log('🚀 ~ elements.forEach ~ element:', element);
+
                     const oldComponent = {
                         ...element.component,
                     };
@@ -186,7 +192,6 @@ const ComponentDetailsPage = () => {
         } else {
             svgDocument = elementToSVG(ref.current);
         }
-
 
         if (previewDiv) previewDiv.style.scale = scale;
 
