@@ -1,8 +1,20 @@
-import { ComponentType } from 'src/constants/ComponentTypes';
+import { ChevronDownIcon, ClearIcon, SearchIcon } from '@canva/app-ui-kit';
+import { ComponentType } from '../../constants/ComponentTypes';
 import { FormControlNames, FormFieldNames } from './FormFieldConfig';
-import { CheckBoxFieldNames } from 'src/constants/component-configs/CheckBoxConfig';
 
-export const FormCheckboxConfig = [
+export enum TextInputFieldNames {
+    TEXT = 'Text',
+    PLACEHOLDER = 'Placeholder',
+    START_DECORATOR = 'Start decorator (optional)',
+    END_DECORATOR = 'End decorator',
+    END_TEXT = 'End text',
+    MAX_CHAR_COUNT = 'Maximum character count',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+    STATE = 'State',
+}
+
+export const FormTextInputConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
@@ -42,7 +54,7 @@ export const FormCheckboxConfig = [
                 value: FormControlNames.FORM_SEGMENTED_CONTROL,
             },
         ],
-        value: FormControlNames.FORM_CHECKBOX_FIELD,
+        value: FormControlNames.FORM_TEXT_INPUT,
     },
 
     {
@@ -65,50 +77,42 @@ export const FormCheckboxConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.SWITCH,
-        name: CheckBoxFieldNames.HUG_CONTENT,
-        defaultValue: true,
-        tabId: 'form field',
-    },
-    {
-        showComponent: false,
-        type: ComponentType.NUMBER_INPUT,
-        name: CheckBoxFieldNames.WIDTH,
+        type: ComponentType.FORM_FIELD,
+        name: 'Width',
         label: 'Label',
         description: 'Description text',
-        min: 80,
-        max: 1366,
+        value: '328',
         tabId: 'form field',
     },
+
     {
-        showComponent: false,
+        showComponent: true,
         type: ComponentType.CATEGORY,
-        name: CheckBoxFieldNames.WIDTH_OPTIONS,
+        tabId: 'form field',
         options: [
             {
                 label: 'Small',
-                value: 158,
+                value: 'small',
             },
             {
                 label: 'Medium',
-                value: 328,
+                value: 'medium',
             },
             {
                 label: 'Large',
-                value: 600,
+                value: 'large',
             },
             {
                 label: 'Custom',
-                value: 240,
+                value: 'custom',
             },
         ],
         selectedCategories: [
             {
-                label: 'Small',
-                value: 158,
+                label: 'Medium',
+                value: 'medium',
             },
         ],
-        tabId: 'form field',
     },
     {
         showComponent: true,
@@ -117,28 +121,74 @@ export const FormCheckboxConfig = [
         defaultValue: false,
         tabId: 'form field',
     },
+
     {
         showComponent: true,
-        type: ComponentType.SWITCH,
-        name: CheckBoxFieldNames.CHECKED,
-        defaultValue: true,
-        value: true,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.TEXT,
+        value: 'Hello world',
+        placeholder: 'Enter your text',
         tabId: 'control',
     },
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
-        name: CheckBoxFieldNames.CHECKBOX_LABEL,
+        name: TextInputFieldNames.PLACEHOLDER,
+        placeholder: 'Placeholder',
+        value: 'Placeholder',
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.ICON_SELECTOR,
+        name: TextInputFieldNames.START_DECORATOR,
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SELECT,
+        name: TextInputFieldNames.END_DECORATOR,
+        options: [
+            {
+                label: 'None',
+                value: 'none',
+            },
+            {
+                label: 'Clear',
+                value: 'clear',
+            },
+            {
+                label: 'Text',
+                value: 'text',
+            },
+            {
+                label: 'Character count',
+                value: 'character count',
+            },
+        ],
+        value: 'none',
+        tabId: 'control',
+    },
+    {
+        showComponent: false,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.END_TEXT,
+        label: 'Label',
+        value: 'End Text',
+        description: 'Description text',
+        tabId: 'control',
+    },
+    {
+        showComponent: false,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.MAX_CHAR_COUNT,
         label: 'Label',
         description: 'Description text',
-        placeholder: 'Enter checkbox label',
-        value: 'Checkbox',
         tabId: 'control',
     },
     {
         showComponent: true,
         type: ComponentType.SELECT,
-        name: CheckBoxFieldNames.STATE,
+        name: TextInputFieldNames.STATE,
         options: [
             {
                 label: 'Default',
@@ -149,8 +199,12 @@ export const FormCheckboxConfig = [
                 value: 'hover',
             },
             {
-                label: 'Pressed',
-                value: 'pressed',
+                label: 'Active',
+                value: 'active',
+            },
+            {
+                label: 'Error',
+                value: 'error',
             },
             {
                 label: 'Disabled',

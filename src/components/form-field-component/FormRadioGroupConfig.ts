@@ -65,56 +65,10 @@ export const FormRadioGroupConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        value: '328',
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.CATEGORY,
-        tabId: 'form field',
-        options: [
-            {
-                label: 'Small',
-                value: 'small',
-            },
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-            {
-                label: 'Large',
-                value: 'large',
-            },
-            {
-                label: 'Custom',
-                value: 'custom',
-            },
-        ],
-        selectedCategories: [
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-        ],
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
-    {
-        showComponent: true,
         type: ComponentType.SWITCH,
         name: RadioConfigFieldNames.HUG_CONTENT,
         defaultValue: true,
-        tabId: 'control',
+        tabId: 'form field',
     },
     {
         showComponent: false,
@@ -124,7 +78,7 @@ export const FormRadioGroupConfig = [
         description: 'Description text',
         min: 80,
         max: 1366,
-        tabId: 'control',
+        tabId: 'form field',
     },
     {
         showComponent: false,
@@ -154,9 +108,15 @@ export const FormRadioGroupConfig = [
                 value: 158,
             },
         ],
-        tabId: 'control',
+        tabId: 'form field',
     },
-
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: 'Error',
+        defaultValue: false,
+        tabId: 'form field',
+    },
     {
         showComponent: true,
         type: ComponentType.OPTIONS_LIST,

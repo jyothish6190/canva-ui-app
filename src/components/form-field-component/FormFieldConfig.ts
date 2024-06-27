@@ -33,6 +33,7 @@ export enum FormControlNames {
     FORM_CHECKBOX_GROUP = 'Form Checkbox group',
     FORM_RADIO = 'Form Radio',
     FORM_SEGMENTED_CONTROL = 'Form Segmented control',
+    FORM_FIELD = 'Form Field',
 }
 
 export const FormFieldConfig = [

@@ -65,70 +65,6 @@ export const FormSegmentedConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        value: '328',
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.CATEGORY,
-        tabId: 'form field',
-        options: [
-            {
-                label: 'Small',
-                value: 'small',
-            },
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-            {
-                label: 'Large',
-                value: 'large',
-            },
-            {
-                label: 'Custom',
-                value: 'custom',
-            },
-        ],
-        selectedCategories: [
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-        ],
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SEGMENTED_CONTROL,
-        name: SegmentedControlFieldNames.TYPE,
-        options: [
-            {
-                label: 'Text',
-                value: 'text',
-            },
-            {
-                label: 'Icon',
-                value: 'icon',
-            },
-        ],
-        defaultValue: 'text',
-        value: 'text',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
         type: ComponentType.NUMBER_INPUT,
         name: SegmentedControlFieldNames.WIDTH,
         label: 'Label',
@@ -136,7 +72,7 @@ export const FormSegmentedConfig = [
         min: 158,
         max: 1366,
         description: 'Description text',
-        tabId: 'control',
+        tabId: 'form field',
     },
     {
         showComponent: true,
@@ -166,9 +102,33 @@ export const FormSegmentedConfig = [
                 value: 328,
             },
         ],
+        tabId: 'form field',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: 'Error',
+        defaultValue: false,
+        tabId: 'form field',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SEGMENTED_CONTROL,
+        name: SegmentedControlFieldNames.TYPE,
+        options: [
+            {
+                label: 'Text',
+                value: 'text',
+            },
+            {
+                label: 'Icon',
+                value: 'icon',
+            },
+        ],
+        defaultValue: 'text',
+        value: 'text',
         tabId: 'control',
     },
-
     {
         showComponent: true,
         type: ComponentType.OPTIONS_LIST,
