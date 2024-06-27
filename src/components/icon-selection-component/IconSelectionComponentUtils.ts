@@ -33,9 +33,7 @@ const optionIconChangeHandler = (
                 if (option.key === selectedOption.key) {
                     option.Icon = icon ? (icon.Icon as any) : undefined;
                     option.label = undefined;
-                    option.value = icon
-                        ? icon.label + '-' + option.key
-                        : '-' + option.key;
+                    option.value = icon ? icon.label + '-' + option.key : '';
                 }
             });
         }
