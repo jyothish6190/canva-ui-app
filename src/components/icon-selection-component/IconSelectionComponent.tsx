@@ -30,7 +30,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
     useEffect(() => {
         if (optionField) {
             const icon: Icon = {
-                label: optionField.value,
+                label: removeAfterLastDash(optionField.value),
                 value: optionField.value,
                 Icon: optionField.Icon as any,
             };
@@ -42,6 +42,14 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
             });
         }
     }, [optionField]);
+
+    function removeAfterLastDash(str) {
+        var lastDashIndex = str.lastIndexOf('-');
+        if (lastDashIndex === -1) {
+            return str; // No dash found, return the original string
+        }
+        return str.substring(0, lastDashIndex); // Return the substring up to the last dash
+    }
 
     const selectedIcon = useMemo(() => {
         return iconsList.find((iconObj) => {

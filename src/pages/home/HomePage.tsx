@@ -70,7 +70,7 @@ const HomePage = () => {
     }, [searchQuery, selectedCategories, components]);
 
     useEffect(() => {
-        clearIcons();
+        // clearIcons();
 
         appElementClient.registerOnElementChange((appElement) => {
             const elementsList = getItem();
