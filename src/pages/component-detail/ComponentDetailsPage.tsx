@@ -175,6 +175,7 @@ const ComponentDetailsPage = () => {
         }
 
         svgDocument = elementToSVG(ref.current as HTMLElement);
+
         if (selectedComponent?.type === ComponentType.EMBED_CARD) {
             setOnUpdate(true);
             if (ref.current && ref.current.querySelector('img')) {
@@ -185,6 +186,7 @@ const ComponentDetailsPage = () => {
         } else {
             svgDocument = elementToSVG(ref.current);
         }
+
 
         if (previewDiv) previewDiv.style.scale = scale;
 

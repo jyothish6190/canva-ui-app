@@ -99,11 +99,15 @@ const PillComponent = ({ component, isProperty }: PillComponentType) => {
     const renderedClass = () => {
         switch (pillComponentState.pillState) {
             case 'hover':
-                return styles['Pill-hover'];
+                return styles['pill-hover'];
+                break;
+
+            case 'active':
+                return styles['pill-active'];
                 break;
 
             default:
-                return styles['Pill'];
+                return styles['pill'];
                 break;
         }
     };

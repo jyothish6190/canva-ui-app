@@ -1,0 +1,8 @@
+.checkbox-group > div > label > div > span {
+    border: 1px solid var(--ui-kit-color-border) !important;
+    box-sizing: none;
+}
+.checkbox-group > div label > div > span > span > svg {
+    background-color: var(--ui-kit-color-primary);
+    border-radius: 4px;
+}

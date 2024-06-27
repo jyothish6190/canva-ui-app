@@ -4,6 +4,7 @@ import { RadioGroup, RadioOption } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
 import { getOptions, getValue, getWidth } from './RadioGroupComponentUtils';
+import styles from './RadioGroupComponent.css';
 
 type RadioPropType = {
     component: Component;
@@ -36,6 +37,7 @@ const RadioGroupComponent = ({ component, isProperty }: RadioPropType) => {
     if (isProperty) {
         return (
             <div
+                className={styles['radio-group']}
                 id={options ? 'radioGroup' : ''}
                 style={{
                     width: width,
