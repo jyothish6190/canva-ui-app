@@ -4,6 +4,7 @@ import { ProgressBar } from '@canva/app-ui-kit';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { Component } from 'src/models/component.model';
 import { ProgressBarFieldNames } from 'src/constants/component-configs/ProgressbarComponentConfig';
+import styles from './ProgressbarComponent.css';
 
 type PropType = {
     component: Component;
@@ -76,7 +77,10 @@ const ProgressbarComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: progressBarState.progressBarWidth }}>
+            <div
+                className={styles['progress-bar']}
+                style={{ width: progressBarState.progressBarWidth }}
+            >
                 <ProgressBar
                     size={progressBarState.progressBarSize}
                     tone="info"
