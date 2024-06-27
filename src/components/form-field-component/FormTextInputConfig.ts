@@ -1,8 +1,9 @@
-import { ComponentType, OptionTypes } from 'src/constants/ComponentTypes';
+import { ChevronDownIcon, ClearIcon, SearchIcon } from '@canva/app-ui-kit';
+import { ComponentType } from '../../constants/ComponentTypes';
 import { FormControlNames, FormFieldNames } from './FormFieldConfig';
-import { CheckboxGroupFieldNames } from 'src/constants/component-configs/CheckBoxGroupConfig';
+import { TextInputFieldNames } from '../text-input-component/TextInputConfig';
 
-export const FormCheckboxGroupConfig = [
+export const FormTextInputConfig = [
     {
         showComponent: true,
         type: ComponentType.SELECT,
@@ -42,7 +43,7 @@ export const FormCheckboxGroupConfig = [
                 value: FormControlNames.FORM_SEGMENTED_CONTROL,
             },
         ],
-        value: FormControlNames.FORM_CHECKBOX_GROUP,
+        value: FormControlNames.FORM_TEXT_INPUT,
     },
 
     {
@@ -65,26 +66,20 @@ export const FormCheckboxGroupConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.SWITCH,
-        name: CheckboxGroupFieldNames.HUG_CONTENT,
-        defaultValue: true,
-        tabId: 'form field',
-    },
-    {
-        showComponent: false,
         type: ComponentType.NUMBER_INPUT,
-        name: CheckboxGroupFieldNames.WIDTH,
+        name: TextInputFieldNames.WIDTH,
         label: 'Label',
-        description: 'Description text',
-        min: 80,
+        value: '328',
+        min: 158,
         max: 1366,
+        description: 'Description text',
         tabId: 'form field',
     },
-
     {
-        showComponent: false,
+        showComponent: true,
         type: ComponentType.CATEGORY,
-        name: CheckboxGroupFieldNames.WIDTH_OPTION,
+        name: TextInputFieldNames.WIDTH_OPTIONS,
+        tabId: 'form field',
         options: [
             {
                 label: 'Small',
@@ -105,11 +100,10 @@ export const FormCheckboxGroupConfig = [
         ],
         selectedCategories: [
             {
-                label: 'Small',
-                value: 158,
+                label: 'Medium',
+                value: 328,
             },
         ],
-        tabId: 'form field',
     },
     {
         showComponent: true,
@@ -118,37 +112,98 @@ export const FormCheckboxGroupConfig = [
         defaultValue: false,
         tabId: 'form field',
     },
+
     {
         showComponent: true,
-        type: ComponentType.OPTIONS_LIST,
-        optionType: OptionTypes.CHECKBOX,
-        name: CheckboxGroupFieldNames.CHECKBOX_OPTIONS,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.TEXT,
+        value: 'Hello world',
+        placeholder: 'Enter your text',
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.PLACEHOLDER,
+        placeholder: 'Placeholder',
+        value: 'Placeholder',
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.ICON_SELECTOR,
+        name: TextInputFieldNames.START_DECORATOR,
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SELECT,
+        name: TextInputFieldNames.END_DECORATOR,
         options: [
             {
-                label: 'Small',
-                value: 'Small',
-                key: 1,
-                checked: true,
+                label: 'None',
+                value: 'none',
             },
             {
-                label: 'Medium',
-                value: 'Medium',
-                key: 2,
-                checked: false,
+                label: 'Clear',
+                value: 'clear',
             },
             {
-                label: 'Large',
-                value: 'Large',
-                key: 3,
-                checked: false,
+                label: 'Text',
+                value: 'text',
             },
             {
-                label: 'Custom',
-                value: 'Custom',
-                key: 4,
-                checked: false,
+                label: 'Character count',
+                value: 'character count',
             },
         ],
+        value: 'none',
+        tabId: 'control',
+    },
+    {
+        showComponent: false,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.END_TEXT,
+        label: 'Label',
+        value: 'End Text',
+        description: 'Description text',
+        tabId: 'control',
+    },
+    {
+        showComponent: false,
+        type: ComponentType.FORM_FIELD,
+        name: TextInputFieldNames.MAX_CHAR_COUNT,
+        label: 'Label',
+        description: 'Description text',
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SELECT,
+        name: TextInputFieldNames.STATE,
+        options: [
+            {
+                label: 'Default',
+                value: 'default',
+            },
+            {
+                label: 'Hover',
+                value: 'hover',
+            },
+            {
+                label: 'Active',
+                value: 'active',
+            },
+            {
+                label: 'Error',
+                value: 'error',
+            },
+            {
+                label: 'Disabled',
+                value: 'disabled',
+            },
+        ],
+        value: 'default',
+        placeholder: 'Choose a State',
         tabId: 'control',
     },
 ];

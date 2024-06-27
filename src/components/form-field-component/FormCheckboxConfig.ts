@@ -26,15 +26,15 @@ export const FormCheckboxConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {
@@ -65,76 +65,11 @@ export const FormCheckboxConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        value: '328',
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.CATEGORY,
-        tabId: 'form field',
-        options: [
-            {
-                label: 'Small',
-                value: 'small',
-            },
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-            {
-                label: 'Large',
-                value: 'large',
-            },
-            {
-                label: 'Custom',
-                value: 'custom',
-            },
-        ],
-        selectedCategories: [
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-        ],
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: CheckBoxFieldNames.CHECKED,
-        defaultValue: true,
-        value: true,
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: CheckBoxFieldNames.CHECKBOX_LABEL,
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Enter checkbox label',
-        value: 'Checkbox',
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
         type: ComponentType.SWITCH,
         name: CheckBoxFieldNames.HUG_CONTENT,
         defaultValue: true,
-        tabId: 'control',
+        tabId: 'form field',
     },
-
     {
         showComponent: false,
         type: ComponentType.NUMBER_INPUT,
@@ -143,7 +78,7 @@ export const FormCheckboxConfig = [
         description: 'Description text',
         min: 80,
         max: 1366,
-        tabId: 'control',
+        tabId: 'form field',
     },
     {
         showComponent: false,
@@ -173,6 +108,31 @@ export const FormCheckboxConfig = [
                 value: 158,
             },
         ],
+        tabId: 'form field',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: 'Error',
+        defaultValue: false,
+        tabId: 'form field',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: CheckBoxFieldNames.CHECKED,
+        defaultValue: true,
+        value: true,
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
+        type: ComponentType.FORM_FIELD,
+        name: CheckBoxFieldNames.CHECKBOX_LABEL,
+        label: 'Label',
+        description: 'Description text',
+        placeholder: 'Enter checkbox label',
+        value: 'Checkbox',
         tabId: 'control',
     },
     {
@@ -195,10 +155,6 @@ export const FormCheckboxConfig = [
             {
                 label: 'Disabled',
                 value: 'disabled',
-            },
-            {
-                label: 'Error',
-                value: 'error',
             },
         ],
         value: 'default',

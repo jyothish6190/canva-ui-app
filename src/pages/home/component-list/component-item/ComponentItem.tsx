@@ -251,7 +251,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
             return (
                 <FormSelectComponent
                     component={component}
-                    isProprty={isProperty}
+                    isProperty={isProperty}
                 />
             );
 

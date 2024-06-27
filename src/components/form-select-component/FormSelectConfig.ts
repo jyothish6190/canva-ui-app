@@ -5,6 +5,18 @@ import {
 } from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from '../select-component/SelectConfig';
 
+export const enum FormFieldSelectFieldNames {
+    PLACEHOLDER = 'Placeholder',
+    ACTIVE = 'Active',
+    WIDTH = 'Width',
+    WIDTH_OPTIONS = 'Width options',
+    STATE = 'State',
+    SELECT_OPTIONS = 'Options',
+    LABEL = 'Label',
+    DESCRIPTION = 'Description (optional)',
+    ERROR = 'Error',
+}
+
 export const FormSelectTabs = [
     {
         label: 'Form field',
@@ -44,15 +56,15 @@ export const FormFieldSelectConfig = [
                 value: FormControlNames.FORM_SELECT,
             },
             {
-                label: 'Checkbox Field',
+                label: 'Checkbox field',
                 value: FormControlNames.FORM_CHECKBOX_FIELD,
             },
             {
-                label: 'Checkbox Group',
+                label: 'Checkbox group',
                 value: FormControlNames.FORM_CHECKBOX_GROUP,
             },
             {
-                label: 'Radio Group',
+                label: 'Radio group',
                 value: FormControlNames.FORM_RADIO,
             },
             {
@@ -62,7 +74,6 @@ export const FormFieldSelectConfig = [
         ],
         value: FormControlNames.FORM_SELECT,
     },
-
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
@@ -83,71 +94,6 @@ export const FormFieldSelectConfig = [
     },
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: 'Width',
-        label: 'Label',
-        description: 'Description text',
-        value: '328',
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.CATEGORY,
-        tabId: 'form field',
-        options: [
-            {
-                label: 'Small',
-                value: 'small',
-            },
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-            {
-                label: 'Large',
-                value: 'large',
-            },
-            {
-                label: 'Custom',
-                value: 'custom',
-            },
-        ],
-        selectedCategories: [
-            {
-                label: 'Medium',
-                value: 'medium',
-            },
-        ],
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: SelectFieldNames.PLACEHOLDER,
-        label: 'Label',
-        description: 'Description text',
-        placeholder: 'Placeholder',
-        value: 'Select',
-        tabId: 'control',
-    },
-
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: SelectFieldNames.ACTIVE,
-        defaultValue: false,
-        tabId: 'control',
-    },
-    {
-        showComponent: true,
         type: ComponentType.NUMBER_INPUT,
         name: SelectFieldNames.WIDTH,
         label: 'Label',
@@ -155,14 +101,13 @@ export const FormFieldSelectConfig = [
         value: '328',
         min: 158,
         max: 1366,
-        tabId: 'control',
+        tabId: 'form field',
     },
-
     {
         showComponent: true,
         type: ComponentType.CATEGORY,
         name: SelectFieldNames.WIDTH_OPTIONS,
-        tabId: 'control',
+        tabId: 'form field',
         options: [
             {
                 label: 'Small',
@@ -190,8 +135,34 @@ export const FormFieldSelectConfig = [
     },
     {
         showComponent: true,
+        type: ComponentType.SWITCH,
+        name: 'Error',
+        defaultValue: false,
+        tabId: 'form field',
+    },
+
+    {
+        showComponent: true,
+        type: ComponentType.FORM_FIELD,
+        name: FormFieldSelectFieldNames.PLACEHOLDER,
+        label: 'Label',
+        description: 'Description text',
+        placeholder: 'Placeholder',
+        value: 'Select',
+        tabId: 'control',
+    },
+
+    {
+        showComponent: true,
+        type: ComponentType.SWITCH,
+        name: FormFieldSelectFieldNames.ACTIVE,
+        defaultValue: false,
+        tabId: 'control',
+    },
+    {
+        showComponent: true,
         type: ComponentType.SELECT,
-        name: SelectFieldNames.STATE,
+        name: FormFieldSelectFieldNames.STATE,
         tabId: 'control',
         options: [
             {
@@ -219,7 +190,7 @@ export const FormFieldSelectConfig = [
         showComponent: true,
         type: ComponentType.OPTIONS_LIST,
         tabId: 'options',
-        name: SelectFieldNames.SELECT_OPTIONS,
+        name: FormFieldSelectFieldNames.SELECT_OPTIONS,
         optionType: OptionTypes.RADIO,
         options: [
             {
