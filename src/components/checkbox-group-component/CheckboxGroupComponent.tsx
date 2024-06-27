@@ -9,7 +9,7 @@ import {
     getSelectedOptions,
     getWidth,
 } from './CheckboxGroupUtils';
-import { get } from 'http';
+import styles from './CheckboxGroupComponent.css';
 
 type CheckBoxPropType = {
     component: Component;
@@ -38,6 +38,7 @@ const CheckboxGroupComponent = ({
     if (isProperty) {
         return (
             <div
+                className={styles['checkbox-group']}
                 id={options ? 'checkboxGroup' : ''}
                 style={{
                     width: width ? width : undefined,

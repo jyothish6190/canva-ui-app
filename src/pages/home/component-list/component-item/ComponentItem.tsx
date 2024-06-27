@@ -247,13 +247,13 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
         case ComponentType.ICON_SELECTOR:
             return <IconSelectionComponent component={component} />;
 
-        // case ComponentType.FORM_SELECT:
-        //     return (
-        //         <FormSelectComponent
-        //             component={component}
-        //             isProprty={isProperty}
-        //         />
-        //     );
+        case ComponentType.FORM_SELECT:
+            return (
+                <FormSelectComponent
+                    component={component}
+                    isProprty={isProperty}
+                />
+            );
 
         default:
             return <></>;
