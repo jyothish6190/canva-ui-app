@@ -80,7 +80,11 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
         return (
             <div
                 className={renderedClass()}
-                style={width ? { width: width } : { width: undefined }}
+                style={
+                    width
+                        ? { width: width, padding: '0.5px' }
+                        : { width: undefined, padding: '0.5px' }
+                }
             >
                 <Button
                     key={component.name}
