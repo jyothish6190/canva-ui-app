@@ -1,0 +1,14 @@
+.swatch-component > div > button > span > span {
+    background: none !important;
+}
+
+.swatch-component > div > button > span > span > span {
+    border-radius: 999px;
+}
+.swatch-component > div > button > span > span::after {
+    background: var(--ui-kit-color-surface);
+    border: none;
+}
+.swatch-component-active > div > button {
+    border: 1px solid var(--ui-kit-color-border-active);
+}

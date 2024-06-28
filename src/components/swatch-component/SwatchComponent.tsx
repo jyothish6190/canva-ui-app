@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Swatch } from '@canva/app-ui-kit';
 import { Component } from 'src/models/component.model';
 import { SwatchFieldnames } from 'src/constants/component-configs/SwatchConfig';
+import styles from './SwatchComponent.css';
 
 type PropType = {
     component: Component;
@@ -66,13 +67,19 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
 
     if (isProperty) {
         return (
-            <Swatch
-                fill={[swatchData.swatchColor]}
-                onClick={() => {}}
-                size={swatchData.swatchSize}
-                variant={swatchData.swatchVariant}
-                active={swatchData.activeState}
-            />
+            <div
+                className={`${styles['swatch-component']} ${
+                    swatchData.activeState && styles['swatch-component-active']
+                }`}
+            >
+                <Swatch
+                    fill={[swatchData.swatchColor]}
+                    onClick={() => {}}
+                    size={swatchData.swatchSize}
+                    variant={swatchData.swatchVariant}
+                    active={swatchData.activeState}
+                />
+            </div>
         );
     } else {
         return (
