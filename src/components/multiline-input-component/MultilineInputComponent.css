@@ -1,12 +1,12 @@
-.Multiline-active > div > div {
-    border: 1px solid var(--ui-kit-color-border-active);
+.multiline-input > div > div textarea {
+    border-radius: 10px !important;
 }
-.Multiline-hover > div > div {
-    border: 1px solid var(--ui-kit-color-border-hover);
+
+.multiline-active > div > div:first-of-type {
+    border: 1.5px solid var(--ui-kit-color-border-active);
+    box-shadow: none;
 }
-.Multiline-active > div > div > div {
-    border: none;
-}
-.Multiline-hover > div > div > div {
-    border: none;
+.multiline-hover > div > div:first-of-type {
+    border: 1.5px solid var(--ui-kit-color-border-hover);
+    box-shadow: none;
 }
