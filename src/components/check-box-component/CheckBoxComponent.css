@@ -6,6 +6,9 @@
     background-color: var(--ui-kit-color-primary);
     border-radius: 4px;
 }
+.checkbox-active > label > div > span {
+    border: none !important;
+}
 .pressed-checkbox > label > div > span {
     border: 1px solid var(--ui-kit-color-border) !important;
     box-sizing: none;

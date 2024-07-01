@@ -12,7 +12,6 @@ import { Component } from 'src/models/component.model';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { MultilineInputFieldNames } from 'src/constants/component-configs/MultiLineInputConfig';
-import { getErrorState } from '../form-select-component/FormSelectComponentUtils';
 
 type PropType = {
     component: Component;
@@ -139,10 +138,10 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
     const renderedClass = () => {
         switch (multilineInputData.inputState) {
             case 'hover':
-                return styles['Multiline-hover'];
+                return styles['multiline-hover'];
                 break;
             case 'active':
-                return styles['Multiline-active'];
+                return styles['multiline-active'];
                 break;
             default:
                 return '';
@@ -153,7 +152,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
     if (isProperty) {
         return (
             <div
-                className={renderedClass()}
+                className={`${styles['multiline-input']}  ${renderedClass()}`}
                 style={{
                     width: multilineInputData.inputWidth,
                     padding: '0.5px',
@@ -176,8 +175,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                             }
                             onKeyDown={handleKeyDown}
                             error={
-                                multilineInputData.inputState === 'error' ||
-                                getErrorState(component)
+                                multilineInputData.inputState === 'error'
                                     ? true
                                     : false
                             }

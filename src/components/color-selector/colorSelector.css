@@ -3,6 +3,13 @@
     justify-content: space-between;
     align-items: center;
 }
+.container div > div > button > span > span {
+    background: none;
+}
+.container div > div > button > span > span > span {
+    border-radius: 999px;
+}
+
 .color-picker {
     display: block;
     width: 100%;

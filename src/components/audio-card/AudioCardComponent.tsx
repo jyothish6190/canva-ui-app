@@ -100,7 +100,7 @@ const AudioCardComponent = ({ component, isProperty }: AudioCardPropType) => {
         return (
             <div
                 className={renderedClass()}
-                style={{ width: audioCardState.cardWidth }}
+                style={{ width: audioCardState.cardWidth, padding: '0.5px' }}
             >
                 <AudioContextProvider>
                     <AudioCard
