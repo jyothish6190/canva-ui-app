@@ -1,15 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './LivePreview.css';
 import DarkThemeIcon from 'assets/icons/dark.svg';
 import LightThemeIcon from 'assets/icons/light.svg';
 import { tokens } from '@canva/app-ui-kit';
+import { useComponentStore } from 'src/store/ComponentStore';
 const LivePreview = ({ children }) => {
-    const [bgcolor, setBgColor] = useState<string>(tokens.colorContrastFore);
+    const { selectedComponent } = useComponentStore();
+
+    useEffect(() => {
+        setBgColor(
+            selectedComponent?.theme === 'light'
+                ? tokens.colorContrastFore
+                : tokens.colorContrastActive
+        );
+    }, [selectedComponent]);
+
+    const [bgcolor, setBgColor] = useState<string>(
+        selectedComponent?.theme === 'light'
+            ? tokens.colorContrastFore
+            : tokens.colorContrastActive
+    );
+
     const HandleOnclick = () => {
-        bgcolor === tokens.colorContrastFore
-            ? setBgColor(tokens.colorContrastActive)
-            : setBgColor(tokens.colorContrastFore);
+        if (bgcolor === tokens.colorContrastFore) {
+            setBgColor(tokens.colorContrastActive);
+            if (selectedComponent) {
+                selectedComponent.theme = 'dark';
+            }
+        } else {
+            setBgColor(tokens.colorContrastFore);
+            if (selectedComponent) {
+                selectedComponent.theme = 'light';
+            }
+        }
     };
+
     return (
         <div style={{ background: bgcolor, borderRadius: '4px' }}>
             <div
