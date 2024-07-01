@@ -1,5 +1,5 @@
 .checkbox > label > div > span {
-    border: 1px solid var(--ui-kit-color-border) !important;
+    border: 1px solid var(--ui-kit-color-border);
     box-sizing: none;
 }
 .checkbox > label > div > span > span > svg {
@@ -10,7 +10,7 @@
     border: none !important;
 }
 .pressed-checkbox > label > div > span {
-    border: 1px solid var(--ui-kit-color-border) !important;
+    border: 1px solid var(--ui-kit-color-border);
     box-sizing: none;
 }
 .pressed-checkbox > label > div > span > span > svg {
@@ -18,7 +18,7 @@
     border-radius: 4px;
 }
 .hover-checkbox > label > div > span {
-    border: 1px solid var(--ui-kit-color-border) !important;
+    border: 1px solid var(--ui-kit-color-border);
     box-sizing: none;
 }
 .hover-checkbox > label > div > span > span > svg {
