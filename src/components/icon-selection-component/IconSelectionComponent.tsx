@@ -142,7 +142,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
                     type="text"
                     placeholder={'Select an icon'}
                     value={selectedIcon?.icon?.label || ''}
-                    start={selectedIcon?.icon.Icon || ''}
+                    start={selectedIcon?.icon?.Icon || ''}
                     end={clearSelectInput}
                     onFocus={(event) => onFocusHandler(event)}
                 />
