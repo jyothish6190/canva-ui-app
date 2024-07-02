@@ -239,6 +239,11 @@ const ComponentDetailsPage = () => {
             assignBorderCorner(svgDocument);
             width = 'auto';
             imgWithCorner = true;
+        } else if (
+            selectedComponent?.type === ComponentType.PROGRESS_BAR ||
+            selectedComponent?.type === ComponentType.PLACEHOLDER
+        ) {
+            height = 'auto';
         } else {
             (width = 'auto' as any), (height = 100 as any);
         }
