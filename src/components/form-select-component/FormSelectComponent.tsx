@@ -177,7 +177,7 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
             <div
                 id={'active'}
                 className={renderedClass()}
-                style={{ width: width, scale: getScale() }}
+                style={{ width: width, padding: '0.5px' }}
             >
                 <FormField
                     label={
