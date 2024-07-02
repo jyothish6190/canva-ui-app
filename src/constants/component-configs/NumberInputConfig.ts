@@ -11,7 +11,7 @@ export enum NumberInputFieldNames {
 export const NumberInputConfig = [
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: NumberInputFieldNames.VALUE,
         value: 0,
         label: 'Label',
