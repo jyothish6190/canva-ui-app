@@ -8,6 +8,7 @@ import { Component, OptionItem } from 'src/models/component.model';
 
 import styles from './OptionsListComponent.css';
 import CardTitle from '../card-title/CardTitle';
+import { generateUUID } from '../../component-utils/ComponentUtils';
 import { useComponentStore } from 'src/store/ComponentStore';
 
 type PropType = {
@@ -65,20 +66,21 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
 
     const addOptionHandler = () => {
         let newOption: OptionItem;
+        let id = generateUUID();
         if (component.optionType) {
             if (optionList.some((option) => option.Icon)) {
                 newOption = {
                     value: 'Arrow up' + '-' + (optionList.length + 1),
-                    key: optionList.length + 1 + '',
+                    key: id,
                     description: 'option1',
                     selected: false,
                     Icon: 'arrow-up-icon',
                 };
             } else {
                 newOption = {
-                    value: 'Option' + (optionList.length + 1),
-                    label: 'Option' + (optionList.length + 1),
-                    key: optionList.length + 1 + '',
+                    value: id,
+                    label: 'Option',
+                    key: id,
                     selected: false,
                 };
             }
