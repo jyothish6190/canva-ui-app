@@ -16,6 +16,7 @@ import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { initAppElement } from '@canva/design';
+import { useIconStore } from 'src/store/IconStore';
 
 const appElementClient = initAppElement<any>({
     render: (data) => {
@@ -26,6 +27,7 @@ const appElementClient = initAppElement<any>({
 const HomePage = () => {
     const navigate = useNavigate();
     const { setSelectedComponent } = useComponentStore();
+    const { clearIcons } = useIconStore();
 
     const [showIcons, setShowIcons] = useState(true);
 
@@ -67,6 +69,8 @@ const HomePage = () => {
                 setSelectedAppElement(appElement);
             }
         });
+
+        clearIcons();
     }, []);
 
     useEffect(() => {
