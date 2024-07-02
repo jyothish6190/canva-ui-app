@@ -56,7 +56,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
     const selectedIcon = useMemo(() => {
         return iconsList.find((iconObj) => {
             if (optionField) {
-                if (iconObj.optionId == optionField.key) {
+                if (iconObj.optionId == optionField.key && iconObj.icon) {
                     return true;
                 }
             } else {
