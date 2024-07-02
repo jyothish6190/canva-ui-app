@@ -1,0 +1,3 @@
+.embed-card > div > div:nth-child(3) > p {
+    white-space: break-spaces;
+}

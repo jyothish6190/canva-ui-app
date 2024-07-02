@@ -181,8 +181,8 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
     if (isProperty) {
         return (
             <div
-                className={renderedClass()}
-                style={{ width: textInputData.inputWidth, padding: '0.5px' }}
+                className={`${renderedClass()} ${styles['text-input']}`}
+                style={{ width: textInputData.inputWidth }}
             >
                 <TextInput
                     disabled={

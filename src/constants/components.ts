@@ -47,6 +47,7 @@ export const components: Component[] = [
         name: 'Button',
         varient: 'primary',
         categoryId: 'action',
+        theme: 'light',
         fields: ButtonConfig,
     },
     {
@@ -56,6 +57,7 @@ export const components: Component[] = [
         'icon-data': 'InfoIcon',
         varient: 'primary',
         categoryId: 'action',
+        theme: 'light',
         fields: IconButtonConfig,
     },
     {
@@ -63,6 +65,7 @@ export const components: Component[] = [
         type: ComponentType.PILL,
         name: 'Pill',
         categoryId: 'action',
+        theme: 'light',
         fields: PillConfig,
     },
     {
@@ -71,6 +74,7 @@ export const components: Component[] = [
         name: 'Alert',
         placeholder: 'This is an Alert',
         categoryId: 'informational',
+        theme: 'light',
         fields: AlertConfig,
     },
     {
@@ -79,6 +83,7 @@ export const components: Component[] = [
         name: 'Badge',
         text: 'Badge',
         categoryId: 'informational',
+        theme: 'light',
         fields: BadgeConfig,
     },
     // {
@@ -100,7 +105,8 @@ export const components: Component[] = [
     //         },
     //     ],
     //     defaultTabValue: 'form field',
-    //     fields: FormFieldConfig,
+    // theme:'light',//
+    // fields: FormFieldConfig,
     // },
     {
         showComponent: true,
@@ -113,6 +119,7 @@ export const components: Component[] = [
         categoryId: 'form',
         tabs: FormTabs,
         defaultTabValue: 'form field',
+        theme: 'light',
         fields: FormTextInputConfig,
     },
     {
@@ -121,6 +128,7 @@ export const components: Component[] = [
         name: FormControlNames.CHECKBOX_FIELD,
         defaultValue: true,
         categoryId: 'form',
+        theme: 'light',
         fields: CheckBoxConfig,
     },
     {
@@ -148,6 +156,7 @@ export const components: Component[] = [
                 selected: false,
             },
         ],
+        theme: 'light',
         fields: CheckBoxGroupConfig,
     },
     {
@@ -175,6 +184,7 @@ export const components: Component[] = [
                 selected: false,
             },
         ],
+        theme: 'light',
         fields: RadioGroupConfig,
     },
     {
@@ -183,6 +193,7 @@ export const components: Component[] = [
         name: FormControlNames.TEXT_INPUT,
         categoryId: 'form',
         placeholder: 'Placeholder',
+        theme: 'light',
         fields: TextInputConfig,
     },
     {
@@ -192,6 +203,7 @@ export const components: Component[] = [
         categoryId: 'form',
         max: 50,
         placeholder: 'Placeholder',
+        theme: 'light',
         fields: MultiLineInputConfig,
     },
     {
@@ -215,6 +227,7 @@ export const components: Component[] = [
         ],
         defaultValue: 's',
         optionContentType: 'text',
+        theme: 'light',
         fields: SegmentedControlConfig,
     },
     {
@@ -226,6 +239,7 @@ export const components: Component[] = [
         max: 100,
         disabled: true,
         categoryId: 'form',
+        theme: 'light',
         fields: SliderConfig,
     },
     {
@@ -237,6 +251,7 @@ export const components: Component[] = [
         step: 1,
         disabled: true,
         categoryId: 'form',
+        theme: 'light',
         fields: NumberInputConfig,
     },
     {
@@ -246,6 +261,7 @@ export const components: Component[] = [
         disabled: true,
         multiple: true,
         categoryId: 'form',
+        theme: 'light',
         fields: FileInputConfig,
     },
     {
@@ -279,6 +295,7 @@ export const components: Component[] = [
                 selected: false,
             },
         ],
+        theme: 'light',
         fields: SelectConfig,
     },
     {
@@ -287,6 +304,7 @@ export const components: Component[] = [
         name: 'Switch',
         defaultValue: true,
         categoryId: 'form',
+        theme: 'light',
         fields: SwitchConfig,
     },
     {
@@ -297,6 +315,7 @@ export const components: Component[] = [
         size: 'small',
         variant: 'solid',
         categoryId: 'color',
+        theme: 'light',
         fields: SwatchConfig,
     },
     {
@@ -305,6 +324,7 @@ export const components: Component[] = [
         name: 'Color picker',
         color: '#E0D9FC',
         categoryId: 'color',
+        theme: 'light',
         fields: ColorPickerConfig,
     },
     {
@@ -313,6 +333,7 @@ export const components: Component[] = [
         name: 'Loading indicator',
         size: 'large',
         categoryId: 'progress',
+        theme: 'light',
         fields: LoadingIndicatorConfig,
     },
     {
@@ -321,6 +342,7 @@ export const components: Component[] = [
         name: 'Placeholder',
         size: 'small',
         categoryId: 'progress',
+        theme: 'light',
         fields: PlaceholderComponentConfig,
     },
     {
@@ -331,6 +353,7 @@ export const components: Component[] = [
         size: 'medium',
         tone: 'info',
         categoryId: 'progress',
+        theme: 'light',
         fields: ProgressbarConfig,
     },
     {
@@ -342,6 +365,7 @@ export const components: Component[] = [
         previewUrl:
             'https://static.canva.com/web/images/87e22a62965f141aa08e93699b0b3527.jpg',
         categoryId: 'card',
+        theme: 'light',
         fields: AudioCardConfig,
     },
     {
@@ -352,6 +376,7 @@ export const components: Component[] = [
         previewUrl:
             'https://www.canva.dev/example-assets/image-import/grass-image.jpg',
         categoryId: 'card',
+        theme: 'light',
         fields: ImageCardConfig,
     },
     {
@@ -360,6 +385,7 @@ export const components: Component[] = [
         name: 'Typography card',
         placeholder: 'The quick brown fox',
         categoryId: 'card',
+        theme: 'light',
         fields: TypographyConfig,
     },
     {
@@ -370,6 +396,7 @@ export const components: Component[] = [
             'https://www.canva.dev/example-assets/video-import/beach-thumbnail-image.jpg',
         durationInSeconds: 11,
         categoryId: 'card',
+        theme: 'light',
         fields: VideoCardConfig,
     },
     {
@@ -381,6 +408,7 @@ export const components: Component[] = [
         title: 'This is a title',
         description: 'This is a subtitle',
         categoryId: 'card',
+        theme: 'light',
         fields: EmbedConfig,
     },
     {
@@ -389,6 +417,7 @@ export const components: Component[] = [
         name: 'Title',
         placeholder: 'Title',
         categoryId: 'typography',
+        theme: 'light',
         fields: TitleConfig,
     },
     {
@@ -397,6 +426,7 @@ export const components: Component[] = [
         name: 'Text',
         placeholder: 'Text',
         categoryId: 'typography',
+        theme: 'light',
         fields: TextConfig,
     },
     // {
@@ -405,6 +435,7 @@ export const components: Component[] = [
     //     name: 'Link',
     //     children: 'Go to Canva',
     //     categoryId: 'typography',
-    //     fields: LinkConfig,
+    // theme:'light',//
+    // fields: LinkConfig,
     // },**Temporarily Removed Link component**
 ];
