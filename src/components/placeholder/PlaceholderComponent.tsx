@@ -6,6 +6,7 @@ import {
 } from '@canva/app-ui-kit';
 import { Component } from 'src/models/component.model';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
+import styles from './PlaceholderComponent.css';
 
 type PropType = {
     component: Component;
@@ -118,12 +119,20 @@ const PlaceholderComponent = ({ component, isProperty }: PropType) => {
         switch (placeholderState.placeholderStyle) {
             case 'text':
                 return (
-                    <TextPlaceholder size={placeholderState.placeHolderSize} />
+                    <div className={styles['placeholder']}>
+                        <TextPlaceholder
+                            size={placeholderState.placeHolderSize}
+                        />
+                    </div>
                 );
 
             case 'title':
                 return (
-                    <TitlePlaceholder size={placeholderState.placeHolderSize} />
+                    <div className={styles['placeholder']}>
+                        <TitlePlaceholder
+                            size={placeholderState.placeHolderSize}
+                        />
+                    </div>
                 );
 
             case 'shape':
