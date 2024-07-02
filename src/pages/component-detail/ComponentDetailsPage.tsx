@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@canva/app-ui-kit';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
@@ -15,14 +15,7 @@ import { getScale } from './ComponentDetailsPageUtils';
 import { useComponentStore } from 'src/store/ComponentStore';
 import { ComponentType } from 'src/constants/ComponentTypes';
 import Session from 'svg-text-to-path';
-import { ElementType, useElementStore } from 'src/store/elementStore';
-import { useLocalStorage } from 'src/hooks/useLocalStorage';
-import { ELEMENTS } from 'src/constants/common-constants';
 import { ColorPickertoBase64 } from 'src/components/color-selector/ColorSelectorUtils';
-
-type AppElementData = {
-    elementId: string;
-};
 
 const images = {};
 
@@ -40,17 +33,11 @@ type RefValueType = string | null;
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
     const { selectedComponent, setSelectedComponent } = useComponentStore();
-    console.log(
-        '🚀 ~ ComponentDetailsPage ~ selectedComponent:',
-        selectedComponent
-    );
-    const { elements, setElements } = useElementStore();
+
     const [onUpdate, setOnUpdate] = useState(false);
 
     const [imageUrl, setImageUrl] = useState();
     const [scale, setScale] = useState('1');
-
-    const { setItem } = useLocalStorage(ELEMENTS);
 
     const initialLoad = useRef(true);
     const elementId = useRef<RefValueType>(null);
@@ -74,23 +61,17 @@ const ComponentDetailsPage = () => {
     }, []);
 
     async function assignDetails(appElement) {
-        if (elements && elements.length > 0) {
-            elements.forEach((element: ElementType) => {
-                if (element.elementId === appElement?.data?.elementId) {
-                    console.log('🚀 ~ elements.forEach ~ element:', element);
+        const oldComponent = {
+            ...appElement.data.selectedComponent,
+        };
+        console.log(
+            '🚀 ~ assignDetails ~ oldComponent:',
+            oldComponent,
+            appElement
+        );
 
-                    const oldComponent = {
-                        ...element.component,
-                    };
-
-                    if (oldComponent) {
-                        setSelectedComponent(
-                            oldComponent,
-                            'ComponentDetailsPage'
-                        );
-                    }
-                }
-            });
+        if (oldComponent) {
+            setSelectedComponent(oldComponent, 'ComponentDetailsPage');
         }
     }
 
@@ -357,14 +338,6 @@ const ComponentDetailsPage = () => {
             };
         }
 
-        const updatedElements = [
-            ...elements,
-            {
-                elementId: elementIdNew,
-                component: selectedComponent,
-            },
-        ];
-
         if (selectedComponent?.type === ComponentType.EMBED_CARD) {
             if (ref.current && ref.current.querySelector('img')) {
                 setOnUpdate(false);
@@ -374,8 +347,7 @@ const ComponentDetailsPage = () => {
         } else {
             setOnUpdate(false);
         }
-        setElements(updatedElements as ElementType[]);
-        setItem(updatedElements);
+
         await appElementClient.addOrUpdateElement(appElementData);
     };
 

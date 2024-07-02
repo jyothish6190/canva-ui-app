@@ -16,10 +16,6 @@ import { Component } from 'src/models/component.model';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { initAppElement } from '@canva/design';
-import { ElementType, useElementStore } from 'src/store/elementStore';
-import { useIconStore } from 'src/store/IconStore';
-import { useLocalStorage } from 'src/hooks/useLocalStorage';
-import { ELEMENTS } from 'src/constants/common-constants';
 
 const appElementClient = initAppElement<any>({
     render: (data) => {
@@ -30,10 +26,6 @@ const appElementClient = initAppElement<any>({
 const HomePage = () => {
     const navigate = useNavigate();
     const { setSelectedComponent } = useComponentStore();
-    const { elements, setElements } = useElementStore();
-    const { clearIcons } = useIconStore();
-
-    const { getItem } = useLocalStorage(ELEMENTS);
 
     const [showIcons, setShowIcons] = useState(true);
 
@@ -70,15 +62,7 @@ const HomePage = () => {
     }, [searchQuery, selectedCategories, components]);
 
     useEffect(() => {
-        // clearIcons();
-
         appElementClient.registerOnElementChange((appElement) => {
-            const elementsList = getItem();
-
-            if (elementsList) {
-                setElements(elementsList);
-            }
-
             if (appElement?.data?.selectedComponent) {
                 setSelectedAppElement(appElement);
             }
@@ -86,21 +70,22 @@ const HomePage = () => {
     }, []);
 
     useEffect(() => {
-        if (elements && elements.length > 0) {
-            elements.forEach((element: ElementType) => {
-                if (element.elementId === selectedAppElement?.data?.elementId) {
-                    const oldComponent = {
-                        ...element.component,
-                    };
+        if (selectedAppElement) {
+            const oldComponent = {
+                ...selectedAppElement.data.selectedComponent,
+            };
 
-                    if (oldComponent) {
-                        setSelectedComponent(oldComponent, 'HomePage');
-                        navigate('/component-details');
-                    }
-                }
-            });
+            console.log(
+                '🚀 ~ useEffect ~ oldComponent:',
+                oldComponent,
+                selectedAppElement
+            );
+            if (oldComponent) {
+                setSelectedComponent(oldComponent, 'HomePage');
+                navigate('/component-details');
+            }
         }
-    }, [elements, selectedAppElement]);
+    }, [selectedAppElement]);
 
     useEffect(() => {
         setShowIcons(
