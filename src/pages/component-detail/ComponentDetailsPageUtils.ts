@@ -106,3 +106,16 @@ export const getScale = (component) => {
         return Math.min(290 / width, 220 / height).toString();
     } else return '1';
 };
+
+export const removeDuplicateIds = (container) => {
+    const seenIds = new Set();
+    const divs = container.querySelectorAll('div[id]');
+
+    divs.forEach((div) => {
+        if (seenIds.has(div.id)) {
+            div.removeAttribute('id');
+        } else {
+            seenIds.add(div.id);
+        }
+    });
+};

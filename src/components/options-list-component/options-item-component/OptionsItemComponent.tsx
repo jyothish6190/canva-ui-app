@@ -37,7 +37,7 @@ const OptionsItemComponent = ({
                             (component.value == '' ||
                                 option.value == component.value)
                                 ? option.value
-                                : ''
+                                : ' '
                         }
                         onChange={(value) => {
                             option.value = value;

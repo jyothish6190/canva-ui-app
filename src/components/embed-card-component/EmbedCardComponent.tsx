@@ -4,6 +4,7 @@ import { Component } from 'src/models/component.model';
 import ExcessContainer from '../CommonComponents/excessContainer';
 import { EmbedFieldNames } from 'src/constants/component-configs/EmbedConfig';
 import thumbnailImage from '../../../assets/images/embed-card.png';
+import styles from './EmbedCardComponet.css';
 
 type EmbedPropType = {
     component: Component;
@@ -76,7 +77,10 @@ const EmbedCardComponent = ({ component, isProperty }: EmbedPropType) => {
 
     if (isProperty) {
         return (
-            <div style={{ width: embedState.embedWidth }}>
+            <div
+                className={styles['embed-card']}
+                style={{ width: embedState.embedWidth }}
+            >
                 <EmbedCard
                     ariaLabel="Add embed to design"
                     description={embedState.embedDescription}

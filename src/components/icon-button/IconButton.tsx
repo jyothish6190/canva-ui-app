@@ -126,6 +126,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
                 className={renderedClass()}
                 style={{
                     width: IconButtonState.buttonWidth,
+                    padding: '0.5px',
                 }}
             >
                 <Button

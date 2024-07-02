@@ -10,7 +10,7 @@ import styles from './ComponentDetailsPage.css';
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
-import { getScale } from './ComponentDetailsPageUtils';
+import { getScale, removeDuplicateIds } from './ComponentDetailsPageUtils';
 
 import { useComponentStore } from 'src/store/ComponentStore';
 import { ComponentType } from 'src/constants/ComponentTypes';
@@ -160,6 +160,7 @@ const ComponentDetailsPage = () => {
             scale = computedStyle.scale;
             previewDiv.style.scale = '1';
         }
+        removeDuplicateIds(ref.current);
 
         svgDocument = elementToSVG(ref.current as HTMLElement);
 
@@ -219,6 +220,11 @@ const ComponentDetailsPage = () => {
             assignBorderCorner(svgDocument);
             width = 'auto';
             imgWithCorner = true;
+        } else if (
+            selectedComponent?.type === ComponentType.PROGRESS_BAR ||
+            selectedComponent?.type === ComponentType.PLACEHOLDER
+        ) {
+            height = 'auto';
         } else {
             (width = 'auto' as any), (height = 100 as any);
         }

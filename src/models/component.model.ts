@@ -44,6 +44,7 @@ export interface Component {
     icon?: () => JSX.Element;
     optionContentType?: 'text' | 'icon';
     errorState?: boolean;
+    theme: 'light' | 'dark';
 }
 
 interface Option2 {

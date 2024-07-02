@@ -52,7 +52,12 @@ const CheckBoxComponent = ({ component, isProperty, onChange }: PropType) => {
 
     if (isProperty) {
         return (
-            <div className={renderedClass()} style={{ width: width }}>
+            <div
+                className={`${renderedClass()} ${
+                    selected && styles['checkbox-active']
+                }`}
+                style={{ width: width }}
+            >
                 <Checkbox
                     checked={selected}
                     label={label}
