@@ -200,35 +200,35 @@ const switchFormComponent = (
     let tabs = FormTabs;
     switch (value) {
         case FormControlNames.FORM_MULTILINE_INPUT:
-            fields = [...copyObjectwithouInstance(FormMultilineConfig)];
+            fields = copyObjectwithouInstance(FormMultilineConfig);
             break;
 
         case FormControlNames.FORM_TEXT_INPUT:
-            fields = [...copyObjectwithouInstance(FormTextInputConfig)];
+            fields = copyObjectwithouInstance(FormTextInputConfig);
             break;
 
         case FormControlNames.FORM_NUMBER_INPUT:
-            fields = [...copyObjectwithouInstance(FormNumberInputConfig)];
+            fields = copyObjectwithouInstance(FormNumberInputConfig);
             break;
 
         case FormControlNames.FORM_SELECT:
-            fields = [...copyObjectwithouInstance(FormFieldSelectConfig)];
-            tabs = [...copyObjectwithouInstance(FormSelectTabs)];
+            fields = copyObjectwithouInstance(FormFieldSelectConfig);
+            tabs = copyObjectwithouInstance(FormSelectTabs);
             break;
 
         case FormControlNames.FORM_CHECKBOX_FIELD:
-            fields = [...copyObjectwithouInstance(FormCheckboxConfig)];
+            fields = copyObjectwithouInstance(FormCheckboxConfig);
             break;
 
         case FormControlNames.FORM_CHECKBOX_GROUP:
-            fields = [...copyObjectwithouInstance(FormCheckboxGroupConfig)];
+            fields = copyObjectwithouInstance(FormCheckboxGroupConfig);
             break;
         case FormControlNames.FORM_RADIO:
-            fields = [...copyObjectwithouInstance(FormRadioGroupConfig)];
+            fields = copyObjectwithouInstance(FormRadioGroupConfig);
             break;
 
         case FormControlNames.FORM_SEGMENTED_CONTROL:
-            fields = [...copyObjectwithouInstance(FormSegmentedConfig)];
+            fields = copyObjectwithouInstance(FormSegmentedConfig);
             break;
 
         default:
