@@ -202,6 +202,10 @@ export const processSegementedFieldChange = (
     return newComponent;
 };
 
+function copyObjectwithouInstance(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
 const switchSegmentType = (selectedComponent: Component, value: any) => {
     let newComponent = { ...selectedComponent };
 
@@ -213,9 +217,11 @@ const switchSegmentType = (selectedComponent: Component, value: any) => {
                 field.options = textOptions as any[];
                 field.value = 's';
             } else if (value === 'icon') {
-                newComponent.options = iconOptions as any[];
+                newComponent.options = copyObjectwithouInstance(
+                    iconOptions
+                ) as any[];
                 newComponent.optionContentType = 'icon';
-                field.options = iconOptions as any[];
+                field.options = copyObjectwithouInstance(iconOptions) as any[];
                 field.value = 'Arrow up';
             }
         }
