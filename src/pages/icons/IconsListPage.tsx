@@ -15,11 +15,15 @@ import { useIconStore } from 'src/store/IconStore';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { ICONS } from 'src/constants/common-constants';
+import { useComponentStore } from 'src/store/ComponentStore';
+import { Component } from 'src/models/component.model';
 
 const IconsListPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { setIconsList: setSelectedIcons } = useIconStore();
+    const { selectedComponent, setSelectedComponent } = useComponentStore();
+
     const { setItem } = useLocalStorage(ICONS);
     const { getItem } = useLocalStorage(ICONS);
     setItem([]);
@@ -27,6 +31,7 @@ const IconsListPage = () => {
     const previousPath = location?.state?.path;
     const componentId = location?.state?.componentId;
     const optionId = location?.state?.optionId;
+    const component: Component = location?.state?.component;
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -48,6 +53,10 @@ const IconsListPage = () => {
                 componentId: componentId,
                 optionId: optionId,
             });
+            if (selectedComponent) {
+                selectedComponent.tabValue = component.tabId;
+            }
+
             navigate(-1);
         } else {
             updateComponentHandler(icon);

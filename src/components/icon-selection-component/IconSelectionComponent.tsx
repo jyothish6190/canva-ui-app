@@ -101,6 +101,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
                 path: 'iconSelector',
                 componentId: component.name,
                 optionId: optionField ? optionField.key : undefined,
+                component: component,
             },
         });
     };

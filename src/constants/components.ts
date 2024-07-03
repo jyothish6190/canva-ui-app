@@ -119,6 +119,7 @@ export const components: Component[] = [
         categoryId: 'form',
         tabs: FormTabs,
         defaultTabValue: 'form field',
+        tabValue: 'form field',
         theme: 'light',
         fields: FormTextInputConfig,
     },
@@ -281,6 +282,7 @@ export const components: Component[] = [
             },
         ],
         defaultTabValue: 'control',
+        tabValue: 'control',
         options: [
             {
                 key: 1,
