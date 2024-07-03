@@ -186,46 +186,49 @@ export const selectOptionChangeHandler = (
     return updatedComponent;
 };
 
+function copyObjectwithouInstance(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
 const switchFormComponent = (
     selectedComponent: Component,
     value: string
 ): Component => {
     console.log('🚀 switchFormComponent~ value:', value);
-
     let newComponent = { ...selectedComponent };
     let fields = newComponent.fields;
     let tabs = FormTabs;
     switch (value) {
         case FormControlNames.FORM_MULTILINE_INPUT:
-            fields = [...FormMultilineConfig];
+            fields = [...copyObjectwithouInstance(FormMultilineConfig)];
             break;
 
         case FormControlNames.FORM_TEXT_INPUT:
-            fields = [...FormTextInputConfig];
+            fields = [...copyObjectwithouInstance(FormTextInputConfig)];
             break;
 
         case FormControlNames.FORM_NUMBER_INPUT:
-            fields = [...FormNumberInputConfig];
+            fields = [...copyObjectwithouInstance(FormNumberInputConfig)];
             break;
 
         case FormControlNames.FORM_SELECT:
-            fields = [...FormFieldSelectConfig];
-            tabs = [...FormSelectTabs];
+            fields = [...copyObjectwithouInstance(FormFieldSelectConfig)];
+            tabs = [...copyObjectwithouInstance(FormSelectTabs)];
             break;
 
         case FormControlNames.FORM_CHECKBOX_FIELD:
-            fields = [...FormCheckboxConfig];
+            fields = [...copyObjectwithouInstance(FormCheckboxConfig)];
             break;
 
         case FormControlNames.FORM_CHECKBOX_GROUP:
-            fields = [...FormCheckboxGroupConfig];
+            fields = [...copyObjectwithouInstance(FormCheckboxGroupConfig)];
             break;
         case FormControlNames.FORM_RADIO:
-            fields = [...FormRadioGroupConfig];
+            fields = [...copyObjectwithouInstance(FormRadioGroupConfig)];
             break;
 
         case FormControlNames.FORM_SEGMENTED_CONTROL:
-            fields = [...FormSegmentedConfig];
+            fields = [...copyObjectwithouInstance(FormSegmentedConfig)];
             break;
 
         default:
