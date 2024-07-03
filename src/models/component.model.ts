@@ -45,6 +45,7 @@ export interface Component {
     optionContentType?: 'text' | 'icon';
     errorState?: boolean;
     theme: 'light' | 'dark';
+    tabValue?: string;
 }
 
 interface Option2 {

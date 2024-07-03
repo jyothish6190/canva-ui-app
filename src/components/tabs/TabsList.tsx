@@ -19,7 +19,7 @@ const TabsList = ({ component }: PropType) => {
 
     return (
         <Tabs.Root
-            defaultValue={component.defaultTabValue}
+            defaultValue={component.tabValue}
             orientation="vertical"
             className={styles.TabsRoot}
         >
