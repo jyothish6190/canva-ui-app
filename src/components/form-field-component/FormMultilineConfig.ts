@@ -122,14 +122,14 @@ export const FormMultilineConfig = [
         placeholder: 'Enter your text',
         tabId: 'control',
     },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: MultilineInputFieldNames.PLACEHOLDER,
-        placeholder: 'Placeholder',
-        value: 'Placeholder',
-        tabId: 'control',
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.FORM_FIELD,
+    //     name: MultilineInputFieldNames.PLACEHOLDER,
+    //     placeholder: 'Placeholder',
+    //     value: 'Placeholder',
+    //     tabId: 'control',
+    // },
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,

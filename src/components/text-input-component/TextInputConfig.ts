@@ -21,13 +21,13 @@ export const TextInputConfig = [
         value: 'Hello world',
         placeholder: 'Enter your text',
     },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: TextInputFieldNames.PLACEHOLDER,
-        placeholder: 'Placeholder',
-        value: 'Placeholder',
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.FORM_FIELD,
+    //     name: TextInputFieldNames.PLACEHOLDER,
+    //     placeholder: 'Placeholder',
+    //     value: 'Placeholder',
+    // },*/Temporarily removed placeholder/*
     {
         showComponent: true,
         type: ComponentType.ICON_SELECTOR,

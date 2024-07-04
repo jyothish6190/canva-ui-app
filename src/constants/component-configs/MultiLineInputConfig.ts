@@ -16,13 +16,13 @@ export const MultiLineInputConfig = [
         name: MultilineInputFieldNames.TEXT,
         placeholder: 'Enter your text',
     },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: MultilineInputFieldNames.PLACEHOLDER,
-        placeholder: 'Placeholder',
-        value: 'Placeholder',
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.FORM_FIELD,
+    //     name: MultilineInputFieldNames.PLACEHOLDER,
+    //     placeholder: 'Placeholder',
+    //     value: 'Placeholder',
+    // },*/Temporarily removed placeholder/*
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
