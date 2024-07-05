@@ -193,7 +193,7 @@ export const components: Component[] = [
         type: ComponentType.TEXT_INPUT,
         name: FormControlNames.TEXT_INPUT,
         categoryId: 'form',
-        placeholder: 'Placeholder',
+        placeholder: 'Enter your text',
         theme: 'light',
         fields: TextInputConfig,
     },
@@ -203,7 +203,7 @@ export const components: Component[] = [
         name: FormControlNames.MULTILINE_INPUT,
         categoryId: 'form',
         max: 50,
-        placeholder: 'Placeholder',
+        placeholder: 'Enter your text',
         theme: 'light',
         fields: MultiLineInputConfig,
     },
@@ -441,5 +441,5 @@ export const components: Component[] = [
     //     categoryId: 'typography',
     // theme:'light',//
     // fields: LinkConfig,
-    // },**Temporarily Removed LinkComponent,VedioCard, ImageCard and EmbededCard**
+    // },**Temporarily Removed LinkComponent,VedioCard, ImageCard and EmbededCard***
 ];
