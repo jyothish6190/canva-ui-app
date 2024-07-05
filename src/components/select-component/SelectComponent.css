@@ -48,7 +48,7 @@
     flex-direction: column;
     background-color: var(--ui-kit-color-surface);
     border-radius: var(--ui-kit-space-1);
-    box-shadow: var(--ui-kit-box-shadow-faint);
+    border: 1px solid var(--ui-kit-color-border-low);
 }
 .Dropdown-item {
     display: flex;

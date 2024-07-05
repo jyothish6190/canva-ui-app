@@ -123,18 +123,19 @@ export const FormTextInputConfig = [
         placeholder: 'Enter your text',
         tabId: 'control',
     },
-    {
-        showComponent: true,
-        type: ComponentType.FORM_FIELD,
-        name: TextInputFieldNames.PLACEHOLDER,
-        placeholder: 'Placeholder',
-        value: 'Placeholder',
-        tabId: 'control',
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.FORM_FIELD,
+    //     name: TextInputFieldNames.PLACEHOLDER,
+    //     placeholder: 'Placeholder',
+    //     value: 'Placeholder',
+    //     tabId: 'control',
+    // },*/Temporarily removed placeholder/*
     {
         showComponent: true,
         type: ComponentType.ICON_SELECTOR,
         name: TextInputFieldNames.START_DECORATOR,
+        tabId: 'control',
     },
     {
         showComponent: true,
