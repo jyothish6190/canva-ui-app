@@ -7,8 +7,6 @@ import {
 } from '../form-field-component/FormFieldConfig';
 import { SelectFieldNames } from './SelectConfig';
 import { SelectState } from './SelectComponent';
-import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
-
 import { FormMultilineConfig } from '../form-field-component/FormMultilineConfig';
 import { FormNumberInputConfig } from '../form-field-component/FormNumberInputConfig';
 import {
@@ -281,9 +279,12 @@ const updateSelectComponent = (
                 field.value = selectedComponent.description;
             }
         }
+
         if (field.name === FormFieldSelectFieldNames.ERROR) {
-            if (!field.value) {
-                field.value = selectedComponent.errorState;
+            if (value === 'error') {
+                field.value = true;
+            } else {
+                field.value = false;
             }
         }
     });

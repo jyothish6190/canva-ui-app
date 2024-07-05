@@ -112,13 +112,7 @@ export const FormRadioGroupConfig = [
         ],
         tabId: 'form field',
     },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
+
     {
         showComponent: true,
         type: ComponentType.OPTIONS_LIST,

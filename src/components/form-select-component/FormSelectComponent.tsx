@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { FormField, SelectOption, Title, TextInput } from '@canva/app-ui-kit';
 
 import { Component } from 'src/models/component.model';
-import styles from '../select-component/SelectComponent.css';
+import styles from './FormSelectComponent.css';
 import { useComponentStore } from 'src/store/ComponentStore';
 import {
     getActive,
     getDescription,
+    getErrorState,
     getLabel,
     getOptions,
     getPlaceholder,
@@ -45,6 +46,7 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
     const [active, setActive] = useState<boolean>(false);
     const [width, setWidth] = useState<string | undefined>(undefined);
     const [elementHeight, setElementHeight] = useState<number>();
+    const [error, setError] = useState<boolean>(false);
     const [selectedvValue, setSelectedValue] = useState('');
 
     useEffect(() => {
@@ -56,6 +58,7 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
             setPlaceholder(getPlaceholder(component));
             setWidth(getWidth(component));
             setActive(getActive(component));
+            setError(getErrorState(component));
         }
     }, [component, component.value, component.options]);
 
@@ -68,26 +71,6 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
 
         if (divelement) {
             setElementHeight((divelement as HTMLElement).offsetHeight);
-        }
-    };
-
-    const getScale = () => {
-        let scale = 1;
-        if (elementHeight && elementHeight > 220) {
-            scale = 220 / elementHeight;
-        } else {
-            scale = 1;
-        }
-        return scale.toString();
-    };
-
-    const renderedClass = () => {
-        if (active) {
-            return styles['Select'];
-        } else if (selectState === 'hover') {
-            return styles['Select-hover'];
-        } else {
-            return '';
         }
     };
 
@@ -176,7 +159,7 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
         return (
             <div
                 id={'active'}
-                className={renderedClass()}
+                className={error ? styles['form-select-component'] : ''}
                 style={{ width: width, padding: '0.5px' }}
             >
                 <FormField
