@@ -370,17 +370,7 @@ export const components: Component[] = [
         theme: 'light',
         fields: AudioCardConfig,
     },
-    {
-        showComponent: true,
-        type: ComponentType.IMAGE_CARD,
-        name: 'Image card',
-        borderRadius: 'standard',
-        previewUrl:
-            'https://www.canva.dev/example-assets/image-import/grass-image.jpg',
-        categoryId: 'card',
-        theme: 'light',
-        fields: ImageCardConfig,
-    },
+
     {
         showComponent: true,
         type: ComponentType.TYPOGRAPHY_CARD,
@@ -390,29 +380,7 @@ export const components: Component[] = [
         theme: 'light',
         fields: TypographyConfig,
     },
-    {
-        showComponent: true,
-        type: ComponentType.VIDEO_CARD,
-        name: 'Video card',
-        thumbnailUrl:
-            'https://www.canva.dev/example-assets/video-import/beach-thumbnail-image.jpg',
-        durationInSeconds: 11,
-        categoryId: 'card',
-        theme: 'light',
-        fields: VideoCardConfig,
-    },
-    {
-        showComponent: true,
-        type: ComponentType.EMBED_CARD,
-        name: 'Embed card',
-        thumbnailUrl:
-            'https://www.canva.dev/example-assets/images/puppyhood.jpg',
-        title: 'This is a title',
-        description: 'This is a subtitle',
-        categoryId: 'card',
-        theme: 'light',
-        fields: EmbedConfig,
-    },
+
     {
         showComponent: true,
         type: ComponentType.TITLE,
@@ -433,11 +401,45 @@ export const components: Component[] = [
     },
     // {
     //     showComponent: true,
+    //     type: ComponentType.IMAGE_CARD,
+    //     name: 'Image card',
+    //     borderRadius: 'standard',
+    //     previewUrl:
+    //         'https://www.canva.dev/example-assets/image-import/grass-image.jpg',
+    //     categoryId: 'card',
+    //     theme: 'light',
+    //     fields: ImageCardConfig,
+    // },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.VIDEO_CARD,
+    //     name: 'Video card',
+    //     thumbnailUrl:
+    //         'https://www.canva.dev/example-assets/video-import/beach-thumbnail-image.jpg',
+    //     durationInSeconds: 11,
+    //     categoryId: 'card',
+    //     theme: 'light',
+    //     fields: VideoCardConfig,
+    // },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.EMBED_CARD,
+    //     name: 'Embed card',
+    //     thumbnailUrl:
+    //         'https://www.canva.dev/example-assets/images/puppyhood.jpg',
+    //     title: 'This is a title',
+    //     description: 'This is a subtitle',
+    //     categoryId: 'card',
+    //     theme: 'light',
+    //     fields: EmbedConfig,
+    // },
+    // {
+    //     showComponent: true,
     //     type: ComponentType.LINK,
     //     name: 'Link',
     //     children: 'Go to Canva',
     //     categoryId: 'typography',
     // theme:'light',//
     // fields: LinkConfig,
-    // },**Temporarily Removed Link component**
+    // },**Temporarily Removed LinkComponent,VedioCard, ImageCard and EmbededCard**
 ];

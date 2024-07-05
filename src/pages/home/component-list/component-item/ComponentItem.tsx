@@ -195,13 +195,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                     isProperty={isProperty}
                 />
             );
-        case ComponentType.IMAGE_CARD:
-            return (
-                <ImageCardComponent
-                    component={component}
-                    isProperty={isProperty}
-                />
-            );
+
         case ComponentType.TYPOGRAPHY_CARD:
             return (
                 <TypographyComponent
@@ -209,20 +203,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                     isProperty={isProperty}
                 />
             );
-        case ComponentType.VIDEO_CARD:
-            return (
-                <VideoCardComponent
-                    component={component}
-                    isProperty={isProperty}
-                />
-            );
-        case ComponentType.EMBED_CARD:
-            return (
-                <EmbedCardComponent
-                    component={component}
-                    isProperty={isProperty}
-                />
-            );
+
         case ComponentType.TITLE:
             return (
                 <TitleComponent component={component} isProperty={isProperty} />
@@ -231,10 +212,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
             return (
                 <TextComponent component={component} isProperty={isProperty} />
             );
-        // case ComponentType.LINK:
-        //     return (
-        //         <LinkComponent component={component} isProperty={isProperty} />
-        //     ); **Temporarily Removed Link component**
+
         case ComponentType.CATEGORY:
             return <ButtonTypesComponent component={component} />;
         case ComponentType.OPTIONS_LIST:
@@ -254,6 +232,31 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                     isProperty={isProperty}
                 />
             );
+        // case ComponentType.IMAGE_CARD:
+        //     return (
+        //         <ImageCardComponent
+        //             component={component}
+        //             isProperty={isProperty}
+        //         />
+        //     );
+        // case ComponentType.VIDEO_CARD:
+        //     return (
+        //         <VideoCardComponent
+        //             component={component}
+        //             isProperty={isProperty}
+        //         />
+        //     );
+        // case ComponentType.EMBED_CARD:
+        //     return (
+        //         <EmbedCardComponent
+        //             component={component}
+        //             isProperty={isProperty}
+        //         />
+        //     );
+        // case ComponentType.LINK:
+        //     return (
+        //         <LinkComponent component={component} isProperty={isProperty} />
+        //     ); **Temporarily Removed LinkComponent,VedioCard, ImageCard and EmbededCard**
 
         default:
             return <></>;
