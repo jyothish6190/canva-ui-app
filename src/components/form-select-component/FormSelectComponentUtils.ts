@@ -6,7 +6,6 @@ import {
     FormTabs,
 } from '../form-field-component/FormFieldConfig';
 import { SelectState } from './FormSelectComponent';
-import { TextFieldNames } from 'src/constants/component-configs/TextConfig';
 
 import { FormMultilineConfig } from '../form-field-component/FormMultilineConfig';
 import { FormNumberInputConfig } from '../form-field-component/FormNumberInputConfig';
@@ -105,10 +104,15 @@ export const getDescription = (component: Component) => {
 };
 
 export const getErrorState = (component: Component) => {
-    let state = '';
+    let state = false;
     component.fields?.forEach((field: Component) => {
         if (field.name === FormFieldSelectFieldNames.ERROR) {
             state = field.value;
+        }
+        if (field.name === FormFieldSelectFieldNames.STATE) {
+            if (state) {
+                field.value = 'error';
+            }
         }
     });
 

@@ -38,21 +38,4 @@ export const SwatchConfig = [
         defaultValue: 'solid',
         value: 'solid',
     },
-    {
-        showComponent: true,
-        type: ComponentType.SEGMENTED_CONTROL,
-        name: SwatchFieldnames.SIZE,
-        options: [
-            {
-                label: 'Xsmall',
-                value: 'xsmall',
-            },
-            {
-                label: 'Small',
-                value: 'small',
-            },
-        ],
-        defaultValue: 'small',
-        value: 'small',
-    },
 ];

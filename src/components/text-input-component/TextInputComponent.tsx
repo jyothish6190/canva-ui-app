@@ -196,11 +196,7 @@ const TextInputComponent = ({ component, isProperty }: PropType) => {
                             ? true
                             : false
                     }
-                    placeholder={
-                        textInputData.inputPlaceHolder
-                            ? textInputData.inputPlaceHolder
-                            : component.placeholder
-                    }
+                    placeholder={component.placeholder}
                     type={'text'}
                     value={textInputData.inputText}
                     start={textInputData.startDecorator?.Icon}

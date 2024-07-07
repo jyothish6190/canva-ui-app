@@ -115,13 +115,6 @@ export const FormCheckboxConfig = [
     {
         showComponent: true,
         type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
         name: CheckBoxFieldNames.CHECKED,
         defaultValue: true,
         value: true,

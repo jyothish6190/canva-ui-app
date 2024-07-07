@@ -106,13 +106,7 @@ export const FormSegmentedConfig = [
         ],
         tabId: 'form field',
     },
-    {
-        showComponent: true,
-        type: ComponentType.SWITCH,
-        name: 'Error',
-        defaultValue: false,
-        tabId: 'form field',
-    },
+
     {
         showComponent: true,
         type: ComponentType.SEGMENTED_CONTROL,

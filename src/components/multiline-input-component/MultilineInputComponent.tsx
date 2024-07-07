@@ -196,11 +196,7 @@ const MultilineInputComponent = ({ component, isProperty }: PropType) => {
                             }
                             minRows={1}
                             onChange={changeHandler}
-                            placeholder={
-                                multilineInputData.inputPlaceholder
-                                    ? multilineInputData.inputPlaceholder
-                                    : component.placeholder
-                            }
+                            placeholder={component.placeholder}
                         />
                     )}
                 />

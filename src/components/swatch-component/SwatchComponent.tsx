@@ -12,13 +12,11 @@ type PropType = {
 
 type SwatchStateData = {
     swatchColor: string | undefined;
-    swatchSize: 'xsmall' | 'small';
     swatchVariant: 'solid' | 'outline';
     activeState: boolean;
 };
 const initialState: SwatchStateData = {
     swatchColor: '#E0D9FC',
-    swatchSize: 'small',
     swatchVariant: 'solid',
     activeState: false,
 };
@@ -37,14 +35,6 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
                 });
             }
 
-            if (field.name === SwatchFieldnames.SIZE) {
-                setSwatchData((prevState) => {
-                    return {
-                        ...prevState,
-                        swatchSize: field.value || 'small',
-                    };
-                });
-            }
             if (field.name === SwatchFieldnames.VARIANT) {
                 setSwatchData((prevState) => {
                     return {
@@ -75,7 +65,6 @@ const SwatchComponent = ({ component, isProperty, onChange }: PropType) => {
                 <Swatch
                     fill={[swatchData.swatchColor]}
                     onClick={() => {}}
-                    size={swatchData.swatchSize}
                     variant={swatchData.swatchVariant}
                     active={swatchData.activeState}
                 />
