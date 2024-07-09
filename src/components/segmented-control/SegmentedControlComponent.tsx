@@ -19,6 +19,8 @@ import {
     processSegementedFieldChange,
 } from './SegmentedControlUtils';
 
+import styles from './SegmentedControlComponent.css';
+
 type PropsType = {
     component: Component;
     isProperty: boolean;
@@ -74,6 +76,7 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
                     width: width,
                     padding: '0.5px',
                 }}
+                className={styles['segmented-control']}
             >
                 <FormField
                     label={

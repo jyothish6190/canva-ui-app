@@ -1,0 +1,5 @@
+.segmented-control > div > div > div > button > span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
