@@ -5,7 +5,7 @@ export enum FileInputFieldNames {
     WIDTH = 'Width',
     WIDTH_OPTIONS = 'Width options',
     FILE_INPUT_ITEM = 'File input items',
-    FILE_INPUT_OPTIONS = 'File input Label',
+    FILE_INPUT_OPTIONS = 'File input label',
 }
 
 export const FileInputConfig = [

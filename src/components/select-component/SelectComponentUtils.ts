@@ -195,10 +195,11 @@ const switchFormComponent = (
     console.log('🚀 switchFormComponent~ value:', value);
     let newComponent = { ...selectedComponent };
     let fields = newComponent.fields;
-    let tabs = FormTabs;
+    let tabs = newComponent.tabs;
     switch (value) {
         case FormControlNames.FORM_MULTILINE_INPUT:
             fields = copyObjectwithouInstance(FormMultilineConfig);
+
             break;
 
         case FormControlNames.FORM_TEXT_INPUT:
@@ -211,7 +212,7 @@ const switchFormComponent = (
 
         case FormControlNames.FORM_SELECT:
             fields = copyObjectwithouInstance(FormFieldSelectConfig);
-            tabs = copyObjectwithouInstance(FormSelectTabs);
+            tabs = copyObjectwithouInstance([...FormSelectTabs]);
             break;
 
         case FormControlNames.FORM_CHECKBOX_FIELD:
