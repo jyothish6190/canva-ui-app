@@ -202,6 +202,29 @@ export const processSegementedFieldChange = (
     return newComponent;
 };
 
+let iconValue;
+let textValue;
+
+export const updateIconTextValue = (
+    selectedComponent: Component,
+    value: any
+) => {
+    if (value === 'text')
+        textValue = copyObjectwithouInstance(selectedComponent.fields);
+    else if (value === 'icon')
+        iconValue = copyObjectwithouInstance(selectedComponent.fields);
+    else {
+        if (selectedComponent?.optionContentType == 'text') {
+            iconValue = undefined;
+            textValue = copyObjectwithouInstance(selectedComponent.fields);
+        }
+        if (selectedComponent?.optionContentType == 'icon') {
+            textValue = undefined;
+            iconValue = copyObjectwithouInstance(selectedComponent.fields);
+        }
+    }
+};
+
 function copyObjectwithouInstance(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
@@ -212,16 +235,22 @@ const switchSegmentType = (selectedComponent: Component, value: any) => {
     newComponent.fields?.forEach((field: Component) => {
         if (field.name === SegmentedControlFieldNames.OPTIONS) {
             if (value === 'text') {
-                newComponent.options = textOptions as any[];
+                let optionsValue =
+                    textValue && textValue[3]
+                        ? textValue[3].options
+                        : (textOptions as any[]);
+                newComponent.options = optionsValue;
                 newComponent.optionContentType = 'text';
-                field.options = textOptions as any[];
+                field.options = optionsValue;
                 field.value = 's';
             } else if (value === 'icon') {
-                newComponent.options = copyObjectwithouInstance(
-                    iconOptions
-                ) as any[];
+                let optionsValue =
+                    iconValue && iconValue[3]
+                        ? iconValue[3].options
+                        : (copyObjectwithouInstance(iconOptions) as any[]);
+                newComponent.options = optionsValue;
                 newComponent.optionContentType = 'icon';
-                field.options = copyObjectwithouInstance(iconOptions) as any[];
+                field.options = optionsValue;
                 field.value = 'Arrow up';
             }
         }

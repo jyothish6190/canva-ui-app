@@ -17,6 +17,7 @@ import {
     getSelectedValue,
     getWidth,
     processSegementedFieldChange,
+    updateIconTextValue,
 } from './SegmentedControlUtils';
 
 type PropsType = {
@@ -25,7 +26,8 @@ type PropsType = {
 };
 
 const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
-    const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const { selectedComponent, updateComponentTrigger, setSelectedComponent } =
+        useComponentStore();
     const [width, setWidth] = useState('');
     const [label, setLabel] = useState('');
     const [value, setValue] = useState('');
@@ -53,6 +55,10 @@ const SegmentedControlComponent = ({ component, isProperty }: PropsType) => {
         '🚀 ~ SegmentedControlComponent ~ component.options:',
         component.options
     );
+
+    useEffect(() => {
+        updateIconTextValue(selectedComponent as Component, value);
+    }, [updateComponentTrigger]);
 
     const changeHandler = (value: string) => {
         const updatedComponent = processSegementedFieldChange(

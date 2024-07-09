@@ -32,7 +32,11 @@ type RefValueType = string | null;
 
 const ComponentDetailsPage = () => {
     const navigate = useNavigate();
-    const { selectedComponent, setSelectedComponent } = useComponentStore();
+    const {
+        selectedComponent,
+        setSelectedComponent,
+        setUpdateComponentTrigger,
+    } = useComponentStore();
 
     const [onUpdate, setOnUpdate] = useState(false);
 
@@ -40,6 +44,7 @@ const ComponentDetailsPage = () => {
     const [scale, setScale] = useState('1');
 
     const initialLoad = useRef(true);
+    const updateTrigger = useRef(true);
     const elementId = useRef<RefValueType>(null);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -71,6 +76,8 @@ const ComponentDetailsPage = () => {
         );
 
         if (oldComponent) {
+            updateTrigger.current = !updateTrigger.current;
+            setUpdateComponentTrigger(updateTrigger.current);
             setSelectedComponent(oldComponent, 'ComponentDetailsPage');
         }
     }
