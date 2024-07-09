@@ -70,31 +70,19 @@ const IconsListPage = () => {
     const backHandler = () => {
         navigate(-1);
     };
-
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.value);
         const iconElement = element?.querySelector('span');
-
-        let svgDocument = elementToSVG(iconElement as HTMLElement);
-
-        if (svgDocument) {
-            svgDocument.documentElement
-                .querySelector('path')
-                ?.setAttribute('fill', '#000000');
+        if (iconElement) {
+            iconElement.style.color = 'black';
         }
 
+        const svgDocument = elementToSVG(iconElement as HTMLElement);
+
         await inlineResources(svgDocument.documentElement);
-
-        const elementsWithFill = svgDocument.querySelectorAll('[fill]');
-
-        elementsWithFill.forEach((element) => {
-            if (element.tagName.toLowerCase() !== 'path') {
-                const parentElement = element.parentElement;
-                if (parentElement) {
-                    parentElement.removeChild(element);
-                }
-            }
-        });
+        if (iconElement) {
+            iconElement.style.color = 'currentColor';
+        }
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
