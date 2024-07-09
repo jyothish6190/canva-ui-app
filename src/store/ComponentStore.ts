@@ -14,6 +14,8 @@ import { components } from 'src/constants/components';
 
 type PropType = {
     selectedComponent: Component | undefined;
+    updateComponentTrigger: boolean | undefined;
+    setUpdateComponentTrigger: (updateValue) => void;
     setSelectedComponent: (component: Component, page: string) => void;
     setComponentField: (
         field: Component,
@@ -23,6 +25,11 @@ type PropType = {
 
 export const useComponentStore = create<PropType>((set) => ({
     selectedComponent: undefined,
+    updateComponentTrigger: undefined,
+    setUpdateComponentTrigger: (updateValue) =>
+        set((state) => ({
+            updateComponentTrigger: setUpdateComponent(updateValue),
+        })),
     setSelectedComponent: (component: Component, page: string) =>
         set((state) => ({
             selectedComponent: setComponent(component, page),
@@ -36,6 +43,10 @@ export const useComponentStore = create<PropType>((set) => ({
             ),
         })),
 }));
+
+const setUpdateComponent = (updateValue) => {
+    return typeof updateValue === 'undefined' ? true : updateValue;
+};
 
 const setComponent = (component: Component, page: string) => {
     console.log(
