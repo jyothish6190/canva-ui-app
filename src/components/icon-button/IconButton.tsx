@@ -30,6 +30,7 @@ const initialState: IconButtonStateData = {
 const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
     console.log('🚀 ~ IconButton ~ component:', component);
     const { setIconsList } = useIconStore();
+    const [showButton, setShowButton] = useState<boolean>(false);
 
     const [IconButtonState, setIconButtonState] =
         useState<IconButtonStateData>(initialState);
@@ -91,6 +92,7 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
                 }
             }
         });
+        setShowButton(true);
     }, [component]);
     const renderedClass = () => {
         switch (
@@ -122,27 +124,33 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
 
     if (isProperty) {
         return (
-            <div
-                className={renderedClass()}
-                style={{
-                    width: IconButtonState.buttonWidth,
-                    padding: '0.5px',
-                }}
-            >
-                <Button
-                    variant={IconButtonState.buttonVariant}
-                    stretch={IconButtonState.buttonWidth ? true : false}
-                    icon={icon ? icon?.Icon : InfoIcon}
-                    key={component.name}
-                    alignment="center"
-                    loading={
-                        IconButtonState.buttonState == 'loading' ? true : false
-                    }
-                    disabled={
-                        IconButtonState.buttonState == 'disabled' ? true : false
-                    }
-                ></Button>
-            </div>
+            showButton && (
+                <div
+                    className={renderedClass()}
+                    style={{
+                        width: IconButtonState.buttonWidth,
+                        padding: '0.5px',
+                    }}
+                >
+                    <Button
+                        variant={IconButtonState.buttonVariant}
+                        stretch={IconButtonState.buttonWidth ? true : false}
+                        icon={icon ? icon?.Icon : InfoIcon}
+                        key={component.name}
+                        alignment="center"
+                        loading={
+                            IconButtonState.buttonState == 'loading'
+                                ? true
+                                : false
+                        }
+                        disabled={
+                            IconButtonState.buttonState == 'disabled'
+                                ? true
+                                : false
+                        }
+                    ></Button>
+                </div>
+            )
         );
     }
     return <Button variant="primary" icon={InfoIcon} />;
