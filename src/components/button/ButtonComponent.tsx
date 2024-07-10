@@ -15,6 +15,7 @@ type PropType = {
 
 const ButtonComponent = ({ component, isProperty }: PropType) => {
     const [variant, setVariant] = useState<Variant>('primary');
+    const [showButton, setShowButton] = useState<boolean>(false);
     const [buttonText, setButtonText] = useState('Button');
     const [icon, setIcon] = useState<Icon | undefined>(undefined);
     const [buttonState, setButtonState] = useState<
@@ -48,6 +49,7 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
                 }
             }
         });
+        setShowButton(true);
     }, [component]);
 
     const renderedClass = () => {
@@ -78,26 +80,28 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
 
     if (isProperty) {
         return (
-            <div
-                className={renderedClass()}
-                style={
-                    width
-                        ? { width: width, padding: '0.5px' }
-                        : { width: undefined, padding: '0.5px' }
-                }
-            >
-                <Button
-                    key={component.name}
-                    alignment="center"
-                    stretch={true}
-                    icon={icon?.Icon}
-                    variant={variant}
-                    loading={buttonState == 'loading' ? true : false}
-                    disabled={buttonState == 'disabled' ? true : false}
+            showButton && (
+                <div
+                    className={renderedClass()}
+                    style={
+                        width
+                            ? { width: width, padding: '0.5px' }
+                            : { width: undefined, padding: '0.5px' }
+                    }
                 >
-                    {buttonText}
-                </Button>
-            </div>
+                    <Button
+                        key={component.name}
+                        alignment="center"
+                        stretch={true}
+                        icon={icon?.Icon}
+                        variant={variant}
+                        loading={buttonState == 'loading' ? true : false}
+                        disabled={buttonState == 'disabled' ? true : false}
+                    >
+                        {buttonText}
+                    </Button>
+                </div>
+            )
         );
     }
 
