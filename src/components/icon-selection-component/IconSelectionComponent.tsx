@@ -104,6 +104,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
                 component: component,
             },
         });
+        document.getElementById('container')?.scrollTo(0, 0);
     };
     const clearSelectInput = () => {
         return selectedIcon ? (
