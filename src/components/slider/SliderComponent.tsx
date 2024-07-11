@@ -4,7 +4,6 @@ import { FormField, Slider, Title } from '@canva/app-ui-kit';
 import { Component } from 'src/models/component.model';
 import { SliderFieldNames } from 'src/constants/component-configs/SliderConfig';
 import { useComponentStore } from 'src/store/ComponentStore';
-
 type PropType = {
     component: Component;
     isProperty: boolean;
@@ -99,10 +98,59 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
             return;
         });
     };
+    const addCustomPadding = () => {
+        let value = getSliderValue(sliderState, component);
+        let valueLength = value?.toString().length;
+
+        let initialPadding = '11px';
+
+        switch (valueLength) {
+            case 1:
+                initialPadding = '16px';
+                break;
+            case 2:
+                initialPadding = '11px';
+                break;
+            case 3:
+                initialPadding = '6px';
+                break;
+        }
+
+        document.documentElement.style.setProperty(
+            '--slider-input-padding-left',
+            initialPadding
+        );
+    };
+
+    useEffect(() => {
+        addCustomPadding();
+    }, [sliderState]);
+
+    const getSliderValue = (sliderState, component) => {
+        if (sliderState.sliderValue) {
+            if (sliderState.sliderValue > sliderState.maxValue) {
+                return sliderState.maxValue;
+            } else if (sliderState.sliderValue < sliderState.minValue) {
+                return sliderState.minValue;
+            } else {
+                return sliderState.sliderValue;
+            }
+        } else {
+            if (component.value > component.max) {
+                return component.max;
+            } else if (component.value < component.min) {
+                return component.min;
+            } else {
+                return component.value;
+            }
+        }
+    };
 
     if (isProperty) {
         return (
             <div
+                id="sliderInput"
+                className=""
                 style={{
                     width: sliderState.sliderWidth,
                 }}
@@ -120,16 +168,7 @@ const SliderComponent = ({ component, isProperty, onChange }: PropType) => {
                             defaultValue={
                                 sliderState.minValue || component.defaultValue
                             }
-                            value={
-                                sliderState.sliderValue
-                                    ? sliderState.sliderValue >
-                                      sliderState.maxValue
-                                        ? sliderState.maxValue
-                                        : sliderState.sliderValue
-                                    : component.value > component.max
-                                    ? component.max
-                                    : component.value
-                            }
+                            value={getSliderValue(sliderState, component)}
                             max={
                                 sliderState.maxValue
                                     ? sliderState.maxValue
