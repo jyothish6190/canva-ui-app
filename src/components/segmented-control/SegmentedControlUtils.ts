@@ -226,32 +226,47 @@ export const updateIconTextValue = (
 };
 
 function copyObjectwithouInstance(obj) {
-    return JSON.parse(JSON.stringify(obj));
+    return obj ? JSON.parse(JSON.stringify(obj)) : obj;
 }
 
 const switchSegmentType = (selectedComponent: Component, value: any) => {
     let newComponent = { ...selectedComponent };
-
     newComponent.fields?.forEach((field: Component) => {
         if (field.name === SegmentedControlFieldNames.OPTIONS) {
             if (value === 'text') {
                 let optionsValue =
                     textValue && textValue[3]
-                        ? textValue[3].options
-                        : (textOptions as any[]);
-                newComponent.options = optionsValue;
+                        ? copyObjectwithouInstance(textValue[3].options)
+                        : copyObjectwithouInstance(textOptions as any[]);
+                newComponent.options = copyObjectwithouInstance(
+                    field.textOptions
+                );
                 newComponent.optionContentType = 'text';
-                field.options = optionsValue;
+                field.options = field.textOptions
+                    ? copyObjectwithouInstance(field.textOptions)
+                    : copyObjectwithouInstance(optionsValue);
+                field.iconOptions =
+                    iconValue && iconValue[3]
+                        ? copyObjectwithouInstance(iconValue[3].options)
+                        : copyObjectwithouInstance(field.iconOptions);
                 field.value = 's';
             } else if (value === 'icon') {
                 let optionsValue =
                     iconValue && iconValue[3]
-                        ? iconValue[3].options
-                        : (copyObjectwithouInstance(iconOptions) as any[]);
-                newComponent.options = optionsValue;
+                        ? copyObjectwithouInstance(iconValue[3].options)
+                        : copyObjectwithouInstance(iconOptions as any[]);
+                newComponent.options = copyObjectwithouInstance(
+                    field.iconOptions
+                );
                 newComponent.optionContentType = 'icon';
-                field.options = optionsValue;
+                field.options = field.iconOptions
+                    ? copyObjectwithouInstance(field.iconOptions)
+                    : copyObjectwithouInstance(optionsValue);
                 field.value = 'Arrow up';
+                field.textOptions =
+                    textValue && textValue[3]
+                        ? copyObjectwithouInstance(textValue[3].options)
+                        : copyObjectwithouInstance(field.textOptions);
             }
         }
         if (field.name === TextFieldNames.SIZE) {
