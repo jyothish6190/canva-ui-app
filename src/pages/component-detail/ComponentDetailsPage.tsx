@@ -7,6 +7,7 @@ import { upload } from '@canva/asset';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './ComponentDetailsPage.css';
+import sliderStyle from './../../components/slider/SliderComponent.css';
 import LivePreview from 'src/pages/component-detail/live-preview/LivePreview';
 import ComponentItem from '../home/component-list/component-item/ComponentItem';
 import PropertyList from './property-list/PropertyList';
@@ -178,6 +179,16 @@ const ComponentDetailsPage = () => {
             } else {
                 svgDocument = elementToSVG('' as any);
             }
+        } else if (selectedComponent?.type === ComponentType.SLIDER) {
+            document
+                .getElementById('sliderInput')
+                ?.classList.add(sliderStyle['slider-input']);
+
+            svgDocument = elementToSVG(ref.current);
+
+            document
+                .getElementById('sliderInput')
+                ?.classList.remove(sliderStyle['slider-input']);
         } else {
             svgDocument = elementToSVG(ref.current);
         }

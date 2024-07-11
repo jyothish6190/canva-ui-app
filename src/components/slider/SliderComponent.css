@@ -1,0 +1,9 @@
+:root {
+    --slider-input-color: initial;
+    --slider-input-padding-left: 11px;
+}
+
+.slider-input > div > div > div > div:nth-child(2) > div > input {
+    padding-left: var(--slider-input-padding-left);
+    border-radius: 8px;
+}
