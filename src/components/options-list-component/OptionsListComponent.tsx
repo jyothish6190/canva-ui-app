@@ -167,10 +167,12 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     );
                 })}
             </>
+
             <ButtonWithIcon
                 title="Add an option"
                 icon={PlusIcon}
                 onClick={addOptionHandler}
+                disabled={optionList.length <= 7 ? false : true}
             />
         </Rows>
     );
