@@ -16,6 +16,8 @@ export interface Component {
     label?: string;
     description?: string;
     options?: OptionItem[];
+    textOptions?: OptionItem[];
+    iconOptions?: OptionItem[];
     defaultValue?: any;
     min?: number;
     max?: number;
