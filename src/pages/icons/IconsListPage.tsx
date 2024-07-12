@@ -73,20 +73,21 @@ const IconsListPage = () => {
     const updateComponentHandler = async (icon) => {
         const element = document.getElementById(icon.value);
         const iconElement = element?.querySelector('span');
-        if (iconElement) {
-            iconElement.style.color = 'black';
-        }
 
         const svgDocument = elementToSVG(iconElement as HTMLElement);
 
         await inlineResources(svgDocument.documentElement);
-        if (iconElement) {
-            iconElement.style.color = 'currentColor';
-        }
 
         const svgString = new XMLSerializer().serializeToString(svgDocument);
 
         var decoded = unescape(encodeURIComponent(svgString));
+
+        decoded = decoded.replace(
+            /fill="rgb\(255, 255, 255\)"/g,
+            'fill="rgb(0, 0, 0)"'
+        );
+
+        decoded = decoded.replace(/fill="#ffffff"/g, 'fill="#ffffffdc"');
 
         decoded = decoded.replace(
             /data-stacking-context="true"|<g data-stacking-layer[^/<]*\/>|<!--[^>]*><style\/>|aria-[^"]*"[^"]*"|[^\x20-\x7E]+/g,
