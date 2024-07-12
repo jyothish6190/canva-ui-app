@@ -204,30 +204,41 @@ const switchFormComponent = (
 
         case FormControlNames.FORM_TEXT_INPUT:
             fields = copyObjectwithouInstance(FormTextInputConfig);
+            tabs = FormTabs;
             break;
 
         case FormControlNames.FORM_NUMBER_INPUT:
             fields = copyObjectwithouInstance(FormNumberInputConfig);
+            tabs = FormTabs;
+
             break;
 
         case FormControlNames.FORM_SELECT:
             fields = copyObjectwithouInstance(FormFieldSelectConfig);
-            tabs = copyObjectwithouInstance([...FormSelectTabs]);
+            tabs = copyObjectwithouInstance(FormSelectTabs);
             break;
 
         case FormControlNames.FORM_CHECKBOX_FIELD:
             fields = copyObjectwithouInstance(FormCheckboxConfig);
+            tabs = FormTabs;
+
             break;
 
         case FormControlNames.FORM_CHECKBOX_GROUP:
             fields = copyObjectwithouInstance(FormCheckboxGroupConfig);
+            tabs = FormTabs;
+
             break;
         case FormControlNames.FORM_RADIO:
             fields = copyObjectwithouInstance(FormRadioGroupConfig);
+            tabs = FormTabs;
+
             break;
 
         case FormControlNames.FORM_SEGMENTED_CONTROL:
             fields = copyObjectwithouInstance(FormSegmentedConfig);
+            tabs = FormTabs;
+
             break;
 
         default:
