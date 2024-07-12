@@ -19,9 +19,6 @@ import { FormRadioGroupConfig } from '../form-field-component/FormRadioGroupConf
 import { FormSegmentedConfig } from '../form-field-component/FormSegementedConfig';
 import { TextInputFieldNames } from '../text-input-component/TextInputConfig';
 import { PlaceHolderFieldNames } from 'src/constants/component-configs/PlaceholderComponentConfig';
-import { useState } from 'react';
-import { components } from 'src/constants/components';
-import { error } from 'console';
 
 export const getValue = (component: Component) => {
     let value = '';
