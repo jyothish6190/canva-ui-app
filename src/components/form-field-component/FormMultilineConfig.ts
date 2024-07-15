@@ -115,13 +115,13 @@ export const FormMultilineConfig = [
         tabId: 'form field',
     },
 
-    {
-        showComponent: true,
-        type: ComponentType.MULTILINE_INPUT,
-        name: MultilineInputFieldNames.TEXT,
-        placeholder: 'Enter your text',
-        tabId: 'control',
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.MULTILINE_INPUT,
+    //     name: MultilineInputFieldNames.TEXT,
+    //     placeholder: 'Enter your text',
+    //     tabId: 'control',
+    // },
     // {
     //     showComponent: true,
     //     type: ComponentType.FORM_FIELD,
@@ -129,7 +129,7 @@ export const FormMultilineConfig = [
     //     placeholder: 'Placeholder',
     //     value: 'Placeholder',
     //     tabId: 'control',
-    // },
+    // },*/Temporarily removed placeholder and textinput/*
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
