@@ -160,7 +160,7 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
             <div
                 id={'active'}
                 className={error ? styles['form-select-component'] : ''}
-                style={{ width: width, padding: '0.5px' }}
+                style={{ width: width, padding: '4px' }}
             >
                 <FormField
                     label={
