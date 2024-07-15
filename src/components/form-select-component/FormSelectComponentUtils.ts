@@ -112,6 +112,11 @@ export const getErrorState = (component: Component) => {
         if (field.name === FormFieldSelectFieldNames.STATE) {
             if (state) {
                 field.value = 'error';
+            } else {
+                if (field.value === 'error') {
+                    field.value = 'default';
+                    console.log('else part', field);
+                }
             }
         }
     });

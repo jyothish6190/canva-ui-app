@@ -10,19 +10,19 @@ export enum MultilineInputFieldNames {
 }
 
 export const MultiLineInputConfig = [
-    {
-        showComponent: true,
-        type: ComponentType.MULTILINE_INPUT,
-        name: MultilineInputFieldNames.TEXT,
-        placeholder: 'Enter your text',
-    },
+    // {
+    //     showComponent: true,
+    //     type: ComponentType.MULTILINE_INPUT,
+    //     name: MultilineInputFieldNames.TEXT,
+    //     placeholder: 'Enter your text',
+    // },
     // {
     //     showComponent: true,
     //     type: ComponentType.FORM_FIELD,
     //     name: MultilineInputFieldNames.PLACEHOLDER,
     //     placeholder: 'Placeholder',
     //     value: 'Placeholder',
-    // },*/Temporarily removed placeholder/*
+    // },*/Temporarily removed placeholder and textinput/*
     {
         showComponent: true,
         type: ComponentType.FORM_FIELD,
