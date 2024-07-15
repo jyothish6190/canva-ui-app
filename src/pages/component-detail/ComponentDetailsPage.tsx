@@ -179,9 +179,11 @@ const ComponentDetailsPage = () => {
                     FormControlNames.FORM_NUMBER_INPUT)
         ) {
             numberInput = document.querySelector('#preview-id input');
-            let paddingAdjust = 39.3 + numberInput.value?.length * 3.7;
-            let paddingAdjustValue = 'calc(50% - ' + paddingAdjust + 'px)';
-            if (numberInput) numberInput.style.paddingLeft = paddingAdjustValue;
+            if (numberInput) {
+                let paddingAdjust = 39.3 + numberInput.value?.length * 3.7;
+                let paddingAdjustValue = 'calc(50% - ' + paddingAdjust + 'px)';
+                numberInput.style.paddingLeft = paddingAdjustValue;
+            }
         }
         removeDuplicateIds(ref.current);
 
