@@ -17,6 +17,7 @@ import { useComponentStore } from 'src/store/ComponentStore';
 import { ComponentType } from 'src/constants/ComponentTypes';
 import Session from 'svg-text-to-path';
 import { ColorPickertoBase64 } from 'src/components/color-selector/ColorSelectorUtils';
+import { FormControlNames } from 'src/components/form-field-component/FormFieldConfig';
 
 const images = {};
 
@@ -140,8 +141,6 @@ const ComponentDetailsPage = () => {
     }
 
     useEffect(() => {
-        console.log('refupdated');
-
         if (
             selectedComponent?.type === ComponentType.EMBED_CARD &&
             ref.current?.querySelector('img') &&
@@ -158,6 +157,7 @@ const ComponentDetailsPage = () => {
         }
         const previewDiv = document.getElementById('preview-id');
         let scale;
+        let numberInput;
         let imgWithCorner = false;
         let svgDocument;
         if (previewDiv) {
@@ -167,6 +167,23 @@ const ComponentDetailsPage = () => {
             // Get the transform property
             scale = computedStyle.scale;
             previewDiv.style.scale = '1';
+        }
+
+        // number input alignment
+        if (
+            selectedComponent?.type === ComponentType.NUMBER_INPUT ||
+            (selectedComponent?.type === ComponentType.FORM_SELECT &&
+                selectedComponent?.fields &&
+                selectedComponent?.fields[0] &&
+                selectedComponent?.fields[0].value ==
+                    FormControlNames.FORM_NUMBER_INPUT)
+        ) {
+            numberInput = document.querySelector('#preview-id input');
+            if (numberInput) {
+                let paddingAdjust = 39.3 + numberInput.value?.length * 3.7;
+                let paddingAdjustValue = 'calc(50% - ' + paddingAdjust + 'px)';
+                numberInput.style.paddingLeft = paddingAdjustValue;
+            }
         }
         removeDuplicateIds(ref.current);
 
@@ -194,6 +211,9 @@ const ComponentDetailsPage = () => {
         }
 
         if (previewDiv) previewDiv.style.scale = scale;
+
+        // remove number input alignment
+        if (numberInput) numberInput.style.paddingLeft = '0px';
 
         await inlineResources(svgDocument.documentElement);
         if (selectedComponent?.type === ComponentType.PROGRESS_BAR) {
