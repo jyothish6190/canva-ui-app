@@ -76,7 +76,6 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     selected: false,
                     Icon: 'arrow-up-icon',
                 };
-                document.getElementById('container')?.scrollTo(0, 0);
             } else {
                 newOption = {
                     value: id,
@@ -84,7 +83,6 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                     key: id,
                     selected: false,
                 };
-                document.getElementById('container')?.scrollTo(0, 0);
             }
         } else {
             newOption = {
@@ -93,7 +91,6 @@ const OptionsListComponent = ({ component, isProprty }: PropType) => {
                 key: id,
                 selected: false,
             };
-            document.getElementById('container')?.scrollTo(0, 0);
         }
         setOptionList([...optionList, newOption]);
     };
