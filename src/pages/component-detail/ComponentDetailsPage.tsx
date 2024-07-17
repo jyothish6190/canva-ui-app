@@ -140,6 +140,11 @@ const ComponentDetailsPage = () => {
         }
     }
 
+    function getObject(arrayItems, type, value) {
+        let item = arrayItems.find((arrayItem) => arrayItem[type] === value);
+        return item || null;
+    }
+
     useEffect(() => {
         if (
             selectedComponent?.type === ComponentType.EMBED_CARD &&
@@ -168,15 +173,26 @@ const ComponentDetailsPage = () => {
             scale = computedStyle.scale;
             previewDiv.style.scale = '1';
         }
-
         // number input alignment
+        let spinItem;
+        if (selectedComponent?.fields)
+            spinItem = getObject(
+                selectedComponent.fields,
+                'name',
+                'Spin buttons'
+            );
+
         if (
-            selectedComponent?.type === ComponentType.NUMBER_INPUT ||
-            (selectedComponent?.type === ComponentType.FORM_SELECT &&
-                selectedComponent?.fields &&
-                selectedComponent?.fields[0] &&
-                selectedComponent?.fields[0].value ==
-                    FormControlNames.FORM_NUMBER_INPUT)
+            (selectedComponent?.type === ComponentType.NUMBER_INPUT ||
+                (selectedComponent?.type === ComponentType.FORM_SELECT &&
+                    selectedComponent?.fields &&
+                    getObject(
+                        selectedComponent.fields,
+                        'value',
+                        FormControlNames.FORM_NUMBER_INPUT
+                    ))) &&
+            spinItem &&
+            spinItem.value
         ) {
             numberInput = document.querySelector('#preview-id input');
             if (numberInput) {
@@ -185,6 +201,7 @@ const ComponentDetailsPage = () => {
                 numberInput.style.paddingLeft = paddingAdjustValue;
             }
         }
+
         removeDuplicateIds(ref.current);
 
         svgDocument = elementToSVG(ref.current as HTMLElement);
