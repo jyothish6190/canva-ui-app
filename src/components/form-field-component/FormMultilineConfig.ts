@@ -132,7 +132,7 @@ export const FormMultilineConfig = [
     // },*/Temporarily removed placeholder and textinput/*
     {
         showComponent: true,
-        type: ComponentType.FORM_FIELD,
+        type: ComponentType.NUMBER_INPUT,
         name: MultilineInputFieldNames.MAX_CHAR_COUNT,
         label: 'Label',
         description: 'Description text',
