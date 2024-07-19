@@ -18,6 +18,7 @@ import { ComponentType } from 'src/constants/ComponentTypes';
 import Session from 'svg-text-to-path';
 import { ColorPickertoBase64 } from 'src/components/color-selector/ColorSelectorUtils';
 import { FormControlNames } from 'src/components/form-field-component/FormFieldConfig';
+import { useIconStore } from 'src/store/IconStore';
 
 const images = {};
 
@@ -39,6 +40,7 @@ const ComponentDetailsPage = () => {
         setSelectedComponent,
         setUpdateComponentTrigger,
     } = useComponentStore();
+    const { clearIcons } = useIconStore();
 
     const [onUpdate, setOnUpdate] = useState(false);
 
@@ -57,6 +59,7 @@ const ComponentDetailsPage = () => {
             if (!appElement && !initialLoad.current) {
                 navigate('/home');
             } else if (appElement && !initialLoad.current) {
+                clearIcons();
                 elementId.current = appElement.data.elementId;
                 assignDetails(appElement);
             } else if (!appElement) {
