@@ -51,7 +51,7 @@ const IconSelectionComponent = ({ component, optionField }: PropType) => {
                 optionId: undefined,
             });
         }
-    }, [optionField]);
+    }, [optionField, component]);
 
     const selectedIcon = useMemo(() => {
         return iconsList.find((iconObj) => {
