@@ -31,13 +31,16 @@ export const getValue = (component: Component) => {
                 field.options?.forEach((option: OptionItem) => {
                     if (option.selected) {
                         value = option.value;
+                        console.log('here', value);
                     }
                 });
             }
         });
-
+        console.log('here>>>>>>>>>>>', component.value, component);
         return value;
     } else {
+        console.log('here22', component.value, component);
+
         return component.value ? component.value : '';
     }
 };
@@ -84,13 +87,17 @@ export const getActive = (component: Component) => {
     return state;
 };
 
-export const getState = (component: Component) => {
-    let state: SelectState = 'default';
+export const getState = (component: Component, selectedState) => {
+    let state = selectedState;
+    console.log('State Before', state, component);
     component.fields?.forEach((field: Component) => {
         if (field.name === SelectFieldNames.STATE) {
             state = field.value;
+            console.log(field, field.value);
+            console.log('State After', state, component);
         }
     });
+    console.log('State After 2', state, component);
 
     return state;
 };
@@ -215,7 +222,7 @@ const switchFormComponent = (
 
         case FormControlNames.FORM_SELECT:
             fields = copyObjectwithouInstance(FormFieldSelectConfig);
-            tabs = copyObjectwithouInstance(FormSelectTabs);
+            tabs = FormSelectTabs;
             break;
 
         case FormControlNames.FORM_CHECKBOX_FIELD:

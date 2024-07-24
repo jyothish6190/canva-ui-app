@@ -23,6 +23,7 @@ import {
     selectOptionChangeHandler,
 } from './SelectComponentUtils';
 import { getErrorState } from '../form-select-component/FormSelectComponentUtils';
+import { SelectFieldNames } from './SelectConfig';
 
 type PropType = {
     component: Component;
@@ -38,7 +39,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
     const [value, setValue] = useState('');
     const [label, setLabel] = useState('');
     const [placeholder, setPlaceholder] = useState('');
-    const [selectState, setSlecteState] = useState<SelectState>('default');
+    const [selectState, setSlecteState] = useState<SelectState>();
     const [active, setActive] = useState<boolean>(false);
     const [width, setWidth] = useState<string | undefined>(undefined);
     const [elementHeight, setElementHeight] = useState<number>();
@@ -58,15 +59,23 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
     };
 
     useEffect(() => {
+        console.log('triggred', selectState);
         if (component) {
             setValue(getValue(component));
             setOptions(getOptions(component));
-            setSlecteState(getState(component));
+            setSlecteState(getState(component, selectState));
             setLabel(getLabel(component));
             setPlaceholder(getPlaceholder(component));
             setWidth(getWidth(component));
             setActive(getActive(component));
         }
+        // component.fields?.map((field: Component) => {
+        //     if (field.name === SelectFieldNames.STATE) {
+        //         setSlecteState(field.value);
+        //         console.log(field, field.value);
+        //     }
+        // });
+        console.log('triggredAfter', selectState, component);
     }, [component, component.value, component.options]);
 
     useEffect(() => {
@@ -112,12 +121,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                     control={(props) => (
                         <Select
                             disabled={selectState === 'disabled' ? true : false}
-                            error={
-                                selectState === 'error' ||
-                                getErrorState(component)
-                                    ? true
-                                    : false
-                            }
+                            error={selectState === 'error' ? true : false}
                             options={options}
                             stretch={true}
                             placeholder={
@@ -125,7 +129,9 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                                     ? placeholder
                                     : component.placeholder
                             }
-                            onChange={changeHandler}
+                            onChange={(value) => {
+                                changeHandler(value);
+                            }}
                             value={value}
                         />
                     )}

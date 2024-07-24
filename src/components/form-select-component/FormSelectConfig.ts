@@ -182,7 +182,7 @@ export const FormFieldSelectConfig = [
                 value: 'disabled',
             },
         ],
-        value: 'default',
+        value: 'Select Field',
         placeholder: 'Choose a State',
     },
 

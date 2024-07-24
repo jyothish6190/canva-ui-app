@@ -82,7 +82,7 @@ export const getActive = (component: Component) => {
 };
 
 export const getState = (component: Component) => {
-    let state: SelectState = 'default';
+    let state;
     component.fields?.forEach((field: Component) => {
         if (field.name === FormFieldSelectFieldNames.STATE) {
             state = field.value;
@@ -108,13 +108,15 @@ export const getErrorState = (component: Component) => {
     component.fields?.forEach((field: Component) => {
         if (field.name === FormFieldSelectFieldNames.ERROR) {
             state = field.value;
+            console.log(state);
         }
         if (field.name === FormFieldSelectFieldNames.STATE) {
             if (state) {
                 field.value = 'error';
-            } else {
+                console.log('Executed error', field, component);
+            } else if (!state) {
                 if (field.value === 'error') {
-                    field.value = 'default';
+                    field.value = 'defaultssssss';
                     console.log('else part', field);
                 }
             }

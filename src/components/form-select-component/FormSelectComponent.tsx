@@ -41,8 +41,6 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
     const [value, setValue] = useState('');
     const [label, setLabel] = useState('');
     const [description, setDescription] = useState('');
-    const [placeholder, setPlaceholder] = useState('');
-    const [selectState, setSlecteState] = useState<SelectState>('default');
     const [active, setActive] = useState<boolean>(false);
     const [width, setWidth] = useState<string | undefined>(undefined);
     const [elementHeight, setElementHeight] = useState<number>();
@@ -53,12 +51,12 @@ const FormSelectComponent = ({ component, isProperty }: PropType) => {
         if (component) {
             setValue(getValue(component));
             setOptions(getOptions(component));
-            setSlecteState(getState(component));
+
             setLabel(getLabel(component));
-            setPlaceholder(getPlaceholder(component));
             setWidth(getWidth(component));
             setActive(getActive(component));
             setError(getErrorState(component));
+            console.log('triggred here', component);
         }
     }, [component, component.value, component.options]);
 
