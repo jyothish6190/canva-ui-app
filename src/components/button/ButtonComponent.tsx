@@ -82,7 +82,10 @@ const ButtonComponent = ({ component, isProperty }: PropType) => {
         return (
             showButton && (
                 <div
-                    className={renderedClass()}
+                    className={`${renderedClass()} ${
+                        buttonState === 'loading' &&
+                        styles['button-loading-state']
+                    }`}
                     style={
                         width
                             ? { width: width, padding: '0.5px' }

@@ -126,7 +126,10 @@ const IconButton = ({ component, isProperty }: IconIconButtonComponentType) => {
         return (
             showButton && (
                 <div
-                    className={renderedClass()}
+                    className={`${renderedClass()} ${
+                        IconButtonState.buttonState === 'loading' &&
+                        styles['button-loading-state']
+                    }`}
                     style={{
                         width: IconButtonState.buttonWidth,
                         padding: '0.5px',
