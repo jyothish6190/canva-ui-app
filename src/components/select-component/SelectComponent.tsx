@@ -91,6 +91,22 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
         }
     };
 
+    const renderErrorState = (component) => {
+        if (component.name === 'Form Field') {
+            if (getErrorState(component)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (selectState === 'error') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+
     if (isProperty) {
         return (
             <div
@@ -112,12 +128,7 @@ const SelectComponent = ({ component, isProperty }: PropType) => {
                     control={(props) => (
                         <Select
                             disabled={selectState === 'disabled' ? true : false}
-                            error={
-                                selectState === 'error' ||
-                                getErrorState(component)
-                                    ? true
-                                    : false
-                            }
+                            error={renderErrorState(component)}
                             options={options}
                             stretch={true}
                             placeholder={

@@ -19,3 +19,7 @@
 .Hover-button-tertiary > button {
     background-color: var(--ui-kit-color-tertiary-hover);
 }
+
+.button-loading-state > button > span:nth-child(2) span > svg > defs > path {
+    fill: currentColor !important;
+}
