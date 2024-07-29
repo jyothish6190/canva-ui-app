@@ -10,6 +10,10 @@ export const categories: Category[] = [
         label: 'Card',
     },
     {
+        value: 'templates and containers',
+        label: 'Containers',
+    },
+    {
         value: 'color',
         label: 'Color',
     },

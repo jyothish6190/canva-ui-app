@@ -11,6 +11,7 @@ type ComponentListType = {
     searchQuery: string;
     onClick: (component: Component) => void;
     showIcon: boolean;
+    showContainer: boolean;
 };
 
 const ComponentList = ({
@@ -18,13 +19,14 @@ const ComponentList = ({
     searchQuery,
     onClick,
     showIcon,
+    showContainer,
 }: ComponentListType) => {
     const errorMessage = useMemo(() => {
         return `Sorry, we couldn’t find any components for “${searchQuery}”.
                 Try adjusting your search or filters.`;
     }, [searchQuery]);
     if (!components || components.length === 0) {
-        return showIcon === false ? (
+        return showIcon === false && showContainer == false ? (
             <ErrrorMessage errorMessage={errorMessage} />
         ) : null;
     }

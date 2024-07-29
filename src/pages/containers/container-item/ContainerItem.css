@@ -1,0 +1,22 @@
+.container-container {
+    background: var(--ui-kit-color-neutral-low);
+    cursor: pointer;
+    padding: var(--sheet_innerPadding-desktop, 16px);
+    align-items: baseline;
+    background: var(--ui-kit-color-neutral-low);
+    cursor: pointer;
+    display: flex;
+    height: 120px;
+    width: calc(100% - 32px);
+}
+.container-container:hover {
+    background-color: var(--ui-kit-color-neutral);
+}
+.container-container:active {
+    transition: 0.07s ease;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.container-container img {
+    margin: -16px;
+}

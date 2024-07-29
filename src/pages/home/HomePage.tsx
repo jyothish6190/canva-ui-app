@@ -7,6 +7,7 @@ import SearchBox from '../../components/search-box/SearchBox';
 import ComponentList from './component-list/ComponentList';
 import CategoriesList from './categories-list/CategoriesList';
 import IconList from './icon-list/IconList';
+import ContainerList from './container-list/container-list';
 
 import { categories } from '../../constants/categories';
 import { components } from 'src/constants/components';
@@ -30,6 +31,7 @@ const HomePage = () => {
     const { clearIcons } = useIconStore();
 
     const [showIcons, setShowIcons] = useState(true);
+    const [showContainers, setShowContainers] = useState(true);
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
@@ -97,6 +99,13 @@ const HomePage = () => {
                 ? selectedCategories.some((item) => item.value === 'icons')
                 : true
         );
+        setShowContainers(
+            selectedCategories.length > 0
+                ? selectedCategories.some(
+                      (item) => item.value === 'templates and containers'
+                  )
+                : true
+        );
     }, [selectedCategories]);
 
     const categorySelectHandler = (category: Category) => {
@@ -126,6 +135,20 @@ const HomePage = () => {
         } else {
             setShowIcons(false);
         }
+        if (
+            'templates and containers'
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase())
+        ) {
+            selectedCategories.forEach((item) => {
+                if (item.value === 'templates and containers') {
+                    setShowContainers(true);
+                }
+            });
+            selectedCategories.length === 0 && setShowContainers(true);
+        } else {
+            setShowContainers(false);
+        }
         setSearchQuery(searchQuery);
     };
 
@@ -141,6 +164,10 @@ const HomePage = () => {
         navigate('/icons', { state: { path: 'home' } });
     };
 
+    const containerSelectHandler = () => {
+        navigate('/containers', { state: { path: 'home' } });
+    };
+
     return (
         <div style={{ paddingBottom: '1rem' }}>
             <Rows spacing="2u">
@@ -150,10 +177,14 @@ const HomePage = () => {
                     selectedCategories={selectedCategories}
                     onClick={categorySelectHandler}
                 />
+                {showContainers && (
+                    <ContainerList onClick={containerSelectHandler} />
+                )}
                 {showIcons && <IconList onClick={iconSelectHandler} />}
 
                 <ComponentList
                     showIcon={showIcons}
+                    showContainer={showContainers}
                     components={filteredComponentList}
                     searchQuery={searchQuery}
                     onClick={componentSelectHandler}
