@@ -7,6 +7,7 @@ import SearchBox from '../../components/search-box/SearchBox';
 import ComponentList from './component-list/ComponentList';
 import CategoriesList from './categories-list/CategoriesList';
 import IconList from './icon-list/IconList';
+import ContainerList from './container-list/container-list';
 
 import { categories } from '../../constants/categories';
 import { components } from 'src/constants/components';
@@ -141,6 +142,10 @@ const HomePage = () => {
         navigate('/icons', { state: { path: 'home' } });
     };
 
+    const containerSelectHandler = () => {
+        navigate('/containers', { state: { path: 'home' } });
+    };
+
     return (
         <div style={{ paddingBottom: '1rem' }}>
             <Rows spacing="2u">
@@ -150,6 +155,7 @@ const HomePage = () => {
                     selectedCategories={selectedCategories}
                     onClick={categorySelectHandler}
                 />
+                <ContainerList onClick={containerSelectHandler} />
                 {showIcons && <IconList onClick={iconSelectHandler} />}
 
                 <ComponentList

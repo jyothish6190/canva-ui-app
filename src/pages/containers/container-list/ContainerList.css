@@ -1,0 +1,10 @@
+.container {
+    padding-bottom: var(--sheet_innerPadding-desktop, 16px);
+}
+
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}

@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    background: var(--ui-kit-color-neutral-low);
+    border-radius: 4px;
+    height: 140px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+.container:hover {
+    background: var(--ui-kit-color-neutral);
+}
+
+.container img {
+    border-radius: 9.353px;
+    border: 1.949px solid var(--Black-colorBlackA15, rgba(57, 76, 96, 0.15));
+    box-shadow: 0px 8.03px 16.061px 0px rgba(0, 0, 0, 0.07);
+}

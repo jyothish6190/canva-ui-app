@@ -9,6 +9,7 @@ import {
 import HomePage from './pages/home/HomePage';
 import ComponentDetailsPage from './pages/component-detail/ComponentDetailsPage';
 import IconsListPage from './pages/icons/IconsListPage';
+import ContainerListPage from './pages/containers/ContainerListPage';
 
 import styles from 'styles/components.css';
 
@@ -19,6 +20,7 @@ export const App = () => {
                 <Routes>
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/icons" element={<IconsListPage />} />
+                    <Route path="/containers" element={<ContainerListPage />} />
                     <Route
                         path="/component-details"
                         element={<ComponentDetailsPage />}

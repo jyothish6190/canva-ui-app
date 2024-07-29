@@ -1,0 +1,11 @@
+.card {
+    overflow: hidden;
+}
+
+.title {
+    font-family: Canva Sans;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 2;
+    text-align: left;
+}
