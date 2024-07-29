@@ -112,7 +112,10 @@ const ContainerListPage = () => {
     return (
         <div className={styles.containerPage}>
             <Header header={'Templates and containers'} onClick={backHandler} />
-            <SearchBox onSearchQueryChange={searchHandler} />
+            <SearchBox
+                onSearchQueryChange={searchHandler}
+                placeholder="Search templates or containers"
+            />
             <ContainerList
                 containers={containerList}
                 searchQuery={searchQuery}

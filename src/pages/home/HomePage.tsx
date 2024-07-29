@@ -31,6 +31,7 @@ const HomePage = () => {
     const { clearIcons } = useIconStore();
 
     const [showIcons, setShowIcons] = useState(true);
+    const [showContainers, setShowContainers] = useState(true);
 
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(
         []
@@ -98,6 +99,13 @@ const HomePage = () => {
                 ? selectedCategories.some((item) => item.value === 'icons')
                 : true
         );
+        setShowContainers(
+            selectedCategories.length > 0
+                ? selectedCategories.some(
+                      (item) => item.value === 'templates and containers'
+                  )
+                : true
+        );
     }, [selectedCategories]);
 
     const categorySelectHandler = (category: Category) => {
@@ -127,6 +135,20 @@ const HomePage = () => {
         } else {
             setShowIcons(false);
         }
+        if (
+            'templates and containers'
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase())
+        ) {
+            selectedCategories.forEach((item) => {
+                if (item.value === 'templates and containers') {
+                    setShowContainers(true);
+                }
+            });
+            selectedCategories.length === 0 && setShowContainers(true);
+        } else {
+            setShowContainers(false);
+        }
         setSearchQuery(searchQuery);
     };
 
@@ -155,11 +177,14 @@ const HomePage = () => {
                     selectedCategories={selectedCategories}
                     onClick={categorySelectHandler}
                 />
-                <ContainerList onClick={containerSelectHandler} />
+                {showContainers && (
+                    <ContainerList onClick={containerSelectHandler} />
+                )}
                 {showIcons && <IconList onClick={iconSelectHandler} />}
 
                 <ComponentList
                     showIcon={showIcons}
+                    showContainer={showContainers}
                     components={filteredComponentList}
                     searchQuery={searchQuery}
                     onClick={componentSelectHandler}
