@@ -5,4 +5,5 @@ export interface Container {
     value: string;
     list: any;
     align: string;
+    SVGheight: number;
 }

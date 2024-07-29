@@ -14,7 +14,7 @@ const ContainerItem = ({ container }: ContainerItemType) => {
 
     return (
         <div
-            id={container.label}
+            id={container.value}
             className={styles['container-container']}
             style={{
                 justifyContent:
@@ -25,6 +25,8 @@ const ContainerItem = ({ container }: ContainerItemType) => {
                         : container.align == 'center'
                         ? 'center'
                         : '',
+                paddingLeft:
+                    container.value == 'selection-handles' ? '20px' : '',
             }}
         >
             {ContainerSelect()}

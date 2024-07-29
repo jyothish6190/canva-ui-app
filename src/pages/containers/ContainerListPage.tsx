@@ -79,7 +79,18 @@ const ContainerListPage = () => {
         const containerReference = containerLists.find((element) => {
             return element.containerKey === container.value;
         });
-
+        let top;
+        let left;
+        if (container.SVGheight == 200) {
+            top = 200;
+            left = 225;
+        } else if (container.SVGheight == 400) {
+            top = 100;
+            left = 270;
+        } else if (container.SVGheight == 40) {
+            top = 250;
+            left = 100;
+        }
         if (!containerReference) {
             const result = await upload({
                 type: 'IMAGE',
@@ -93,18 +104,18 @@ const ContainerListPage = () => {
                 type: 'IMAGE',
                 ref: result.ref,
                 width: 'auto',
-                height: 40,
-                top: 250,
-                left: 350,
+                height: container.SVGheight,
+                top: top,
+                left: left,
             });
         } else {
             await addNativeElement({
                 type: 'IMAGE',
                 ref: containerReference.containerRef,
                 width: 'auto',
-                height: 40,
-                top: 250,
-                left: 350,
+                height: container.SVGheight,
+                top: top,
+                left: left,
             });
         }
     };

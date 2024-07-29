@@ -41,6 +41,7 @@ export const containers: Container[] = [
         value: 'editor-page',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: EditorLoFi,
@@ -49,6 +50,7 @@ export const containers: Container[] = [
         value: 'editor-page-lo-fi',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: EditorObjectPanel,
@@ -57,6 +59,7 @@ export const containers: Container[] = [
         value: 'editor-page-with-object-panel',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: EditorObjectPanelLoFi,
@@ -65,6 +68,7 @@ export const containers: Container[] = [
         value: 'editor-page-with-object-panel-lo-fi',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: EditorPageEditPanel,
@@ -73,6 +77,7 @@ export const containers: Container[] = [
         value: 'editor-page-edit-panel',
         width: 'full',
         align: 'right',
+        SVGheight: 200,
     },
     {
         list: EditorPageEditPanelLoFi,
@@ -81,6 +86,7 @@ export const containers: Container[] = [
         value: 'editor-page-edit-panel-lo-fi',
         width: 'full',
         align: 'right',
+        SVGheight: 200,
     },
     {
         list: EditorPageEditPanelBlank,
@@ -89,6 +95,7 @@ export const containers: Container[] = [
         value: 'editor-page-edit-panel-blank',
         width: 'full',
         align: 'right',
+        SVGheight: 200,
     },
     {
         list: HomePage,
@@ -97,6 +104,7 @@ export const containers: Container[] = [
         value: 'home',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: HomeBlankPage,
@@ -105,6 +113,7 @@ export const containers: Container[] = [
         value: 'home-blank',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: HomeLoFi,
@@ -113,6 +122,7 @@ export const containers: Container[] = [
         value: 'home-lo-fi',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: HomeLoFiBlank,
@@ -121,6 +131,7 @@ export const containers: Container[] = [
         value: 'home-lo-fi-blank',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: Projects,
@@ -129,6 +140,7 @@ export const containers: Container[] = [
         value: 'projects',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: ProjectsLoFi,
@@ -137,6 +149,7 @@ export const containers: Container[] = [
         value: 'projects-lo-fi',
         width: 'full',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: ObjectPanel,
@@ -145,6 +158,7 @@ export const containers: Container[] = [
         value: 'object-panel',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: ObjectPanelLoFi,
@@ -153,6 +167,7 @@ export const containers: Container[] = [
         value: 'object-panel-lo-fi',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: ObjectPanelMobile,
@@ -161,6 +176,7 @@ export const containers: Container[] = [
         value: 'object-panel-mobile',
         width: 'half',
         align: 'bottom-left',
+        SVGheight: 400,
     },
     {
         list: ObjectPanelMobileLoFi,
@@ -169,6 +185,7 @@ export const containers: Container[] = [
         value: 'object-panel-mobile-lo-fi',
         width: 'half',
         align: 'bottom-left',
+        SVGheight: 400,
     },
     {
         list: ShareMenu,
@@ -177,6 +194,7 @@ export const containers: Container[] = [
         value: 'share-menu',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: ShareMenuLoFi,
@@ -185,6 +203,7 @@ export const containers: Container[] = [
         value: 'share-menu-lo-fi',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: ShareMenuBlank,
@@ -193,6 +212,7 @@ export const containers: Container[] = [
         value: 'share-menu-blank',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: EditPanel,
@@ -201,6 +221,7 @@ export const containers: Container[] = [
         value: 'edit-panel',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: EditPanelLoFi,
@@ -209,6 +230,7 @@ export const containers: Container[] = [
         value: 'edit-panel-lo-fi',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: EditPanelBlank,
@@ -217,6 +239,7 @@ export const containers: Container[] = [
         value: 'edit-panel-blank',
         width: 'half',
         align: 'left',
+        SVGheight: 400,
     },
     {
         list: EditHeader,
@@ -225,6 +248,7 @@ export const containers: Container[] = [
         value: 'edit-header',
         width: 'half',
         align: 'left',
+        SVGheight: 40,
     },
     {
         list: EditHeaderLoFi,
@@ -233,6 +257,7 @@ export const containers: Container[] = [
         value: 'edit-header-lo-fi',
         width: 'half',
         align: 'left',
+        SVGheight: 40,
     },
     {
         list: ObjectPanelTab,
@@ -241,6 +266,7 @@ export const containers: Container[] = [
         value: 'object-panel-tab',
         width: 'half',
         align: 'center',
+        SVGheight: 400,
     },
     {
         list: ObjectPanelTabLoFi,
@@ -249,6 +275,7 @@ export const containers: Container[] = [
         value: 'object-panel-tab-lo-fi',
         width: 'half',
         align: 'center',
+        SVGheight: 400,
     },
     {
         list: Toolbar,
@@ -257,6 +284,7 @@ export const containers: Container[] = [
         value: 'toolbar',
         width: 'half',
         align: 'left',
+        SVGheight: 40,
     },
     {
         list: ToolbarLoFi,
@@ -265,6 +293,7 @@ export const containers: Container[] = [
         value: 'toolbar-lo-fi',
         width: 'half',
         align: 'left',
+        SVGheight: 40,
     },
     {
         list: Canvas,
@@ -273,6 +302,7 @@ export const containers: Container[] = [
         value: 'canvas',
         width: 'half',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: CanvasLoFi,
@@ -281,6 +311,7 @@ export const containers: Container[] = [
         value: 'canvas-lo-fi',
         width: 'half',
         align: 'left',
+        SVGheight: 200,
     },
     {
         list: SelectionHandles,
@@ -289,5 +320,6 @@ export const containers: Container[] = [
         value: 'selection-handles',
         width: 'half',
         align: 'center',
+        SVGheight: 200,
     },
 ];
