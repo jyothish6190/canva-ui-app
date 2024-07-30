@@ -59,6 +59,7 @@ const HomePage = () => {
         // search
         let filteredComponents = componentsByCategory.filter((component) => {
             return component.name
+                .replace(/\s+/g, '')
                 .toLowerCase()
                 .includes(searchQuery.replace(/\s+/g, '').toLowerCase());
         });
@@ -136,9 +137,9 @@ const HomePage = () => {
             setShowIcons(false);
         }
         if (
-            'templates and containers'
+            'templatesandcontainers'
                 .toLowerCase()
-                .includes(searchQuery.toLowerCase())
+                .includes(searchQuery.replace(/\s+/g, '').toLowerCase())
         ) {
             selectedCategories.forEach((item) => {
                 if (item.value === 'templates and containers') {
