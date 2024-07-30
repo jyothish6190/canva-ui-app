@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Rows } from '@canva/app-ui-kit';
+import { Box, Rows, Text } from '@canva/app-ui-kit';
 
 import styles from './IconCard.css';
 
@@ -26,7 +26,15 @@ const IconCard = ({ icon }: IconCardType) => {
             >
                 <IconItem icon={icon} />
             </Box>
-            <CardTitle title={icon.label}></CardTitle>
+            <Text
+                alignment="start"
+                capitalization="default"
+                size="small"
+                variant="bold"
+                lineClamp={1}
+            >
+                {icon.label}
+            </Text>
         </Rows>
     );
 };

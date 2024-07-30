@@ -18,7 +18,7 @@ export const Header = ({ header, onClick }: HeaderType) => {
                 onClick={onClick}
             />
 
-            <Title size="small">{header}</Title>
+            <Title size="xsmall">{header}</Title>
         </div>
     );
 };

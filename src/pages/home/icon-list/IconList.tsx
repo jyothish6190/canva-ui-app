@@ -8,6 +8,7 @@ import {
     CodeIcon,
     PlayFilledIcon,
     Box,
+    Text,
 } from '@canva/app-ui-kit';
 
 import styles from './icon-list.css';
@@ -39,7 +40,15 @@ const IconList = ({ onClick }: IconListType) => {
                 <div style={{ flex: '1' }}></div>
                 <CodeIcon />
             </div>
-            <CardTitle title="Icons"></CardTitle>
+            <Text
+                alignment="start"
+                capitalization="default"
+                size="small"
+                variant="bold"
+                lineClamp={1}
+            >
+                Icons
+            </Text>
         </Box>
     );
 };
