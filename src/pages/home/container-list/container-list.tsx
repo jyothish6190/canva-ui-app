@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@canva/app-ui-kit';
+import { Box, Text } from '@canva/app-ui-kit';
 import ComponentCard from 'assets/containers/component-card.svg';
 
 import styles from './container-list.css';
@@ -26,7 +26,15 @@ const ContainerList = ({ onClick }: ContainerListType) => {
                     style={{ overflow: 'hidden' }}
                 />
             </div>
-            <CardTitle title="Templates and containers"></CardTitle>
+            <Text
+                alignment="start"
+                capitalization="default"
+                size="small"
+                variant="bold"
+                lineClamp={1}
+            >
+                Templates and containers
+            </Text>
         </Box>
     );
 };

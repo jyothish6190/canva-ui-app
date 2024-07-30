@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Rows } from '@canva/app-ui-kit';
+import { Box, Rows, Text } from '@canva/app-ui-kit';
 
 import styles from './ComponentCard.css';
 import ComponentItem from '../component-item/ComponentItem';
@@ -24,7 +24,15 @@ const ComponentCard = ({ component }: ComponentCardType) => {
                     <ComponentItem component={component} isProperty={false} />
                 </div>
             </Box>
-            <CardTitle title={component.name}></CardTitle>
+            <Text
+                alignment="start"
+                capitalization="default"
+                size="small"
+                variant="bold"
+                lineClamp={1}
+            >
+                {component.name}
+            </Text>
         </Rows>
     );
 };
