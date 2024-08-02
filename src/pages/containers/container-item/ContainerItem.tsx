@@ -9,13 +9,23 @@ type ContainerItemType = {
 
 const ContainerItem = ({ container }: ContainerItemType) => {
     const ContainerSelect = () => {
-        return <img src={container.list} alt="My SVG" />;
+        let SVG = container.list;
+        return <SVG />;
+    };
+
+    const getClasses = () => {
+        let classList = [styles['container']];
+        if (container.align == 'right')
+            classList = [...classList, styles['right-aligned-item']];
+        if (container.width == 'half')
+            classList = [...classList, styles['half-container']];
+        return classList.join(' ');
     };
 
     return (
         <div
             id={container.value}
-            className={styles['container-container']}
+            className={getClasses()}
             style={{
                 justifyContent:
                     container.align == 'left'
@@ -25,8 +35,8 @@ const ContainerItem = ({ container }: ContainerItemType) => {
                         : container.align == 'center'
                         ? 'center'
                         : '',
-                paddingLeft:
-                    container.value == 'selection-handles' ? '20px' : '',
+                marginLeft:
+                    container.value == 'selection-handles' ? '-7px' : '',
             }}
         >
             {ContainerSelect()}

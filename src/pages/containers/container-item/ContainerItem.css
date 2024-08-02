@@ -1,22 +1,32 @@
-.container-container {
-    background: var(--ui-kit-color-neutral-low);
-    cursor: pointer;
-    padding: var(--sheet_innerPadding-desktop, 16px);
-    align-items: baseline;
-    background: var(--ui-kit-color-neutral-low);
-    cursor: pointer;
+.container {
     display: flex;
-    height: 120px;
-    width: calc(100% - 32px);
+    height: 152px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    background: var(--ui-kit-color-neutral-low);
+    cursor: pointer;
 }
-.container-container:hover {
+.container:hover {
     background-color: var(--ui-kit-color-neutral);
 }
-.container-container:active {
+.container:active {
     transition: 0.07s ease;
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-.container-container img {
-    margin: -16px;
+.container svg {
+    width: calc(100% + 16px);
+    height: 100%;
+}
+
+.half-container svg {
+    width: calc(100% + 12px);
+    height: 100%;
+}
+
+.right-aligned-item svg {
+    margin-left: -16px;
 }

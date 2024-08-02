@@ -130,7 +130,23 @@ function buildConfig({
                 },
                 {
                     test: /\.svg$/,
-                    exclude: path.resolve(__dirname, 'assets', 'icons'),
+                    include: path.resolve(__dirname, 'assets', 'containers'),
+                    use: [
+                        {
+                            loader: '@svgr/webpack',
+                            options: {
+                                icon: true,
+                                template: createContainerTemplate,
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.svg$/,
+                    exclude: [
+                        path.resolve(__dirname, 'assets', 'icons'),
+                        path.resolve(__dirname, 'assets', 'containers'),
+                    ],
                     oneOf: [
                         {
                             issuer: /\.[jt]sx?$/,
@@ -215,6 +231,20 @@ const DEFAULT_SIZE = "medium";
 const ${variables.componentName} = (${variables.props}) => {
   const size = SIZES_PX[props.size] || SIZES_PX[DEFAULT_SIZE];
   return React.cloneElement(${variables.jsx}, { ...props, width: size, height: size });
+};
+ 
+${variables.exports};
+`;
+}
+
+function createContainerTemplate(variables, { tpl }) {
+    return tpl`
+${variables.imports};
+${variables.interfaces};
+
+
+const ${variables.componentName} = (${variables.props}) => {
+  return React.cloneElement(${variables.jsx}, { ...props, width: "100%", height: "100%"  });
 };
  
 ${variables.exports};

@@ -13,6 +13,7 @@ import { containers } from 'src/constants/containers';
 import { Container } from 'src/models/containers.model';
 import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import { CONTAINERS } from 'src/constants/common-constants';
+import ReactDOMServer from 'react-dom/server';
 
 const ContainerListPage = () => {
     const navigate = useNavigate();
@@ -54,9 +55,8 @@ const ContainerListPage = () => {
     };
     const updateComponentHandler = async (container) => {
         if (!container.main) return;
-        let file = require(`assets/containers/main/${container.main}`);
-        let svgVal = await fetch(file);
-        const svgString = await svgVal.text();
+        let SVG = container.main;
+        const svgString = ReactDOMServer.renderToString(<SVG />);
         var decoded = unescape(encodeURIComponent(svgString));
 
         decoded = decoded.replace(
