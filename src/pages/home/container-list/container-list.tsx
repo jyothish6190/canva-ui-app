@@ -20,11 +20,7 @@ const ContainerList = ({ onClick }: ContainerListType) => {
                     onClick();
                 }}
             >
-                <img
-                    src={ComponentCard}
-                    alt="My SVG"
-                    style={{ overflow: 'hidden' }}
-                />
+                <ComponentCard />
             </div>
             <Text
                 alignment="start"

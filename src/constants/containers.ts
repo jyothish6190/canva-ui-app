@@ -31,12 +31,45 @@ import Canvas from 'assets/containers/list/canvas.svg';
 import CanvasLoFi from 'assets/containers/list/canvas-lo-fi.svg';
 import SelectionHandles from 'assets/containers/list/selection-handles.svg';
 
+import EditorMain from 'assets/containers/main/editor-page.svg';
+import EditorLoFiMain from 'assets/containers/main/editor-page-lo-fi.svg';
+import EditorObjectPanelMain from 'assets/containers/main/editor-page-with-object-panel.svg';
+import EditorObjectPanelLoFiMain from 'assets/containers/main/editor-page-with-object-panel-lo-fi.svg';
+import EditorPageEditPanelMain from 'assets/containers/main/editor-page-edit-panel.svg';
+import EditorPageEditPanelLoFiMain from 'assets/containers/main/editor-page-edit-panel-lo-fi.svg';
+import EditorPageEditPanelBlankMain from 'assets/containers/main/editor-page-edit-panel-blank.svg';
+import HomePageMain from 'assets/containers/main/home.svg';
+import HomeBlankPageMain from 'assets/containers/main/home-blank.svg';
+import HomeLoFiMain from 'assets/containers/main/home-lo-fi.svg';
+import HomeLoFiBlankMain from 'assets/containers/main/home-lo-fi-blank.svg';
+import ProjectsMain from 'assets/containers/main/projects.svg';
+import ProjectsLoFiMain from 'assets/containers/main/projects-lo-fi.svg';
+import ObjectPanelMain from 'assets/containers/main/object-panel.svg';
+import ObjectPanelLoFiMain from 'assets/containers/main/object-panel-lo-fi.svg';
+import ObjectPanelMobileMain from 'assets/containers/main/object-panel-mobile.svg';
+import ObjectPanelMobileLoFiMain from 'assets/containers/main/object-panel-mobile-lo-fi.svg';
+import ShareMenuMain from 'assets/containers/main/share-menu.svg';
+import ShareMenuLoFiMain from 'assets/containers/main/share-menu-lo-fi.svg';
+import ShareMenuBlankMain from 'assets/containers/main/share-menu-blank.svg';
+import EditPanelMain from 'assets/containers/main/edit-panel.svg';
+import EditPanelLoFiMain from 'assets/containers/main/edit-panel-lo-fi.svg';
+import EditPanelBlankMain from 'assets/containers/main/edit-panel-blank.svg';
+import EditHeaderLoFiMain from 'assets/containers/main/edit-header-lo-fi.svg';
+import EditHeaderMain from 'assets/containers/main/edit-header.svg';
+import ObjectPanelTabMain from 'assets/containers/main/object-panel-tab.svg';
+import ObjectPanelTabLoFiMain from 'assets/containers/main/object-panel-tab-lo-fi.svg';
+import ToolbarMain from 'assets/containers/main/toolbar.svg';
+import ToolbarLoFiMain from 'assets/containers/main/toolbar-lo-fi.svg';
+import CanvasMain from 'assets/containers/main/canvas.svg';
+import CanvasLoFiMain from 'assets/containers/main/canvas-lo-fi.svg';
+import SelectionHandlesMain from 'assets/containers/main/selection-handles.svg';
+
 import { Container } from 'src/models/containers.model';
 
 export const containers: Container[] = [
     {
         list: Editor,
-        main: 'editor-page.svg',
+        main: EditorMain,
         label: 'Editor page',
         value: 'editor-page',
         width: 'full',
@@ -45,7 +78,7 @@ export const containers: Container[] = [
     },
     {
         list: EditorLoFi,
-        main: 'editor-page-lo-fi.svg',
+        main: EditorLoFiMain,
         label: 'Editor page (Lo-fi)',
         value: 'editor-page-lo-fi',
         width: 'full',
@@ -54,7 +87,7 @@ export const containers: Container[] = [
     },
     {
         list: EditorObjectPanel,
-        main: 'editor-page-with-object-panel.svg',
+        main: EditorObjectPanelMain,
         label: 'Editor page with object panel',
         value: 'editor-page-with-object-panel',
         width: 'full',
@@ -63,7 +96,7 @@ export const containers: Container[] = [
     },
     {
         list: EditorObjectPanelLoFi,
-        main: 'editor-page-with-object-panel-lo-fi.svg',
+        main: EditorObjectPanelLoFiMain,
         label: 'Editor page with object panel (Lo-fi)',
         value: 'editor-page-with-object-panel-lo-fi',
         width: 'full',
@@ -72,7 +105,7 @@ export const containers: Container[] = [
     },
     {
         list: EditorPageEditPanel,
-        main: 'editor-page-edit-panel.svg',
+        main: EditorPageEditPanelMain,
         label: 'Editor page with edit panel',
         value: 'editor-page-edit-panel',
         width: 'full',
@@ -81,7 +114,7 @@ export const containers: Container[] = [
     },
     {
         list: EditorPageEditPanelLoFi,
-        main: 'editor-page-edit-panel-lo-fi.svg',
+        main: EditorPageEditPanelLoFiMain,
         label: 'Editor page with edit panel (Lo-fi)',
         value: 'editor-page-edit-panel-lo-fi',
         width: 'full',
@@ -90,7 +123,7 @@ export const containers: Container[] = [
     },
     {
         list: EditorPageEditPanelBlank,
-        main: 'editor-page-edit-panel-blank.svg',
+        main: EditorPageEditPanelBlankMain,
         label: 'Editor page with edit panel (Blank)',
         value: 'editor-page-edit-panel-blank',
         width: 'full',
@@ -99,7 +132,7 @@ export const containers: Container[] = [
     },
     {
         list: HomePage,
-        main: 'home.svg',
+        main: HomePageMain,
         label: 'Home page',
         value: 'home',
         width: 'full',
@@ -108,7 +141,7 @@ export const containers: Container[] = [
     },
     {
         list: HomeBlankPage,
-        main: 'home-blank.svg',
+        main: HomeBlankPageMain,
         label: 'Home page (Blank)',
         value: 'home-blank',
         width: 'full',
@@ -117,7 +150,7 @@ export const containers: Container[] = [
     },
     {
         list: HomeLoFi,
-        main: 'home-lo-fi.svg',
+        main: HomeLoFiMain,
         label: 'Home page (Lo-fi)',
         value: 'home-lo-fi',
         width: 'full',
@@ -126,7 +159,7 @@ export const containers: Container[] = [
     },
     {
         list: HomeLoFiBlank,
-        main: 'home-lo-fi-blank.svg',
+        main: HomeLoFiBlankMain,
         label: 'Home page (Lo-fi, Blank)',
         value: 'home-lo-fi-blank',
         width: 'full',
@@ -135,7 +168,7 @@ export const containers: Container[] = [
     },
     {
         list: Projects,
-        main: 'projects.svg',
+        main: ProjectsMain,
         label: 'Projects',
         value: 'projects',
         width: 'full',
@@ -144,7 +177,7 @@ export const containers: Container[] = [
     },
     {
         list: ProjectsLoFi,
-        main: 'projects-lo-fi.svg',
+        main: ProjectsLoFiMain,
         label: 'Projects (Lo-fi)',
         value: 'projects-lo-fi',
         width: 'full',
@@ -153,7 +186,7 @@ export const containers: Container[] = [
     },
     {
         list: ObjectPanel,
-        main: 'object-panel.svg',
+        main: ObjectPanelMain,
         label: 'Object panel surface',
         value: 'object-panel',
         width: 'half',
@@ -162,7 +195,7 @@ export const containers: Container[] = [
     },
     {
         list: ObjectPanelLoFi,
-        main: 'object-panel-lo-fi.svg',
+        main: ObjectPanelLoFiMain,
         label: 'Object panel surface (Lo-fi)',
         value: 'object-panel-lo-fi',
         width: 'half',
@@ -171,7 +204,7 @@ export const containers: Container[] = [
     },
     {
         list: ObjectPanelMobile,
-        main: 'object-panel-mobile.svg',
+        main: ObjectPanelMobileMain,
         label: 'Object panel (Mobile)',
         value: 'object-panel-mobile',
         width: 'half',
@@ -180,7 +213,7 @@ export const containers: Container[] = [
     },
     {
         list: ObjectPanelMobileLoFi,
-        main: 'object-panel-mobile-lo-fi.svg',
+        main: ObjectPanelMobileLoFiMain,
         label: 'Object panel (Mobile Lo-fi)',
         value: 'object-panel-mobile-lo-fi',
         width: 'half',
@@ -189,7 +222,7 @@ export const containers: Container[] = [
     },
     {
         list: ShareMenu,
-        main: 'share-menu.svg',
+        main: ShareMenuMain,
         label: 'Share menu',
         value: 'share-menu',
         width: 'half',
@@ -198,7 +231,7 @@ export const containers: Container[] = [
     },
     {
         list: ShareMenuLoFi,
-        main: 'share-menu-lo-fi.svg',
+        main: ShareMenuLoFiMain,
         label: 'Share menu (Lo-fi)',
         value: 'share-menu-lo-fi',
         width: 'half',
@@ -207,7 +240,7 @@ export const containers: Container[] = [
     },
     {
         list: ShareMenuBlank,
-        main: 'share-menu-blank.svg',
+        main: ShareMenuBlankMain,
         label: 'Share menu (Blank)',
         value: 'share-menu-blank',
         width: 'half',
@@ -216,7 +249,7 @@ export const containers: Container[] = [
     },
     {
         list: EditPanel,
-        main: 'edit-panel.svg',
+        main: EditPanelMain,
         label: 'Edit panel',
         value: 'edit-panel',
         width: 'half',
@@ -225,7 +258,7 @@ export const containers: Container[] = [
     },
     {
         list: EditPanelLoFi,
-        main: 'edit-panel-lo-fi.svg',
+        main: EditPanelLoFiMain,
         label: 'Edit panel (Lo-fi)',
         value: 'edit-panel-lo-fi',
         width: 'half',
@@ -234,7 +267,7 @@ export const containers: Container[] = [
     },
     {
         list: EditPanelBlank,
-        main: 'edit-panel-blank.svg',
+        main: EditPanelBlankMain,
         label: 'Edit panel (Blank)',
         value: 'edit-panel-blank',
         width: 'half',
@@ -243,7 +276,7 @@ export const containers: Container[] = [
     },
     {
         list: EditHeader,
-        main: 'edit-header.svg',
+        main: EditHeaderMain,
         label: 'Editor header',
         value: 'edit-header',
         width: 'half',
@@ -252,7 +285,7 @@ export const containers: Container[] = [
     },
     {
         list: EditHeaderLoFi,
-        main: 'edit-header-lo-fi.svg',
+        main: EditHeaderLoFiMain,
         label: 'Editor header (Lo-fi)',
         value: 'edit-header-lo-fi',
         width: 'half',
@@ -261,7 +294,7 @@ export const containers: Container[] = [
     },
     {
         list: ObjectPanelTab,
-        main: 'object-panel-tab.svg',
+        main: ObjectPanelTabMain,
         label: 'Object panel tabs',
         value: 'object-panel-tab',
         width: 'half',
@@ -270,7 +303,7 @@ export const containers: Container[] = [
     },
     {
         list: ObjectPanelTabLoFi,
-        main: 'object-panel-tab-lo-fi.svg',
+        main: ObjectPanelTabLoFiMain,
         label: 'Object panel tabs (Lo-fi)',
         value: 'object-panel-tab-lo-fi',
         width: 'half',
@@ -279,7 +312,7 @@ export const containers: Container[] = [
     },
     {
         list: Toolbar,
-        main: 'toolbar.svg',
+        main: ToolbarMain,
         label: 'Toolbar',
         value: 'toolbar',
         width: 'half',
@@ -288,7 +321,7 @@ export const containers: Container[] = [
     },
     {
         list: ToolbarLoFi,
-        main: 'toolbar-lo-fi.svg',
+        main: ToolbarLoFiMain,
         label: 'Toolbar (Lo-fi)',
         value: 'toolbar-lo-fi',
         width: 'half',
@@ -297,7 +330,7 @@ export const containers: Container[] = [
     },
     {
         list: Canvas,
-        main: 'canvas.svg',
+        main: CanvasMain,
         label: 'Canvas',
         value: 'canvas',
         width: 'half',
@@ -306,7 +339,7 @@ export const containers: Container[] = [
     },
     {
         list: CanvasLoFi,
-        main: 'canvas-lo-fi.svg',
+        main: CanvasLoFiMain,
         label: 'Canvas (Lo-fi)',
         value: 'canvas-lo-fi',
         width: 'half',
@@ -315,7 +348,7 @@ export const containers: Container[] = [
     },
     {
         list: SelectionHandles,
-        main: 'selection-handles.svg',
+        main: SelectionHandlesMain,
         label: 'Selection handles',
         value: 'selection-handles',
         width: 'half',

@@ -14,8 +14,9 @@
     background: var(--ui-kit-color-neutral);
 }
 
-.container img {
+.container svg {
+    width: calc(100% + 16px);
+    height: 100%;
     border-radius: 9.353px;
-    border: 1.949px solid var(--Black-colorBlackA15, rgba(57, 76, 96, 0.15));
     box-shadow: 0px 8.03px 16.061px 0px rgba(0, 0, 0, 0.07);
 }
