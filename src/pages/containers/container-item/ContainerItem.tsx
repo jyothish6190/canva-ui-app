@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'src/models/containers.model';
 
 import styles from './ContainerItem.css';
+import ImageWithAuth from 'src/components/image-with-auth/ImageWithAuth';
 
 type ContainerItemType = {
     container: Container;
@@ -9,8 +10,7 @@ type ContainerItemType = {
 
 const ContainerItem = ({ container }: ContainerItemType) => {
     const ContainerSelect = () => {
-        let SVG = container.list;
-        return <SVG />;
+        return <ImageWithAuth imageUrl={container.list} />;
     };
 
     const getClasses = () => {
@@ -35,8 +35,6 @@ const ContainerItem = ({ container }: ContainerItemType) => {
                         : container.align == 'center'
                         ? 'center'
                         : '',
-                marginLeft:
-                    container.value == 'selection-handles' ? '-7px' : '',
             }}
         >
             {ContainerSelect()}

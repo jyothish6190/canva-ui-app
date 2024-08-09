@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box, Text } from '@canva/app-ui-kit';
 import ComponentCard from 'assets/containers/component-card.svg';
+import ImageWithAuth from 'src/components/image-with-auth/ImageWithAuth';
 
 import styles from './container-list.css';
 import CardTitle from 'src/components/card-title/CardTitle';
@@ -20,7 +21,9 @@ const ContainerList = ({ onClick }: ContainerListType) => {
                     onClick();
                 }}
             >
-                <ComponentCard />
+                <ImageWithAuth
+                    imageUrl={'/assets/containers/component-card.svg'}
+                />
             </div>
             <Text
                 alignment="start"
