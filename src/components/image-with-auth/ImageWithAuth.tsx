@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '@canva/user';
 
 import { CANVAUI_BASEURL } from 'src/constants/common-constants';
+import { Placeholder } from '@canva/app-ui-kit';
 
 const ImageWithAuth = ({ imageUrl }) => {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -38,10 +39,12 @@ const ImageWithAuth = ({ imageUrl }) => {
         };
     }, [imageUrl]);
 
-    return (
+    return imageSrc ? (
         <div>
-            {imageSrc ? <img src={imageSrc} alt="Authenticated" /> : <></>}
+            <img src={imageSrc} alt="Authenticated" />
         </div>
+    ) : (
+        <Placeholder shape="sharpRectangle" />
     );
 };
 

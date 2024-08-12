@@ -130,23 +130,7 @@ function buildConfig({
                 },
                 {
                     test: /\.svg$/,
-                    include: path.resolve(__dirname, 'assets', 'containers'),
-                    use: [
-                        {
-                            loader: '@svgr/webpack',
-                            options: {
-                                icon: true,
-                                template: createContainerTemplate,
-                            },
-                        },
-                    ],
-                },
-                {
-                    test: /\.svg$/,
-                    exclude: [
-                        path.resolve(__dirname, 'assets', 'icons'),
-                        path.resolve(__dirname, 'assets', 'containers'),
-                    ],
+                    exclude: [path.resolve(__dirname, 'assets', 'icons')],
                     oneOf: [
                         {
                             issuer: /\.[jt]sx?$/,
