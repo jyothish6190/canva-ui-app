@@ -167,13 +167,7 @@ const ComponentItem = ({ component, isProperty }: PropType) => {
                     isProperty={isProperty}
                 />
             );
-        case ComponentType.LOADING_INDICATOR:
-            return (
-                <LoadingIndicatorComponent
-                    component={component}
-                    isProperty={isProperty}
-                />
-            );
+
         case ComponentType.PLACEHOLDER:
             return (
                 <PlaceholderComponent

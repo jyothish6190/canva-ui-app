@@ -329,15 +329,7 @@ export const components: Component[] = [
         theme: 'light',
         fields: ColorPickerConfig,
     },
-    {
-        showComponent: true,
-        type: ComponentType.LOADING_INDICATOR,
-        name: 'Loading indicator',
-        size: 'large',
-        categoryId: 'progress',
-        theme: 'light',
-        fields: LoadingIndicatorConfig,
-    },
+
     {
         showComponent: true,
         type: ComponentType.PLACEHOLDER,
